@@ -1,0 +1,95 @@
+# This file is a list of things to be downloaded using the command:
+#   run.py download
+
+# To add a new item to be download, add a block like this - must have 'url',
+# 'local_name' is optional, use to avoid name collisions
+
+#  #
+#  # Description of source
+#  #
+#  -
+#    # brief comment about file, and optionally a local_name:
+#    url: http://curefordisease.org/some_data.txt
+#    local_name: some_data_more_chars_prevent_name_collision.pdf
+#
+#  For downloading from S3 buckets, see here for information about what URL to use:
+#  https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro
+#  Amazon S3 virtual hosted style URLs follow the format shown below:
+#  https://bucket-name.s3.Region.amazonaws.com/key_name
+#
+---
+
+#
+# Drug Central
+#
+-
+  # drug - target interactions from Drug Central
+  url: http://unmtid-shinyapps.net/download/drug.target.interaction.tsv.gz
+  local_name: drug.target.interaction.tsv.gz
+s
+# #
+# # Most of the data is extracted from the 'bacteria-archaea-traits' github repository
+# # link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output
+# #
+# # ******Output Data*******
+# Condensed-species
+# - GTDB
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_GTDB.csv
+-
+  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_GTDB.csv?raw=true
+  #local_name: condensed_species_GTDB.csv
+# - NCBI
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_NCBI.csv
+-
+  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_NCBI.csv?raw=true
+  #local_name: condensed_species_NCBI.csv
+
+# Condensed-traits
+# - GTDB
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv
+-
+  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv?raw=true
+  #local_name: condensed_traits_GTDB.csv
+# - NCBI
+#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output
+-
+  url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_NCBI.csv?raw=true
+  local_name: condensed_traits_NCBI.csv
+
+#
+# #**** ROBOT ****
+#
+-
+  url: https://github.com/ontodev/robot/releases/download/v1.7.2/robot.jar
+  local_name: robot.jar
+-
+  url: https://raw.githubusercontent.com/ontodev/robot/master/bin/robot 
+  local_name: robot
+
+# # ****Conversion Tables****
+#
+# Environment
+#
+-
+  url: https://raw.githubusercontent.com/bacteria-archaea-traits/bacteria-archaea-traits/master/data/conversion_tables/environments.csv
+  local_name: environments.csv
+
+# #**** Ontology files****
+#
+# ENVO
+#
+-
+  url: http://purl.obolibrary.org/obo/envo.json
+  local_name: envo.json
+#
+# CHEBI
+#
+#-
+#  url: http://purl.obolibrary.org/obo/chebi.owl
+#  local_name: chebi.owl
+#
+# NCBI Taxon
+#
+#-
+#  url: http://purl.obolibrary.org/obo/ncbitaxon.owl
+#  local_name: ncbitaxon.owl
