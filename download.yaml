@@ -19,77 +19,21 @@
 #
 ---
 
-#
-# Drug Central
-#
 -
-  # drug - target interactions from Drug Central
-  url: http://unmtid-shinyapps.net/download/drug.target.interaction.tsv.gz
-  local_name: drug.target.interaction.tsv.gz
-s
-# #
-# # Most of the data is extracted from the 'bacteria-archaea-traits' github repository
-# # link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output
-# #
-# # ******Output Data*******
-# Condensed-species
-# - GTDB
-#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_GTDB.csv
+  # drug - target interactions from Drug Central, transformed to KGX TSV in KG-COVID-19:
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/drug_central/edges.tsv
+  local_name: dc_edges.tsv
 -
-  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_GTDB.csv?raw=true
-  #local_name: condensed_species_GTDB.csv
-# - NCBI
-#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_NCBI.csv
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/drug_central/nodes.tsv
+  local_name: dc_nodes.tsv
 -
-  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_species_NCBI.csv?raw=true
-  #local_name: condensed_species_NCBI.csv
-
-# Condensed-traits
-# - GTDB
-#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv
+  # mondo
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_edges.tsv
+  local_name: mondo_edges.tsv
 -
-  #url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_GTDB.csv?raw=true
-  #local_name: condensed_traits_GTDB.csv
-# - NCBI
-#   link: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/tree/master/output
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_nodes.tsv
+  local_name: mondo_nodes.tsv
 -
-  url: https://github.com/bacteria-archaea-traits/bacteria-archaea-traits/blob/master/output/condensed_traits_NCBI.csv?raw=true
-  local_name: condensed_traits_NCBI.csv
-
-#
-# #**** ROBOT ****
-#
--
-  url: https://github.com/ontodev/robot/releases/download/v1.7.2/robot.jar
-  local_name: robot.jar
--
-  url: https://raw.githubusercontent.com/ontodev/robot/master/bin/robot 
-  local_name: robot
-
-# # ****Conversion Tables****
-#
-# Environment
-#
--
-  url: https://raw.githubusercontent.com/bacteria-archaea-traits/bacteria-archaea-traits/master/data/conversion_tables/environments.csv
-  local_name: environments.csv
-
-# #**** Ontology files****
-#
-# ENVO
-#
--
-  url: http://purl.obolibrary.org/obo/envo.json
-  local_name: envo.json
-#
-# CHEBI
-#
-#-
-#  url: http://purl.obolibrary.org/obo/chebi.owl
-#  local_name: chebi.owl
-#
-# NCBI Taxon
-#
-#-
-#  url: http://purl.obolibrary.org/obo/ncbitaxon.owl
-#  local_name: ncbitaxon.owl
+  # orphanet
+  url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
+  local_name: orphanet.nt
