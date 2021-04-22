@@ -1,7 +1,7 @@
 import os
 import tempfile
 from unittest import TestCase, mock
-from project_name import download
+from kg_idg import download
 
 
 class TestDownload(TestCase):

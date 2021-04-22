@@ -10,8 +10,8 @@ from collections import defaultdict
 
 from typing import Dict, List, Optional
 
-from project_name.transform_utils.transform import Transform
-from project_name.utils.transform_utils import write_node_edge_item, \
+from kg_idg.transform_utils.transform import Transform
+from kg_idg.utils.transform_utils import write_node_edge_item, \
     get_item_by_priority, ItemInDictNotFound, parse_header, data_to_dict, \
     unzip_to_tempdir
 

@@ -3,10 +3,10 @@
 import logging
 from typing import List
 
-from project_name.transform_utils.drug_central.drug_central import DrugCentralTransform
-from project_name.transform_utils.ontology import OntologyTransform
-from project_name.transform_utils.ontology.ontology_transform import ONTOLOGIES
-from project_name.transform_utils.traits.traits import TraitsTransform
+from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.ontology import OntologyTransform
+from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
+from kg_idg.transform_utils.traits.traits import TraitsTransform
 
 
 DATA_SOURCES = {
@@ -21,7 +21,7 @@ DATA_SOURCES = {
 
 
 def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> None:
-    """Call scripts in project_name/transform/[source name]/ to transform each source into a graph format that
+    """Call scripts in kg_idg/transform/[source name]/ to transform each source into a graph format that
     KGX can ingest directly, in either TSV or JSON format:
     https://github.com/NCATS-Tangerine/kgx/blob/master/data-preparation.md
 
