@@ -10,8 +10,6 @@ from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 DATA_SOURCES = {
     'DrugCentralTransform': DrugCentralTransform,
-    #'GoTransform': OntologyTransform,
-    #'HpTransform': OntologyTransform,
     'NCBITransform': OntologyTransform,
     'ChebiTransform': OntologyTransform
 }

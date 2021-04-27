@@ -26,6 +26,9 @@ And extracts Drug -> Protein interactions
 
 
 class DrugCentralTransform(Transform):
+    """This transform just ingests the Drug Central transform from KG-COVID-19 and
+    copies it to the transform directory
+    """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "drug_central"
@@ -36,5 +39,4 @@ class DrugCentralTransform(Transform):
         """A 'passthrough' transform - all we are doing is just moving the downloaded
         nodes and edges file to the transformed directory
         """
-
-        return None
+        self.pass_through(nodes_file=nodes_file, edges_file=edges_file)

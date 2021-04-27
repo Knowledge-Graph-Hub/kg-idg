@@ -1,0 +1,686 @@
+DrugCentral:4	levobupivacaine	biolink:Drug		drug_central
+DrugCentral:40	acebutolol	biolink:Drug		drug_central
+DrugCentral:43	aceclofenac	biolink:Drug		drug_central
+DrugCentral:47	acemetacin	biolink:Drug		drug_central
+DrugCentral:48	acenocoumarol	biolink:Drug		drug_central
+DrugCentral:49	acefylline	biolink:Drug		drug_central
+DrugCentral:401	bromfenac	biolink:Drug		drug_central
+DrugCentral:402	bromhexine	biolink:Drug		drug_central
+DrugCentral:403	bromocriptine	biolink:Drug		drug_central
+DrugCentral:404	bromazine	biolink:Drug		drug_central
+DrugCentral:406	bromopride	biolink:Drug		drug_central
+DrugCentral:407	bromperidol	biolink:Drug		drug_central
+DrugCentral:408	brompheniramine	biolink:Drug		drug_central
+DrugCentral:409	brotizolam	biolink:Drug		drug_central
+DrugCentral:416	buclizine	biolink:Drug		drug_central
+DrugCentral:419	budesonide	biolink:Drug		drug_central
+DrugCentral:420	budipine	biolink:Drug		drug_central
+DrugCentral:422	buflomedil	biolink:Drug		drug_central
+DrugCentral:424	bufuralol	biolink:Drug		drug_central
+DrugCentral:427	bumetanide	biolink:Drug		drug_central
+DrugCentral:429	bunazosin	biolink:Drug		drug_central
+DrugCentral:431	levobunolol	biolink:Drug		drug_central
+DrugCentral:432	bupivacaine	biolink:Drug		drug_central
+DrugCentral:433	bupranolol	biolink:Drug		drug_central
+DrugCentral:434	buprenorphine	biolink:Drug		drug_central
+DrugCentral:435	bupropion	biolink:Drug		drug_central
+DrugCentral:436	buserelin	biolink:Drug		drug_central
+DrugCentral:437	buspirone	biolink:Drug		drug_central
+DrugCentral:438	busulfan	biolink:Drug		drug_central
+DrugCentral:439	secbutabarbital	biolink:Drug		drug_central
+DrugCentral:441	butalbital	biolink:Drug		drug_central
+DrugCentral:444	butenafine	biolink:Drug		drug_central
+DrugCentral:454	butorphanol	biolink:Drug		drug_central
+DrugCentral:455	butriptyline	biolink:Drug		drug_central
+DrugCentral:458	scopolamine butylbromide	biolink:Drug		drug_central
+DrugCentral:460	cabergoline	biolink:Drug		drug_central
+DrugCentral:461	cadralazine	biolink:Drug		drug_central
+DrugCentral:463	caffeine	biolink:Drug		drug_central
+DrugCentral:464	calcifediol	biolink:Drug		drug_central
+DrugCentral:465	calcipotriene	biolink:Drug		drug_central
+DrugCentral:466	calcitriol	biolink:Drug		drug_central
+DrugCentral:471	camostat	biolink:Drug		drug_central
+DrugCentral:475	candesartan cilexetil	biolink:Drug		drug_central
+DrugCentral:478	canrenone	biolink:Drug		drug_central
+DrugCentral:480	capecitabine	biolink:Drug		drug_central
+DrugCentral:484	captopril	biolink:Drug		drug_central
+DrugCentral:486	caramiphen	biolink:Drug		drug_central
+DrugCentral:487	carazolol	biolink:Drug		drug_central
+DrugCentral:488	carbachol	biolink:Drug		drug_central
+DrugCentral:489	carbamazepine	biolink:Drug		drug_central
+DrugCentral:492	carbenicillin	biolink:Drug		drug_central
+DrugCentral:493	carbenoxolone	biolink:Drug		drug_central
+DrugCentral:494	pentoxyverine	biolink:Drug		drug_central
+DrugCentral:495	carbetocin	biolink:Drug		drug_central
+DrugCentral:496	carbidopa	biolink:Drug		drug_central
+DrugCentral:497	carbimazole	biolink:Drug		drug_central
+DrugCentral:499	carbinoxamine	biolink:Drug		drug_central
+DrugCentral:4002	niperotidine	biolink:Drug		drug_central
+DrugCentral:4004	mozavaptan	biolink:Drug		drug_central
+DrugCentral:4006	oxitriptan	biolink:Drug		drug_central
+DrugCentral:4050	spaglumic acid	biolink:Drug		drug_central
+DrugCentral:4055	baicalin	biolink:Drug		drug_central
+DrugCentral:4061	timolol	biolink:Drug		drug_central
+DrugCentral:4063	tirilazad	biolink:Drug		drug_central
+DrugCentral:4072	ascorbic acid	biolink:Drug		drug_central
+DrugCentral:4074	minodronic acid	biolink:Drug		drug_central
+DrugCentral:4099	levamlodipine	biolink:Drug		drug_central
+DrugCentral:4106	sucralfate	biolink:Drug		drug_central
+DrugCentral:4109	dronabinol	biolink:Drug		drug_central
+DrugCentral:4110	tolvaptan	biolink:Drug		drug_central
+DrugCentral:4112	dronedarone	biolink:Drug		drug_central
+DrugCentral:4113	prasugrel	biolink:Drug		drug_central
+DrugCentral:4114	saxagliptin	biolink:Drug		drug_central
+DrugCentral:4115	asenapine	biolink:Drug		drug_central
+DrugCentral:4117	pralatrexate	biolink:Drug		drug_central
+DrugCentral:4118	pazopanib	biolink:Drug		drug_central
+DrugCentral:4119	romidepsin	biolink:Drug		drug_central
+DrugCentral:4120	dexfosfoserine	biolink:Drug		drug_central
+DrugCentral:4122	auranofin	biolink:Drug		drug_central
+DrugCentral:4123	lubiprostone	biolink:Drug		drug_central
+DrugCentral:4124	vorinostat	biolink:Drug		drug_central
+DrugCentral:4125	proline	biolink:Drug		drug_central
+DrugCentral:4134	pyridoxal	biolink:Drug		drug_central
+DrugCentral:4135	lisdexamfetamine	biolink:Drug		drug_central
+DrugCentral:4137	paliperidone	biolink:Drug		drug_central
+DrugCentral:4138	gentian violet	biolink:Drug		drug_central
+DrugCentral:4141	udenafil	biolink:Drug		drug_central
+DrugCentral:4142	sulfadiazine silver	biolink:Drug		drug_central
+DrugCentral:4146	testosterone propionate	biolink:Drug		drug_central
+DrugCentral:4150	rimonabant	biolink:Drug		drug_central
+DrugCentral:4151	silodosin	biolink:Drug		drug_central
+DrugCentral:4153	cabazitaxel	biolink:Drug		drug_central
+DrugCentral:4157	lercanidipine	biolink:Drug		drug_central
+DrugCentral:4161	temsirolimus	biolink:Drug		drug_central
+DrugCentral:4162	dexlansoprazole	biolink:Drug		drug_central
+DrugCentral:4163	fampridine	biolink:Drug		drug_central
+DrugCentral:4164	liraglutide	biolink:Drug		drug_central
+DrugCentral:4165	alcaftadine	biolink:Drug		drug_central
+DrugCentral:4166	ulipristal	biolink:Drug		drug_central
+DrugCentral:4167	fingolimod	biolink:Drug		drug_central
+DrugCentral:4168	lurasidone	biolink:Drug		drug_central
+DrugCentral:4170	tesamorelin	biolink:Drug		drug_central
+DrugCentral:4171	eribulin	biolink:Drug		drug_central
+DrugCentral:4172	boceprevir	biolink:Drug		drug_central
+DrugCentral:4173	telaprevir	biolink:Drug		drug_central
+DrugCentral:4175	linagliptin	biolink:Drug		drug_central
+DrugCentral:4176	abiraterone acetate	biolink:Drug		drug_central
+DrugCentral:4177	gabapentin enacarbil	biolink:Drug		drug_central
+DrugCentral:4178	vandetanib	biolink:Drug		drug_central
+DrugCentral:4181	retigabine	biolink:Drug		drug_central
+DrugCentral:4182	rivaroxaban	biolink:Drug		drug_central
+DrugCentral:4183	indacaterol	biolink:Drug		drug_central
+DrugCentral:4184	ticagrelor	biolink:Drug		drug_central
+DrugCentral:4185	vemurafenib	biolink:Drug		drug_central
+DrugCentral:4186	icatibant	biolink:Drug		drug_central
+DrugCentral:4187	crizotinib	biolink:Drug		drug_central
+DrugCentral:4189	hydroxyprogesterone caproate	biolink:Drug		drug_central
+DrugCentral:4190	ruxolitinib	biolink:Drug		drug_central
+DrugCentral:4191	fesoterodine	biolink:Drug		drug_central
+DrugCentral:4192	tafamidis	biolink:Drug		drug_central
+DrugCentral:4196	cyanocobalamin	biolink:Drug		drug_central
+DrugCentral:4197	vitamin A palmitate	biolink:Drug		drug_central
+DrugCentral:4199	potassium chloride	biolink:Drug		drug_central
+DrugCentral:4203	sodium acetate	biolink:Drug		drug_central
+DrugCentral:4207	lithium carbonate	biolink:Drug		drug_central
+DrugCentral:4209	prazosin	biolink:Drug		drug_central
+DrugCentral:4211	acetic acid	biolink:Drug		drug_central
+DrugCentral:4213	hydrocortisone acetate	biolink:Drug		drug_central
+DrugCentral:4218	methyldopate	biolink:Drug		drug_central
+DrugCentral:4219	sodium phosphate	biolink:Drug		drug_central
+DrugCentral:4221	mequinol	biolink:Drug		drug_central
+DrugCentral:4223	vilazodone	biolink:Drug		drug_central
+DrugCentral:4225	axitinib	biolink:Drug		drug_central
+DrugCentral:4226	ingenol mebutate	biolink:Drug		drug_central
+DrugCentral:4227	vismodegib	biolink:Drug		drug_central
+DrugCentral:4228	ivacaftor	biolink:Drug		drug_central
+DrugCentral:4229	tafluprost	biolink:Drug		drug_central
+DrugCentral:4234	peginesatide	biolink:Drug		drug_central
+DrugCentral:4242	avobenzone	biolink:Drug		drug_central
+DrugCentral:4247	neomycin	biolink:Drug		drug_central
+DrugCentral:4248	pyrithione zinc	biolink:Drug		drug_central
+DrugCentral:4257	bismuth subsalicylate	biolink:Drug		drug_central
+DrugCentral:4258	thymol	biolink:Drug		drug_central
+DrugCentral:4260	sulfur	biolink:Drug		drug_central
+DrugCentral:4265	gentamicin	biolink:Drug		drug_central
+DrugCentral:4266	phenol	biolink:Drug		drug_central
+DrugCentral:4267	arbutin	biolink:Drug		drug_central
+DrugCentral:4283	tapentadol	biolink:Drug		drug_central
+DrugCentral:4289	doconexent	biolink:Drug		drug_central
+DrugCentral:4296	potassium iodide	biolink:Drug		drug_central
+DrugCentral:4298	apixaban	biolink:Drug		drug_central
+DrugCentral:4299	cobicistat	biolink:Drug		drug_central
+DrugCentral:4302	glycopyrronium bromide	biolink:Drug		drug_central
+DrugCentral:4303	eslicarbazepine acetate	biolink:Drug		drug_central
+DrugCentral:4304	dapagliflozin	biolink:Drug		drug_central
+DrugCentral:4305	avanafil	biolink:Drug		drug_central
+DrugCentral:4308	lasofoxifene	biolink:Drug		drug_central
+DrugCentral:4310	lacosamide	biolink:Drug		drug_central
+DrugCentral:4314	aceclidine	biolink:Drug		drug_central
+DrugCentral:4318	afatinib	biolink:Drug		drug_central
+DrugCentral:4322	azilsartan medoxomil	biolink:Drug		drug_central
+DrugCentral:4326	laropiprant	biolink:Drug		drug_central
+DrugCentral:4329	pasireotide	biolink:Drug		drug_central
+DrugCentral:4334	bazedoxifene	biolink:Drug		drug_central
+DrugCentral:4336	amifampridine	biolink:Drug		drug_central
+DrugCentral:4337	ambrisentan	biolink:Drug		drug_central
+DrugCentral:4340	alogliptin	biolink:Drug		drug_central
+DrugCentral:4342	zucapsaicin	biolink:Drug		drug_central
+DrugCentral:4344	zinc chloride	biolink:Drug		drug_central
+DrugCentral:4349	aurothioglucose	biolink:Drug		drug_central
+DrugCentral:4353	bilastine	biolink:Drug		drug_central
+DrugCentral:4358	arginine glutamate	biolink:Drug		drug_central
+DrugCentral:4359	bosutinib	biolink:Drug		drug_central
+DrugCentral:4360	cetrimide	biolink:Drug		drug_central
+DrugCentral:4361	chenodiol	biolink:Drug		drug_central
+DrugCentral:4365	vernakalant	biolink:Drug		drug_central
+DrugCentral:4373	sodium benzoate	biolink:Drug		drug_central
+DrugCentral:4374	lorcaserin	biolink:Drug		drug_central
+DrugCentral:4376	dequalinium	biolink:Drug		drug_central
+DrugCentral:4379	degarelix	biolink:Drug		drug_central
+DrugCentral:4380	desvenlafaxine	biolink:Drug		drug_central
+DrugCentral:4381	dapoxetine	biolink:Drug		drug_central
+DrugCentral:4382	mirabegron	biolink:Drug		drug_central
+DrugCentral:4390	choline theophyllinate	biolink:Drug		drug_central
+DrugCentral:4392	cisplatin	biolink:Drug		drug_central
+DrugCentral:4399	eltrombopag	biolink:Drug		drug_central
+DrugCentral:4401	casopitant	biolink:Drug		drug_central
+DrugCentral:4410	plerixafor	biolink:Drug		drug_central
+DrugCentral:4411	dexchlorpheniramine	biolink:Drug		drug_central
+DrugCentral:4420	dihydroergocryptine	biolink:Drug		drug_central
+DrugCentral:4425	colistin	biolink:Drug		drug_central
+DrugCentral:4426	bufylline	biolink:Drug		drug_central
+DrugCentral:4427	calcitonin human	biolink:Drug		drug_central
+DrugCentral:4451	prednisolone sodium phosphate	biolink:Drug		drug_central
+DrugCentral:4452	clobetasol propionate	biolink:Drug		drug_central
+DrugCentral:4454	testosterone cypionate	biolink:Drug		drug_central
+DrugCentral:4456	hydrocortisone succinate	biolink:Drug		drug_central
+DrugCentral:4458	sulfisoxazole acetyl	biolink:Drug		drug_central
+DrugCentral:4466	eosin	biolink:Drug		drug_central
+DrugCentral:4470	fosaprepitant	biolink:Drug		drug_central
+DrugCentral:4477	sodium citrate	biolink:Drug		drug_central
+DrugCentral:4482	corbadrine	biolink:Drug		drug_central
+DrugCentral:4483	carfilzomib	biolink:Drug		drug_central
+DrugCentral:4484	aclidinium bromide	biolink:Drug		drug_central
+DrugCentral:4485	diflorasone diacetate	biolink:Drug		drug_central
+DrugCentral:4493	alclometasone dipropionate	biolink:Drug		drug_central
+DrugCentral:4496	haloperidol decanoate	biolink:Drug		drug_central
+DrugCentral:4497	estradiol acetate	biolink:Drug		drug_central
+DrugCentral:4498	paliperidone palmitate	biolink:Drug		drug_central
+DrugCentral:4501	armodafinil	biolink:Drug		drug_central
+DrugCentral:4504	hydrocortisone valerate	biolink:Drug		drug_central
+DrugCentral:4505	choline fenofibrate	biolink:Drug		drug_central
+DrugCentral:4507	halcinonide	biolink:Drug		drug_central
+DrugCentral:4508	racepinefrine	biolink:Drug		drug_central
+DrugCentral:4512	lithium citrate	biolink:Drug		drug_central
+DrugCentral:4514	teriparatide	biolink:Drug		drug_central
+DrugCentral:4516	tetracosactide	biolink:Drug		drug_central
+DrugCentral:4523	quinine	biolink:Drug		drug_central
+DrugCentral:4536	fenbendazole	biolink:Drug		drug_central
+DrugCentral:4554	fluticasone furoate	biolink:Drug		drug_central
+DrugCentral:4562	gepirone	biolink:Drug		drug_central
+DrugCentral:4566	sodium oxybate	biolink:Drug		drug_central
+DrugCentral:4569	hydrocortisone probutate	biolink:Drug		drug_central
+DrugCentral:4573	iclaprim	biolink:Drug		drug_central
+DrugCentral:4588	linopirdine	biolink:Drug		drug_central
+DrugCentral:4601	diosmetin	biolink:Drug		drug_central
+DrugCentral:4605	tonzonium	biolink:Drug		drug_central
+DrugCentral:4606	clocortolone pivalate	biolink:Drug		drug_central
+DrugCentral:4608	trypan blue	biolink:Drug		drug_central
+DrugCentral:4609	testosterone enantate	biolink:Drug		drug_central
+DrugCentral:4611	stearic acid	biolink:Drug		drug_central
+DrugCentral:4616	methylnaltrexone	biolink:Drug		drug_central
+DrugCentral:4618	linolenic acid	biolink:Drug		drug_central
+DrugCentral:4621	levomefolic acid	biolink:Drug		drug_central
+DrugCentral:4622	linaclotide	biolink:Drug		drug_central
+DrugCentral:4624	phenylacetic acid	biolink:Drug		drug_central
+DrugCentral:4627	sincalide	biolink:Drug		drug_central
+DrugCentral:4628	enzalutamide	biolink:Drug		drug_central
+DrugCentral:4630	sodium pyrophosphate	biolink:Drug		drug_central
+DrugCentral:4631	nitroprusside	biolink:Drug		drug_central
+DrugCentral:4633	trabectedin	biolink:Drug		drug_central
+DrugCentral:4634	teriflunomide	biolink:Drug		drug_central
+DrugCentral:4637	rose bengal	biolink:Drug		drug_central
+DrugCentral:4641	levmetamfetamine	biolink:Drug		drug_central
+DrugCentral:4642	dodecanoic acid	biolink:Drug		drug_central
+DrugCentral:4647	fluorometholone acetate	biolink:Drug		drug_central
+DrugCentral:4648	eugenol	biolink:Drug		drug_central
+DrugCentral:4654	regorafenib	biolink:Drug		drug_central
+DrugCentral:4659	metamizole	biolink:Drug		drug_central
+DrugCentral:4663	benzoin	biolink:Drug		drug_central
+DrugCentral:4664	benzoic acid	biolink:Drug		drug_central
+DrugCentral:4667	betamethasone phosphate	biolink:Drug		drug_central
+DrugCentral:4671	metizoline	biolink:Drug		drug_central
+DrugCentral:4673	nalfurafine	biolink:Drug		drug_central
+DrugCentral:4676	obidoxime	biolink:Drug		drug_central
+DrugCentral:4682	panobinostat	biolink:Drug		drug_central
+DrugCentral:4683	paraoxon	biolink:Drug		drug_central
+DrugCentral:4684	perampanel	biolink:Drug		drug_central
+DrugCentral:4690	pleconaril	biolink:Drug		drug_central
+DrugCentral:4696	remikiren	biolink:Drug		drug_central
+DrugCentral:4702	esatenolol	biolink:Drug		drug_central
+DrugCentral:4704	semustine	biolink:Drug		drug_central
+DrugCentral:4706	sodium aurothiomalate	biolink:Drug		drug_central
+DrugCentral:4710	somatorelin	biolink:Drug		drug_central
+DrugCentral:4713	tofacitinib	biolink:Drug		drug_central
+DrugCentral:4715	cabozantinib	biolink:Drug		drug_central
+DrugCentral:4716	ponatinib	biolink:Drug		drug_central
+DrugCentral:4718	teduglutide	biolink:Drug		drug_central
+DrugCentral:4719	daunorubicinol	biolink:Drug		drug_central
+DrugCentral:4721	lomitapide	biolink:Drug		drug_central
+DrugCentral:4727	tacalcitol	biolink:Drug		drug_central
+DrugCentral:4728	tenidap	biolink:Drug		drug_central
+DrugCentral:4731	thiocolchicoside	biolink:Drug		drug_central
+DrugCentral:4732	thioctic acid	biolink:Drug		drug_central
+DrugCentral:4733	thiomersal	biolink:Drug		drug_central
+DrugCentral:4744	crofelemer	biolink:Drug		drug_central
+DrugCentral:4746	pomalidomide	biolink:Drug		drug_central
+DrugCentral:4749	ospemifene	biolink:Drug		drug_central
+DrugCentral:4752	levobetaxolol	biolink:Drug		drug_central
+DrugCentral:4757	dimethyl fumarate	biolink:Drug		drug_central
+DrugCentral:4758	canagliflozin	biolink:Drug		drug_central
+DrugCentral:4773	ethyl hydroxybenzoate	biolink:Drug		drug_central
+DrugCentral:4778	ridaforolimus	biolink:Drug		drug_central
+DrugCentral:4794	gramicidin	biolink:Drug		drug_central
+DrugCentral:4797	sodium nitrite	biolink:Drug		drug_central
+DrugCentral:4799	vilanterol	biolink:Drug		drug_central
+DrugCentral:4801	dabrafenib	biolink:Drug		drug_central
+DrugCentral:4802	trametinib	biolink:Drug		drug_central
+DrugCentral:4804	palifermin	biolink:Drug		drug_central
+DrugCentral:4806	vortioxetine	biolink:Drug		drug_central
+DrugCentral:4807	riociguat	biolink:Drug		drug_central
+DrugCentral:4808	ipidacrine	biolink:Drug		drug_central
+DrugCentral:4809	macitentan	biolink:Drug		drug_central
+DrugCentral:4810	ibrutinib	biolink:Drug		drug_central
+DrugCentral:4812	simeprevir	biolink:Drug		drug_central
+DrugCentral:4814	olodaterol	biolink:Drug		drug_central
+DrugCentral:4815	lixisenatide	biolink:Drug		drug_central
+DrugCentral:4816	umeclidinium	biolink:Drug		drug_central
+DrugCentral:4817	rifamycin	biolink:Drug		drug_central
+DrugCentral:4820	tasimelteon	biolink:Drug		drug_central
+DrugCentral:4821	seractide	biolink:Drug		drug_central
+DrugCentral:4824	etilefrine pivalate	biolink:Drug		drug_central
+DrugCentral:4826	metreleptin	biolink:Drug		drug_central
+DrugCentral:4829	apremilast	biolink:Drug		drug_central
+DrugCentral:4830	empagliflozin	biolink:Drug		drug_central
+DrugCentral:4832	naloxegol	biolink:Drug		drug_central
+DrugCentral:4833	gemigliptin	biolink:Drug		drug_central
+DrugCentral:4834	eliglustat	biolink:Drug		drug_central
+DrugCentral:4836	afamelanotide	biolink:Drug		drug_central
+DrugCentral:4839	aprotinin	biolink:Drug		drug_central
+DrugCentral:4846	ecallantide	biolink:Drug		drug_central
+DrugCentral:4848	somatropin	biolink:Drug		drug_central
+DrugCentral:4855	conjugated estrogens	biolink:Drug		drug_central
+DrugCentral:4857	estrone sulphate	biolink:Drug		drug_central
+DrugCentral:4858	corticorelin	biolink:Drug		drug_central
+DrugCentral:4863	phenibut	biolink:Drug		drug_central
+DrugCentral:4864	levomilnacipran	biolink:Drug		drug_central
+DrugCentral:4865	mebanazine	biolink:Drug		drug_central
+DrugCentral:4866	ceritinib	biolink:Drug		drug_central
+DrugCentral:4867	dexrabeprazole	biolink:Drug		drug_central
+DrugCentral:4870	vorapaxar	biolink:Drug		drug_central
+DrugCentral:4875	daclatasvir	biolink:Drug		drug_central
+DrugCentral:4876	belinostat	biolink:Drug		drug_central
+DrugCentral:4878	idelalisib	biolink:Drug		drug_central
+DrugCentral:4879	enoxaparin sodium	biolink:Drug		drug_central
+DrugCentral:4881	suvorexant	biolink:Drug		drug_central
+DrugCentral:4882	istradefylline	biolink:Drug		drug_central
+DrugCentral:4885	dulaglutide	biolink:Drug		drug_central
+DrugCentral:4886	cetilistat	biolink:Drug		drug_central
+DrugCentral:4888	topiroxostat	biolink:Drug		drug_central
+DrugCentral:4890	ipragliflozin	biolink:Drug		drug_central
+DrugCentral:4891	luseogliflozin	biolink:Drug		drug_central
+DrugCentral:4892	tofogliflozin	biolink:Drug		drug_central
+DrugCentral:4893	tipiracil	biolink:Drug		drug_central
+DrugCentral:4895	teneligliptin	biolink:Drug		drug_central
+DrugCentral:4896	anagliptin	biolink:Drug		drug_central
+DrugCentral:4897	edoxaban	biolink:Drug		drug_central
+DrugCentral:4898	netupitant	biolink:Drug		drug_central
+DrugCentral:4900	diquafosol	biolink:Drug		drug_central
+DrugCentral:4901	insulin glargine	biolink:Drug		drug_central
+DrugCentral:4902	imidafenacin	biolink:Drug		drug_central
+DrugCentral:4903	nintedanib	biolink:Drug		drug_central
+DrugCentral:4904	adalimumab	biolink:Drug		drug_central
+DrugCentral:4905	pegaptanib	biolink:Drug		drug_central
+DrugCentral:4906	fimasartan	biolink:Drug		drug_central
+DrugCentral:4907	olaparib	biolink:Drug		drug_central
+DrugCentral:4908	acotiamide	biolink:Drug		drug_central
+DrugCentral:4909	alemtuzumab	biolink:Drug		drug_central
+DrugCentral:4910	felypressin	biolink:Drug		drug_central
+DrugCentral:4915	blinatumomab	biolink:Drug		drug_central
+DrugCentral:4916	aflibercept	biolink:Drug		drug_central
+DrugCentral:4917	ramucirumab	biolink:Drug		drug_central
+DrugCentral:4921	safinamide	biolink:Drug		drug_central
+DrugCentral:4923	nivolumab	biolink:Drug		drug_central
+DrugCentral:4924	pembrolizumab	biolink:Drug		drug_central
+DrugCentral:4925	becaplermin	biolink:Drug		drug_central
+DrugCentral:4927	albiglutide	biolink:Drug		drug_central
+DrugCentral:4928	follitropin	biolink:Drug		drug_central
+DrugCentral:4929	lutropin alfa	biolink:Drug		drug_central
+DrugCentral:4930	thyrotropin alfa	biolink:Drug		drug_central
+DrugCentral:4931	corticotropin	biolink:Drug		drug_central
+DrugCentral:4933	tocilizumab	biolink:Drug		drug_central
+DrugCentral:4934	secukinumab	biolink:Drug		drug_central
+DrugCentral:4936	parathyroid hormone	biolink:Drug		drug_central
+DrugCentral:4937	alectinib	biolink:Drug		drug_central
+DrugCentral:4938	ripasudil	biolink:Drug		drug_central
+DrugCentral:4939	vaniprevir	biolink:Drug		drug_central
+DrugCentral:4940	basiliximab	biolink:Drug		drug_central
+DrugCentral:4941	palbociclib	biolink:Drug		drug_central
+DrugCentral:4942	lenvatinib	biolink:Drug		drug_central
+DrugCentral:4943	arformoterol	biolink:Drug		drug_central
+DrugCentral:4945	pancreozymin	biolink:Drug		drug_central
+DrugCentral:4949	belimumab	biolink:Drug		drug_central
+DrugCentral:4950	abciximab	biolink:Drug		drug_central
+DrugCentral:4951	ofatumumab	biolink:Drug		drug_central
+DrugCentral:4952	canakinumab	biolink:Drug		drug_central
+DrugCentral:4953	daclizumab	biolink:Drug		drug_central
+DrugCentral:4954	cetuximab	biolink:Drug		drug_central
+DrugCentral:4955	panitumumab	biolink:Drug		drug_central
+DrugCentral:4956	bevacizumab	biolink:Drug		drug_central
+DrugCentral:4957	pertuzumab	biolink:Drug		drug_central
+DrugCentral:4958	ipilimumab	biolink:Drug		drug_central
+DrugCentral:4959	efalizumab	biolink:Drug		drug_central
+DrugCentral:4960	insulin degludec	biolink:Drug		drug_central
+DrugCentral:4964	brentuximab vedotin	biolink:Drug		drug_central
+DrugCentral:4965	denosumab	biolink:Drug		drug_central
+DrugCentral:4966	ustekinumab	biolink:Drug		drug_central
+DrugCentral:4967	golimumab	biolink:Drug		drug_central
+DrugCentral:4968	certolizumab pegol	biolink:Drug		drug_central
+DrugCentral:4969	eculizumab	biolink:Drug		drug_central
+DrugCentral:4970	natalizumab	biolink:Drug		drug_central
+DrugCentral:4971	ranibizumab	biolink:Drug		drug_central
+DrugCentral:4972	omalizumab	biolink:Drug		drug_central
+DrugCentral:4973	chidamide	biolink:Drug		drug_central
+DrugCentral:4974	infliximab	biolink:Drug		drug_central
+DrugCentral:4975	rituximab	biolink:Drug		drug_central
+DrugCentral:4976	triamcinolone hexacetonide	biolink:Drug		drug_central
+DrugCentral:4977	siltuximab	biolink:Drug		drug_central
+DrugCentral:4978	etanercept	biolink:Drug		drug_central
+DrugCentral:4979	trastuzumab	biolink:Drug		drug_central
+DrugCentral:4980	gemtuzumab ozogamicin	biolink:Drug		drug_central
+DrugCentral:4981	insulin aspart	biolink:Drug		drug_central
+DrugCentral:4982	vedolizumab	biolink:Drug		drug_central
+DrugCentral:4983	obinutuzumab	biolink:Drug		drug_central
+DrugCentral:4984	ibritumomab tiuxetan	biolink:Drug		drug_central
+DrugCentral:4985	insulin detemir	biolink:Drug		drug_central
+DrugCentral:4986	pegfilgrastim	biolink:Drug		drug_central
+DrugCentral:4987	filgrastim	biolink:Drug		drug_central
+DrugCentral:4988	deoxycholic acid	biolink:Drug		drug_central
+DrugCentral:4990	trastuzumab emtansine	biolink:Drug		drug_central
+DrugCentral:4991	lipegfilgrastim	biolink:Drug		drug_central
+DrugCentral:4993	vonoprazan	biolink:Drug		drug_central
+DrugCentral:4995	epoetin alfa	biolink:Drug		drug_central
+DrugCentral:4996	romiplostim	biolink:Drug		drug_central
+DrugCentral:5	(S)-nicardipine	biolink:Drug		drug_central
+DrugCentral:50	aceprometazine	biolink:Drug		drug_central
+DrugCentral:52	paracetamol	biolink:Drug		drug_central
+DrugCentral:56	acetazolamide	biolink:Drug		drug_central
+DrugCentral:57	acetohexamide	biolink:Drug		drug_central
+DrugCentral:58	acetohydroxamic acid	biolink:Drug		drug_central
+DrugCentral:59	acetophenazine	biolink:Drug		drug_central
+DrugCentral:502	carboprost	biolink:Drug		drug_central
+DrugCentral:505	carbutamide	biolink:Drug		drug_central
+DrugCentral:510	carubicin	biolink:Drug		drug_central
+DrugCentral:511	carmofur	biolink:Drug		drug_central
+DrugCentral:512	carmustine	biolink:Drug		drug_central
+DrugCentral:513	levocarnitine	biolink:Drug		drug_central
+DrugCentral:516	carfenazine	biolink:Drug		drug_central
+DrugCentral:517	carpipramine	biolink:Drug		drug_central
+DrugCentral:518	carprofen	biolink:Drug		drug_central
+DrugCentral:520	carteolol	biolink:Drug		drug_central
+DrugCentral:522	carvedilol	biolink:Drug		drug_central
+DrugCentral:526	cefadroxil	biolink:Drug		drug_central
+DrugCentral:527	cefamandole	biolink:Drug		drug_central
+DrugCentral:537	cefixime	biolink:Drug		drug_central
+DrugCentral:542	cefonicid	biolink:Drug		drug_central
+DrugCentral:547	cefotetan	biolink:Drug		drug_central
+DrugCentral:548	cefotiam	biolink:Drug		drug_central
+DrugCentral:558	cefsulodin	biolink:Drug		drug_central
+DrugCentral:564	ceftriaxone	biolink:Drug		drug_central
+DrugCentral:565	cefuroxime	biolink:Drug		drug_central
+DrugCentral:568	celecoxib	biolink:Drug		drug_central
+DrugCentral:569	celiprolol	biolink:Drug		drug_central
+DrugCentral:571	cefalexin	biolink:Drug		drug_central
+DrugCentral:574	cefalotin	biolink:Drug		drug_central
+DrugCentral:575	cefapirin	biolink:Drug		drug_central
+DrugCentral:576	cefradine	biolink:Drug		drug_central
+DrugCentral:577	cerivastatin	biolink:Drug		drug_central
+DrugCentral:578	cerulenin	biolink:Drug		drug_central
+DrugCentral:579	ceruletide	biolink:Drug		drug_central
+DrugCentral:581	cetirizine	biolink:Drug		drug_central
+DrugCentral:583	cetrorelix	biolink:Drug		drug_central
+DrugCentral:584	cevimeline	biolink:Drug		drug_central
+DrugCentral:588	chlorambucil	biolink:Drug		drug_central
+DrugCentral:589	chloramphenicol	biolink:Drug		drug_central
+DrugCentral:593	chlorcyclizine	biolink:Drug		drug_central
+DrugCentral:594	chlordiazepoxide	biolink:Drug		drug_central
+DrugCentral:597	chlorhexidine	biolink:Drug		drug_central
+DrugCentral:5000	evolocumab	biolink:Drug		drug_central
+DrugCentral:5001	eluxadoline	biolink:Drug		drug_central
+DrugCentral:5002	insulin lispro	biolink:Drug		drug_central
+DrugCentral:5003	insulin human	biolink:Drug		drug_central
+DrugCentral:5005	mirodenafil	biolink:Drug		drug_central
+DrugCentral:5006	cangrelor	biolink:Drug		drug_central
+DrugCentral:5007	epoetin theta	biolink:Drug		drug_central
+DrugCentral:5008	sonidegib	biolink:Drug		drug_central
+DrugCentral:5009	mecasermin	biolink:Drug		drug_central
+DrugCentral:5010	lumacaftor	biolink:Drug		drug_central
+DrugCentral:5011	aldesleukin	biolink:Drug		drug_central
+DrugCentral:5012	sacubitril	biolink:Drug		drug_central
+DrugCentral:5013	trelagliptin	biolink:Drug		drug_central
+DrugCentral:5014	brexpiprazole	biolink:Drug		drug_central
+DrugCentral:5015	pegvisomant	biolink:Drug		drug_central
+DrugCentral:5016	alirocumab	biolink:Drug		drug_central
+DrugCentral:5017	anakinra	biolink:Drug		drug_central
+DrugCentral:5022	flibanserin	biolink:Drug		drug_central
+DrugCentral:5025	sargramostim	biolink:Drug		drug_central
+DrugCentral:5026	oprelvekin	biolink:Drug		drug_central
+DrugCentral:5027	rolapitant	biolink:Drug		drug_central
+DrugCentral:5031	mogamulizumab	biolink:Drug		drug_central
+DrugCentral:5037	cariprazine	biolink:Drug		drug_central
+DrugCentral:5039	tannic acid	biolink:Drug		drug_central
+DrugCentral:5042	somatrem	biolink:Drug		drug_central
+DrugCentral:5044	reteplase	biolink:Drug		drug_central
+DrugCentral:5046	cobimetinib	biolink:Drug		drug_central
+DrugCentral:5047	saroglitazar	biolink:Drug		drug_central
+DrugCentral:5048	pitolisant	biolink:Drug		drug_central
+DrugCentral:5052	aripiprazole lauroxil	biolink:Drug		drug_central
+DrugCentral:5054	omarigliptin	biolink:Drug		drug_central
+DrugCentral:5057	insulin glulisine	biolink:Drug		drug_central
+DrugCentral:5059	lusutrombopag	biolink:Drug		drug_central
+DrugCentral:5060	esflurbiprofen	biolink:Drug		drug_central
+DrugCentral:5061	mepolizumab	biolink:Drug		drug_central
+DrugCentral:5062	osimertinib	biolink:Drug		drug_central
+DrugCentral:5063	daratumumab	biolink:Drug		drug_central
+DrugCentral:5066	tenecteplase	biolink:Drug		drug_central
+DrugCentral:5067	ixazomib	biolink:Drug		drug_central
+DrugCentral:5068	brivaracetam	biolink:Drug		drug_central
+DrugCentral:5071	necitumumab	biolink:Drug		drug_central
+DrugCentral:5072	elotuzumab	biolink:Drug		drug_central
+DrugCentral:5075	lesinurad	biolink:Drug		drug_central
+DrugCentral:5077	selexipag	biolink:Drug		drug_central
+DrugCentral:5078	lobeglitazone	biolink:Drug		drug_central
+DrugCentral:5083	ixekizumab	biolink:Drug		drug_central
+DrugCentral:5087	denileukin diftitox	biolink:Drug		drug_central
+DrugCentral:5088	alefacept	biolink:Drug		drug_central
+DrugCentral:5089	abatacept	biolink:Drug		drug_central
+DrugCentral:5091	belatacept	biolink:Drug		drug_central
+DrugCentral:5093	reslizumab	biolink:Drug		drug_central
+DrugCentral:5105	rilonacept	biolink:Drug		drug_central
+DrugCentral:5109	urokinase	biolink:Drug		drug_central
+DrugCentral:5110	migalastat	biolink:Drug		drug_central
+DrugCentral:5118	chromic chloride	biolink:Drug		drug_central
+DrugCentral:5133	venetoclax	biolink:Drug		drug_central
+DrugCentral:5137	peginterferon beta-1a	biolink:Drug		drug_central
+DrugCentral:5139	interferon beta-1a	biolink:Drug		drug_central
+DrugCentral:5140	interferon beta-1b	biolink:Drug		drug_central
+DrugCentral:5141	alteplase	biolink:Drug		drug_central
+DrugCentral:5142	pimavanserin	biolink:Drug		drug_central
+DrugCentral:5143	opicapone	biolink:Drug		drug_central
+DrugCentral:5144	gluconolactone	biolink:Drug		drug_central
+DrugCentral:5149	choriogonadotropin alfa	biolink:Drug		drug_central
+DrugCentral:5151	atezolizumab	biolink:Drug		drug_central
+DrugCentral:5155	obeticholic acid	biolink:Drug		drug_central
+DrugCentral:5157	darbepoetin alfa	biolink:Drug		drug_central
+DrugCentral:5158	peginterferon alfa-2a	biolink:Drug		drug_central
+DrugCentral:5160	epoetin beta	biolink:Drug		drug_central
+DrugCentral:5164	peginterferon alfa-2b	biolink:Drug		drug_central
+DrugCentral:5165	methoxy polyethylene glycol-epoetin beta	biolink:Drug		drug_central
+DrugCentral:5167	lenograstim	biolink:Drug		drug_central
+DrugCentral:5169	eldecalcitol	biolink:Drug		drug_central
+DrugCentral:5170	epoetin zeta	biolink:Drug		drug_central
+DrugCentral:5174	lifitegrast	biolink:Drug		drug_central
+DrugCentral:5177	muromonab-CD3	biolink:Drug		drug_central
+DrugCentral:5179	brodalumab	biolink:Drug		drug_central
+DrugCentral:5181	etelcalcetide	biolink:Drug		drug_central
+DrugCentral:5182	eteplirsen	biolink:Drug		drug_central
+DrugCentral:5183	olaratumab	biolink:Drug		drug_central
+DrugCentral:5185	gallium (68Ga) edotreotide	biolink:Drug		drug_central
+DrugCentral:5188	radotinib	biolink:Drug		drug_central
+DrugCentral:5201	crisaborole	biolink:Drug		drug_central
+DrugCentral:5202	baricitinib	biolink:Drug		drug_central
+DrugCentral:5203	rucaparib	biolink:Drug		drug_central
+DrugCentral:5208	plecanatide	biolink:Drug		drug_central
+DrugCentral:5209	icotinib	biolink:Drug		drug_central
+DrugCentral:5210	olmutinib	biolink:Drug		drug_central
+DrugCentral:5211	apatinib	biolink:Drug		drug_central
+DrugCentral:5214	telotristat ethyl	biolink:Drug		drug_central
+DrugCentral:5215	beclabuvir	biolink:Drug		drug_central
+DrugCentral:5217	cytisine	biolink:Drug		drug_central
+DrugCentral:5218	ribociclib	biolink:Drug		drug_central
+DrugCentral:5220	naldemedine	biolink:Drug		drug_central
+DrugCentral:5221	avelumab	biolink:Drug		drug_central
+DrugCentral:5222	niraparib	biolink:Drug		drug_central
+DrugCentral:5223	ocrelizumab	biolink:Drug		drug_central
+DrugCentral:5224	dupilumab	biolink:Drug		drug_central
+DrugCentral:5226	deutetrabenazine	biolink:Drug		drug_central
+DrugCentral:5227	valbenazine	biolink:Drug		drug_central
+DrugCentral:5229	forodesine	biolink:Drug		drug_central
+DrugCentral:5231	midostaurin	biolink:Drug		drug_central
+DrugCentral:5232	abaloparatide	biolink:Drug		drug_central
+DrugCentral:5233	brigatinib	biolink:Drug		drug_central
+DrugCentral:5234	durvalumab	biolink:Drug		drug_central
+DrugCentral:5235	cenegermin	biolink:Drug		drug_central
+DrugCentral:5237	sarilumab	biolink:Drug		drug_central
+DrugCentral:5239	evogliptin	biolink:Drug		drug_central
+DrugCentral:5240	polmacoxib	biolink:Drug		drug_central
+DrugCentral:5241	betrixaban	biolink:Drug		drug_central
+DrugCentral:5245	corifollitropin alfa	biolink:Drug		drug_central
+DrugCentral:5246	guselkumab	biolink:Drug		drug_central
+DrugCentral:5247	inotuzumab ozogamicin	biolink:Drug		drug_central
+DrugCentral:5248	pemafibrate	biolink:Drug		drug_central
+DrugCentral:5250	imrecoxib	biolink:Drug		drug_central
+DrugCentral:5251	enasidenib	biolink:Drug		drug_central
+DrugCentral:5252	neratinib	biolink:Drug		drug_central
+DrugCentral:5256	copanlisib	biolink:Drug		drug_central
+DrugCentral:5257	butylphthalide	biolink:Drug		drug_central
+DrugCentral:5258	tivozanib	biolink:Drug		drug_central
+DrugCentral:5259	abemaciclib	biolink:Drug		drug_central
+DrugCentral:5260	acalabrutinib	biolink:Drug		drug_central
+DrugCentral:5261	latanoprostene bunod	biolink:Drug		drug_central
+DrugCentral:5263	benralizumab	biolink:Drug		drug_central
+DrugCentral:5267	semaglutide	biolink:Drug		drug_central
+DrugCentral:5269	netarsudil	biolink:Drug		drug_central
+DrugCentral:5270	ertugliflozin	biolink:Drug		drug_central
+DrugCentral:5271	macimorelin	biolink:Drug		drug_central
+DrugCentral:5272	angiotensin II	biolink:Drug		drug_central
+DrugCentral:5275	lutetium (177Lu) oxodotreotide	biolink:Drug		drug_central
+DrugCentral:5276	tezacaftor	biolink:Drug		drug_central
+DrugCentral:5277	elobixibat	biolink:Drug		drug_central
+DrugCentral:5278	apalutamide	biolink:Drug		drug_central
+DrugCentral:5279	ibalizumab	biolink:Drug		drug_central
+DrugCentral:5280	fostamatinib	biolink:Drug		drug_central
+DrugCentral:5281	tildrakizumab	biolink:Drug		drug_central
+DrugCentral:5282	burosumab	biolink:Drug		drug_central
+DrugCentral:5283	fosnetupitant	biolink:Drug		drug_central
+DrugCentral:5284	erenumab	biolink:Drug		drug_central
+DrugCentral:5285	avatrombopag	biolink:Drug		drug_central
+DrugCentral:5288	cannabidiol	biolink:Drug		drug_central
+DrugCentral:5289	encorafenib	biolink:Drug		drug_central
+DrugCentral:5290	binimetinib	biolink:Drug		drug_central
+DrugCentral:5292	ivosidenib	biolink:Drug		drug_central
+DrugCentral:5293	elagolix	biolink:Drug		drug_central
+DrugCentral:5296	duvelisib	biolink:Drug		drug_central
+DrugCentral:5297	dacomitinib	biolink:Drug		drug_central
+DrugCentral:5300	talazoparib tosylate	biolink:Drug		drug_central
+DrugCentral:5302	lorlatinib	biolink:Drug		drug_central
+DrugCentral:5303	revefenacin	biolink:Drug		drug_central
+DrugCentral:5304	glasdegib	biolink:Drug		drug_central
+DrugCentral:5305	larotrectinib	biolink:Drug		drug_central
+DrugCentral:5306	gilteritinib	biolink:Drug		drug_central
+DrugCentral:5307	evocalcet	biolink:Drug		drug_central
+DrugCentral:5308	caplacizumab	biolink:Drug		drug_central
+DrugCentral:5309	lanadelumab	biolink:Drug		drug_central
+DrugCentral:5311	vibegron	biolink:Drug		drug_central
+DrugCentral:5312	omidenepag isopropyl	biolink:Drug		drug_central
+DrugCentral:5313	patisiran	biolink:Drug		drug_central
+DrugCentral:5314	moxetumomab pasudotox	biolink:Drug		drug_central
+DrugCentral:5315	fremanezumab	biolink:Drug		drug_central
+DrugCentral:5316	galcanezumab	biolink:Drug		drug_central
+DrugCentral:5317	cemiplimab	biolink:Drug		drug_central
+DrugCentral:5319	inotersen 	biolink:Drug		drug_central
+DrugCentral:5320	emapalumab	biolink:Drug		drug_central
+DrugCentral:5322	ravulizumab	biolink:Drug		drug_central
+DrugCentral:5323	tagraxofusp	biolink:Drug		drug_central
+DrugCentral:5324	brexanolone	biolink:Drug		drug_central
+DrugCentral:5325	solriamfetol	biolink:Drug		drug_central
+DrugCentral:5326	siponimod	biolink:Drug		drug_central
+DrugCentral:5327	erdafitinib	biolink:Drug		drug_central
+DrugCentral:5328	alpelisib	biolink:Drug		drug_central
+DrugCentral:5329	bremelanotide	biolink:Drug		drug_central
+DrugCentral:5330	selinexor	biolink:Drug		drug_central
+DrugCentral:5331	prabotulinumtoxinA	biolink:Drug		drug_central
+DrugCentral:5333	polatuzumab vedotin	biolink:Drug		drug_central
+DrugCentral:5334	darolutamide	biolink:Drug		drug_central
+DrugCentral:5335	volanesorsen	biolink:Drug		drug_central
+DrugCentral:5337	risankizumab	biolink:Drug		drug_central
+DrugCentral:5338	ropeginterferon alfa-2b	biolink:Drug		drug_central
+DrugCentral:5339	sotagliflozin	biolink:Drug		drug_central
+DrugCentral:5341	quizartinib	biolink:Drug		drug_central
+DrugCentral:5343	pexidartinib	biolink:Drug		drug_central
+DrugCentral:5345	entrectinib	biolink:Drug		drug_central
+DrugCentral:5346	upadacitinib	biolink:Drug		drug_central
+DrugCentral:5347	fedratinib	biolink:Drug		drug_central
+DrugCentral:5349	tenapanor	biolink:Drug		drug_central
+DrugCentral:5350	trifarotene	biolink:Drug		drug_central
+DrugCentral:5351	lasmiditan	biolink:Drug		drug_central
+DrugCentral:5353	zanubrutinib	biolink:Drug		drug_central
+DrugCentral:5354	givosiran	biolink:Drug		drug_central
+DrugCentral:5356	voxelotor	biolink:Drug		drug_central
+DrugCentral:5357	golodirsen	biolink:Drug		drug_central
+DrugCentral:5358	lumateperone	biolink:Drug		drug_central
+DrugCentral:5360	lemborexant	biolink:Drug		drug_central
+DrugCentral:5361	ubrogepant	biolink:Drug		drug_central
+DrugCentral:5362	romosozumab	biolink:Drug		drug_central
+DrugCentral:5363	brolucizumab	biolink:Drug		drug_central
+DrugCentral:5364	luspatercept	biolink:Drug		drug_central
+DrugCentral:5365	crizanlizumab	biolink:Drug		drug_central
+DrugCentral:5366	enfortumab vedotin	biolink:Drug		drug_central
+DrugCentral:5367	trastuzumab deruxtecan	biolink:Drug		drug_central
+DrugCentral:5368	botulinum toxin type A	biolink:Drug		drug_central
+DrugCentral:5371	roxadustat	biolink:Drug		drug_central
+DrugCentral:5372	elexacaftor	biolink:Drug		drug_central
+DrugCentral:5375	cepharanthine	biolink:Drug		drug_central
+DrugCentral:5378	mefuparib	biolink:Drug		drug_central
+DrugCentral:5379	avapritinib	biolink:Drug		drug_central
+DrugCentral:5380	tazemetostat	biolink:Drug		drug_central
+DrugCentral:5381	rimegepant	biolink:Drug		drug_central
+DrugCentral:5382	bempedoic acid	biolink:Drug		drug_central
+DrugCentral:5383	ozanimod	biolink:Drug		drug_central
+DrugCentral:5384	osilodrostat	biolink:Drug		drug_central
+DrugCentral:5385	isatuximab	biolink:Drug		drug_central
+DrugCentral:5386	eptinezumab	biolink:Drug		drug_central
+DrugCentral:5387	teprotumumab	biolink:Drug		drug_central
+DrugCentral:5388	selumetinib	biolink:Drug		drug_central
+DrugCentral:5389	tucatinib	biolink:Drug		drug_central
+DrugCentral:5390	pemigatinib	biolink:Drug		drug_central
+UniProtKB:P10635	CYP2D6	biolink:Protein	Tclin	drug_central
+UniProtKB:P22460	KCNA5	biolink:Protein	Tclin	drug_central
+UniProtKB:P34995	PTGER1	biolink:Protein	Tclin	drug_central
+UniProtKB:P35498	SCN1A	biolink:Protein	Tclin	drug_central
+UniProtKB:P35499	SCN4A	biolink:Protein	Tclin	drug_central
+UniProtKB:P46098	HTR3A	biolink:Protein	Tclin	drug_central
+UniProtKB:Q01668	CACNA1C	biolink:Protein	Tclin	drug_central
+UniProtKB:Q12809	KCNH2	biolink:Protein	Tclin	drug_central
+UniProtKB:Q9UK17	KCND3	biolink:Protein	Tclin	drug_central

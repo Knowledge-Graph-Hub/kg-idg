@@ -1,4 +1,5 @@
 import os
+import tempfile
 from unittest import TestCase
 
 from parameterized import parameterized
@@ -30,7 +31,6 @@ class TestTransform(TestCase):
         ('output_json_file', os.path.join("data", "transformed", "test_transform", "nodes_edges.json"))
     ])
     def test_attributes(self, attr, default):
-        self.transform_instance
         self.assertTrue(hasattr(self.transform_instance, attr))
         self.assertEqual(getattr(self.transform_instance, attr), default)
 
@@ -62,6 +62,20 @@ class TestTransform(TestCase):
         self.assertTrue(hasattr(t, 'run'))
         self.assertEqual(t.DEFAULT_INPUT_DIR, def_input_dir)
         self.assertEqual(t.DEFAULT_OUTPUT_DIR, def_output_dir)
+
+    def test_passthrough(self):
+        tempdir = tempfile.mkdtemp()
+        transform_name = "test"
+        t = Transform(source_name=transform_name, output_dir=tempdir)
+        self.assertTrue(hasattr(t, "pass_through"))
+
+        edges_file = 'tests/resources/dc_edges_snippet.tsv'
+        nodes_file = 'tests/resources/dc_nodes_snippet.tsv'
+        t.pass_through(edges_file=edges_file, nodes_file=nodes_file)
+        for f in [edges_file, nodes_file]:
+            self.assertTrue(os.path.exists(os.path.join(tempdir,
+                                                        transform_name,
+                                                        os.path.basename(f))))
 
 
 class TransformChildClass(Transform):

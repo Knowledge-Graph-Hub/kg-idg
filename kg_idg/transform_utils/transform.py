@@ -81,4 +81,6 @@ class Transform:
 
         Returns: None
         """
-        pass
+        for f in [nodes_file, edges_file]:
+            shutil.copy(f, self.output_dir)
+
