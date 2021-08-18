@@ -4,9 +4,9 @@ import os
 
 import click
 from kg_idg import download as kg_download
-# from kg_idg import transform as kg_transform
-# from kg_idg.merge_utils.merge_kg import load_and_merge
-# from kg_idg.query import run_query, parse_query_yaml, result_dict_to_tsv
+from kg_idg import transform as kg_transform
+from kg_idg.merge_utils.merge_kg import load_and_merge
+from kg_idg.query import run_query, parse_query_yaml, result_dict_to_tsv
 from kg_idg.transform import DATA_SOURCES
 
 
