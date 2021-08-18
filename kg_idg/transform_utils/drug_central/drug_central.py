@@ -35,7 +35,7 @@ class DrugCentralTransform(Transform):
         super().__init__(source_name, input_dir, output_dir)  # set some variables
         self.node_header = ['id', 'name', 'category', 'TDL', 'provided_by']
 
-    def run(self, nodes_file: str, edges_file: str) -> None:
+    def run(self, nodes_file: str, edges_file: str) -> None:  # type: ignore
         """A 'passthrough' transform - all we are doing is just moving the downloaded
         nodes and edges file to the transformed directory
         """

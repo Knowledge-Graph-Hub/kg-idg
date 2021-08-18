@@ -1,5 +1,5 @@
 import logging
-
+from typing import Dict, Any, cast
 
 EXCLUDE = ['biolink:Publication']
 
@@ -38,28 +38,28 @@ def parse(input_filename, output_filename) -> None:
                 continue
 
             elements = [x.rstrip() for x in line.split('\t')]
-            if any(x in elements[header_dict['category']] for x in EXCLUDE):
+            if any(x in elements[header_dict['category']] for x in EXCLUDE):  # type: ignore
                 # 'category' field is one of the ones in EXCLUDE list
                 logging.info(f"Skipping line as part of excludes: {line.rstrip()}")
                 continue
 
-            if not elements[header_dict['name']]:
+            if not elements[header_dict['name']]:  # type: ignore
                 # no 'name' field for record
                 print(f"Skipping line as it does not have a name field: {line.rstrip()}")
                 continue
 
             parsed_record = list()
             parsed_record.append('CUI-less')
-            if 'provided_by' in header_dict:
-                parsed_record.append(elements[header_dict['provided_by']])
+            if 'provided_by' in header_dict:  # type: ignore
+                parsed_record.append(elements[header_dict['provided_by']])   # type: ignore
             else:
                 parsed_record.append('N/A')
-            parsed_record.append(elements[header_dict['id']])
-            parsed_record.append(elements[header_dict['name']])
-            parsed_record.append(elements[header_dict['name']])
-            parsed_record.append(elements[header_dict['category']])
-            if elements[header_dict['synonym']]:
-                synonyms = elements[header_dict['synonym']]
+            parsed_record.append(elements[header_dict['id']])  # type: ignore
+            parsed_record.append(elements[header_dict['name']])  # type: ignore
+            parsed_record.append(elements[header_dict['name']])  # type: ignore
+            parsed_record.append(elements[header_dict['category']])  # type: ignore
+            if elements[header_dict['synonym']]:  # type: ignore
+                synonyms = elements[header_dict['synonym']]  # type: ignore
                 for s in synonyms.split('|'):
                     syn_record = [x for x in parsed_record]
                     syn_record[3] = s
