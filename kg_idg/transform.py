@@ -8,11 +8,11 @@ from kg_idg.transform_utils.ontology import OntologyTransform
 #from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 
-#DATA_SOURCES = {
-#    'DrugCentralTransform': DrugCentralTransform,
-#    'NCBITransform': OntologyTransform,
-#    'ChebiTransform': OntologyTransform
-#}
+DATA_SOURCES = {
+    'DrugCentralTransform': DrugCentralTransform,
+    'NCBITransform': OntologyTransform,
+    'ChebiTransform': OntologyTransform
+}
 
 
 def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> None:
