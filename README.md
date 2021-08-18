@@ -2,6 +2,10 @@ KG-IDG
 ================================================
 Knowledge graph for Illuminating the Druggable Genome
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Knowledge-Graph-Hub_kg-idg&metric=alert_status)](https://sonarcloud.io/dashboard?id=Knowledge-Graph-Hub_kg-idg)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Knowledge-Graph-Hub_kg-idg&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Knowledge-Graph-Hub_kg-idg)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Knowledge-Graph-Hub_kg-idg&metric=coverage)](https://sonarcloud.io/dashboard?id=Knowledge-Graph-Hub_kg-idg)
+
 Documentation
 ------------------------------------------------
 
