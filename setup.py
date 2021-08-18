@@ -24,7 +24,7 @@ def find_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-__version__ = find_version('kg-idg', '__version__.py')
+__version__ = find_version('kg_idg', '__version__.py')
 
 test_deps = [
     'pytest',
@@ -40,7 +40,7 @@ extras = {
 }
 
 setup(
-    name='kg-idg',
+    name='kg_idg',
     version=__version__,
     description='KG for Illuminating the Druggable Genome',
     long_description=long_description,
