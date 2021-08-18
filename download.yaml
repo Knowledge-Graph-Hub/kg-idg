@@ -37,3 +37,7 @@
   # orphanet
   url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
   local_name: orphanet.nt
+-
+  # GO-base
+  url: http://purl.obolibrary.org/obo/go/go-base.owl
+  local_name: go-base.owl
