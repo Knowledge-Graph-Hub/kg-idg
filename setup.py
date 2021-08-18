@@ -66,8 +66,7 @@ setup(
         'compress_json',
         'click==7',
         'pyyaml',
-        'kgx==0.4.0',
-        'chardet'
+        'kgx'
     ],
     extras_require=extras,
 )
