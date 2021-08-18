@@ -38,17 +38,6 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_nodes.tsv
   local_name: mondo_nodes.tsv
 -
-  # GO
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_nodes.tsv
-  local_name: go-plus_nodes.tsv
--
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_edges.tsv
-  local_name: go-plus_edges.tsv
--
-  # uPheno
-  url: http://purl.obolibrary.org/obo/upheno.owl
-  local_name:
--
   # OMIM
   url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
   local_name: omim.nt
