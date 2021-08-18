@@ -3,16 +3,16 @@
 import logging
 from typing import List
 
-from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
-from kg_idg.transform_utils.ontology import OntologyTransform
-from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
+#from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+#from kg_idg.transform_utils.ontology import OntologyTransform
+#from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 
-DATA_SOURCES = {
-    'DrugCentralTransform': DrugCentralTransform,
-    'NCBITransform': OntologyTransform,
-    'ChebiTransform': OntologyTransform
-}
+#DATA_SOURCES = {
+#    'DrugCentralTransform': DrugCentralTransform,
+#    'NCBITransform': OntologyTransform,
+#    'ChebiTransform': OntologyTransform
+#}
 
 
 def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> None:
@@ -29,15 +29,15 @@ def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> Non
         None.
 
     """
-    if not sources:
-        # run all sources
-        sources = list(DATA_SOURCES.keys())
-
-    for source in sources:
-        if source in DATA_SOURCES:
-            logging.info(f"Parsing {source}")
-            t = DATA_SOURCES[source](input_dir, output_dir)
-            if source in ONTOLOGIES.keys():
-                t.run(ONTOLOGIES[source])
-            else:
-                t.run()
+#    if not sources:
+#        # run all sources
+#        sources = list(DATA_SOURCES.keys())
+#
+#    for source in sources:
+#        if source in DATA_SOURCES:
+#            logging.info(f"Parsing {source}")
+#            t = DATA_SOURCES[source](input_dir, output_dir)
+#            if source in ONTOLOGIES.keys():
+#                t.run(ONTOLOGIES[source])
+#            else:
+#                t.run()
