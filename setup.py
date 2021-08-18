@@ -24,7 +24,7 @@ def find_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 
-__version__ = find_version('project_name', '__version__.py')
+__version__ = find_version('kg-idg', '__version__.py')
 
 test_deps = [
     'pytest',
@@ -40,13 +40,13 @@ extras = {
 }
 
 setup(
-    name='project_name',
+    name='kg-idg',
     version=__version__,
-    description='KG hub for project_name',
+    description='KG for Illuminating the Druggable Genome',
     long_description=long_description,
-    url='https://github.com/Knowledge-Graph-Hub/project_name',
-    author='Harshad Hegde',
-    author_email='hhegde@lbl.gov',
+    url='https://github.com/Knowledge-Graph-Hub/kg-idg',
+    author='',
+    author_email='',
     python_requires='>=3.7',
 
     # choose your license
