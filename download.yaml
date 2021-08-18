@@ -1,4 +1,4 @@
-# This file is a list of things to be downloaded using the command:
+## This file is a list of things to be downloaded using the command:
 #   run.py download
 
 # To add a new item to be download, add a block like this - must have 'url',
@@ -38,17 +38,6 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_nodes.tsv
   local_name: mondo_nodes.tsv
 -
-  # GO
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_nodes.tsv
-  local_name: go-plus_nodes.tsv
--
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_edges.tsv
-  local_name: go-plus_edges.tsv
--
-  # uPheno
-  url: http://purl.obolibrary.org/obo/upheno.owl
-  local_name:
--
   # OMIM
   url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
   local_name: omim.nt
@@ -83,5 +72,22 @@
 -
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_edges.tsv
   local_name: GOCAMs_edges.tsv
-
-
+-
+  # GO-base
+  url: http://purl.obolibrary.org/obo/go/go-base.owl
+  local_name: go-base.owl
+-
+  # Pharos/TCRD - just the ID mappings
+  # Needs transform
+  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
+  local_name: TCRDv6.11.0.tsv
+-
+  # OGMS
+  # Needs transform
+  url: http://purl.obolibrary.org/obo/ogms.owl
+  local_name: ogms.owl
+-
+  # Human Protein Atlas
+  # Needs decompress & transform
+  url: https://www.proteinatlas.org/download/proteinatlas.json.gz
+  local_name: proteinatlas.json.gz
