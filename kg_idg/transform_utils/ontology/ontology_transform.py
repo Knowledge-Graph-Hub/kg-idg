@@ -3,7 +3,7 @@ import os
 from typing import Optional
 
 from kg_idg.transform_utils.transform import Transform
-from kgx import PandasTransformer, ObographJsonTransformer  # type: ignore
+# from kgx import PandasTransformer, ObographJsonTransformer  # type: ignore
 
 
 ONTOLOGIES = {
@@ -51,12 +51,12 @@ class OntologyTransform(Transform):
              None.
         """
         print(f"Parsing {data_file}")
-        transformer = ObographJsonTransformer()
-        compression: Optional[str]
-        if data_file.endswith('.gz'):
-            compression = 'gz'
-        else:
-            compression = None
-        transformer.parse(data_file, compression=compression, provided_by=source)
-        output_transformer = PandasTransformer(transformer.graph)
-        output_transformer.save(filename=os.path.join(self.output_dir, f'{name}'), output_format='tsv', mode=None)
+        # transformer = ObographJsonTransformer()
+        # compression: Optional[str]
+        # if data_file.endswith('.gz'):
+        #     compression = 'gz'
+        # else:
+        #     compression = None
+        # transformer.parse(data_file, compression=compression, provided_by=source)
+        # output_transformer = PandasTransformer(transformer.graph)
+        # output_transformer.save(filename=os.path.join(self.output_dir, f'{name}'), output_format='tsv', mode=None)

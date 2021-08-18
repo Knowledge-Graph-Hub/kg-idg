@@ -3,17 +3,17 @@
 
 import os
 import configparser
-from oger.ctrl.router import Router, PipelineServer
-from oger.ctrl.run import run as og_run
+from oger.ctrl.router import Router, PipelineServer  # type: ignore
+from oger.ctrl.run import run as og_run  # type: ignore
 
-import pandas as pd
+import pandas as pd  # type: ignore
 
 SETTINGS_FILENAME = 'settings.ini'
 
 def create_settings_file(path: str, ont: str = 'ALL') -> None:
     """
     Creates the settings.ini file for OGER to get parameters.
-    -   Parameters: 
+    -   Parameters:
         -   path - path of the 'nlp' folder
         -   ont - the ontology to be used as dictionary ['ALL', 'ENVO', 'CHEBI']
 
@@ -49,7 +49,7 @@ def create_settings_file(path: str, ont: str = 'ALL') -> None:
     config = configparser.ConfigParser()
     config['Section'] = {}
     config['Shared'] = {}
-    
+
     # Settings required by OGER
     config['Main'] = {
         'input-directory' : os.path.join(path,'input'),
@@ -65,14 +65,14 @@ def create_settings_file(path: str, ont: str = 'ALL') -> None:
 
     if ont == 'ENVO':
         config.set('Main','termlist_path', os.path.join(path,'terms/envo_termlist.tsv'))
-        
+
     elif ont == 'CHEBI':
         config.set('Main','termlist_path', os.path.join(path,'terms/chebi_termlist.tsv'))
-        
+
     else:
         config.set('Main', 'termlist1_path', os.path.join(path,'terms/envo_termlist.tsv'))
         config.set('Main', 'termlist2_path', os.path.join(path,'terms/chebi_termlist.tsv'))
-    
+
     # This is how OGER prescribes in it's test file but above works too.
     '''config['Termlist1'] = {
         'path' : os.path.join(path,'terms/envo_termlist.tsv')
@@ -87,13 +87,13 @@ def create_settings_file(path: str, ont: str = 'ALL') -> None:
 
 def prep_nlp_input(path: str, columns: list)-> str:
     '''
-    Arguments: 
+    Arguments:
         path - path to the file which has text to be analyzed
         columns - The first column HAS to be an id column.
     '''
     df = pd.read_csv(path, sep=',', low_memory=False, usecols=columns)
     sub_df = df.dropna()
-    
+
     # Hacky way of creating i/p files to run OGER
     '''for idx, row in sub_df.T.iteritems():
         new_file = 'nlp/input/'+str(row[0])+'.txt'
@@ -111,18 +111,18 @@ def prep_nlp_input(path: str, columns: list)-> str:
     nlp_input = os.path.abspath(os.path.join(os.path.dirname(path),'..','nlp/input/'+fn+'.tsv'))
     sub_df.to_csv(nlp_input, sep='\t', index=False)
     return fn
-            
+
 
 
 def run_oger(path: str , input_file_name: str , n_workers :int = 1 ) -> pd.DataFrame:
     config = configparser.ConfigParser()
     config.read(os.path.join(path, SETTINGS_FILENAME))
-    sections = config._sections
+    sections = config._sections  # type: ignore
     settings = sections['Main']
     settings['n_workers'] = n_workers
     og_run(**settings)
     df = process_oger_output(path, input_file_name)
-    
+
     return df
 
 def process_oger_output(path: str, input_file_name: str) -> pd.DataFrame:
