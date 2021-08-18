@@ -27,6 +27,10 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/drug_central/nodes.tsv
   local_name: dc_nodes.tsv
 -
+  # orphanet
+  url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
+  local_name: orphanet.nt
+-
   # mondo
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_edges.tsv
   local_name: mondo_edges.tsv
@@ -34,6 +38,50 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_nodes.tsv
   local_name: mondo_nodes.tsv
 -
-  # orphanet
-  url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
-  local_name: orphanet.nt
+  # GO
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_nodes.tsv
+  local_name: go-plus_nodes.tsv
+-
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/go-plus_edges.tsv
+  local_name: go-plus_edges.tsv
+-
+  # uPheno
+  url: http://purl.obolibrary.org/obo/upheno.owl
+  local_name:
+-
+  # OMIM
+  url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
+  local_name: omim.nt
+-
+  # HPO
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/hp_nodes.tsv
+  local_name: hp_nodes.tsv
+-
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/hp_edges.tsv
+  local_name: hp_edges.tsv
+-
+  # CHEBI
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/chebi_nodes.tsv
+  local_name: chebi_nodes.tsv
+-
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/chebi_edges.tsv
+  local_name: chebi_edges.tsv
+-
+  # Reactome - CHEBI to pathway
+  # needs transform
+  url: https://reactome.org/download/current/ChEBI2Reactome_PE_Pathway.txt
+  local_name: ChEBI2Reactome_PE_Pathway.txt
+
+- # Reactome - UniProt to pathway
+  # needs transform
+  url: https://reactome.org/download/current/UniProt2Reactome_PE_Pathway.txt
+  local_name: UniProt2Reactome_PE_Pathway.txt
+-
+  # GOCAMs
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_nodes.tsv
+  local_name: GOCAMs_nodes.tsv
+-
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_edges.tsv
+  local_name: GOCAMs_edges.tsv
+
+
