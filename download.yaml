@@ -86,3 +86,8 @@
   # Needs transform
   url: http://purl.obolibrary.org/obo/ogms.owl
   local_name: ogms.owl
+-
+  # Human Protein Atlas
+  # Needs decompress & transform
+  url: https://www.proteinatlas.org/download/proteinatlas.json.gz
+  local_name: proteinatlas.json.gz
