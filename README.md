@@ -24,6 +24,3 @@ The code for these are found in the [utils](project_name/utils) folder.
 
 The [merge.yaml](merge.yaml) shows merging of the various KGs.
 
-.. |sonar_quality| image:: https://sonarcloud.io/api/project_badges/measure?project=Knowledge-Graph-Hub_kg-covid-19&metric=alert_status
-    :target: https://sonarcloud.io/dashboard/index/Knowledge-Graph-Hub_kg-covid-19
-        :alt: SonarCloud Quality
