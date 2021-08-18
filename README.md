@@ -1,6 +1,6 @@
 KG-IDG
 ================================================
-Knowledge graph for Investigating the Druggable Genome
+Knowledge graph for Illuminating the Druggable Genome
 
 Documentation
 ------------------------------------------------
