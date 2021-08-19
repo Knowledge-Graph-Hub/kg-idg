@@ -76,11 +76,11 @@
   # GO-base
   url: http://purl.obolibrary.org/obo/go/go-base.owl
   local_name: go-base.owl
--
+#-
   # Pharos/TCRD - just the ID mappings
   # Needs transform
-  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
-  local_name: TCRDv6.11.0.tsv
+  # url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
+  # local_name: TCRDv6.11.0.tsv
 -
   # OGMS
   # Needs transform
