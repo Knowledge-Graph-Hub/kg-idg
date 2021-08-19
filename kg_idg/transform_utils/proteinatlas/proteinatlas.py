@@ -22,7 +22,7 @@ Extract and transform Human Protein Atlas contents to node and edge lists.
 """
 
 
-class DrugCentralTransform(Transform):
+class ProteinAtlasTransform(Transform):
     """
     """
 
