@@ -1,1 +1,2 @@
 git+git://github.com/OntoGene/OGER.git
+git+git://github.com/Knowledge-Graph-Hub/kg-obo.git
