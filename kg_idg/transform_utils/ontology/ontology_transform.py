@@ -3,21 +3,21 @@ import os
 from typing import Optional
 
 from kg_idg.transform_utils.transform import Transform
-# from kgx import PandasTransformer, ObographJsonTransformer  # type: ignore
-
 
 ONTOLOGIES = {
-    #'HpTransform': 'hp.json',
-    #'GoTransform': 'go-plus.json',
-    'NCBITransform':  'ncbitaxon.json',
-    'ChebiTransform': 'chebi.json',
-    'EnvoTransform': 'envo.json'
+    'ChebiTransform': 'chebi.tar.gz',
+    'HPOTransform': 'hp.tar.gz',
+    'GOTransform': 'go.tar.gz',
+    'MondoTransform': 'mondo.tar.gz',
+    'OGMSTransform': 'ogms.tar.gz'
 }
 
 
 class OntologyTransform(Transform):
     """
-    OntologyTransform parses an Obograph JSON form of an Ontology into nodes nad edges.
+    OntologyTransform acts as a passthrough for OBO ontologies - 
+    those retrieved as tsv node and edge lists in .tar.gz can be
+    parsed directly by KGX.
     """
     def __init__(self, input_dir: str = None, output_dir: str = None):
         source_name = "ontologies"
@@ -27,7 +27,7 @@ class OntologyTransform(Transform):
         """Method is called and performs needed transformations to process
         an ontology.
         Args:
-            data_file: data file to parse
+            data_file: data file (.tar.gz) to parse
         Returns:
             None.
         """
@@ -51,12 +51,8 @@ class OntologyTransform(Transform):
              None.
         """
         print(f"Parsing {data_file}")
-        # transformer = ObographJsonTransformer()
-        # compression: Optional[str]
-        # if data_file.endswith('.gz'):
-        #     compression = 'gz'
-        # else:
-        #     compression = None
-        # transformer.parse(data_file, compression=compression, provided_by=source)
-        # output_transformer = PandasTransformer(transformer.graph)
-        # output_transformer.save(filename=os.path.join(self.output_dir, f'{name}'), output_format='tsv', mode=None)
+        if data_file.endswith('tar.gz'):
+             compression = 'gz'
+        else:
+             compression = None
+        output_transformer.save(filename=os.path.join(self.output_dir, f'{name}'), mode=None)
