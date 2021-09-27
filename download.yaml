@@ -32,29 +32,20 @@
   local_name: orphanet.nt
 -
   # mondo
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_edges.tsv
-  local_name: mondo_edges.tsv
--
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/mondo_nodes.tsv
-  local_name: mondo_nodes.tsv
+  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-09-01/mondo.tar.gz
+  local_name: mondo.tar.gz
 -
   # OMIM
   url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
   local_name: omim.nt
 -
   # HPO
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/hp_nodes.tsv
-  local_name: hp_nodes.tsv
--
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/hp_edges.tsv
-  local_name: hp_edges.tsv
+  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-08-02/hp.tar.gz
+  local_name: hp.tar.gz
 -
   # CHEBI
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/chebi_nodes.tsv
-  local_name: chebi_nodes.tsv
--
-  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/ontologies/chebi_edges.tsv
-  local_name: chebi_edges.tsv
+  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/203/chebi.tar.gz
+  local_name: chebi.tar.gz
 -
   # Reactome - CHEBI to pathway
   # needs transform
@@ -67,6 +58,7 @@
   local_name: UniProt2Reactome_PE_Pathway.txt
 -
   # GOCAMs
+  # Update SPARQL query for COVID-19 retrieval to be more general
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_nodes.tsv
   local_name: GOCAMs_nodes.tsv
 -
@@ -74,18 +66,18 @@
   local_name: GOCAMs_edges.tsv
 -
   # GO-base
-  url: http://purl.obolibrary.org/obo/go/go-base.owl
-  local_name: go-base.owl
-#-
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-09-01/go.tar.gz
+  local_name: go.tar.gz
+-
   # Pharos/TCRD - just the ID mappings
   # Needs transform
-  # url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
-  # local_name: TCRDv6.11.0.tsv
+  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
+  local_name: TCRDv6.11.0.tsv
 -
   # OGMS
   # Needs transform
-  url: http://purl.obolibrary.org/obo/ogms.owl
-  local_name: ogms.owl
+  url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms.tar.gz
+  local_name: ogms.tar.gz
 -
   # Human Protein Atlas
   # Needs decompress & transform
