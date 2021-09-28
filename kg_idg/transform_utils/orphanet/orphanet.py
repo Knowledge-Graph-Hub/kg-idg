@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 import csv
 import gzip
+
 import logging
 import os
 import re
@@ -24,6 +25,7 @@ The source document is in n-triple format provided by Monarch.
 
 class OrphanetTransform(Transform):
     """This transform ingests the Orphanet nt file and parses it to KGX tsv format.
+
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
