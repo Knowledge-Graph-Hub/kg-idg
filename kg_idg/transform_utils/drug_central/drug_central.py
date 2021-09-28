@@ -18,10 +18,6 @@ from kg_idg.utils.transform_utils import write_node_edge_item, \
 """
 Ingest drug - drug target interactions from Drug Central
 
-Essentially just ingests and transforms this file:
-http://unmtid-shinyapps.net/download/drug.target.interaction.tsv.gz
-
-And extracts Drug -> Protein interactions
 """
 
 
