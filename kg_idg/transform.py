@@ -4,12 +4,13 @@ import logging
 from typing import List
 
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
-# from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
-# from kg_idg.transform_utils.omim.omim import OMIMTransform
-# from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
-# from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
-# from kg_idg.transform_utils.tcrd.tcrd import TRCDTransform
-# from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
+from kg_idg.transform_utils.omim.omim import OMIMTransform
+from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
+from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
+from kg_idg.transform_utils.tcrd.tcrd import TRCDTransform
+from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 

@@ -4,6 +4,9 @@ from typing import Optional
 
 from kg_idg.transform_utils.transform import Transform
 
+# TODO: the file names for these on KG-OBO will soon be of format 
+# '[obo_name]_kgx_tsv.at.gz'
+
 ONTOLOGIES = {
     'ChebiTransform': 'chebi.tar.gz',
     'HPOTransform': 'hp.tar.gz',
