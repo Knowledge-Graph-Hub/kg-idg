@@ -1,7 +1,7 @@
 import os
 
 from typing import Optional
-
+from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
 # TODO: the file names for these on KG-OBO will soon be of format 
@@ -20,7 +20,8 @@ class OntologyTransform(Transform):
     """
     OntologyTransform acts as a passthrough for OBO ontologies - 
     those retrieved as tsv node and edge lists in .tar.gz can be
-    parsed directly by KGX.
+    parsed directly by KGX. 
+    We have KGX decompress the file.
     """
     def __init__(self, input_dir: str = None, output_dir: str = None):
         source_name = "ontologies"
@@ -54,8 +55,9 @@ class OntologyTransform(Transform):
              None.
         """
         print(f"Parsing {data_file}")
-        if data_file.endswith('tar.gz'):
-             compression = 'gz'
-        else:
-             compression = None
-        output_transformer.save(filename=os.path.join(self.output_dir, f'{name}'), mode=None)
+
+        transform(inputs=[data_file],
+                  input_format='tsv',
+                  input_compression='tar.gz',
+                  output=os.path.join(self.output_dir, name),
+                  output_format='tsv')
