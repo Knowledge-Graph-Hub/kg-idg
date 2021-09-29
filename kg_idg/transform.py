@@ -16,13 +16,13 @@ from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 
 DATA_SOURCES = {
-#    'MondoTransform': OntologyTransform,
-#    'ChebiTransform': OntologyTransform,
-#    'HPOTransform': OntologyTransform,
-#    'GOTransform': OntologyTransform,
-#    'OGMSTransform': OntologyTransform,
+    'MondoTransform': OntologyTransform,
+    'ChebiTransform': OntologyTransform,
+    'HPOTransform': OntologyTransform,
+    'GOTransform': OntologyTransform,
+    'OGMSTransform': OntologyTransform,
     'DrugCentralTransform': DrugCentralTransform,
-#    'OrphanetTransform': OrphanetTransform,
+    'OrphanetTransform': OrphanetTransform,
 #    'OMIMTransform': OMIMTransform,
 #    'ReactomeTransform': ReactomeTransform,
 #    'GOCAMTransform': GOCAMTransform,
