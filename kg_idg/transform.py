@@ -4,7 +4,7 @@ import logging
 from typing import List
 
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
-#from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
+from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 #from kg_idg.transform_utils.omim.omim import OMIMTransform
 #from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 #from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
