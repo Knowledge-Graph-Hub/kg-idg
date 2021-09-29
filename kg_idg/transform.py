@@ -3,7 +3,7 @@
 import logging
 from typing import List
 
-#from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
 #from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 #from kg_idg.transform_utils.omim.omim import OMIMTransform
 #from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
@@ -16,12 +16,12 @@ from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 
 DATA_SOURCES = {
-    'MondoTransform': OntologyTransform,
-    'ChebiTransform': OntologyTransform,
-    'HPOTransform': OntologyTransform,
-    'GOTransform': OntologyTransform,
-    'OGMSTransform': OntologyTransform,
-#    'DrugCentralTransform': DrugCentralTransform,
+#    'MondoTransform': OntologyTransform,
+#    'ChebiTransform': OntologyTransform,
+#    'HPOTransform': OntologyTransform,
+#    'GOTransform': OntologyTransform,
+#    'OGMSTransform': OntologyTransform,
+    'DrugCentralTransform': DrugCentralTransform,
 #    'OrphanetTransform': OrphanetTransform,
 #    'OMIMTransform': OMIMTransform,
 #    'ReactomeTransform': ReactomeTransform,
