@@ -30,7 +30,7 @@ def download_from_yaml(yaml_file: str, output_dir: str,
         items = tqdm(data, desc="Downloading files")
         for item in items:
             if verbose:
-                items.set_description(f"Downloading {item}\n")
+                items.set_description(f"Downloading {item['url']} to {item['local_name']}\n")
             if 'url' not in item:
                 logging.warning("Couldn't find url for source in {}".format(item))
                 continue
