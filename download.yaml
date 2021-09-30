@@ -32,20 +32,20 @@
   local_name: orphanet.nt
 -
   # mondo
-  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-09-01/mondo.tar.gz
-  local_name: mondo.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-09-01/mondo_kgx_tsv.tar.gz
+  local_name: mondo_kgx_tsv.tar.gz
 -
   # OMIM
   url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
   local_name: omim.nt
 -
   # HPO
-  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-08-02/hp.tar.gz
-  local_name: hp.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-08-02/hp_kgx_tsv.tar.gz
+  local_name: hp_kgx_tsv.tar.gz
 -
   # CHEBI
-  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/203/chebi.tar.gz
-  local_name: chebi.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/203/chebi_kgx_tsv.tar.gz
+  local_name: chebi_kgx_tsv.tar.gz
 -
   # Reactome - CHEBI to pathway
   # needs transform
@@ -66,8 +66,8 @@
   local_name: GOCAMs_edges.tsv
 -
   # GO-base
-  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-09-01/go.tar.gz
-  local_name: go.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/release/go_kgx_tsv.tar.gz
+  local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
   # Needs transform
@@ -75,9 +75,8 @@
   local_name: TCRDv6.11.0.tsv
 -
   # OGMS
-  # Needs transform
-  url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms.tar.gz
-  local_name: ogms.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms_kgx_tsv.tar.gz
+  local_name: ogms_kgx_tsv.tar.gz
 -
   # Human Protein Atlas
   # Needs decompress & transform

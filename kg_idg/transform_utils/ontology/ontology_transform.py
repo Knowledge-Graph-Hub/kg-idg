@@ -4,15 +4,12 @@ from typing import Optional
 from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
-# TODO: the file names for these on KG-OBO will soon be of format 
-# '[obo_name]_kgx_tsv.at.gz'
-
 ONTOLOGIES = {
-    'ChebiTransform': 'chebi.tar.gz',
-    'HPOTransform': 'hp.tar.gz',
-    'GOTransform': 'go.tar.gz',
-    'MondoTransform': 'mondo.tar.gz',
-    'OGMSTransform': 'ogms.tar.gz'
+    'ChebiTransform': 'chebi_kgx_tsv.tar.gz',
+    'HPOTransform': 'hp_kgx_tsv.tar.gz',
+    'GOTransform': 'go_kgx_tsv.tar.gz',
+    'MondoTransform': 'mondo_kgx_tsv.tar.gz',
+    'OGMSTransform': 'ogms_kgx_tsv.tar.gz'
 }
 
 
