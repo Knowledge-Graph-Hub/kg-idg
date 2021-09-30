@@ -6,7 +6,7 @@ from typing import List
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.omim.omim import OMIMTransform
-#from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
+from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 #from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
 #from kg_idg.transform_utils.tcrd.tcrd import TRCDTransform
 #from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
@@ -24,7 +24,7 @@ DATA_SOURCES = {
     'DrugCentralTransform': DrugCentralTransform,
     'OrphanetTransform': OrphanetTransform,
     'OMIMTransform': OMIMTransform,
-#    'ReactomeTransform': ReactomeTransform,
+    'ReactomeTransform': ReactomeTransform,
 #    'GOCAMTransform': GOCAMTransform,
 #    'TCRDTransform': TRCDTransform,
 #    'ProteinAtlasTransform': ProteinAtlasTransform

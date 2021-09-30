@@ -1,0 +1,5 @@
+ingest_title: 'Reactome_PE_Mapping'
+ingest_url: 'https://reactome.org/download-data'
+description: 'Reactome mapping files link the source database identifier to the lowest level pathway diagram or subset of the pathway.'
+# See https://reactome.org/download-data?id=86&ml=1
+rights: 'https://reactome.org/license'

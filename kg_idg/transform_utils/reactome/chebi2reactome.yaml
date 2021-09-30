@@ -1,0 +1,32 @@
+name: 'chebi2reactome'
+
+format: 'csv'
+
+delimiter: '\t'
+
+#skip_lines: 0
+
+files:
+  - './data/raw/ChEBI2Reactome_PE_Pathway.txt'
+
+metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
+
+columns:
+
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'
