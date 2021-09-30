@@ -4,15 +4,12 @@ format: 'csv'
 
 delimiter: '\t'
 
-#skip_lines: 0
-
 files:
   - './data/raw/ChEBI2Reactome_PE_Pathway.txt'
 
 metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
 
-columns:
-
+has_header: 'True'
 
 node_properties:
   - 'id'

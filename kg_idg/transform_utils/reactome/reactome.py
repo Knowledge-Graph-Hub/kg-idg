@@ -60,13 +60,12 @@ class ReactomeTransform(Transform):
         Transform Reactome files with Koza.
         """
         print(f"Parsing {data_file}")
-        config=os.path.join("./kg_idg/transform_utils/reactome/",REACTOME_CONFIGS[source])
-        output=os.path.join(self.output_dir, name)
+        config=os.path.join("./kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
+        #output=os.path.join(self.output_dir, name)
+        output = self.output_dir
 
         # If source is unknown then we aren't going to guess
         if source not in REACTOME_CONFIGS:
             print("Source file not recognized - not transforming.")
         else:
-            transform_source(config, output,
-                             "tsv", TRANSLATION_TABLE,
-                              None)
+            transform_source(config, output, "tsv", TRANSLATION_TABLE, None)

@@ -1,5 +1,5 @@
 ---
-# translation_table.yaml
+# GLOBAL_TERMS.yaml
 # contents in this file are sorted by the value
 # (i.e. the ontology term after the colon) in {key value} pair
 !!map {
