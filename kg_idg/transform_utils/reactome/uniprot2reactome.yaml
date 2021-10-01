@@ -11,6 +11,16 @@ metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
 
 has_header: 'True'
 
+columns:
+  - 'CHEBI_ID'
+  - 'REACT_PE_ID'
+  - 'REACT_NAME'
+  - 'REACT_PATH_ID'
+  - 'URL'
+  - 'EVENT_NAME'
+  - 'EVIDENCE'
+  - 'SPECIES'
+
 node_properties:
   - 'id'
   - 'category'

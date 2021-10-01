@@ -25,6 +25,11 @@ REACTOME_CONFIGS = {
     'UniProt2Reactome': 'uniprot2reactome.yaml'
 }
 
+REACTOME_HEADERS = {
+    'ChEBI2Reactome': 'CHEBI_ID\tREACT_PE_ID\tREACT_NAME\tREACT_PATH_ID\tURL\tEVENT_NAME\tEVIDENCE\tSPECIES\n',
+    'UniProt2Reactome': 'UPID\tREACT_PE_ID\tREACT_NAME\tREACT_PATH_ID\tURL\tEVENT_NAME\tEVIDENCE\tSPECIES\n'
+}
+
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
 class ReactomeTransform(Transform):
@@ -58,11 +63,21 @@ class ReactomeTransform(Transform):
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform Reactome files with Koza.
+        Need to append a header to each first for Koza to work properly.
         """
         print(f"Parsing {data_file}")
         config=os.path.join("./kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
         #output=os.path.join(self.output_dir, name)
         output = self.output_dir
+
+        # Write header
+        print(f"Writing header to {data_file}")
+        with open(data_file, 'r') as infile:
+            content = [line for line in infile]
+        with open(data_file, 'w') as outfile:
+            outfile.write(REACTOME_HEADERS[source])
+            for line in content:
+                outfile.write(line)
 
         # If source is unknown then we aren't going to guess
         if source not in REACTOME_CONFIGS:
