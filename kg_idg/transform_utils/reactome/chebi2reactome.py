@@ -6,14 +6,12 @@ from biolink_model_pydantic.model import (
     ChemicalToPathwayAssociation,
     Predicate,
 )
-from koza.manage.data_collector import write
-from koza.manager.data_provider import inject_row, inject_translation_table
+
+from koza.cli_runner import koza_app
 
 source_name="chebi2reactome"
 
-translation_table = inject_translation_table()
-
-row = inject_row(source_name)
+row = koza_app.get_row(source_name)
 
 # Entities
 chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'])
@@ -25,7 +23,8 @@ association = ChemicalToPathwayAssociation(
     subject=chemical.id,
     predicate=Predicate.participates_in,
     object=pathway.id,
-    relation = translation_table.resolve_term("participates in")
+    relation = koza_app.translation_table.resolve_term("pathway"),
+    provided_by="reactome"
 )
 
 koza_app.write(chemical, association, pathway)
