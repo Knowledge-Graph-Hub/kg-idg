@@ -66,25 +66,26 @@ class ReactomeTransform(Transform):
         Need to append a header to each first for Koza to work properly.
         """
         print(f"Parsing {data_file}")
-        config = os.path.join("./kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
+        config = os.path.join("kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
         #output=os.path.join(self.output_dir, name)
         output = self.output_dir
 
-        # Write header
-        print(f"Writing header to {data_file}")
+        # Write header, unless it's already there
         with open(data_file, 'r') as infile:
             content = [line for line in infile]
-        with open(data_file, 'w') as outfile:
-            outfile.write(REACTOME_HEADERS[source])
-            for line in content:
-                outfile.write(line)
+        if content[0] != REACTOME_HEADERS[source]:
+            with open(data_file, 'w') as outfile:
+                print(f"Writing header to {data_file}")
+                outfile.write(REACTOME_HEADERS[source])
+                for line in content:
+                    outfile.write(line)
 
         # If source is unknown then we aren't going to guess
         if source not in REACTOME_CONFIGS:
             print("Source file not recognized - not transforming.")
         else:
             print(f"Transforming using source in {config}")
-            transform_source(source=config, output_dir=output, 
-                             output_format="tsv", 
-                             global_table=TRANSLATION_TABLE, 
+            transform_source(source=config, output_dir=output,
+                             output_format="tsv",
+                             global_table=TRANSLATION_TABLE,
                              local_table=None)
