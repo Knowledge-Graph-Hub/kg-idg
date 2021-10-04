@@ -4,7 +4,7 @@ import os
 from typing import Optional
 
 from kg_idg.transform_utils.transform import Transform
-from koza.cli_runner import transform_source
+from koza.koza_runner import transform_source
 
 
 """
@@ -66,7 +66,7 @@ class ReactomeTransform(Transform):
         Need to append a header to each first for Koza to work properly.
         """
         print(f"Parsing {data_file}")
-        config=os.path.join("./kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
+        config = os.path.join("./kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
         #output=os.path.join(self.output_dir, name)
         output = self.output_dir
 
@@ -83,4 +83,8 @@ class ReactomeTransform(Transform):
         if source not in REACTOME_CONFIGS:
             print("Source file not recognized - not transforming.")
         else:
-            transform_source(config, output, "tsv", TRANSLATION_TABLE, None)
+            print(f"Transforming using source in {config}")
+            transform_source(source=config, output_dir=output, 
+                             output_format="tsv", 
+                             global_table=TRANSLATION_TABLE, 
+                             local_table=None)

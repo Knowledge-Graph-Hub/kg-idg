@@ -12,7 +12,7 @@ metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
 has_header: 'True'
 
 columns:
-  - 'CHEBI_ID'
+  - 'UPID'
   - 'REACT_PE_ID'
   - 'REACT_NAME'
   - 'REACT_PATH_ID'
