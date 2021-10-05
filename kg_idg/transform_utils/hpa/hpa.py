@@ -5,7 +5,7 @@ from typing import Optional
 import zipfile
 
 from kg_idg.transform_utils.transform import Transform
-from koza.cli_runner import transform_source
+from koza.cli_runner import transform_source #type: ignore
 
 
 """

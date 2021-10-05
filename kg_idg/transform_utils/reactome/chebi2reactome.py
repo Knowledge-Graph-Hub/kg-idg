@@ -1,13 +1,13 @@
 import uuid
 
-from biolink_model_pydantic.model import (
+from biolink_model_pydantic.model import ( #type: ignore
     ChemicalEntity,
     Pathway,
     ChemicalToPathwayAssociation,
     Predicate,
 )
 
-from koza.cli_runner import koza_app
+from koza.cli_runner import koza_app #type: ignore
 
 source_name="chebi2reactome"
 

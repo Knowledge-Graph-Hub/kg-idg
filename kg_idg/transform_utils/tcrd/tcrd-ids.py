@@ -1,8 +1,8 @@
 import uuid
 
-from biolink_model_pydantic.model import Gene
+from biolink_model_pydantic.model import Gene #type: ignore
 
-from koza.cli_runner import koza_app
+from koza.cli_runner import koza_app #type: ignore
 
 source_name="tcrd-ids"
 
