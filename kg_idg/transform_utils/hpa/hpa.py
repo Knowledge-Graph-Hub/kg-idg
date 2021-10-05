@@ -66,7 +66,7 @@ class ProteinAtlasTransform(Transform):
 
         # If source is unknown then we aren't going to guess
         if source not in HPA_CONFIGS:
-            print("Source file not recognized - not transforming.")
+            raise ValueError(f"Source file {source} not recognized - not transforming.")
         else:
             print(f"Transforming using source in {config}")
             transform_source(source=config, output_dir=output,
