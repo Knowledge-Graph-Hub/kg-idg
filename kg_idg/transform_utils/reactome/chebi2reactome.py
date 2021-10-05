@@ -24,7 +24,6 @@ association = ChemicalToPathwayAssociation(
     predicate=Predicate.participates_in,
     object=pathway.id,
     relation = koza_app.translation_table.resolve_term("pathway"),
-    #provided_by="reactome"
 )
 
 koza_app.write(chemical, association, pathway)

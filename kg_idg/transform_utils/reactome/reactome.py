@@ -67,7 +67,6 @@ class ReactomeTransform(Transform):
         """
         print(f"Parsing {data_file}")
         config = os.path.join("kg_idg/transform_utils/reactome/", REACTOME_CONFIGS[source])
-        #output=os.path.join(self.output_dir, name)
         output = self.output_dir
 
         # Write header, unless it's already there
