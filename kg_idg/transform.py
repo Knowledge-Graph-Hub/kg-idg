@@ -7,7 +7,7 @@ from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransfor
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
-#from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
+from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 
@@ -25,7 +25,7 @@ DATA_SOURCES = {
     'OrphanetTransform': OrphanetTransform,
     'OMIMTransform': OMIMTransform,
     'ReactomeTransform': ReactomeTransform,
-#    'GOCAMTransform': GOCAMTransform,
+    'GOCAMTransform': GOCAMTransform,
     'TCRDTransform': TCRDTransform,
     'ProteinAtlasTransform': ProteinAtlasTransform
 }
