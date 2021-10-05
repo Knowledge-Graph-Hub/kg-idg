@@ -50,8 +50,7 @@
   # Reactome - CHEBI to pathway
   url: https://reactome.org/download/current/ChEBI2Reactome_PE_Pathway.txt
   local_name: ChEBI2Reactome_PE_Pathway.txt
-
-- 
+-
   # Reactome - UniProt to pathway
   url: https://reactome.org/download/current/UniProt2Reactome_PE_Pathway.txt
   local_name: UniProt2Reactome_PE_Pathway.txt

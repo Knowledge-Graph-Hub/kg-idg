@@ -42,4 +42,3 @@ merged_graph:
       type: nt
       compression: gz
       filename: IDG-merged-kg.nt.gz
-
