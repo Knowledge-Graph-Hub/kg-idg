@@ -1,0 +1,40 @@
+name: 'tcrd-ids'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/TCRDv6.11.0.tsv'
+
+metadata: './kg_idg/transform_utils/tcrd/metadata.yaml'
+
+has_header: 'True'
+
+columns:
+  - 'TCRD ID'
+  - 'Name'
+  - 'Description'
+  - 'HGNC Symbol'
+  - 'UniProt'
+  - 'NCBI Gene ID'
+  - 'STRING ID'
+  - 'TDL'
+  - 'IDG Eligible'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'
