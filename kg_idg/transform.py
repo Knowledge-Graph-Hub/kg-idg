@@ -9,7 +9,7 @@ from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 #from kg_idg.transform_utils.gocam.gocam import GOCAMTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
-#from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
@@ -27,7 +27,7 @@ DATA_SOURCES = {
     'ReactomeTransform': ReactomeTransform,
 #    'GOCAMTransform': GOCAMTransform,
     'TCRDTransform': TCRDTransform,
-#    'ProteinAtlasTransform': ProteinAtlasTransform
+    'ProteinAtlasTransform': ProteinAtlasTransform
 }
 
 

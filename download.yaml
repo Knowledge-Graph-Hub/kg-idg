@@ -48,12 +48,11 @@
   local_name: chebi_kgx_tsv.tar.gz
 -
   # Reactome - CHEBI to pathway
-  # needs transform
   url: https://reactome.org/download/current/ChEBI2Reactome_PE_Pathway.txt
   local_name: ChEBI2Reactome_PE_Pathway.txt
 
-- # Reactome - UniProt to pathway
-  # needs transform
+- 
+  # Reactome - UniProt to pathway
   url: https://reactome.org/download/current/UniProt2Reactome_PE_Pathway.txt
   local_name: UniProt2Reactome_PE_Pathway.txt
 -
@@ -70,7 +69,6 @@
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
-  # Needs transform
   url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
   local_name: TCRDv6.11.0.tsv
 -
@@ -79,6 +77,5 @@
   local_name: ogms_kgx_tsv.tar.gz
 -
   # Human Protein Atlas
-  # Needs decompress & transform
-  url: https://www.proteinatlas.org/download/proteinatlas.json.gz
-  local_name: proteinatlas.json.gz
+  url: https://www.proteinatlas.org/download/proteinatlas.tsv.zip
+  local_name: proteinatlas.tsv.zip
