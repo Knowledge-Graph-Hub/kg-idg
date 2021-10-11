@@ -4,18 +4,18 @@ from unittest import mock
 
 from run import download, transform, merge, holdouts, query
 
-
 class TestRun(TestCase):
     """Tests the run.py script."""
     def setUp(self) -> None:
         self.runner = CliRunner()
 
-    # @mock.patch('requests.get')
-    # def test_download(self, mock_get):
-    #     result = self.runner.invoke(cli=download,
-    #                                 args=['-y', 'tests/resources/download.yaml'])
-    #     # this really just makes sure request.get get called somewhere downstream
-    #     self.assertTrue(mock_get.called)
+    def test_download(self):
+        result = self.runner.invoke(cli=download,
+                                     args=['-y', 'tests/resources/download.yaml'])
+        self.assertRegex(result.output, "Downloading")
+        result = self.runner.invoke(cli=download,
+                                     args=['-y', 'tests/resources/zownload.yam'])
+        self.assertRegex(result.output, "Error")                             
 
     def test_transform(self):
         result = self.runner.invoke(cli=transform,
