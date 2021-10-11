@@ -20,7 +20,7 @@
 ---
 
 -
-  # drug - target interactions from Drug Central, transformed to KGX TSV in KG-COVID-19:
+  # Drug Central drug - target interactions 
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/drug_central/edges.tsv
   local_name: dc_edges.tsv
 -
@@ -50,13 +50,13 @@
   # Reactome - CHEBI to pathway
   url: https://reactome.org/download/current/ChEBI2Reactome_PE_Pathway.txt
   local_name: ChEBI2Reactome_PE_Pathway.txt
--
+- 
   # Reactome - UniProt to pathway
   url: https://reactome.org/download/current/UniProt2Reactome_PE_Pathway.txt
   local_name: UniProt2Reactome_PE_Pathway.txt
 -
   # GOCAMs
-  # Update SPARQL query for COVID-19 retrieval to be more general
+  # TODO: Update SPARQL query for COVID-19 retrieval to be more general
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_nodes.tsv
   local_name: GOCAMs_nodes.tsv
 -
