@@ -10,16 +10,24 @@ class TestRun(TestCase):
         self.runner = CliRunner()
 
     def test_download(self):
+        # Test correct download
         result = self.runner.invoke(cli=download,
                                      args=['-y', 'tests/resources/download.yaml'])
         self.assertRegex(result.output, "Downloading")
+        
+        # Test if download.yaml not found
         result = self.runner.invoke(cli=download,
                                      args=['-y', 'tests/resources/zownload.yam'])
         self.assertRegex(result.output, "Error")                             
 
     def test_transform(self):
+        # Test full transform
         result = self.runner.invoke(cli=transform,
-                                    args=['-i', 'tests/data/raw'])
+                                    args=['-i', 'tests/resources/snippets/'])
+        self.assertNotEqual(result.exit_code, 0)
+        # Test if raw transform input not available
+        result = self.runner.invoke(cli=transform,
+                                    args=['-i', 'tests/data/rawr'])
         self.assertNotEqual(result.exit_code, 0)
 
     def test_merge_missing_file_error(self):
