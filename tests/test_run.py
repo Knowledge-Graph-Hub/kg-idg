@@ -24,7 +24,7 @@ class TestRun(TestCase):
         # Test full transform
         result = self.runner.invoke(cli=transform,
                                     args=['-i', 'tests/resources/snippets/'])
-        self.assertNotEqual(result.exit_code, 0)
+        self.assertEqual(result.exit_code, 0)
         # Test if raw transform input not available
         result = self.runner.invoke(cli=transform,
                                     args=['-i', 'tests/data/rawr'])
