@@ -3,9 +3,9 @@ import os
 import shutil
 from parameterized import parameterized
 from kg_idg.utils.transform_utils import guess_bl_category, collapse_uniprot_curie
-from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
-from kg_idg.transform_utils.omim.omim import OMIMTransform
-from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform, ORPHANET_NT_FILENAME
+from kg_idg.transform_utils.omim.omim import OMIMTransform, OMIM_NT_FILENAME
+from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform, DRUG_CENTRAL_SOURCES
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
@@ -37,24 +37,27 @@ class TestTransformUtils(TestCase):
         self.assertEqual(collapsed_curie, collapse_uniprot_curie(curie))
 
     # Now start testing source-specific transform utils
+    # Load pre-defined inputs and specific ones, for coverage
     def test_drug_central_transform(self):
         t = DrugCentralTransform(self.input_dir,self.output_dir)
+        nodes_path = DRUG_CENTRAL_SOURCES["DrugCentralNodes"]
+        edges_path = DRUG_CENTRAL_SOURCES["DrugCentralEdges"]
         this_output_dir = os.path.join(self.output_dir,"drug_central")
-        t.run()
+        t.run(nodes_file=nodes_path,edges_file=edges_path)
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
     
     def test_orphanet_transform(self):
         t = OrphanetTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"orphanet")
-        t.run()
+        t.run(data_file=ORPHANET_NT_FILENAME)
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
     def test_omim_transform(self):
         t = OMIMTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"omim")
-        t.run()
+        t.run(data_file=OMIM_NT_FILENAME)
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
