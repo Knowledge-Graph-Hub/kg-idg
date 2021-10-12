@@ -1,0 +1,10 @@
+UPID	REACT_PE_ID	REACT_NAME	REACT_PATH_ID	URL	EVENT_NAME	EVIDENCE	SPECIES
+A0A023GRW3	R-DME-72049	Dmel\CG4896 [nucleoplasm]	R-DME-72163	https://reactome.org/PathwayBrowser/#/R-DME-72163	mRNA Splicing - Major Pathway	IEA	Drosophila melanogaster
+A0A023IKK2	R-RNO-882032	RT1-Db2 [plasma membrane]	R-RNO-202424	https://reactome.org/PathwayBrowser/#/R-RNO-202424	Downstream TCR signaling	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-882032	RT1-Db2 [plasma membrane]	R-RNO-202427	https://reactome.org/PathwayBrowser/#/R-RNO-202427	Phosphorylation of CD3 and TCR zeta chains	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-882032	RT1-Db2 [plasma membrane]	R-RNO-202430	https://reactome.org/PathwayBrowser/#/R-RNO-202430	Translocation of ZAP-70 to Immunological synapse	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-882032	RT1-Db2 [plasma membrane]	R-RNO-202433	https://reactome.org/PathwayBrowser/#/R-RNO-202433	Generation of second messenger molecules	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-882032	RT1-Db2 [plasma membrane]	R-RNO-2132295	https://reactome.org/PathwayBrowser/#/R-RNO-2132295	MHC class II antigen presentation	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-2130418	RT1-Db2 [lysosomal membrane]	R-RNO-2132295	https://reactome.org/PathwayBrowser/#/R-RNO-2132295	MHC class II antigen presentation	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-2130620	RT1-Db2 [endocytic vesicle membrane]	R-RNO-2132295	https://reactome.org/PathwayBrowser/#/R-RNO-2132295	MHC class II antigen presentation	IEA	Rattus norvegicus
+A0A023IKK2	R-RNO-2130482	RT1-Db2 [clathrin-coated endocytic vesicle membrane]	R-RNO-2132295	https://reactome.org/PathwayBrowser/#/R-RNO-2132295	MHC class II antigen presentation	IEA	Rattus norvegicus

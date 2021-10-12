@@ -1,0 +1,10 @@
+subject	predicate	object	relation	knowledge_source
+GO:0016592	biolink:precedes	GO:0097550	biolink:Precedes	lifted-go-cams-20200619.nt
+GO:0016592	biolink:positively_regulates	GO:0097550	biolink:PositivelyRegulates	lifted-go-cams-20200619.nt
+GO:0016592	biolink:related_to	GO:0097550	biolink:related_to	lifted-go-cams-20200619.nt
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210380	biolink:related_to	:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210458	biolink:related_to	lifted-go-cams-20200619.nt
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210380	biolink:positively_regulates	:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210458	biolink:PositivelyRegulates	lifted-go-cams-20200619.nt
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210458	biolink:related_to	:OBO:go/extensions/reacto.owl#REACTO_R-HSA-427969	biolink:related_to	lifted-go-cams-20200619.nt
+FB:FBgn0016917	biolink:related_to	FB:FBgn0016917	biolink:related_to	lifted-go-cams-20200619.nt
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-6807624	biolink:related_to	:OBO:go/extensions/reacto.owl#REACTO_R-HSA-372871	biolink:related_to	lifted-go-cams-20200619.nt
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-6807624	biolink:precedes	:OBO:go/extensions/reacto.owl#REACTO_R-HSA-8955798	biolink:Precedes	lifted-go-cams-20200619.nt

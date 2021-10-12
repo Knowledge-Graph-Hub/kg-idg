@@ -1,0 +1,10 @@
+CHEBI_ID	REACT_PE_ID	REACT_NAME	REACT_PATH_ID	URL	EVENT_NAME	EVIDENCE	SPECIES
+10033	R-ALL-9014945	warfarin [cytosol]	R-BTA-6806664	https://reactome.org/PathwayBrowser/#/R-BTA-6806664	Metabolism of vitamin K	IEA	Bos taurus
+10033	R-ALL-9014945	warfarin [cytosol]	R-CFA-6806664	https://reactome.org/PathwayBrowser/#/R-CFA-6806664	Metabolism of vitamin K	IEA	Canis familiaris
+10033	R-ALL-9014945	warfarin [cytosol]	R-DME-6806664	https://reactome.org/PathwayBrowser/#/R-DME-6806664	Metabolism of vitamin K	IEA	Drosophila melanogaster
+10033	R-ALL-9014945	warfarin [cytosol]	R-DRE-6806664	https://reactome.org/PathwayBrowser/#/R-DRE-6806664	Metabolism of vitamin K	IEA	Danio rerio
+10033	R-ALL-9014945	warfarin [cytosol]	R-HSA-6806664	https://reactome.org/PathwayBrowser/#/R-HSA-6806664	Metabolism of vitamin K	TAS	Homo sapiens
+10033	R-ALL-9014945	warfarin [cytosol]	R-MMU-6806664	https://reactome.org/PathwayBrowser/#/R-MMU-6806664	Metabolism of vitamin K	IEA	Mus musculus
+10033	R-ALL-9014945	warfarin [cytosol]	R-RNO-6806664	https://reactome.org/PathwayBrowser/#/R-RNO-6806664	Metabolism of vitamin K	IEA	Rattus norvegicus
+10033	R-ALL-9014945	warfarin [cytosol]	R-SSC-6806664	https://reactome.org/PathwayBrowser/#/R-SSC-6806664	Metabolism of vitamin K	IEA	Sus scrofa
+10033	R-ALL-9014945	warfarin [cytosol]	R-XTR-6806664	https://reactome.org/PathwayBrowser/#/R-XTR-6806664	Metabolism of vitamin K	IEA	Xenopus tropicalis

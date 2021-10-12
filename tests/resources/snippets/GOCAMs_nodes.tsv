@@ -1,0 +1,10 @@
+id	category	provided_by
+GO:0016592	biolink:NamedThing	lifted-go-cams-20200619.xml
+GO:0097550	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210380	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-210458	biolink:NamedThing	lifted-go-cams-20200619.xml
+FB:FBgn0016917	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-6807624	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-372871	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-1237083	biolink:NamedThing	lifted-go-cams-20200619.xml
+:OBO:go/extensions/reacto.owl#REACTO_R-HSA-1237166	biolink:NamedThing	lifted-go-cams-20200619.xml

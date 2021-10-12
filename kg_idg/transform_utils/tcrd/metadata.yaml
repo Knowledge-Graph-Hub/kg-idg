@@ -1,0 +1,10 @@
+name: 'tcrd'
+
+dataset_description:
+  ingest_title: 'tcrd'
+  ingest_url: 'http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv'
+  description: 'Pharos and TCRD ID mappings'
+  rights: 'http://juniper.health.unm.edu/tcrd/download/README'
+
+source_files:
+  - 'tcrd-ids.yaml'

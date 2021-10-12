@@ -3,5 +3,5 @@
 ---
 -
   # test download
-  url: https://test_url.org/test_1234.pdf
-  local_name: test_1234.pdf
+  url: https://github.com/Knowledge-Graph-Hub/kg-idg/blob/master/tests/resources/dc_nodes_snippet.tsv
+  local_name: dc_nodes_snippet.tsv

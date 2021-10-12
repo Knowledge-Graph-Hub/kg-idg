@@ -3,23 +3,34 @@ from click.testing import CliRunner
 from unittest import mock
 
 from run import download, transform, merge, holdouts, query
-
+from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 class TestRun(TestCase):
     """Tests the run.py script."""
     def setUp(self) -> None:
         self.runner = CliRunner()
 
-    # @mock.patch('requests.get')
-    # def test_download(self, mock_get):
-    #     result = self.runner.invoke(cli=download,
-    #                                 args=['-y', 'tests/resources/download.yaml'])
-    #     # this really just makes sure request.get get called somewhere downstream
-    #     self.assertTrue(mock_get.called)
+    def test_download(self):
+        # Test correct download
+        result = self.runner.invoke(cli=download,
+                                     args=['-y', 'tests/resources/download.yaml'])
+        self.assertRegex(result.output, "Downloading")
+        
+        # Test if download.yaml not found
+        result = self.runner.invoke(cli=download,
+                                     args=['-y', 'tests/resources/zownload.yam'])
+        self.assertRegex(result.output, "Error")                             
 
     def test_transform(self):
+        # Test full transform with ontologies only
+        for source in ONTOLOGIES:
+            result = self.runner.invoke(cli=transform,
+                                    args=['-i', 'tests/resources/snippets/',
+                                            '-s', source])
+            self.assertEqual(result.exit_code, 0)
+        # Test if raw transform input not available
         result = self.runner.invoke(cli=transform,
-                                    args=['-i', 'tests/data/raw'])
+                                    args=['-i', 'tests/data/rawr'])
         self.assertNotEqual(result.exit_code, 0)
 
     def test_merge_missing_file_error(self):

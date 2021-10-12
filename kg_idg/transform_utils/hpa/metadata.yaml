@@ -1,0 +1,10 @@
+name: 'hpa'
+
+dataset_description:
+  ingest_title: 'hpa'
+  ingest_url: 'https://www.proteinatlas.org/download/proteinatlas.tsv.zip'
+  description: 'Data from the Human Protein Atlas in tab-separated format'
+  rights: 'https://www.proteinatlas.org/about/licence'
+
+source_files:
+  - 'hpa-data.yaml'

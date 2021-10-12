@@ -1,0 +1,10 @@
+TCRD ID	Name	Description	HGNC Symbol	UniProt	NCBI Gene ID	STRING ID	TDL	IDG Eligible
+1	CGL_HUMAN	Cystathionine gamma-lyase	CTH	P32929	1491	ENSP00000359976	Tchem	0
+2	CG077_HUMAN	Uncharacterized protein C7orf77	C7orf77	A4D0Y5	154872	ENSP00000480627	Tdark	0
+3	CH034_HUMAN	Uncharacterized protein C8orf34	C8orf34	Q49A92	116328	ENSP00000427820	Tdark	0
+4	CGBP1_HUMAN	CGG triplet repeat-binding protein 1	CGGBP1	Q9UFW8	8545	ENSP00000381429	Tbio	0
+5	CH076_HUMAN	Uncharacterized protein C8orf76	C8orf76	Q96K31	84933	ENSP00000276704	Tdark	0
+6	CHD1_HUMAN	Chromodomain-helicase-DNA-binding protein 1	CHD1	O14646	1105	ENSP00000483667	Tbio	0
+7	CHERP_HUMAN	Calcium homeostasis endoplasmic reticulum protein	CHERP	Q8IWX8	10523	ENSP00000439856	Tbio	0
+8	CHP1_HUMAN	Calcineurin B homologous protein 1	CHP1	Q99653	11261	ENSP00000335632	Tbio	0
+9	CMTA2_HUMAN	Calmodulin-binding transcription activator 2	CAMTA2	O94983	23125	ENSP00000412886	Tbio	0

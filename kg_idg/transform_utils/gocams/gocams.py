@@ -7,22 +7,23 @@ from typing import Optional
 from kg_idg.transform_utils.transform import Transform
 
 """
-Ingest KGX-format drug - drug target interactions from Drug Central
- and move them to the transformed data folder.
+Ingest GOCAMs from KG-COVID-19.
+Moves them to the transformed data directory.
+TODO: Use more specific GO-CAMs.
 """
 
-DRUG_CENTRAL_SOURCES = {
-    'DrugCentralNodes': 'dc_nodes.tsv',
-    'DrugCentralEdges': 'dc_edges.tsv'
+GOCAM_SOURCES = {
+    'GOCAMsNodes': 'GOCAMs_nodes.tsv',
+    'GOCAMsEdges': 'GOCAMs_edges.tsv'
 }
 
-class DrugCentralTransform(Transform):
-    """This transform just ingests the Drug Central transform from KG-COVID-19 and
+class GOCAMTransform(Transform):
+    """This transform just ingests the GOCAMs transform from KG-COVID-19 and
     copies it to the transform directory.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
-        source_name = "drug_central"
+        source_name = "gocams"
         super().__init__(source_name, input_dir, output_dir)  # set some variables
 
     def run(self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None) -> None:  # type: ignore
@@ -36,8 +37,8 @@ class DrugCentralTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, source)
                 self.parse(k, data_file, k)
         else:
-            for k in DRUG_CENTRAL_SOURCES.keys():
-                name = DRUG_CENTRAL_SOURCES[k]
+            for k in GOCAM_SOURCES.keys():
+                name = GOCAM_SOURCES[k]
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
     

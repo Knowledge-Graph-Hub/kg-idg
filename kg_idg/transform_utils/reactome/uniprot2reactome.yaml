@@ -1,0 +1,39 @@
+name: 'uniprot2reactome'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/UniProt2Reactome_PE_Pathway.txt'
+
+metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
+
+has_header: 'True'
+
+columns:
+  - 'UPID'
+  - 'REACT_PE_ID'
+  - 'REACT_NAME'
+  - 'REACT_PATH_ID'
+  - 'URL'
+  - 'EVENT_NAME'
+  - 'EVIDENCE'
+  - 'SPECIES'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'
