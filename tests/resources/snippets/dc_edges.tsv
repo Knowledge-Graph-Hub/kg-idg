@@ -1,0 +1,10 @@
+subject	predicate	object	relation	provided_by	comment	type
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P35499	RO:0002436	drug_central		biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P10635	RO:0002436	drug_central	DRUGMATRIX: CYP450, 2D6 enzyme inhibition (substrate: 3-Cyano-7-ethoxycoumarin)	biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:Q12809	RO:0002436	drug_central	Inhibition of wild-type human ERG channel expressed in HEK293 cells assessed as blockade of potassium tail current by whole-cell patch clamp technique	biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:Q9UK17	RO:0002436	drug_central		biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P34995	RO:0002436	drug_central		biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P35498	RO:0002436	drug_central		biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P22460	RO:0002436	drug_central		biolink:Association
+DrugCentral:4	biolink:molecularly_interacts_with	UniProtKB:P46098	RO:0002436	drug_central		biolink:Association
+DrugCentral:5	biolink:molecularly_interacts_with	UniProtKB:Q01668	RO:0002436	drug_central	Mechanism of Action	biolink:Association

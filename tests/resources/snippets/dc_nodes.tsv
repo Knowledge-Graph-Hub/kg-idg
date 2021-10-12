@@ -1,0 +1,10 @@
+id	name	category	TDL	provided_by
+DrugCentral:4	levobupivacaine	biolink:Drug		drug_central
+UniProtKB:P35499	SCN4A	biolink:Protein	Tclin	drug_central
+UniProtKB:P10635	CYP2D6	biolink:Protein	Tclin	drug_central
+UniProtKB:Q12809	KCNH2	biolink:Protein	Tclin	drug_central
+UniProtKB:Q9UK17	KCND3	biolink:Protein	Tclin	drug_central
+UniProtKB:P34995	PTGER1	biolink:Protein	Tclin	drug_central
+UniProtKB:P35498	SCN1A	biolink:Protein	Tclin	drug_central
+UniProtKB:P22460	KCNA5	biolink:Protein	Tclin	drug_central
+UniProtKB:P46098	HTR3A	biolink:Protein	Tclin	drug_central
