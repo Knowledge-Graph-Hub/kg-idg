@@ -3,6 +3,7 @@ from click.testing import CliRunner
 from unittest import mock
 
 from run import download, transform, merge, holdouts, query
+from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 class TestRun(TestCase):
     """Tests the run.py script."""
@@ -21,10 +22,12 @@ class TestRun(TestCase):
         self.assertRegex(result.output, "Error")                             
 
     def test_transform(self):
-        # Test full transform
-        result = self.runner.invoke(cli=transform,
-                                    args=['-i', 'tests/resources/snippets/'])
-        self.assertEqual(result.exit_code, 0)
+        # Test full transform with ontologies only
+        for source in ONTOLOGIES:
+            result = self.runner.invoke(cli=transform,
+                                    args=['-i', 'tests/resources/snippets/',
+                                            '-s', source])
+            self.assertEqual(result.exit_code, 0)
         # Test if raw transform input not available
         result = self.runner.invoke(cli=transform,
                                     args=['-i', 'tests/data/rawr'])
