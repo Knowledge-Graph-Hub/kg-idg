@@ -1,4 +1,4 @@
-import unittest
+from unittest import TestCase, mock
 import os
 import shutil
 from parameterized import parameterized
@@ -7,8 +7,11 @@ from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
+from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
+from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
+from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 
-class TestTransformUtils(unittest.TestCase):
+class TestTransformUtils(TestCase):
 
     def setUp(self) -> None:
         self.input_dir = 'tests/resources/snippets/'
@@ -61,4 +64,36 @@ class TestTransformUtils(unittest.TestCase):
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
+    
+    # Koza transforms have hard-coded sources so we skip the transform
+    # and instead ensure they don't proceed if source is incorrect
 
+    @mock.patch('koza.cli_runner.transform_source')
+    def test_reactome_transform(self, mock_transform_source):
+        t = ReactomeTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"reactome")
+        with self.assertRaises(ValueError):
+            t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        self.assertFalse(mock_transform_source.called)
+        shutil.rmtree(this_output_dir)
+
+    @mock.patch('koza.cli_runner.transform_source')
+    def test_tcrd_transform(self, mock_transform_source):
+        t = TCRDTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"tcrd")
+        with self.assertRaises(ValueError):
+            t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        self.assertFalse(mock_transform_source.called)
+        shutil.rmtree(this_output_dir)
+
+    @mock.patch('koza.cli_runner.transform_source')
+    def test_hpa_transform(self, mock_transform_source):
+        t = ProteinAtlasTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"hpa")
+        with self.assertRaises(ValueError):
+            t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        self.assertFalse(mock_transform_source.called)
+        shutil.rmtree(this_output_dir)
