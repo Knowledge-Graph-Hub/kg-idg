@@ -1,10 +1,12 @@
 import unittest
 import os
+import shutil
 from parameterized import parameterized
 from kg_idg.utils.transform_utils import guess_bl_category, collapse_uniprot_curie
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 
 class TestTransformUtils(unittest.TestCase):
 
@@ -37,16 +39,26 @@ class TestTransformUtils(unittest.TestCase):
         this_output_dir = os.path.join(self.output_dir,"drug_central")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
     
     def test_orphanet_transform(self):
         t = OrphanetTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"orphanet")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
 
     def test_omim_transform(self):
         t = OMIMTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"omim")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
+
+    def test_gocams_transform(self):
+        t = GOCAMTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"gocams")
+        t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
 
