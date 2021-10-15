@@ -99,7 +99,7 @@ merged_graph:
         format: tsv
         filename:
           - data/transformed/reactome/chebi2reactome_nodes.tsv
-          - data/transformed/reactome/chebi2reactome_edges.tsv 
+          - data/transformed/reactome/chebi2reactome_edges.tsv
     uniprot2reactome:
       name: "Reactome - UniProtKB maps"
       input:
