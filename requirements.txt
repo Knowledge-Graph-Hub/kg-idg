@@ -1,4 +1,7 @@
- # requirements.txt
- #
- # Installs dependencies from ./setup.py in editable mode
- -e .
+tqdm
+wget
+compress_json
+click==7
+pyyaml
+kgx==1.5.0
+koza==0.1.1
