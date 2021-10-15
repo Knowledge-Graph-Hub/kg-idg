@@ -24,76 +24,102 @@ merged_graph:
   name: IDG graph
   source:
     drug-central:
-      type: tsv
-      filename:
-        - data/transformed/drug_central/dc_nodes.tsv
-        - data/transformed/drug_central/dc_edges.tsv
+      name: "DrugCentral"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/dc_nodes.tsv
+          - data/transformed/drug_central/dc_edges.tsv
     gocams:
-      type: tsv
-      filename:
-        - data/transformed/gocams/GOCAMs_nodes.tsv
-        - data/transformed/gocams/GOCAMs_edges.tsv
+      name: "Gene Ontology Causal Activity Modeling"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/gocams/GOCAMs_nodes.tsv
+          - data/transformed/gocams/GOCAMs_edges.tsv
     hpa:
-      type: tsv
-      filename:
-        - data/transformed/hpa/hpa-data_nodes.tsv
-        - data/transformed/hpa/hpa-data_edges.tsv
+      name: "Human Proteome Atlas"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/hpa/hpa-data_nodes.tsv
+          - data/transformed/hpa/hpa-data_edges.tsv
     omim:
-      type: tsv
-      filename:
-        - data/transformed/omim/omim_nodes.tsv
-        - data/transformed/omim/omim_edges.tsv
+      name: "Online Mendelian Inheritance in Man"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/omim/omim_nodes.tsv
+          - data/transformed/omim/omim_edges.tsv
     chebi:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/chebi_kgx_tsv_nodes.tsv
-        - data/transformed/ontologies/chebi_kgx_tsv_edges.tsv
+      name: "Chemical Entities of Biological Interest"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/chebi_kgx_tsv_nodes.tsv
+          - data/transformed/ontologies/chebi_kgx_tsv_edges.tsv
     go:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/go_kgx_tsv_nodes.tsv
-        - data/transformed/ontologies/go_kgx_tsv_edges.tsv
+      name: "Gene Ontology"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/go_kgx_tsv_nodes.tsv
+          - data/transformed/ontologies/go_kgx_tsv_edges.tsv
     hp:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/hp_kgx_tsv_nodes.tsv
-        - data/transformed/ontologies/hp_kgx_tsv_edges.tsv
+      name: "Human Phenotype Ontology"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/hp_kgx_tsv_nodes.tsv
+          - data/transformed/ontologies/hp_kgx_tsv_edges.tsv
     mondo:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/mondo_kgx_tsv_nodes.tsv
-        - data/transformed/ontologies/mondo_kgx_tsv_edges.tsv
+      name: "Mondo Disease Ontology"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/mondo_kgx_tsv_nodes.tsv
+          - data/transformed/ontologies/mondo_kgx_tsv_edges.tsv
     ogms:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/ogms_kgx_tsv_nodes.tsv
-        - data/transformed/ontologies/ogms_kgx_tsv_edges.tsv
+      name: "Ontology for General Medical Science"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/ogms_kgx_tsv_nodes.tsv
+          - data/transformed/ontologies/ogms_kgx_tsv_edges.tsv
     orphanet:
-      type: tsv
-      filename:
-        - data/transformed/orphanet/orphanet_nodes.tsv
-        - data/transformed/orphanet/orphanet_edges.tsv
+      name: "OrphaNet"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/orphanet/orphanet_nodes.tsv
+          - data/transformed/orphanet/orphanet_edges.tsv
     chebi2reactome:
-      type: tsv
-      filename:
-        - data/transformed/reactome/chebi2reactome_nodes.tsv
-        - data/transformed/reactome/chebi2reactome_edges.tsv 
+      name: "Reactome - CHEBI maps"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/reactome/chebi2reactome_nodes.tsv
+          - data/transformed/reactome/chebi2reactome_edges.tsv 
     uniprot2reactome:
-      type: tsv
-      filename:
-        - data/transformed/reactome/uniprot2reactome_nodes.tsv
-        - data/transformed/reactome/uniprot2reactome_edges.tsv
+      name: "Reactome - UniProtKB maps"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/reactome/uniprot2reactome_nodes.tsv
+          - data/transformed/reactome/uniprot2reactome_edges.tsv
     tcrd:
-      type: tsv
-      filename:
-        - data/transformed/tcrd/tcrd-ids_nodes.tsv
-        - data/transformed/tcrd/tcrd-ids_edges.tsv
+      name: "Target Central Resource Database"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/tcrd/tcrd-ids_nodes.tsv
+          - data/transformed/tcrd/tcrd-ids_edges.tsv
   destination:
     merged-kg-tsv:
-      type: tsv
+      format: tsv
       compression: tar.gz
       filename: IDG-merged-kg
     merged-kg-nt:
-      type: nt
+      format: nt
       compression: gz
       filename: IDG-merged-kg.nt.gz
