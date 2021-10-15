@@ -1,0 +1,4 @@
+ # requirements.txt
+ #
+ # Installs dependencies from ./setup.py in editable mode
+ -e .
