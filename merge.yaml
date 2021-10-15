@@ -22,7 +22,7 @@ configuration:
 
 merged_graph:
   name: IDG graph
-  targets:
+  source:
     drug-central:
       type: tsv
       filename:
