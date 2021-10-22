@@ -74,22 +74,22 @@ pipeline {
                         def run_py_dl = sh(
                             script: '. venv/bin/activate && python3.8 run.py download', returnStatus: true
                         )
-                        // if (run_py_dl == 0) {
-                        //     if (env.BRANCH_NAME != 'master') { // upload raw to s3 if we're on correct branch
-                        //         echo "Will not push if not on correct branch."
-                        //     } else {
-                        //         withCredentials([file(credentialsId: 's3cmd_kg_hub_push_configuration', variable: 'S3CMD_CFG')]) {
-                        //             sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG --acl-public --mime-type=plain/text --cf-invalidate put -r data/raw s3://kg-hub-public-data/$S3PROJECTDIR/'
-                        //         }
-                        //     }
-                        // }  else { // 'run.py download' failed - let's try to download last good copy of raw/ from s3 to data/
-                        //     currentBuild.result = "UNSTABLE"
-                        //     withCredentials([file(credentialsId: 's3cmd_kg_hub_push_configuration', variable: 'S3CMD_CFG')]) {
-                        //         sh 'rm -fr data/raw || true;'
-                        //         sh 'mkdir -p data/raw || true'
-                        //         sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG --acl-public --mime-type=plain/text get -r s3://kg-hub-public-data/$S3PROJECTDIR/raw/ data/raw/'
-                        //     }
-                        // }
+                        if (run_py_dl == 0) {
+                            if (env.BRANCH_NAME != 'master') { // upload raw to s3 if we're on correct branch
+                                echo "Will not push if not on correct branch."
+                            } else {
+                                withCredentials([file(credentialsId: 's3cmd_kg_hub_push_configuration', variable: 'S3CMD_CFG')]) {
+                                    sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG --acl-public --mime-type=plain/text --cf-invalidate put -r data/raw s3://kg-hub-public-data/$S3PROJECTDIR/'
+                                }
+                            }
+                        }  else { // 'run.py download' failed - let's try to download last good copy of raw/ from s3 to data/
+                            currentBuild.result = "UNSTABLE"
+                            withCredentials([file(credentialsId: 's3cmd_kg_hub_push_configuration', variable: 'S3CMD_CFG')]) {
+                                sh 'rm -fr data/raw || true;'
+                                sh 'mkdir -p data/raw || true'
+                                sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG --acl-public --mime-type=plain/text get -r s3://kg-hub-public-data/$S3PROJECTDIR/raw/ data/raw/'
+                            }
+                        }
                     }
                 }
             }
@@ -107,8 +107,8 @@ pipeline {
             steps {
                 dir('./gitrepo') {
                     sh '. venv/bin/activate && python3.8 run.py merge -y merge.yaml'
-                    // sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
-                    // sh 'tar -rvf data/merged/merged-kg.tar merged_graph_stats_$BUILDSTARTDATE.yaml'
+                    sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
+                    sh 'tar -rvfz data/merged/IDG-merged-kg.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
                 }
             }
         }
@@ -165,9 +165,9 @@ pipeline {
         //                         // make $BUILDSTARTDATE/ directory and sync to s3 bucket
         //                         //
         //                         sh 'mkdir $BUILDSTARTDATE/'
-        //                         sh 'cp -p data/merged/merged-kg.nt.gz $BUILDSTARTDATE/kg-covid-19.nt.gz'
-        //                         sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/kg-covid-19.tar.gz'
-        //                         sh 'cp -p merged-kg.jnl.gz $BUILDSTARTDATE/kg-covid-19.jnl.gz'
+        //                         sh 'cp -p data/merged/merged-kg.nt.gz $BUILDSTARTDATE/kg-idg.nt.gz'
+        //                         sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/kg-idg.tar.gz'
+        //                         sh 'cp -p merged-kg.jnl.gz $BUILDSTARTDATE/kg-idg.jnl.gz'
         //                         // transformed data
         //                         sh 'rm -fr data/transformed/.gitkeep'
         //                         sh 'cp -pr data/transformed $BUILDSTARTDATE/'
@@ -183,7 +183,7 @@ pipeline {
         //                         sh 'cp templates/README.toplevel $S3PROJECTDIR/README'
         //                         // add dir for existing builds so they are indexed
         //                         // do an s3cmd ls for our project subdir, for each existing build make a local dir in $S3PROJECTDIR
-        //                         sh ". venv/bin/activate && for dir in `s3cmd ls s3://kg-hub-public-data/kg-covid-19/ | grep '\\/\$' | awk '{print \$NF}' | grep -w -v -E 'raw|current' | xargs -n1 basename`; do mkdir -p $S3PROJECTDIR/\$dir; done"
+        //                         sh ". venv/bin/activate && for dir in `s3cmd ls s3://kg-hub-public-data/kg-idg/ | grep '\\/\$' | awk '{print \$NF}' | grep -w -v -E 'raw|current' | xargs -n1 basename`; do mkdir -p $S3PROJECTDIR/\$dir; done"
         //                         // now make two dirs, $BUILDSTARTDATE and current/, both with the same contents
         //                         sh 'mv $BUILDSTARTDATE $S3PROJECTDIR/'
         //                         sh 'cp -pr $S3PROJECTDIR/$BUILDSTARTDATE $S3PROJECTDIR/current'
@@ -194,7 +194,7 @@ pipeline {
         //                         sh '. venv/bin/activate && python3.8 ./go-site/scripts/directory_indexer.py -v --inject ./go-site/scripts/directory-index-template.html --directory $S3PROJECTDIR --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/ -x -u'
         //                         // for existing builds on s3, we just made an index.html that will clobber the existing (correct) s3 index.html
         //                         // here we download the existing index.html and clobber the local one instead
-        //                         sh ". venv/bin/activate && for dir in `s3cmd ls s3://kg-hub-public-data/kg-covid-19/ | grep '\\/\$' | awk '{print \$NF}' | grep -w -v -E 'raw|current' | xargs -n1 basename`; do s3cmd get --force --continue s3://kg-hub-public-data/kg-covid-19/\$dir/index.html $S3PROJECTDIR/\$dir/ || true; done"
+        //                         sh ". venv/bin/activate && for dir in `s3cmd ls s3://kg-hub-public-data/kg-idg/ | grep '\\/\$' | awk '{print \$NF}' | grep -w -v -E 'raw|current' | xargs -n1 basename`; do s3cmd get --force --continue s3://kg-hub-public-data/kg-idg/\$dir/index.html $S3PROJECTDIR/\$dir/ || true; done"
 
         //                         sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG put -pr --acl-public --cf-invalidate $S3PROJECTDIR s3://kg-hub-public-data/'
 
