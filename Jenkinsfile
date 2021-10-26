@@ -15,6 +15,8 @@ pipeline {
         // Distribution ID for the AWS CloudFront for this bucket
         // used solely for invalidations
         AWS_CLOUDFRONT_DISTRIBUTION_ID = 'EUVSWXZQBXCFP'
+
+        MERGEDKGNAME_BASE = "IDG-merged-kg"
     }
     options {
         timestamps()
@@ -40,6 +42,7 @@ pipeline {
                     sh 'cat branch.txt'
                     sh "echo $BUILDSTARTDATE > dow.txt"
                     sh "echo $BUILDSTARTDATE"
+                    sh "echo $MERGEDKGNAME_BASE"
                     sh "python3.8 --version"
                     sh "id"
                     sh "whoami" // this should be jenkinsuser
@@ -108,34 +111,35 @@ pipeline {
                 dir('./gitrepo') {
                     sh '. venv/bin/activate && python3.8 run.py merge -y merge.yaml'
                     sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
-                    sh 'tar -rvfz data/merged/IDG-merged-kg.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
+                    sh 'tar -rvfz data/merged/${MERGEDKGNAME_BASE}.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
                 }
             }
         }
 
-        // stage('Make blazegraph journal'){
-        //     steps {
-        //         dir('./gitrepo/blazegraph') {
-        //                 git(
-        //                         url: 'https://github.com/balhoff/blazegraph-runner.git',
-        //                         branch: 'master'
-        //                 )
-        //                 sh 'HOME=`pwd` && sbt stage' // set HOME here to prevent sbt from trying to make dir .cache in /
-        //                 sh 'ls -lhd ../data/merged/merged-kg.nt.gz'
-        //                 sh 'pigz -f -d ../data/merged/merged-kg.nt.gz'
-        //                 sh 'export JAVA_OPTS=-Xmx128G && ./target/universal/stage/bin/blazegraph-runner load --informat=ntriples --journal=../merged-kg.jnl --use-ontology-graph=true ../data/merged/merged-kg.nt'
-        //                 sh 'pigz -f ../merged-kg.jnl'
-        //                 sh 'pigz -f ../data/merged/merged-kg.nt'
-        //         }
-        //     }
-        // }
+        stage('Make blazegraph journal'){
+            steps {
+                dir('./gitrepo/blazegraph') {
+                        git(
+                                url: 'https://github.com/balhoff/blazegraph-runner.git',
+                                branch: 'master'
+                        )
+                        sh 'HOME=`pwd` && sbt stage' // set HOME here to prevent sbt from trying to make dir .cache in /
+                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_BASE}.nt.gz'
+                        sh 'pigz -f -d ../data/merged/${MERGEDKGNAME_BASE}.nt.gz'
+                        sh 'export JAVA_OPTS=-Xmx128G && ./target/universal/stage/bin/blazegraph-runner load --informat=ntriples --journal=../${MERGEDKGNAME_BASE}.jnl --use-ontology-graph=true ../data/merged/${MERGEDKGNAME_BASE}.nt'
+                        sh 'pigz -f ../${MERGEDKGNAME_BASE}.jnl'
+                        sh 'pigz -f ../data/merged/${MERGEDKGNAME_BASE}.nt'
+                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_BASE}.jnl.gz'                       
+                }
+            }
+        }
 
         // stage('Publish') {
         //     steps {
         //         dir('./gitrepo') {
         //             script {
         //                 // code for building s3 index files
-        //                 sh 'git clone https://github.com/justaddcoffee/go-site.git'
+        //                 sh 'git clone https://github.com/Knowledge-Graph-Hub/go-site.git'
         //                 // fail early if there's going to be a problem installing these
 
         //                 // make sure we aren't going to clobber existing data
@@ -150,6 +154,7 @@ pipeline {
         //                         sh 'exit 1'
         //                     } else {
         //                         echo "remote directory $S3PROJECTDIR/$BUILDSTARTDATE is empty, proceeding"
+        //                         sh '. venv/bin/activate && touch lock && s3cmd -c $S3CMD_CFG put lock s3://kg-hub-public-data/$S3PROJECTDIR/$BUILDSTARTDATE/lock'
         //                     }
         //                 }
 
@@ -165,9 +170,9 @@ pipeline {
         //                         // make $BUILDSTARTDATE/ directory and sync to s3 bucket
         //                         //
         //                         sh 'mkdir $BUILDSTARTDATE/'
-        //                         sh 'cp -p data/merged/merged-kg.nt.gz $BUILDSTARTDATE/kg-idg.nt.gz'
-        //                         sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/kg-idg.tar.gz'
-        //                         sh 'cp -p merged-kg.jnl.gz $BUILDSTARTDATE/kg-idg.jnl.gz'
+        //                         sh 'cp -p data/merged/$MERGEDKGNAME_NT $BUILDSTARTDATE/$MERGEDKGNAME_NT'
+        //                         sh 'cp -p data/merged/$MERGEDKGNAME $BUILDSTARTDATE/$MERGEDKGNAME'
+        //                         // sh 'cp -p merged-kg.jnl.gz $BUILDSTARTDATE/kg-idg.jnl.gz'
         //                         // transformed data
         //                         sh 'rm -fr data/transformed/.gitkeep'
         //                         sh 'cp -pr data/transformed $BUILDSTARTDATE/'
@@ -206,6 +211,9 @@ pipeline {
         //                         // Invalidate the CDN now that the new files are up.
         //                         sh 'echo "[preview]" > ./awscli_config.txt && echo "cloudfront=true" >> ./awscli_config.txt'
         //                         sh '. venv/bin/activate && AWS_CONFIG_FILE=./awscli_config.txt python3.8 ./venv/bin/aws cloudfront create-invalidation --distribution-id $AWS_CLOUDFRONT_DISTRIBUTION_ID --paths "/*"'
+
+        //                         // Remove lock
+        //                         sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG rm s3://kg-hub-public-data/$S3PROJECTDIR/$BUILDSTARTDATE/lock'
 
         //                         // Should now appear at:
         //                         // https://kg-hub.berkeleybop.io/[artifact name]
