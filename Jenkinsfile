@@ -53,12 +53,6 @@ pipeline {
                     // directory that doesn't exist, etc), so we should fail here and
                     // have the user fix this
 
-                    // Verify that the project directory is defined, or it will make a mess
-                    // when it uploads everything to the wrong directory
-                    if (S3PROJECTDIR.replaceAll("\\s","") == '') {
-                        error("Project name contains only whitespace. Will not continue.")
-                    }
-
                 }
             }
         }
@@ -82,6 +76,13 @@ pipeline {
             steps {
                 dir('./gitrepo') {
                     script {
+                        
+                        // Verify that the project directory is defined, or it will make a mess
+                        // when it uploads everything to the wrong directory
+                        if (S3PROJECTDIR.replaceAll("\\s","") == '') {
+                            error("Project name contains only whitespace. Will not continue.")
+                        }
+
                         def run_py_dl = sh(
                             script: '. venv/bin/activate && python3.8 run.py download', returnStatus: true
                         )
