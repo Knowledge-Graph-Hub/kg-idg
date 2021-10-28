@@ -14,7 +14,7 @@ def run_query(query: str, endpoint: str, return_format=JSON) -> dict:
 
 
 def parse_query_yaml(yaml_file) -> dict:
-    return yaml.load(open(yaml_file))
+    return yaml.load(open(yaml_file)) # type: ignore
 
 
 def result_dict_to_tsv(result_dict: dict, outfile: str) -> None:
