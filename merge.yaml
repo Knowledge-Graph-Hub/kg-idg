@@ -114,6 +114,15 @@ merged_graph:
         filename:
           - data/transformed/tcrd/tcrd-ids_nodes.tsv
           - data/transformed/tcrd/tcrd-ids_edges.tsv
+  operations:
+    - name: kgx.graph_operations.summarize_graph.generate_graph_stats
+      args:
+        graph_name: IDG Graph
+        filename: merged_graph_stats.yaml
+        node_facet_properties:
+          - provided_by
+        edge_facet_properties:
+          - provided_by
   destination:
     merged-kg-tsv:
       format: tsv
