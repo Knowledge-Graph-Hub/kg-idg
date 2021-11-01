@@ -16,7 +16,7 @@ pipeline {
         // used solely for invalidations
         AWS_CLOUDFRONT_DISTRIBUTION_ID = 'EUVSWXZQBXCFP'
 
-        MERGEDKGNAME_BASE = "IDG-merged-kg"
+        MERGEDKGNAME_BASE = "KG-IDG"
     }
     options {
         timestamps()
@@ -191,7 +191,7 @@ pipeline {
                                 sh 'cp -p *_stats.yaml $BUILDSTARTDATE/stats/'
                                 sh 'cp templates/README.build $BUILDSTARTDATE/README'
 
-                                sh '. venv/bin/activate && python3.8 ./multi_indexer.py -v --inject ./directory-index-template.html --directory $BUILDSTARTDATE --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/ -x -u'
+                                sh '. venv/bin/activate && python3.8 ./multi_indexer.py -v --inject ./directory-index-template.html --directory $BUILDSTARTDATE --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/$BUILDSTARTDATE -x -u'
 
                                 sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG put -pr --acl-public --cf-invalidate $BUILDSTARTDATE s3://kg-hub-public-data/$S3PROJECTDIR/'
                                 sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG rm -r s3://kg-hub-public-data/$S3PROJECTDIR/current/'

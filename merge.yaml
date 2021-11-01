@@ -127,8 +127,8 @@ merged_graph:
     merged-kg-tsv:
       format: tsv
       compression: tar.gz
-      filename: IDG-merged-kg
+      filename: KG-IDG
     merged-kg-nt:
       format: nt
       compression: gz
-      filename: IDG-merged-kg.nt.gz
+      filename: KG-IDG.nt.gz
