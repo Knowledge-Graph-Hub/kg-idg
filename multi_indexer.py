@@ -48,7 +48,7 @@ def main():
     """The main runner for our script."""
 
     ## Ignore list.
-    ignore_list = [IFILENAME]
+    ignore_list = [IFILENAME,"raw"]
     LOG.info('Will ignore: "' + '", "'.join(ignore_list) + '"')
 
     # Args
@@ -224,7 +224,9 @@ def get_remote_file_list(bucket: str, remote_path: str, ignore_list: list) -> tu
         for page in pager.paginate(Bucket=bucket, Prefix=remote_path+"/"):
             remote_contents = page['Contents']
             for key in remote_contents:
-                if os.path.basename(key['Key']) not in ignore_list:
+                if os.path.basename(key['Key']) not in ignore_list and \
+                    os.path.basename(os.path.split(key['Key'])[0]) not in ignore_list:
+                    print(key['Key'])
                     remote_keys.append(os.path.relpath(key['Key'], remote_path))
     except KeyError:
         print(f"Found no existing contents at {remote_path}")
