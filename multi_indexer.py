@@ -10,13 +10,16 @@ Adapted from directory_indexer.py Eric Douglass, Seth Carbon, and Justin Reese, 
 https://github.com/Knowledge-Graph-Hub/go-site/blob/master/scripts/multi_indexer.py
 
  Example usage for local indexing (local testing):
-  python3 ./scripts/multi_indexer.py --help
+  python3 multi_indexer.py --help
   mkdir -p /tmp/foo/bar/bib/bab && mkdir -p /tmp/foo/bar/fish && mkdir -p /tmp/foo/bar/foul && touch /tmp/foo/top.md && touch /tmp/foo/bar/bib/bab/bottom.txt && touch /tmp/foo/bar/fish/trout.f && touch /tmp/foo/bar/fish/bass.f
-  python3 ./scripts/multi_indexer.py -v --inject ./scripts/directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x
- python3 ./scripts/multi_indexer.py -v --inject ./scripts/directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x -u
+  python3 multi_indexer.py -v --inject ./directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x
+ python3 multi_indexer.py -v --inject ./directory-index-template.html --directory /tmp/foo --prefix file:///tmp/foo -x -u
 
  Example usage for local indexing (production):
-  python3 ./scripts/multi_indexer.py -v --inject ./scripts/directory-index-template.html --directory $WORKSPACE/mnt --prefix http://your.site.io -x'
+  python3 multi_indexer.py -v --inject ./directory-index-template.html --directory $WORKSPACE/mnt --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/ -x'
+
+ Example usage for remote indexing:
+  python3 multi_indexer.py -v --inject ./directory-index-template.html --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/ -b kg-hub-public-data -r $S3PROJECTDIR -x'
 
 """
 
