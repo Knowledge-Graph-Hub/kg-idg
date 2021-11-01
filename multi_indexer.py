@@ -183,7 +183,7 @@ def main():
 
         ## Assemble for use.
         dir_index = {
-                'parent': bucket,
+                'parent': prefix.rsplit('/', 2)[0], #Just want the main directory
                 'children': sorted(children, key=lambda x: x['name']),
                 'location': remote_path,
                 'current': sorted(current, key=lambda x: x['name'])
