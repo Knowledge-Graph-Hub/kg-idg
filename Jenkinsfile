@@ -16,7 +16,7 @@ pipeline {
         // used solely for invalidations
         AWS_CLOUDFRONT_DISTRIBUTION_ID = 'EUVSWXZQBXCFP'
 
-        MERGEDKGNAME_BASE = "IDG-merged-kg"
+        MERGEDKGNAME_BASE = "KG-IDG"
     }
     options {
         timestamps()
