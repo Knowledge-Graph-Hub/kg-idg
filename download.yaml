@@ -78,3 +78,11 @@
   # Human Protein Atlas
   url: https://www.proteinatlas.org/download/proteinatlas.tsv.zip
   local_name: proteinatlas.tsv.zip
+-
+  # STRING
+  # Human PPI only, pre-processed for KG-COVID-19
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/STRING/edges.tsv
+  local_name: string_edges.tsv
+-
+  url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/STRING/nodes.tsv
+  local_name: string_nodes.tsv

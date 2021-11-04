@@ -1,28 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from shutil import copyfile
 from typing import Optional
 from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
 """
-Ingest KGX-format drug - drug target interactions from Drug Central
- and move them to the transformed data folder.
+Ingest KGX-format human protein-protein interactions from
+STRING and move them to the transformed data folder.
 """
 
-DRUG_CENTRAL_SOURCES = {
-    'DrugCentralNodes': 'dc_nodes.tsv',
-    'DrugCentralEdges': 'dc_edges.tsv'
+STRING_SOURCES = {
+    'STRINGNodes': 'string_nodes.tsv',
+    'STRINGEdges': 'string_edges.tsv'
 }
 
-class DrugCentralTransform(Transform):
-    """Ingests the Drug Central transform from KG-COVID-19 and
+class STRINGTransform(Transform):
+    """Ingests the STRING human subset transform from KG-COVID-19 and
     runs a kgx transform for validation.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
-        source_name = "drug_central"
+        source_name = "string"
         super().__init__(source_name, input_dir, output_dir)  # set some variables
 
     def run(self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None) -> None:  # type: ignore
@@ -35,8 +34,8 @@ class DrugCentralTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, source)
                 self.parse(k, data_file, k)
         else:
-            for k in DRUG_CENTRAL_SOURCES.keys():
-                name = DRUG_CENTRAL_SOURCES[k]
+            for k in STRING_SOURCES.keys():
+                name = STRING_SOURCES[k]
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
     

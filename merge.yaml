@@ -114,6 +114,13 @@ merged_graph:
         filename:
           - data/transformed/tcrd/tcrd-ids_nodes.tsv
           - data/transformed/tcrd/tcrd-ids_edges.tsv
+    string:
+      name: "STRING"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/string/string_nodes.tsv
+          - data/transformed/string/string_edges.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
