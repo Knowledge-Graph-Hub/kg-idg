@@ -68,7 +68,7 @@
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
-  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.11.0.tsv
+  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.12.4.tsv
   local_name: TCRDv6.11.0.tsv
 -
   # OGMS
