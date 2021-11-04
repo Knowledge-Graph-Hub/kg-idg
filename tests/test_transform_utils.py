@@ -6,6 +6,7 @@ from kg_idg.utils.transform_utils import guess_bl_category, collapse_uniprot_cur
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform, ORPHANET_NT_FILENAME
 from kg_idg.transform_utils.omim.omim import OMIMTransform, OMIM_NT_FILENAME
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform, DRUG_CENTRAL_SOURCES
+from kg_idg.transform_utils.string.string import STRINGTransform, STRING_SOURCES
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
@@ -43,6 +44,15 @@ class TestTransformUtils(TestCase):
         nodes_path = DRUG_CENTRAL_SOURCES["DrugCentralNodes"]
         edges_path = DRUG_CENTRAL_SOURCES["DrugCentralEdges"]
         this_output_dir = os.path.join(self.output_dir,"drug_central")
+        t.run(nodes_file=nodes_path,edges_file=edges_path)
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
+
+    def test_string_transform(self):
+        t = STRINGTransform(self.input_dir,self.output_dir)
+        nodes_path = STRING_SOURCES["STRINGNodes"]
+        edges_path = STRING_SOURCES["STRINGEdges"]
+        this_output_dir = os.path.join(self.output_dir,"string")
         t.run(nodes_file=nodes_path,edges_file=edges_path)
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
