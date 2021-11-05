@@ -39,14 +39,6 @@ class TestTransformUtils(TestCase):
 
     # Now start testing source-specific transform utils
     # Load pre-defined inputs and specific ones, for coverage
-    def test_drug_central_transform(self):
-        t = DrugCentralTransform(self.input_dir,self.output_dir)
-        nodes_path = DRUG_CENTRAL_SOURCES["DrugCentralNodes"]
-        edges_path = DRUG_CENTRAL_SOURCES["DrugCentralEdges"]
-        this_output_dir = os.path.join(self.output_dir,"drug_central")
-        t.run(nodes_file=nodes_path,edges_file=edges_path)
-        self.assertTrue(os.path.exists(this_output_dir))
-        shutil.rmtree(this_output_dir)
 
     # Filter test is included here
     def test_string_transform(self):
@@ -85,6 +77,15 @@ class TestTransformUtils(TestCase):
     # Koza transforms have hard-coded sources so we skip the transform
     # and instead ensure they don't proceed if source is incorrect
     # (Note that these tests will fail if a non-test transform has been run!)
+
+    @mock.patch('koza.cli_runner.transform_source')
+    def test_drug_central_transform(self, mock_transform_source):
+        t = DrugCentralTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"drug_central")
+        with self.assertRaises(ValueError):
+            t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
 
     @mock.patch('koza.cli_runner.transform_source')
     def test_reactome_transform(self, mock_transform_source):

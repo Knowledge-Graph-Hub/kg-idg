@@ -1,0 +1,51 @@
+name: 'drugcentral-dti'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/drug.target.interaction.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+has_header: 'True'
+
+columns:
+  - "DRUG_NAME"
+  - "STRUCT_ID"
+  - "TARGET_NAME"
+  - "TARGET_CLASS"
+  - "ACCESSION"
+  - "GENE"
+  - "SWISSPROT"
+  - "ACT_VALUE"
+  - "ACT_UNIT"  
+  - "ACT_TYPE"
+  - "ACT_COMMENT"
+  - "ACT_SOURCE"
+  - "RELATION"
+  - "MOA"
+  - "MOA_SOURCE"  
+  - "ACT_SOURCE_URL"
+  - "MOA_SOURCE_URL"
+  - "ACTION_TYPE"
+  - "TDL"
+  - "ORGANISM"
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'

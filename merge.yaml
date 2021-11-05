@@ -28,8 +28,8 @@ merged_graph:
       input:
         format: tsv
         filename:
-          - data/transformed/drug_central/dc_nodes.tsv
-          - data/transformed/drug_central/dc_edges.tsv
+          - data/transformed/drug_central/drugcentral-dti_nodes.tsv
+          - data/transformed/drug_central/drugcentral-dti_edges.tsv
     gocams:
       name: "Gene Ontology Causal Activity Modeling"
       input:
