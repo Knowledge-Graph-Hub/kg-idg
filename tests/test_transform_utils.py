@@ -48,12 +48,16 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
+    # Filter test is included here
     def test_string_transform(self):
         t = STRINGTransform(self.input_dir,self.output_dir)
         nodes_path = STRING_SOURCES["STRINGNodes"]
         edges_path = STRING_SOURCES["STRINGEdges"]
         this_output_dir = os.path.join(self.output_dir,"string")
         t.run(nodes_file=nodes_path,edges_file=edges_path)
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
     

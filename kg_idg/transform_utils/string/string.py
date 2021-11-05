@@ -66,12 +66,12 @@ class STRINGTransform(Transform):
                     new_edge_file.write(line)
 
         os.rename(data_file, os.path.join(os.path.dirname(data_file),'string_edges_full.tsv'))
-        os.rename(new_edge_file_path, os.path.join(os.path.dirname(data_file),'string_edges.tsv'))
+        os.rename(new_edge_file_path, os.path.join(os.path.dirname(data_file),STRING_SOURCES['STRINGEdges']))
 
     def parse(self, name: str, data_file: str, source: str) -> None:
         print(f"Parsing {data_file}")
 
-        if name == 'string_edges.tsv':
+        if name == STRING_SOURCES['STRINGEdges']:
             print(f"Parsing edges in {name}")
             self.filter(name, data_file)
 
