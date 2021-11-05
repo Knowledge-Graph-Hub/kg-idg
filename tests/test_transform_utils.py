@@ -80,6 +80,7 @@ class TestTransformUtils(TestCase):
     
     # Koza transforms have hard-coded sources so we skip the transform
     # and instead ensure they don't proceed if source is incorrect
+    # (Note that these tests will fail if a non-test transform has been run!)
 
     @mock.patch('koza.cli_runner.transform_source')
     def test_reactome_transform(self, mock_transform_source):
