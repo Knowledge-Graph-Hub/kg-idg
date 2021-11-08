@@ -138,4 +138,4 @@ merged_graph:
     merged-kg-nt:
       format: nt
       compression: gz
-      filename: merged-kg.nt.gz
+      filename: KG-IDG.nt.gz

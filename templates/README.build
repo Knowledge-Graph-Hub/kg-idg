@@ -2,12 +2,12 @@ The files in this directory represent a build of the KG-IDG knowledge graph.
 
 These file include:
 	*	Jenkinsfile - the exact command run to produce this build of the KG
-	*	merged-kg.jnl.gz - a blazegraph journal that can be loaded to produce a Blazegraph endpoint
-	*	merged-kg.nt.gz- an ntriples/RDF version of the KG
-	*	KG-IDG.tar.gz - a tar.gz file containing the KG in KGX TSV format
+	*	KG-IDG.jnl.gz - a blazegraph journal that can be loaded to produce a Blazegraph endpoint
+	*	KG-IDG.nt.gz- an ntriples/RDF version of the KG
+	*	KG-IDG.tar.gz - a tar.gz file containing the KG in KGX TSV format (with 'merged-kg' within the name of both node and edge files)
 
 The subdirectories in this directory are:
 
-	•	raw - the raw data that was downloaded and transformed to produce this KG
-	•	stats - statistics about this build of the KG in yaml format
-	•	transformed - the transformed subgraphs for each source we ingest
+	*	raw - the raw data that was downloaded and transformed to produce this KG
+	*	stats - statistics about this build of the KG in yaml format
+	*	transformed - the transformed subgraphs for each source we ingest
