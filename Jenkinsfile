@@ -16,7 +16,8 @@ pipeline {
         // used solely for invalidations
         AWS_CLOUDFRONT_DISTRIBUTION_ID = 'EUVSWXZQBXCFP'
 
-        MERGEDKGNAME_BASE = "merged-kg"
+        MERGEDKGNAME_BASE = "KG-IDG"
+        MERGEDKGNAME_GENERIC = "merged-kg"
     }
     options {
         timestamps()
@@ -44,6 +45,7 @@ pipeline {
                     sh "echo $BUILDSTARTDATE > dow.txt"
                     sh "echo $BUILDSTARTDATE"
                     sh "echo $MERGEDKGNAME_BASE"
+                    sh "echo $MERGEDKGNAME_GENERIC"
                     sh "python3.8 --version"
                     sh "id"
                     sh "whoami" // this should be jenkinsuser
@@ -133,12 +135,12 @@ pipeline {
                                 branch: 'master'
                         )
                         sh 'HOME=`pwd` && sbt stage' // set HOME here to prevent sbt from trying to make dir .cache in /
-                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_BASE}.nt.gz'
-                        sh 'pigz -f -d ../data/merged/${MERGEDKGNAME_BASE}.nt.gz'
-                        sh 'export JAVA_OPTS=-Xmx128G && ./target/universal/stage/bin/blazegraph-runner load --informat=ntriples --journal=../data/merged/${MERGEDKGNAME_BASE}.jnl --use-ontology-graph=true ../data/merged/${MERGEDKGNAME_BASE}.nt'
-                        sh 'pigz -f ../data/merged/${MERGEDKGNAME_BASE}.jnl'
-                        sh 'pigz -f ../data/merged/${MERGEDKGNAME_BASE}.nt'
-                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_BASE}.jnl.gz'                       
+                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_GENERIC}.nt.gz'
+                        sh 'pigz -f -d ../data/merged/${MERGEDKGNAME_GENERIC}.nt.gz'
+                        sh 'export JAVA_OPTS=-Xmx128G && ./target/universal/stage/bin/blazegraph-runner load --informat=ntriples --journal=../data/merged/${MERGEDKGNAME_GENERIC}.jnl --use-ontology-graph=true ../data/merged/${MERGEDKGNAME_BASE}.nt'
+                        sh 'pigz -f ../data/merged/${MERGEDKGNAME_GENERIC}.jnl'
+                        sh 'pigz -f ../data/merged/${MERGEDKGNAME_GENERIC}.nt'
+                        sh 'ls -lhd ../data/merged/${MERGEDKGNAME_GENERIC}.jnl.gz'                       
                 }
             }
         }
@@ -178,9 +180,9 @@ pipeline {
                                 // make $BUILDSTARTDATE/ directory and sync to s3 bucket
                                 //
                                 sh 'mkdir $BUILDSTARTDATE/'
-                                sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.nt.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.nt.gz'
+                                sh 'cp -p data/merged/${MERGEDKGNAME_GENERIC}.nt.gz $BUILDSTARTDATE/${MERGEDKGNAME_GENERIC}.nt.gz'
                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
-                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.jnl.gz'
+                                 sh 'cp -p data/merged/${MERGEDKGNAME_GENERIC}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_GENERIC}.jnl.gz'
                                 // transformed data
                                 sh 'rm -fr data/transformed/.gitkeep'
                                 sh 'cp -pr data/transformed $BUILDSTARTDATE/'
