@@ -9,7 +9,7 @@ files:
 
 metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
 
-has_header: 'True'
+header: 'infer'
 
 columns:
   - "DRUG_NAME"
