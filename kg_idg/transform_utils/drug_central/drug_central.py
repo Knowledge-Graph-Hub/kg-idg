@@ -1,37 +1,47 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
-from shutil import copyfile
 from typing import Optional
+import gzip
+import shutil
 
 from kg_idg.transform_utils.transform import Transform
+from koza.cli_runner import transform_source #type: ignore
 
 """
-Ingest KGX-format drug - drug target interactions from Drug Central
- and move them to the transformed data folder.
+DrugCentral provides a set of drug vs. target interactions.
+We integrate this data with TRCD contents.
+See all available files here:
+https://unmtid-shinyapps.net/download/DrugCentral/
 """
 
 DRUG_CENTRAL_SOURCES = {
-    'DrugCentralNodes': 'dc_nodes.tsv',
-    'DrugCentralEdges': 'dc_edges.tsv'
+    'DrugCentralData': 'drug.target.interaction.tsv.gz',
 }
 
+DRUG_CENTRAL_CONFIGS = {
+    'DrugCentralData': 'drugcentral-dti.yaml',
+}
+
+
+TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
+
 class DrugCentralTransform(Transform):
-    """This transform just ingests the Drug Central transform from KG-COVID-19 and
-    copies it to the transform directory.
+    """This transform ingests the tab-delimited DrugCentral
+    drug-target interactions file.
+	It is transformed to KGX-format node and edge lists.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "drug_central"
         super().__init__(source_name, input_dir, output_dir)  # set some variables
 
-    def run(self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None) -> None:  # type: ignore
-        """A 'passthrough' transform - all we are doing is just moving the downloaded
-        nodes and edges file to the transformed directory.
-        Actual moving happens in the parse function, and we call that here.
+    def run(self, dc_file: Optional[str] = None) -> None:  # type: ignore
         """
-        if nodes_file and edges_file:
-            for source in [nodes_file, edges_file]:
+        Set up the DrugCentral file for Koza and call the parse function.
+        """
+        if dc_file:
+            for source in [dc_file]:
                 k = source.split('.')[0]
                 data_file = os.path.join(self.input_base_dir, source)
                 self.parse(k, data_file, k)
@@ -42,6 +52,26 @@ class DrugCentralTransform(Transform):
                 self.parse(name, data_file, k)
     
     def parse(self, name: str, data_file: str, source: str) -> None:
-        print(f"Copying {data_file}")
-        output=os.path.join(self.output_dir, name)
-        copyfile(data_file, output)
+        """
+        Transform DrugCentral file with Koza.
+        Need to decompress it first.
+        """
+        print(f"Parsing {data_file}")
+        config = os.path.join("kg_idg/transform_utils/drug_central/", DRUG_CENTRAL_CONFIGS[source])
+        output = self.output_dir
+
+        # Decompress
+        outpath = os.path.join(self.input_base_dir,'drug.target.interaction.tsv')
+        with gzip.open(data_file, 'rb') as data_file_gz:
+            with open(outpath, 'wb') as data_file_new:
+                shutil.copyfileobj(data_file_gz, data_file_new)
+
+        # If source is unknown then we aren't going to guess
+        if source not in DRUG_CENTRAL_CONFIGS:
+            raise ValueError(f"Source file {source} not recognized - not transforming.")
+        else:
+            print(f"Transforming using source in {config}")
+            transform_source(source=config, output_dir=output,
+                             output_format="tsv",
+                             global_table=TRANSLATION_TABLE,
+                             local_table=None)
