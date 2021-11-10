@@ -76,14 +76,13 @@ class TestTransformUtils(TestCase):
     
     # Koza transforms have hard-coded sources so we skip the transform
     # and instead ensure they don't proceed if source is incorrect.
-    # They should all throw a TypeError 
     # (Note that these tests will fail if a non-test transform has been run!)
 
     @mock.patch('koza.cli_runner.transform_source')
     def test_drug_central_transform(self, mock_transform_source):
         t = DrugCentralTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"drug_central")
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
@@ -92,7 +91,7 @@ class TestTransformUtils(TestCase):
     def test_reactome_transform(self, mock_transform_source):
         t = ReactomeTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"reactome")
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         self.assertFalse(mock_transform_source.called)
@@ -102,7 +101,7 @@ class TestTransformUtils(TestCase):
     def test_tcrd_transform(self, mock_transform_source):
         t = TCRDTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         self.assertFalse(mock_transform_source.called)
@@ -112,7 +111,7 @@ class TestTransformUtils(TestCase):
     def test_hpa_transform(self, mock_transform_source):
         t = ProteinAtlasTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
-        with self.assertRaises(TypeError):
+        with self.assertRaises(ValueError):
             t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         self.assertFalse(mock_transform_source.called)
