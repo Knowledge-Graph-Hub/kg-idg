@@ -35,8 +35,8 @@ merged_graph:
       input:
         format: tsv
         filename:
-          - data/transformed/gocams/GOCAMs_nodes.tsv
-          - data/transformed/gocams/GOCAMs_edges.tsv
+          - data/transformed/gocams/GOCAMs_nodes.tsv_nodes.tsv
+          - data/transformed/gocams/GOCAMs_edges.tsv_edges.tsv
     hpa:
       name: "Human Proteome Atlas"
       input:
@@ -119,8 +119,8 @@ merged_graph:
       input:
         format: tsv
         filename:
-          - data/transformed/string/string_nodes.tsv
-          - data/transformed/string/string_edges.tsv
+          - data/transformed/string/string_nodes.tsv_nodes.tsv
+          - data/transformed/string/string_edges.tsv_edges.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
