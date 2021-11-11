@@ -122,7 +122,7 @@ pipeline {
                 dir('./gitrepo') {
                     sh '. venv/bin/activate && python3.8 run.py merge -y merge.yaml'
                     sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
-                    sh 'tar -rvfz data/merged/${MERGEDKGNAME_BASE}.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
+                    sh 'tar -rvfz data/merged/merged-kg.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
                 }
             }
         }
