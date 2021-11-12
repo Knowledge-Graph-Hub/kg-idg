@@ -181,7 +181,7 @@ pipeline {
                                 //
                                 sh 'mkdir $BUILDSTARTDATE/'
                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.nt.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.nt.gz'
-                                sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
+                                sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
                                  sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.jnl.gz'
                                 // transformed data
                                 sh 'rm -fr data/transformed/.gitkeep'
