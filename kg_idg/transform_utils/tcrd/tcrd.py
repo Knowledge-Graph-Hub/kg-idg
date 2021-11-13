@@ -11,20 +11,28 @@ from koza.cli_runner import transform_source #type: ignore
 TCRD is the Target Central Resource Database.
 We use this data for the ID mappings necessary to integrate
 with Pharos.
+We also download the full MySQL dump and convert it to TSV
+(rather than trying to re-load the whole DB).
 See details on source files here:
 http://juniper.health.unm.edu/tcrd/download/README
 """
 
 TCRD_SOURCES = {
-    'TCRD-IDs': 'TCRDv6.11.0.tsv',
+    'TCRD-IDs': 'TCRDv6.12.4.tsv',
+    'TCRD-DB': 'tcrd.sql'
 }
 
 TCRD_CONFIGS = {
     'TCRD-IDs': 'tcrd-ids.yaml',
+    'TCRD-DB': 'tcrd-db.yaml',
 }
 
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
+
+class SplitterArgs:
+    # Setup for the MySQL parser
+    def __init__(self): pass
 
 class TCRDTransform(Transform):
     """This transform ingests the tab-delimited TCRD ID mapping file.
@@ -62,8 +70,15 @@ class TCRDTransform(Transform):
         if source not in TCRD_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
         else:
-            print(f"Transforming using source in {config}")
-            transform_source(source=config, output_dir=output,
+            if name[-3:] == "tsv": #This is just the ID map
+                print(f"Transforming using source in {config}")
+                transform_source(source=config, output_dir=output,
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)
+            elif name[-3:] == "sql": 
+                #This is the full SQL dump
+                # So we need to convert it to TSV first,
+                # then pass to Koza transform_source
+                print("Transforming MySQL dump to TSV...")
+
