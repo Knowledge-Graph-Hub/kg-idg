@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import os
 from typing import Optional
+import subprocess
+
+import mysql.connector
 
 from kg_idg.transform_utils.transform import Transform
 from koza.cli_runner import transform_source #type: ignore
@@ -27,6 +30,7 @@ TCRD_CONFIGS = {
     'TCRD-DB': 'tcrd-db.yaml',
 }
 
+WANTED_TABLES = ["data_type","info_type","protein","target","tdl_info"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
@@ -58,6 +62,90 @@ class TCRDTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
 
+    def process_tcrd_data_dump(self, data_file: str) -> None:
+        """
+        Given the path to a TCRD MySQL data dump,
+        loads the file with sqlparse,
+        and exports each table as its own TSV.
+        This will fail if a mysql server is not running!
+        """
+
+        success = False
+
+        username = "root"
+        db_name = "tcrd"
+
+        try:
+            connection = mysql.connector.connect(
+                    host="localhost",
+                    user=username,
+                    password="pass",
+                    allow_local_infile=True
+                    )
+            if connection.is_connected():
+                db_Info = connection.get_server_info()
+                print("MySQL server version:", db_Info)
+                cursor = connection.cursor()
+                
+                # Create temp database if it doesn't exist
+                # But if it does, remove it!
+                cursor.execute("SHOW DATABASES")
+                if (db_name,) in cursor:
+                    cursor.execute(f"DROP DATABASE {db_name}")
+                    print(f"Removing old {db_name} database.")
+                cursor.execute(f"CREATE DATABASE {db_name}")
+                print(f"Created {db_name} database.")
+                    
+                # List tables in the data dump
+                print(f"Retrieving table names from {data_file}")
+                command = "awk '/INSERT INTO/ && !a[$3]++{print $3}' " + data_file
+                os.system(command)
+
+                # Read the specific tables in the data dump
+                # We also don't want to load the whole thing
+                # Because that takes forever
+                output_sql_paths = []
+                for table_name in WANTED_TABLES:
+                    print(f"Reading {table_name} from {data_file}...")
+                    outfile_sql_path = os.path.join(self.input_base_dir, f"tcrd-{table_name}.sql")
+                    output_sql_paths.append(outfile_sql_path)
+                    if not os.path.isfile(outfile_sql_path):
+                        command = f"sed -n -e '/DROP TABLE.*`{table_name}`/,/UNLOCK TABLES/p' {data_file} > {outfile_sql_path}"
+                        os.system(command)
+
+                # Now load the new, single tables
+                # Need to use the mysql interface directly
+                # as loading sources isn't supported by the connector
+                for outfile_sql_path in output_sql_paths:
+                    print(f"Loading {outfile_sql_path} into {db_name}...")
+                    command = f"mysql -u {username} --password=pass {db_name} < {outfile_sql_path}"
+                    os.system(command)
+
+                # Finally, export tables to TSV
+                cursor.execute('USE ' + db_name)
+                for table_name in WANTED_TABLES:
+                    outfile_tsv_path = os.path.join(self.output_dir, f"tcrd-{table_name}.tsv")
+                    print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
+                    cursor.execute('SELECT * FROM ' + table_name)
+                    header = [row[0] for row in cursor.description]
+                    rows = cursor.fetchall()
+                    len_rows = str(len(rows))
+                    with open(outfile_tsv_path, 'w') as outfile:
+                        outfile.write('\t'.join(header) + '\n')
+                        for row in rows:
+                            outfile.write('\t'.join(str(r) for r in row) + '\n')
+                    print(f"Complete - wrote {len_rows}.")
+                    
+                success = True
+
+            connection.close()
+
+        except mysql.connector.errors.DatabaseError as e:
+            print(f"Encountered a database error: {e}")
+            success = False
+        
+        return success
+
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform TCRD ID mapping file with Koza.
@@ -69,12 +157,17 @@ class TCRDTransform(Transform):
         # If source is unknown then we aren't going to guess
         if source not in TCRD_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
-            
+
         if name[-3:] == "sql": 
-                #This is the full SQL dump
-                # So we need to convert it to TSV first,
-                # then pass to Koza transform_source
-                print("Transforming MySQL dump to TSV...")
+                '''
+                This is the full SQL dump so we need to load it as a local database,
+                export it as individual TSVs,
+                then pass what we want to Koza transform_source.
+                '''
+                print("Transforming MySQL dump to TSV. This may take a while...")
+                if not self.process_tcrd_data_dump(data_file):
+                    print("Did not process TCRD mysql dump!")
+                    return
 
         print(f"Transforming using source in {config}")
         transform_source(source=config, output_dir=output,

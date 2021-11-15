@@ -3,6 +3,8 @@ pipeline {
         docker {
             reuseNode false
             image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
+            // TODO: install mysql-server on docker image
+            //       and include step below to start mysql server
         }
     }
     triggers{
