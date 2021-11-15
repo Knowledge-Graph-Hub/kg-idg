@@ -4,7 +4,7 @@ import os
 from typing import Optional
 import subprocess
 
-import mysql.connector
+import mysql.connector #type: ignore
 
 from kg_idg.transform_utils.transform import Transform
 from koza.cli_runner import transform_source #type: ignore
@@ -62,7 +62,7 @@ class TCRDTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
 
-    def process_tcrd_data_dump(self, data_file: str) -> None:
+    def process_tcrd_data_dump(self, data_file: str) -> bool:
         """
         Given the path to a TCRD MySQL data dump,
         loads the file with sqlparse,
