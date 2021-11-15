@@ -69,16 +69,16 @@ class TCRDTransform(Transform):
         # If source is unknown then we aren't going to guess
         if source not in TCRD_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
-        else:
-            if name[-3:] == "tsv": #This is just the ID map
-                print(f"Transforming using source in {config}")
-                transform_source(source=config, output_dir=output,
-                             output_format="tsv",
-                             global_table=TRANSLATION_TABLE,
-                             local_table=None)
-            elif name[-3:] == "sql": 
+            
+        if name[-3:] == "sql": 
                 #This is the full SQL dump
                 # So we need to convert it to TSV first,
                 # then pass to Koza transform_source
                 print("Transforming MySQL dump to TSV...")
+
+        print(f"Transforming using source in {config}")
+        transform_source(source=config, output_dir=output,
+                             output_format="tsv",
+                             global_table=TRANSLATION_TABLE,
+                             local_table=None)
 
