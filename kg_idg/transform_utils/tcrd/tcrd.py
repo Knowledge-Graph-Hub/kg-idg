@@ -62,7 +62,7 @@ class TCRDTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
 
-    def process_tcrd_data_dump(self, data_file: str) -> bool:
+    def process_tcrd_data_dump(self, data_file: str, list_tables: bool) -> bool:
         """
         Given the path to a TCRD MySQL data dump,
         loads the file with sqlparse,
@@ -97,9 +97,10 @@ class TCRDTransform(Transform):
                 print(f"Created {db_name} database.")
                     
                 # List tables in the data dump
-                print(f"Retrieving table names from {data_file}")
-                command = "awk '/INSERT INTO/ && !a[$3]++{print $3}' " + data_file
-                os.system(command)
+                if list_tables:
+                    print(f"Retrieving table names from {data_file}")
+                    command = "awk '/INSERT INTO/ && !a[$3]++{print $3}' " + data_file
+                    os.system(command)
 
                 # Read the specific tables in the data dump
                 # We also don't want to load the whole thing
@@ -165,7 +166,7 @@ class TCRDTransform(Transform):
                 then pass what we want to Koza transform_source.
                 '''
                 print("Transforming MySQL dump to TSV. This may take a while...")
-                if not self.process_tcrd_data_dump(data_file):
+                if not self.process_tcrd_data_dump(data_file, list_tables=False):
                     print("Did not process TCRD mysql dump!")
                     return
 
