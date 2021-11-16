@@ -1,26 +1,30 @@
-name: 'tcrd-ids'
+name: 'tcrd-protein'
 
 format: 'csv'
 
 delimiter: '\t'
 
 files:
-  - './data/raw/TCRDv6.12.4.tsv'
+  - './data/transformed/tcrd/tcrd-protein.tsv'
 
 metadata: './kg_idg/transform_utils/tcrd/metadata.yaml'
 
 header: 'infer'
 
 columns:
-  - 'TCRD ID'
-  - 'Name'
-  - 'Description'
-  - 'HGNC Symbol'
-  - 'UniProt'
-  - 'NCBI Gene ID'
-  - 'STRING ID'
-  - 'TDL'
-  - 'IDG Eligible'
+  - 'id'
+  - 'name'
+  - 'description'
+  - 'uniprot'
+  - 'up_version'
+  - 'geneid'
+  - 'sym'
+  - 'family'
+  - 'chr'
+  - 'seq'
+  - 'dtoid'
+  - 'stringid'
+  - 'dtoclass'
 
 node_properties:
   - 'id'

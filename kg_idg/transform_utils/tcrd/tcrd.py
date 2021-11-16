@@ -25,7 +25,7 @@ TCRD_SOURCES = {
 
 TCRD_CONFIGS = {
     'TCRD-IDs': 'tcrd-ids.yaml',
-    'TCRD-DB': 'tcrd-db.yaml',
+    'TCRD-DB': 'tcrd-protein.yaml', # TODO: This will need to be calls to multiple configs
 }
 
 WANTED_TABLES = ["data_type","info_type","protein","target","tdl_info"]
