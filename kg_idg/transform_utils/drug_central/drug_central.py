@@ -26,7 +26,7 @@ DRUG_CENTRAL_CONFIGS = {
     'DrugCentralDB': 'drugcentral-temp.yaml' # TODO: This will need to be calls to multiple configs
 }
 
-WANTED_TABLES = ["data_type"]
+WANTED_TABLES = ["atc"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 

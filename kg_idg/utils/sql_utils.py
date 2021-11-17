@@ -50,6 +50,8 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
     Returns a PostgreSQL connection object for further operations.
     """
 
+    system_user = os.environ.get('LOGNAME')
+
     connection = psycopg2.connect(f"user={username} host=localhost")
     connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
 
@@ -60,18 +62,22 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
-
         cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(
                         sql.Identifier(db_name)))
-
         cursor.execute(sql.SQL("CREATE DATABASE {}").format(
                         sql.Identifier(db_name)))
+
+        # Create a role so we don't have to constantly authenticate
+        cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(
+                        sql.Identifier(system_user)))
+        cursor.execute(sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(
+                        sql.Identifier(system_user)))
 
         print(f"Created {db_name}.")
 
     return connection
 
-def process_data_dump(short_name: str, data_file: str, db_type: str,
+def process_data_dump(short_name: str, db_type: str, data_file: str, 
                         wanted_tables: list, input_dir: str, output_dir: str, 
                         list_tables: bool) -> bool:
     """
@@ -156,49 +162,42 @@ def process_data_dump(short_name: str, data_file: str, db_type: str,
             # List tables in the data dump
             if list_tables:
                 print(f"Retrieving table names from {data_file}")
-                command = "awk '/INSERT INTO/ && !a[$3]++{print $3}' " + data_file
+                command = "awk '/DROP TABLE IF EXISTS/ && !a[$5]++{print $5}' " + data_file
                 os.system(command)
 
-            # Read the specific tables in the data dump
-            # We also don't want to load the whole thing
-            # Because that takes forever
-            output_sql_paths = []
-            for table_name in wanted_tables:
-                print(f"Reading {table_name} from {data_file}...")
-                outfile_sql_path = os.path.join(input_dir, f"{short_name}-{table_name}.sql")
-                output_sql_paths.append(outfile_sql_path)
-                if not os.path.isfile(outfile_sql_path):
-                    command = f"sed -n -e '/DROP TABLE.*`{table_name}`/,/UNLOCK TABLES/p' {data_file} > {outfile_sql_path}"
-                    os.system(command)
+            # Load the data dump - the whole thing,
+            # as loading specific tables is challenging with postgresql
+            # and the data sets we have in this format are manageable
+            print(f"Loading {data_file} into {db_name}...")
+            command = f"psql {db_name} < {data_file}"
+            os.system(command)
 
-            # Now load the new, single tables
-            # Need to use the mysql interface directly
-            # as loading sources isn't supported by the connector
-            for outfile_sql_path in output_sql_paths:
-                print(f"Loading {outfile_sql_path} into {db_name}...")
-                command = f"mysql -u {username} --password=pass {db_name} < {outfile_sql_path}"
-                os.system(command)
+            # Need to re-connect to the database for some reason
+            connection = psycopg2.connect(f"user={os.environ.get('LOGNAME')} host=localhost dbname={db_name}")
+            cursor = connection.cursor()
 
-            # Finally, export tables to TSV
-            cursor.execute('USE ' + db_name)
+            # Finally, export specified tables to TSV
+            # May need to change the value "public" if schema requires
+            delim = '\'\\t\''
             for table_name in wanted_tables:
-                outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
+                # Need full path here, but we write it to a temp directory first
+                # Due to some user permission
+                current_path = os.getcwd()
+                outfile_tsv_path = os.path.join(current_path, output_dir, f"{short_name}-{table_name}.tsv")
                 print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
-                cursor.execute('SELECT * FROM ' + table_name)
-                header = [row[0] for row in cursor.description]
-                rows = cursor.fetchall()
-                len_rows = str(len(rows))
-                with open(outfile_tsv_path, 'w') as outfile:
-                    outfile.write('\t'.join(header) + '\n')
-                    for row in rows:
-                        outfile.write('\t'.join(str(r) for r in row) + '\n')
-                print(f"Complete - wrote {len_rows}.")
+                with open(outfile_tsv_path, 'w') as outfile: 
+                    cursor.copy_to(outfile, table_name)
+                print(f"Complete.")
                 
             success = True
 
         except Exception as e:
             print(f"Encountered a database error: {e}")
             success = False
+    
+    else: # Unrecognized database type
+        print(f"Did not recognize database type: {db_type}")
+        success = False
 
 
     return success
