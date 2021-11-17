@@ -79,12 +79,14 @@ class TCRDTransform(Transform):
                 then pass what we want to Koza transform_source.
                 '''
                 print("Transforming MySQL dump to TSV. This may take a while...")
-                if not process_data_dump(data_file, 
+                if not process_data_dump("tcrd",
+                                        "mysql",
+                                        data_file, 
                                         WANTED_TABLES, 
                                         self.input_base_dir,
                                         self.output_dir,
                                         list_tables=False):
-                    print("Did not process TCRD mysql dump!")
+                    print("Did not process TCRD MySQL dump!")
                     return
 
         print(f"Transforming using source in {config}")

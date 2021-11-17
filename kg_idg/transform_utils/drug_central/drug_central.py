@@ -6,6 +6,7 @@ import gzip
 import shutil
 
 from kg_idg.transform_utils.transform import Transform
+from kg_idg.utils.sql_utils import process_data_dump
 from koza.cli_runner import transform_source #type: ignore
 
 """
@@ -16,13 +17,16 @@ https://unmtid-shinyapps.net/download/DrugCentral/
 """
 
 DRUG_CENTRAL_SOURCES = {
-    'DrugCentralData': 'drug.target.interaction.tsv.gz',
+    'DrugCentralDTI': 'drug.target.interaction.tsv.gz',
+    'DrugCentralDB': 'drugcentral.dump.010_05_2021.sql.gz'
 }
 
 DRUG_CENTRAL_CONFIGS = {
-    'DrugCentralData': 'drugcentral-dti.yaml',
+    'DrugCentralDTI': 'drugcentral-dti.yaml',
+    'DrugCentralDB': 'drugcentral-temp.yaml' # TODO: This will need to be calls to multiple configs
 }
 
+WANTED_TABLES = ["data_type"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
@@ -61,7 +65,8 @@ class DrugCentralTransform(Transform):
         output = self.output_dir
 
         # Decompress
-        outpath = os.path.join(self.input_base_dir,'drug.target.interaction.tsv')
+        outname = name[:-3]
+        outpath = os.path.join(self.input_base_dir, outname)
         with gzip.open(data_file, 'rb') as data_file_gz:
             with open(outpath, 'wb') as data_file_new:
                 shutil.copyfileobj(data_file_gz, data_file_new)
@@ -69,9 +74,26 @@ class DrugCentralTransform(Transform):
         # If source is unknown then we aren't going to guess
         if source not in DRUG_CENTRAL_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
-        else:
-            print(f"Transforming using source in {config}")
-            transform_source(source=config, output_dir=output,
+
+        if outname[-3:] == "sql": 
+            '''
+            This is the full SQL dump so we need to load it as a local database,
+            export it as individual TSVs,
+            then pass what we want to Koza transform_source.
+            '''
+            print("Transforming data dump to TSV. This may take a while...")
+            if not process_data_dump("drugcentral",
+                                    "postgres",
+                                    outpath, 
+                                    WANTED_TABLES, 
+                                    self.input_base_dir,
+                                    self.output_dir,
+                                    list_tables=True):
+                print("Did not process DrugCentral data dump!")
+                return
+        
+        print(f"Transforming using source in {config}")
+        transform_source(source=config, output_dir=output,
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)

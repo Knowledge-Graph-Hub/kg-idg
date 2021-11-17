@@ -3,8 +3,11 @@ pipeline {
         docker {
             reuseNode false
             image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
-            // TODO: install mysql-server on docker image
-            //       and include step below to start mysql server
+            // TODO: install mysql-server and postgres server on docker image
+            //       and include step below to start both servers
+            //       and for postgres, change the authentication type to 'trust'
+            //         (see https://stackoverflow.com/questions/66351630/change-authentication-method-for-postgres-superuser)
+            //          but should just need to edit /etc/postgresql/12/main/pg_hba.conf
         }
     }
     triggers{
