@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+import shutil
+
 import mysql.connector #type: ignore
 from mysql.connector import MySQLConnection #type: ignore
 import psycopg2 #type: ignore
@@ -28,6 +30,7 @@ def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
     if connection.is_connected():
         db_info = connection.get_server_info()
         print("MySQL server version:", db_info)
+        connection.autocommit = True
         cursor = connection.cursor()
         
         # Create temp database if it doesn't exist
@@ -173,7 +176,8 @@ def process_data_dump(short_name: str, db_type: str, data_file: str,
             os.system(command)
 
             # Need to re-connect to the database for some reason
-            connection = psycopg2.connect(f"user={os.environ.get('LOGNAME')} host=localhost dbname={db_name}")
+            connection = psycopg2.connect(f"user=postgres host=localhost dbname={db_name}")
+            connection.autocommit = True
             cursor = connection.cursor()
 
             # Finally, export specified tables to TSV
@@ -181,17 +185,30 @@ def process_data_dump(short_name: str, db_type: str, data_file: str,
             delim = '\'\\t\''
             for table_name in wanted_tables:
                 # Need full path here, but we write it to a temp directory first
-                # Due to some user permission
+                # Due to some user permission weirdness
                 current_path = os.getcwd()
                 outfile_tsv_path = os.path.join(current_path, output_dir, f"{short_name}-{table_name}.tsv")
+                temp_dir = "/tmp/"
+                temp_tsv_path = os.path.join(temp_dir, f"{short_name}-{table_name}.tsv")
+                
                 print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
-                with open(outfile_tsv_path, 'w') as outfile: 
-                    cursor.copy_to(outfile, table_name)
-                print(f"Complete.")
+                
+                #cursor.execute("SELECT * FROM atc")
+                #records = cursor.fetchall()
+                #for row in records:
+                #    print(row)
+
+                with open(outfile_tsv_path, 'w') as outfile:
+                    cursor.copy_expert(("COPY {} TO STDOUT WITH CSV HEADER").format(table_name), 
+                                        outfile)
+                #print(f"Moving {temp_tsv_path} to {outfile_tsv_path}...")
+                #shutil.move(temp_tsv_path, outfile_tsv_path)
+            
+            print(f"Complete.")
                 
             success = True
 
-        except Exception as e:
+        except (Exception, psycopg2.Error) as e:
             print(f"Encountered a database error: {e}")
             success = False
     
