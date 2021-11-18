@@ -199,7 +199,7 @@ def process_data_dump(short_name: str, db_type: str, data_file: str,
                 #    print(row)
 
                 with open(outfile_tsv_path, 'w') as outfile:
-                    cursor.copy_expert(("COPY {} TO STDOUT WITH CSV HEADER").format(table_name), 
+                    cursor.copy_expert(("COPY {} TO STDOUT WITH DELIMITER E\'\t\'CSV HEADER").format(table_name), 
                                         outfile)
                 #print(f"Moving {temp_tsv_path} to {outfile_tsv_path}...")
                 #shutil.move(temp_tsv_path, outfile_tsv_path)
