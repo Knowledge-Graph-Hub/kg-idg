@@ -182,14 +182,11 @@ def process_data_dump(short_name: str, db_type: str, data_file: str,
 
             # Finally, export specified tables to TSV
             # May need to change the value "public" if schema requires
-            delim = '\'\\t\''
             for table_name in wanted_tables:
                 # Need full path here, but we write it to a temp directory first
                 # Due to some user permission weirdness
                 current_path = os.getcwd()
                 outfile_tsv_path = os.path.join(current_path, output_dir, f"{short_name}-{table_name}.tsv")
-                temp_dir = "/tmp/"
-                temp_tsv_path = os.path.join(temp_dir, f"{short_name}-{table_name}.tsv")
                 
                 print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
                 
