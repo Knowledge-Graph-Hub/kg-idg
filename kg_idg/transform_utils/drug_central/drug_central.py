@@ -23,7 +23,7 @@ DRUG_CENTRAL_SOURCES = {
 
 DRUG_CENTRAL_CONFIGS = {
     'DrugCentralDTI': 'drugcentral-dti.yaml',
-    'DrugCentralDB': 'drugcentral-temp.yaml' # TODO: This will need to be calls to multiple configs
+    'DrugCentralDB': 'drugcentral-atc.yaml' # TODO: This will need to be calls to multiple configs
 }
 
 WANTED_TABLES = ["atc"]
