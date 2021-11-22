@@ -120,7 +120,8 @@ pipeline {
         stage('Transform') {
             steps {
                 dir('./gitrepo') {
-                    sh '. venv/bin/activate && env && python3.8 run.py transform -s DrugBankTransform'
+                    sh '. venv/bin/activate && env && python3.8 run.py transform -s DrugCentralTransform'
+		    sh '. venv/bin/activate && env && python3.8 run.py transform -s TCRDTransform'
                 }
             }
         }
