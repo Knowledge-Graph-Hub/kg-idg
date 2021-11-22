@@ -2,12 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
-            // TODO: install mysql-server and postgres server on docker image
-            //       and include step below to start both servers
-            //       and for postgres, change the authentication type to 'trust' for all local connections
-            //         (see https://stackoverflow.com/questions/66351630/change-authentication-method-for-postgres-superuser)
-            //          but should just need to edit /etc/postgresql/12/main/pg_hba.conf
+            image 'caufieldjh/ubuntu20-python-3-8-5-dev:4-with-dbs'
         }
     }
     triggers{
@@ -73,13 +68,9 @@ pipeline {
                     )
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
-                    // Set up database platforms we need for ingests
-                    sh 'apt install mysql-server'
-                    sh 'apt install postgresql postgresql-contrib'
-                    sh 'systemctl start mysql.service'
-                    sh 'cat /etc/postgresql/12/main/pg_hba.conf'
-                    sh 'systemctl start postgresql.service'
-                    sh 'systemctl enable postgresql.service'
+                    // Start database platforms we need for ingests
+                    sh 'service mysql start'
+                    sh 'pg_ctlcluster 12 main start'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
