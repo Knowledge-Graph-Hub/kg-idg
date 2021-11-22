@@ -68,9 +68,9 @@ pipeline {
                     )
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
-                    // Start database platforms we need for ingests
-                    sh 'service mysql start'
-                    sh 'pg_ctlcluster 12 main start'
+                    // Database platforms should run from the start
+                    // sh 'service mysql start'
+                    // sh 'pg_ctlcluster 12 main start'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
