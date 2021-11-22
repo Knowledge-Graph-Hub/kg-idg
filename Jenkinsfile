@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
+            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:7'
         }
     }
     triggers{
@@ -311,9 +311,6 @@ pipeline {
     post {
         always {
             echo 'In always'
-            echo 'Cleaning workspace...'
-            cleanWs()
-
             echo 'Shut down gcloud instance'
             dir('./gcloud') {
                 withCredentials([file(credentialsId: 'GCLOUD_CRED_JSON', variable: 'GCLOUD_CRED_JSON')]) {
@@ -335,6 +332,10 @@ pipeline {
                         '''
                 }
             }
+
+            echo 'Cleaning workspace...'
+            cleanWs()
+
         }
         success {
             echo 'I succeeded!'
