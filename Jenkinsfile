@@ -250,7 +250,7 @@ pipeline {
         // }
 
         stage('Spin up Gcloud instance') {
-            when { anyOf { branch 'main' } }
+            when { anyOf { branch 'main'; branch 'add_neat_to_jenkins_run_jenkins'  } }
             steps {
                 dir('./gcloud') {
                     withCredentials([file(credentialsId: 'GCLOUD_CRED_JSON', variable: 'GCLOUD_CRED_JSON')]) {
