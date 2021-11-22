@@ -21,7 +21,7 @@ pipeline {
         // Distribution ID for the AWS CloudFront for this bucket
         // used solely for invalidations
         GCLOUD_PROJECT = 'test-project-covid-19-277821'
-        GCLOUD_VM='graph-embedding-cromulent'
+        GCLOUD_VM='gpgpgpuwhereareyou'
         GCLOUD_ZONE='us-central1-c'
     }
     options {
