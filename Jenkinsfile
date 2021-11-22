@@ -5,7 +5,7 @@ pipeline {
             image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
             // TODO: install mysql-server and postgres server on docker image
             //       and include step below to start both servers
-            //       and for postgres, change the authentication type to 'trust'
+            //       and for postgres, change the authentication type to 'trust' for all local connections
             //         (see https://stackoverflow.com/questions/66351630/change-authentication-method-for-postgres-superuser)
             //          but should just need to edit /etc/postgresql/12/main/pg_hba.conf
         }
@@ -73,6 +73,14 @@ pipeline {
                     )
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
+                    // Set up database platforms we need for ingests
+                    sh 'sudo apt install mysql-server'
+                    sh 'sudo apt install postgresql postgresql-contrib'
+                    sh 'sudo systemctl start mysql.service'
+                    sh 'sudo cat /etc/postgresql/12/main/pg_hba.conf'
+                    sh 'sudo systemctl start postgresql.service'
+                    sh 'sudo systemctl enable postgresql.service'
+                    // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
                 }
