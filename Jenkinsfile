@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'caufieldjh/ubuntu20-python-3-8-5-dev:4-with-dbs-v3'
+            image 'caufieldjh/ubuntu20-python-3-8-5-dev:4-with-dbs-v4'
         }
     }
     triggers{
@@ -69,12 +69,12 @@ pipeline {
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
                     // Start up the database platforms
-                    sh 'sudo service postgresql start'
-                    sh 'sudo service mysql start'
-                    sh 'sudo service postgresql status'
-                    sh 'sudo service mysql status'
-		            echo 'PostgreSQL server status:'
-		            sh 'pg_isready -h localhost -p 5432'
+                    sh 'sudo /etc/init.d/postgresql start'
+                    sh 'sudo /etc/init.d/mysql start'
+                    sh 'sudo /etc/init.d/postgresql status'
+                    sh 'sudo /etc/init.d/mysql status'
+		    echo 'PostgreSQL server status:'
+		    sh 'pg_isready -h localhost -p 5432'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
