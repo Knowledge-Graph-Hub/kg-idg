@@ -289,11 +289,13 @@ pipeline {
         stage('Run pipeline to create embedding') {
             steps {
                 dir('./run_embedding') {
+                    withCredentials([string(credentialsId: 'aws_kg_hub_access_key', variable: 'AWS_ACCESS_KEY_ID'),
+                                     string(credentialsId: 'aws_kg_hub_secret_key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
                     script{
                         sh 'env'
                         // TODO upload Graph and YAML
                         // TODO install gcloud cli
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && source venv/bin/activate && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
+                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && source venv/bin/activate && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 AWS_ACCESS_KEY=$AWS_ACCESS_KEY_ID AWS_SECRET_KEY=$AWS_SECRET_ACCESS_KEY neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
