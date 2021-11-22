@@ -74,12 +74,12 @@ pipeline {
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
                     // Set up database platforms we need for ingests
-                    sh 'sudo apt install mysql-server'
-                    sh 'sudo apt install postgresql postgresql-contrib'
-                    sh 'sudo systemctl start mysql.service'
-                    sh 'sudo cat /etc/postgresql/12/main/pg_hba.conf'
-                    sh 'sudo systemctl start postgresql.service'
-                    sh 'sudo systemctl enable postgresql.service'
+                    sh 'apt install mysql-server'
+                    sh 'apt install postgresql postgresql-contrib'
+                    sh 'systemctl start mysql.service'
+                    sh 'cat /etc/postgresql/12/main/pg_hba.conf'
+                    sh 'systemctl start postgresql.service'
+                    sh 'systemctl enable postgresql.service'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
