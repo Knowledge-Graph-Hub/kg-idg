@@ -22,7 +22,7 @@ pipeline {
         // used solely for invalidations
         GCLOUD_PROJECT = 'test-project-covid-19-277821'
         GCLOUD_VM='gpgpgpuwhereareyou'
-        GCLOUD_ZONE='us-central1-c'
+        GCLOUD_ZONE='us-central1-a'
     }
     options {
         timestamps()
