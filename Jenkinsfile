@@ -72,7 +72,7 @@ pipeline {
                     // sh 'service mysql start'
                     // sh 'pg_ctlcluster 12 main start'
 		    echo 'PostgreSQL server status:'
-		    sh 'pg_isready -h localhost -p 5433'
+		    sh 'pg_isready -h localhost -p 5432'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
