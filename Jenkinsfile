@@ -293,7 +293,7 @@ pipeline {
                         sh 'env'
                         // TODO upload Graph and YAML
                         // TODO install gcloud cli
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && source venv/bin/activate && neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
+                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && source venv/bin/activate && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
