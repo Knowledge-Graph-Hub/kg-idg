@@ -20,25 +20,31 @@ row = koza_app.get_row(source_name)
 
 have_code = False
 
-if row["ATC LEVEL"] == "1":
-    atc_code = NamedThing(id='ATC:' + (row["Class ID"].split("/"))[-1],
-                            iri=row["Class ID"],
+provider_url = "https://bioportal.bioontology.org/ontologies/ATC"
+iri_col_name = "Class ID"
+id_only = (row[iri_col_name].split("/"))[-1]
+
+if (row[iri_col_name].split("/"))[-2] != "ATC": 
+    # May be STY (UMLS Semantic Types Ontology) or anything else in there
+    pass
+elif row["ATC LEVEL"] == "1":
+    atc_code = NamedThing(id='ATC:' + id_only,
+                            iri=row[iri_col_name],
                             name=row["Preferred Label"],
-                            provided_by=["https://bioportal.bioontology.org/ontologies/ATC"])
+                            provided_by=[provider_url])
     parent_code = NamedThing(id=row["Parents"],
                             iri=row["Parents"],
-                            provided_by=["https://bioportal.bioontology.org/ontologies/ATC"])
+                            provided_by=[provider_url])
     have_code = True
-elif (row["Class ID"].split("/"))[-2] == "STY": # UMLS Semantic Types Ontology
-    pass
+
 else:
-    atc_code = NamedThing(id='ATC:' + (row["Class ID"].split("/"))[-1],
-                            iri=row["Class ID"],
+    atc_code = NamedThing(id='ATC:' + id_only,
+                            iri=row[iri_col_name],
                             name=row["Preferred Label"],
-                            provided_by=["https://bioportal.bioontology.org/ontologies/ATC"])
+                            provided_by=[provider_url])
     parent_code = NamedThing(id='ATC:' + (row["Parents"].split("/"))[-1],
                             iri=row["Parents"],
-                            provided_by=["https://bioportal.bioontology.org/ontologies/ATC"])
+                            provided_by=[provider_url])
     have_code = True
 
 if have_code:
@@ -49,7 +55,7 @@ if have_code:
         predicate=Predicate.subclass_of,
         object=parent_code.id,
         relation="RO:0002350", #member of
-        provided_by=["https://bioportal.bioontology.org/ontologies/ATC"]
+        provided_by=[provider_url]
     )
 
     koza_app.write(atc_code, association, parent_code)
