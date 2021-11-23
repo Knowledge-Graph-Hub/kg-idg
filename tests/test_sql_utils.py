@@ -26,6 +26,8 @@ class TestSQLUtils(TestCase):
         with self.assertRaises(psycopg2.OperationalError):
             connection = make_temp_postgres_db("fake","test")
     
+    # This test result should be False as it won't actually parse anything
+    # without a database instance running
     @mock.patch('kg_idg.utils.sql_utils.make_temp_mysql_db')
     @mock.patch('mysql.connector.connect')
     def test_process_data_dump_mysql(self, mock_make_temp_mysql_db,
@@ -37,7 +39,7 @@ class TestSQLUtils(TestCase):
                             self.input_dir, 
                             self.output_dir, 
                             list_tables=False)
-        self.assertTrue(success)
+        self.assertFalse(success)
     
     @mock.patch('kg_idg.utils.sql_utils.make_temp_postgres_db')
     @mock.patch('os.system')
