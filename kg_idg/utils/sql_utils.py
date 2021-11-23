@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import shutil
 
 import mysql.connector #type: ignore
 from mysql.connector import MySQLConnection #type: ignore
@@ -10,6 +9,10 @@ import psycopg2 #type: ignore
 from psycopg2 import sql #type: ignore
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT #type: ignore
 from psycopg2.extensions import connection #type: ignore
+
+# Not all environments make it obvious where to get the current system
+# username, so specify it here if needed
+BACKUP_POSTGRESQL_USERNAME = "jenkinsuser"
 
 def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
     """
@@ -55,6 +58,8 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
 
     # This should usually be a str, but set it just in case
     system_user = str(os.environ.get('LOGNAME'))
+    if system_user == "None":
+        system_user = BACKUP_POSTGRESQL_USERNAME
 
     connection = psycopg2.connect(f"user={username} host=localhost")
     connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -66,14 +71,14 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
-        print(f"Creating database with name {db_name}.")
+        print(f"Creating database with name {db_name}")
         cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(
                         sql.Identifier(db_name)))
         cursor.execute(sql.SQL("CREATE DATABASE {}").format(
                         sql.Identifier(db_name)))
 
         # Create a role so we don't have to constantly authenticate
-        print(f"Creating login for user {system_user}.")
+        print(f"Creating login for user {system_user}")
         cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(
                         sql.Identifier(system_user)))
         cursor.execute(sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(
@@ -191,10 +196,7 @@ def process_postgresql_dump(short_name: str, db_name: str, data_file: str,
         # Finally, export specified tables to TSV
         # May need to change the value "public" if schema requires
         for table_name in wanted_tables:
-            # Need full path here, but we write it to a temp directory first
-            # Due to some user permission weirdness
-            current_path = os.getcwd()
-            outfile_tsv_path = os.path.join(current_path, output_dir, f"{short_name}-{table_name}.tsv")
+            outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
             
