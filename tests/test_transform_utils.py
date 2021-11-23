@@ -103,7 +103,8 @@ class TestTransformUtils(TestCase):
     def test_tcrd_transform(self, mock_transform_source):
         t = TCRDTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
-        self.assertFalse(t.run()) # This will be false because DB isn't running
+        with self.assertRaises(ValueError):
+            t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
