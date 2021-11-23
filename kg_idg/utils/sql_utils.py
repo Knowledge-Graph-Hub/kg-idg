@@ -53,7 +53,8 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
     Returns a PostgreSQL connection object for further operations.
     """
 
-    system_user = os.environ.get('LOGNAME')
+    # This should usually be a str, but set it just in case
+    system_user = str(os.environ.get('LOGNAME'))
 
     connection = psycopg2.connect(f"user={username} host=localhost")
     connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -65,12 +66,14 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
+        print(f"Creating database with name {db_name}.")
         cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(
                         sql.Identifier(db_name)))
         cursor.execute(sql.SQL("CREATE DATABASE {}").format(
                         sql.Identifier(db_name)))
 
         # Create a role so we don't have to constantly authenticate
+        print(f"Creating login for user {system_user}.")
         cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(
                         sql.Identifier(system_user)))
         cursor.execute(sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(
