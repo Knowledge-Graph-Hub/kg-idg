@@ -34,12 +34,15 @@ def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
         db_info = connection.get_server_info()
         print("MySQL server version:", db_info)
         connection.autocommit = True
-        cursor = connection.cursor()
+        cursor = connection.cursor(buffered=True,dictionary=True)
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
+        databases = []
         cursor.execute("SHOW DATABASES")
-        if (db_name,) in cursor:
+        for item in cursor:
+            databases.append(item['Database'])
+        if db_name in databases:
             cursor.execute(f"DROP DATABASE {db_name}")
             print(f"Removing old {db_name}.")
         cursor.execute(f"CREATE DATABASE {db_name}")
