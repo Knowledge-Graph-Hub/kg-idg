@@ -148,6 +148,11 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
 
         # Finally, export tables to TSV
         cursor.execute('USE ' + db_name)
+        cursor.execute("SHOW TABLES")
+        print("Database contains:")
+        for table_name in cursor:
+            print(table_name[0])
+
         for table_name in wanted_tables:
             outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
