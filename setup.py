@@ -70,7 +70,7 @@ setup(
         'koza==0.1.5',
         'biolink_model_pydantic',
         'mysql-connector-python',
-        'psycopg2'
+        'psycopg2-binary'
     ],
     extras_require=extras,
 )

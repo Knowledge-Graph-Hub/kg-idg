@@ -2,12 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:4'
-            // TODO: install mysql-server and postgres server on docker image
-            //       and include step below to start both servers
-            //       and for postgres, change the authentication type to 'trust' for all local connections
-            //         (see https://stackoverflow.com/questions/66351630/change-authentication-method-for-postgres-superuser)
-            //          but should just need to edit /etc/postgresql/12/main/pg_hba.conf
+            image 'caufieldjh/ubuntu20-python-3-8-5-dev:4-with-dbs-v6'
         }
     }
     triggers{
@@ -73,13 +68,13 @@ pipeline {
                     )
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
-                    // Set up database platforms we need for ingests
-                    sh 'sudo apt install mysql-server'
-                    sh 'sudo apt install postgresql postgresql-contrib'
-                    sh 'sudo systemctl start mysql.service'
-                    sh 'sudo cat /etc/postgresql/12/main/pg_hba.conf'
-                    sh 'sudo systemctl start postgresql.service'
-                    sh 'sudo systemctl enable postgresql.service'
+                    // Start up the database platforms
+                    sh 'sudo /etc/init.d/postgresql start'
+                    sh 'sudo /etc/init.d/mysql start'
+                    sh 'sudo /etc/init.d/postgresql status'
+                    sh 'sudo /etc/init.d/mysql status'
+                    echo 'PostgreSQL server status:'
+                    sh 'pg_isready -h localhost -p 5432'
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
@@ -125,7 +120,7 @@ pipeline {
         stage('Transform') {
             steps {
                 dir('./gitrepo') {
-                    sh '. venv/bin/activate && env && python3.8 run.py transform'
+		            sh '. venv/bin/activate && env && python3.8 run.py transform -s TCRDTransform'
                 }
             }
         }

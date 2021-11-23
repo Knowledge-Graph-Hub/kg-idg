@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import os
 from typing import Optional
+import gzip
+import shutil
 
 from kg_idg.transform_utils.transform import Transform
 from kg_idg.utils.sql_utils import process_data_dump
@@ -20,7 +22,7 @@ http://juniper.health.unm.edu/tcrd/download/README
 
 TCRD_SOURCES = {
     'TCRD-IDs': 'TCRDv6.12.4.tsv',
-    'TCRD-DB': 'tcrd.sql'
+    'TCRD-DB': 'tcrd.sql.gz'
 }
 
 TCRD_CONFIGS = {
@@ -68,11 +70,20 @@ class TCRDTransform(Transform):
         config = os.path.join("kg_idg/transform_utils/tcrd/", TCRD_CONFIGS[source])
         output = self.output_dir
 
+        outname = name[:-3]
+        
+        # Decompress
+        if name[-2:] == "gz":
+            outpath = os.path.join(self.input_base_dir, outname)
+            with gzip.open(data_file, 'rb') as data_file_gz:
+                with open(outpath, 'wb') as data_file_new:
+                    shutil.copyfileobj(data_file_gz, data_file_new)
+
         # If source is unknown then we aren't going to guess
         if source not in TCRD_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
 
-        if name[-3:] == "sql": 
+        if outname[-3:] == "sql": 
                 '''
                 This is the full SQL dump so we need to load it as a local database,
                 export it as individual TSVs,
@@ -81,7 +92,7 @@ class TCRDTransform(Transform):
                 print("Transforming MySQL dump to TSV. This may take a while...")
                 if not process_data_dump("tcrd",
                                         "mysql",
-                                        data_file, 
+                                        outpath, 
                                         WANTED_TABLES, 
                                         self.input_base_dir,
                                         self.output_dir,

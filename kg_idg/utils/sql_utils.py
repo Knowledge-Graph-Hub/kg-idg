@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import os
-import shutil
 
 import mysql.connector #type: ignore
 from mysql.connector import MySQLConnection #type: ignore
@@ -10,6 +9,10 @@ import psycopg2 #type: ignore
 from psycopg2 import sql #type: ignore
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT #type: ignore
 from psycopg2.extensions import connection #type: ignore
+
+# Not all environments make it obvious where to get the current system
+# username, so specify it here if needed
+BACKUP_POSTGRESQL_USERNAME = "jenkinsuser"
 
 def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
     """
@@ -31,12 +34,15 @@ def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
         db_info = connection.get_server_info()
         print("MySQL server version:", db_info)
         connection.autocommit = True
-        cursor = connection.cursor()
+        cursor = connection.cursor(buffered=True,dictionary=True)
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
+        databases = []
         cursor.execute("SHOW DATABASES")
-        if (db_name,) in cursor:
+        for item in cursor:
+            databases.append(item['Database'])
+        if db_name in databases:
             cursor.execute(f"DROP DATABASE {db_name}")
             print(f"Removing old {db_name}.")
         cursor.execute(f"CREATE DATABASE {db_name}")
@@ -53,7 +59,10 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
     Returns a PostgreSQL connection object for further operations.
     """
 
-    system_user = os.environ.get('LOGNAME')
+    # This should usually be a str, but set it just in case
+    system_user = str(os.environ.get('LOGNAME'))
+    if system_user == "None":
+        system_user = BACKUP_POSTGRESQL_USERNAME
 
     connection = psycopg2.connect(f"user={username} host=localhost")
     connection.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
@@ -65,12 +74,14 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
         
         # Create temp database if it doesn't exist
         # But if it does, remove it!
+        print(f"Creating database with name {db_name}")
         cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(
                         sql.Identifier(db_name)))
         cursor.execute(sql.SQL("CREATE DATABASE {}").format(
                         sql.Identifier(db_name)))
 
         # Create a role so we don't have to constantly authenticate
+        print(f"Creating login for user {system_user}")
         cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(
                         sql.Identifier(system_user)))
         cursor.execute(sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(
@@ -127,6 +138,17 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
 
         # Finally, export tables to TSV
         cursor.execute('USE ' + db_name)
+        cursor.execute("SHOW TABLES")
+        all_tables = []
+        print("Database contains:")
+        for table_name in cursor:
+            print(table_name[0])
+            all_tables.append(table_name[0])
+        if len(all_tables) == 0:
+            print("Database is empty - please check input file.")
+            success = False
+            return success
+        
         for table_name in wanted_tables:
             outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
@@ -188,10 +210,7 @@ def process_postgresql_dump(short_name: str, db_name: str, data_file: str,
         # Finally, export specified tables to TSV
         # May need to change the value "public" if schema requires
         for table_name in wanted_tables:
-            # Need full path here, but we write it to a temp directory first
-            # Due to some user permission weirdness
-            current_path = os.getcwd()
-            outfile_tsv_path = os.path.join(current_path, output_dir, f"{short_name}-{table_name}.tsv")
+            outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
             

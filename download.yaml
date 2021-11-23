@@ -75,9 +75,8 @@
 -
   # TCRD database dump - note this is > 40G
   # TODO: if possible, source TCRD ID maps directly from this source, avoiding redundancy
-  # Note this has a .gz extension but is not a compressed file
   url: http://juniper.health.unm.edu/tcrd/download/old_versions/TCRDv6.12.4.sql.gz
-  local_name: tcrd.sql
+  local_name: tcrd.sql.gz
 -
   # OGMS
   url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms_kgx_tsv.tar.gz
