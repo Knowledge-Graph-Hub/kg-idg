@@ -133,6 +133,10 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
             command = f"mysql -u {username} --password=pass {db_name} < {outfile_sql_path}"
             os.system(command)
 
+        # Give the mysql server a restart, just in case it needs one after that input
+        print("Refreshing the mysql server...")
+        os.system('sudo /etc/init.d/mysql restart')
+
         # Finally, export tables to TSV
         cursor.execute('USE ' + db_name)
         for table_name in wanted_tables:
