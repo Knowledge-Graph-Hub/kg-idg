@@ -136,6 +136,12 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
         # Give the mysql server a restart, just in case it needs one after that input
         print("Refreshing the mysql server...")
         os.system('sudo /etc/init.d/mysql restart')
+        connection = mysql.connector.connect(
+                host="localhost",
+                user=username,
+                password="pass")
+        cursor = connection.cursor()
+        print("Reconnected to server.")
 
         # Finally, export tables to TSV
         cursor.execute('USE ' + db_name)
