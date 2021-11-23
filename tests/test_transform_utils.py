@@ -11,6 +11,7 @@ from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+from kg_idg.transform_utils.atc.atc import ATCTransform
 
 class TestTransformUtils(TestCase):
 
@@ -75,6 +76,7 @@ class TestTransformUtils(TestCase):
         shutil.rmtree(this_output_dir)
     
     # Koza transforms have hard-coded sources so we skip the transform
+    # (in most cases)
     # and instead ensure they don't proceed if source is incorrect.
     # (Note that these tests will fail if a non-test transform has been run!)
 
@@ -101,8 +103,7 @@ class TestTransformUtils(TestCase):
     def test_tcrd_transform(self, mock_transform_source):
         t = TCRDTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
-        with self.assertRaises(ValueError):
-            t.run()
+        self.assertFalse(t.run()) # This will be false because DB isn't running
         self.assertTrue(os.path.exists(this_output_dir))
         self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
@@ -111,6 +112,16 @@ class TestTransformUtils(TestCase):
     def test_hpa_transform(self, mock_transform_source):
         t = ProteinAtlasTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
+        with self.assertRaises(ValueError):
+            t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        self.assertFalse(mock_transform_source.called)
+        shutil.rmtree(this_output_dir)
+
+    @mock.patch('koza.cli_runner.transform_source')
+    def test_atc_transform(self, mock_transform_source):
+        t = ATCTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"atc")
         with self.assertRaises(ValueError):
             t.run()
         self.assertTrue(os.path.exists(this_output_dir))
