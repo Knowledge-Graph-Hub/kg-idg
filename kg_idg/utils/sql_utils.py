@@ -136,23 +136,13 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
             command = f"mysql -u {username} --password=pass {db_name} < {outfile_sql_path}"
             os.system(command)
 
-        # Give the mysql server a restart, just in case it needs one after that input
-        print("Refreshing the mysql server...")
-        os.system('sudo /etc/init.d/mysql restart')
-        connection = mysql.connector.connect(
-                host="localhost",
-                user=username,
-                password="pass")
-        cursor = connection.cursor()
-        print("Reconnected to server.")
-
         # Finally, export tables to TSV
         cursor.execute('USE ' + db_name)
         cursor.execute("SHOW TABLES")
         print("Database contains:")
         for table_name in cursor:
             print(table_name[0])
-
+        
         for table_name in wanted_tables:
             outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
