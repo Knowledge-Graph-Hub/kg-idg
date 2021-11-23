@@ -27,14 +27,16 @@ class TestSQLUtils(TestCase):
             connection = make_temp_postgres_db("fake","test")
     
     @mock.patch('kg_idg.utils.sql_utils.make_temp_mysql_db')
-    def test_process_data_dump_mysql(self, mock_make_temp_mysql_db):
+    @mock.patch('mysql.connector.connect')
+    def test_process_data_dump_mysql(self, mock_make_temp_mysql_db,
+                                    mock_connect):
         success = process_data_dump("test", 
                             "mysql", 
                             "test_mysql.sql", 
                             ["data_type"], 
                             self.input_dir, 
                             self.output_dir, 
-                            list_tables=True)
+                            list_tables=False)
         self.assertTrue(success)
     
     @mock.patch('kg_idg.utils.sql_utils.make_temp_postgres_db')
