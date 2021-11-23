@@ -24,6 +24,11 @@
   url: https://unmtid-shinyapps.net/download/DrugCentral/2021_09_01/drug.target.interaction.tsv.gz
   local_name: drug.target.interaction.tsv.gz
 -
+  # DrugCentral database dump
+  # TODO: if possible, source DrugCentral DTI directly from this source, avoiding redundancy
+  url: https://unmtid-shinyapps.net/download/drugcentral.dump.010_05_2021.sql.gz
+  local_name: drugcentral.dump.010_05_2021.sql.gz
+-
   # orphanet
   url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
   local_name: orphanet.nt
@@ -66,7 +71,12 @@
 -
   # Pharos/TCRD - just the ID mappings
   url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.12.4.tsv
-  local_name: TCRDv6.11.0.tsv
+  local_name: TCRDv6.12.4.tsv
+-
+  # TCRD database dump - note this is > 40G
+  # TODO: if possible, source TCRD ID maps directly from this source, avoiding redundancy
+  url: http://juniper.health.unm.edu/tcrd/download/old_versions/TCRDv6.12.4.sql.gz
+  local_name: tcrd.sql.gz
 -
   # OGMS
   url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms_kgx_tsv.tar.gz
@@ -83,3 +93,9 @@
 -
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/STRING/nodes.tsv
   local_name: string_nodes.tsv
+-
+  # ATC
+  # The Anatomical Therapeutic Chemical Classification for drugs
+  # Primarily for establishing hierarchical relationships of DrugCentral entries
+  url: https://data.bioontology.org/ontologies/ATC/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
+  local_name: atc.csv.gz

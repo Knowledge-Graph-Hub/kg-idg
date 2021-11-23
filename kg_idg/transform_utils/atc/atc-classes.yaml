@@ -1,0 +1,44 @@
+name: 'atc-classes'
+
+format: 'csv'
+
+delimiter: ','
+
+files:
+  - './data/raw/atc.csv'
+
+metadata: './kg_idg/transform_utils/atc/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'Class ID'
+  - 'Preferred Label'
+  - 'Synonyms'
+  - 'Definitions'
+  - 'Obsolete'
+  - 'CUI'
+  - 'Semantic Types'
+  - 'Parents'
+  - 'ATC LEVEL'
+  - 'Is Drug Class'
+  - 'Semantic type UMLS property'
+
+node_properties:
+  - 'id'
+  - 'iri'
+  - 'name'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'

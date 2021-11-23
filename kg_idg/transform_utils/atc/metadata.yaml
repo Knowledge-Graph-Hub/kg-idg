@@ -1,0 +1,10 @@
+name: 'atc'
+
+dataset_description:
+  ingest_title: 'atc'
+  ingest_url: 'https://data.bioontology.org/ontologies/ATC/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv'
+  description: 'Anatomical Therapeutic Chemical Classification'
+  rights: ''
+
+source_files:
+  - 'atc-classes.yaml'
