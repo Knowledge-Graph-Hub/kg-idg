@@ -44,13 +44,20 @@ merged_graph:
         filename:
           - data/transformed/drug_central/drugcentral-atc_nodes.tsv
           - data/transformed/drug_central/drugcentral-atc_edges.tsv
-    drug-central-referece:
-      name: "DrugCentral References"
+    drug-central-reference:
+      name: "DrugCentral Drug References"
       input:
         format: tsv
         filename:
           - data/transformed/drug_central/drugcentral-reference_nodes.tsv
           - data/transformed/drug_central/drugcentral-reference_edges.tsv
+    # drug-central-approval:
+    #   name: "DrugCentral Drug Regulatory Approval Status"
+    #   input:
+    #     format: tsv
+    #     filename:
+    #       - data/transformed/drug_central/drugcentral-approval_nodes.tsv
+    #       - data/transformed/drug_central/drugcentral-approval_edges.tsv
     gocams:
       name: "Gene Ontology Causal Activity Modeling"
       input:
