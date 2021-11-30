@@ -23,7 +23,7 @@ DRUG_CENTRAL_SOURCES = {
 
 DRUG_CENTRAL_CONFIGS = {
     'DrugCentralDTI': 'drugcentral-dti.yaml',
-    'DrugCentralDB': 'drugcentral-atc.yaml' # TODO: This will need to be calls to multiple configs
+    'DrugCentralDB': 'drugcentral-{table}.yaml'
 }
 
 WANTED_TABLES = ["atc"]
@@ -61,8 +61,6 @@ class DrugCentralTransform(Transform):
         Need to decompress it first.
         """
         print(f"Parsing {data_file}")
-        config = os.path.join("kg_idg/transform_utils/drug_central/", DRUG_CENTRAL_CONFIGS[source])
-        output = self.output_dir
 
         # Decompress
         outname = name[:-3]
@@ -92,8 +90,21 @@ class DrugCentralTransform(Transform):
                 print("Did not process DrugCentral data dump!")
                 return
         
-        print(f"Transforming using source in {config}")
-        transform_source(source=config, output_dir=output,
+        output = self.output_dir
+        if source == "DrugCentralDB": # Configs vary by DB table
+            for table in WANTED_TABLES:
+                config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
+                print(f"Transforming to {output} using source in {config}")
+                transform_source(source=config, output_dir=output,
+                                output_format="tsv",
+                                global_table=TRANSLATION_TABLE,
+                                local_table=None)
+        else:
+            config = os.path.join("kg_idg/transform_utils/drug_central/", DRUG_CENTRAL_CONFIGS[source])
+            print(f"Transforming to {output} using source in {config}")
+            transform_source(source=config, output_dir=output,
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)
+
+
