@@ -27,7 +27,7 @@ TCRD_SOURCES = {
 
 TCRD_CONFIGS = {
     'TCRD-IDs': 'tcrd-ids.yaml',
-    'TCRD-DB': 'tcrd-protein.yaml', # TODO: This will need to be calls to multiple configs
+    'TCRD-DB': 'tcrd-{table}.yaml',
 }
 
 WANTED_TABLES = ["data_type","info_type","protein","target","tdl_info"]
@@ -67,9 +67,7 @@ class TCRDTransform(Transform):
         Transform TCRD ID mapping file with Koza.
         """
         print(f"Parsing {data_file}")
-        config = os.path.join("kg_idg/transform_utils/tcrd/", TCRD_CONFIGS[source])
-        output = self.output_dir
-
+        
         outname = name[:-3]
         
         # Decompress
@@ -100,9 +98,20 @@ class TCRDTransform(Transform):
                     print("Did not process TCRD MySQL dump!")
                     return
 
-        print(f"Transforming using source in {config}")
-        transform_source(source=config, output_dir=output,
-                             output_format="tsv",
-                             global_table=TRANSLATION_TABLE,
-                             local_table=None)
+        output = self.output_dir
+        if source == 'TCRD-DB':
+            for table in WANTED_TABLES:
+                config = os.path.join("kg_idg/transform_utils/tcrd/", f'tcrd-{table}.yaml')
+                print(f"Transforming to {output} using source in {config}")
+                transform_source(source=config, output_dir=output,
+                                output_format="tsv",
+                                global_table=TRANSLATION_TABLE,
+                                local_table=None)
+        else:
+            config = os.path.join("kg_idg/transform_utils/tcrd/", TCRD_CONFIGS[source])
+            print(f"Transforming to {output} using source in {config}")
+            transform_source(source=config, output_dir=output,
+                                output_format="tsv",
+                                global_table=TRANSLATION_TABLE,
+                                local_table=None)
 
