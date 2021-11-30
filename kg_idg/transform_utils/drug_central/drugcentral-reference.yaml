@@ -30,7 +30,9 @@ columns:
 node_properties:
   - 'id'
   - 'category'
-  - 'provided_by'
+  - 'type'
+  - 'authors'
+  - 'summary'
 
 edge_properties:
   - 'id'
@@ -40,6 +42,5 @@ edge_properties:
   - 'category'
   - 'relation'
   - 'source'
-  - 'provided_by'
 
 transform_mode: 'flat'

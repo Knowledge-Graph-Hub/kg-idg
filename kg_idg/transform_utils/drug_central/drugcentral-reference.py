@@ -17,7 +17,6 @@ row = koza_app.get_row(source_name)
 publication = Publication(id='PMID:' + row["pmid"],
                             type=row["type"],
                             authors=row["authors"],
-                            pages=row["pages"],
                             summary=row["title"])
 drug = Drug(id='DrugCentral:' + row["id"])
 
@@ -27,6 +26,7 @@ association = NamedThingToInformationContentEntityAssociation(
     subject=publication.id,
     predicate=Predicate.mentions,
     object=drug.id,
+    source="DrugCentral",
     relation="RO:0002558" # "has evidence"
 )
 
