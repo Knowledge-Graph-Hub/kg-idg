@@ -27,6 +27,7 @@ node_properties:
   - 'description'
   - 'xref'
   - 'source'
+  - 'type'
 
 edge_properties:
   - 'id'

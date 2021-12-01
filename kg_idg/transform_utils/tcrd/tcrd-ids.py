@@ -15,18 +15,17 @@ xref_types = {"HGNC:":'HGNC Symbol',
                "STRING:":'STRING ID'}
 for xref_type in xref_types:
     value = row[xref_types[xref_type]]
-    value = value.replace("/","-") #Gotta handle illegal slashes
+    value = value.replace("/","_") #Gotta handle illegal slashes
     if str(value) == 'None':
         continue
     else:
         xref_list.append(xref_type + str(value))
 
-print(xref_list)
-
 # Entities
 protein = Protein(id='UniProtKB:' + row['UniProt'],
             description= row['Description'],
             source='TCRD',
-            xref=xref_list)
+            xref=xref_list,
+            type=row['TDL'])
 
 koza_app.write(protein)
