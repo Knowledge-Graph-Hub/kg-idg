@@ -1,0 +1,116 @@
+name: kg-idg
+description: kg-idg-xxxxx
+output_directory: output_data
+graph_data:
+  graph:
+    node_path: ./merged-kg_nodes.tsv
+    edge_path: ./merged-kg_edges.tsv
+    directed: false
+    verbose: true
+    nodes_column: id
+    node_types_column: category
+    default_node_type: biolink:NamedThing
+    sources_column: subject
+    destinations_column: object
+    default_edge_type: biolink:related_to
+  pos_validation:
+    edge_path: ./merged-kg_edges.tsv
+  neg_training:
+    edge_path: ./neg_train_edges.tsv
+  neg_validation:
+    edge_path: ./neg_valid_edges.tsv
+embeddings:
+  embedding_file_name: test_embeddings_test_yaml.tsv
+  embedding_history_file_name: embedding_history.json
+  node_embedding_params:
+    node_embedding_method_name: SkipGram
+    walk_length: 10
+    batch_size: 512
+    window_size: 3
+    return_weight: 1.0
+    explore_weight: 1.0
+    iterations: 1
+classifier:
+  edge_method: Average
+  classifiers:
+  - type: neural network
+    model:
+      outfile: model_mlp_test_yaml.h5
+      classifier_history_file_name: mlp_classifier_history.json
+      type: tensorflow.keras.models.Sequential
+      layers:
+      - type: tensorflow.keras.layers.Input
+        parameters:
+          shape: 100
+      - type: tensorflow.keras.layers.Dense
+        parameters:
+          units: 128
+          activation: relu
+      - type: tensorflow.keras.layers.Dense
+        parameters:
+          units: 32
+          activation: relu
+      - type: tensorflow.keras.layers.Dropout
+        parameters:
+          rate: 0.5
+      - type: tensorflow.keras.layers.Dense
+        parameters:
+          units: 16
+          activation: relu
+      - type: tensorflow.keras.layers.Dense
+        parameters:
+          units: 1
+          activation: sigmoid
+    model_compile:
+      loss: binary_crossentropy
+      optimizer: nadam
+      metrics:
+      - type: tensorflow.keras.metrics.AUC
+        parameters:
+          curve: PR
+          name: auprc
+      - type: tensorflow.keras.metrics.AUC
+        parameters:
+          curve: ROC
+          name: auroc
+      - type: tensorflow.keras.metrics.Recall
+        parameters:
+          name: Recall
+      - type: tensorflow.keras.metrics.Precision
+        parameters:
+          name: Precision
+      - type: accuracy
+    model_fit:
+      parameters:
+        batch_size: 4096
+        epochs: 5
+        callbacks:
+        - type: tensorflow.keras.callbacks.EarlyStopping
+          parameters:
+            monitor: val_loss
+            patience: 5
+            min_delta: 0.001
+        - type: tensorflow.keras.callbacks.ReduceLROnPlateau
+  - type: Decision Tree
+    model:
+      outfile: model_decision_tree_test_yaml.h5
+      type: sklearn.tree.DecisionTreeClassifier
+      parameters:
+        max_depth: 30
+        random_state: 42
+  - type: Random Forest
+    model:
+      outfile: model_random_forest_test_yaml.h5
+      type: sklearn.ensemble.RandomForestClassifier
+      parameters:
+        n_estimators: 500
+        max_depth: 30
+        n_jobs: 8
+        random_state: 42
+  - type: Logistic Regression
+    model:
+      outfile: model_lr_test_yaml.h5
+      type: sklearn.linear_model.LogisticRegression
+      parameters:
+        random_state: 42
+        max_iter: 1000
