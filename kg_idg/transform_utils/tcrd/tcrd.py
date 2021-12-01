@@ -37,7 +37,7 @@ TCRD_CONFIGS = {
 WANTED_TABLES = ["data_type","info_type","xref_type",
                 "protein","target","tdl_info","drug_activity",
                 "feature","mondo","mondo_parent",
-                "mondo_xref"]
+                "mondo_xref","pubmed","protein2pubmed"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
@@ -108,7 +108,7 @@ class TCRDTransform(Transform):
         output = self.output_dir
         if source == 'TCRD-DB':
             for table in WANTED_TABLES:
-                if table in ["data_type", "info_type"]:
+                if table in ["data_type", "info_type","xref_type"]:
                     continue
                 else:
                     config = os.path.join("kg_idg/transform_utils/tcrd/", f'tcrd-{table}.yaml')
