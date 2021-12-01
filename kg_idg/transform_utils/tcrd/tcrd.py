@@ -30,7 +30,14 @@ TCRD_CONFIGS = {
     'TCRD-DB': 'tcrd-{table}.yaml',
 }
 
-WANTED_TABLES = ["data_type","info_type","protein","target","tdl_info"]
+# Some of these tables need to be transformed as they're
+# referenced by others (e.g., data_type)
+# but aren't really useful as transforms
+# so we'll ignore them below
+WANTED_TABLES = ["data_type","info_type","xref_type",
+                "protein","target","tdl_info","drug_activity",
+                "feature","mondo","mondo_parent",
+                "mondo_xref","protein2pubmed"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
@@ -101,12 +108,15 @@ class TCRDTransform(Transform):
         output = self.output_dir
         if source == 'TCRD-DB':
             for table in WANTED_TABLES:
-                config = os.path.join("kg_idg/transform_utils/tcrd/", f'tcrd-{table}.yaml')
-                print(f"Transforming to {output} using source in {config}")
-                transform_source(source=config, output_dir=output,
-                                output_format="tsv",
-                                global_table=TRANSLATION_TABLE,
-                                local_table=None)
+                if table in ["data_type", "info_type"]:
+                    continue
+                else:
+                    config = os.path.join("kg_idg/transform_utils/tcrd/", f'tcrd-{table}.yaml')
+                    print(f"Transforming to {output} using source in {config}")
+                    transform_source(source=config, output_dir=output,
+                                    output_format="tsv",
+                                    global_table=TRANSLATION_TABLE,
+                                    local_table=None)
         else:
             config = os.path.join("kg_idg/transform_utils/tcrd/", TCRD_CONFIGS[source])
             print(f"Transforming to {output} using source in {config}")
