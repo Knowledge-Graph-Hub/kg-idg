@@ -67,7 +67,10 @@ setup(
         'click',
         'pyyaml',
         'kgx==1.5.0',
-        'koza==0.1.1'
+        'koza==0.1.5',
+        'biolink_model_pydantic',
+        'mysql-connector-python',
+        'psycopg2-binary'
     ],
     extras_require=extras,
 )

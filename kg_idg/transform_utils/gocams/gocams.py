@@ -3,7 +3,7 @@
 import os
 from shutil import copyfile
 from typing import Optional
-
+from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
 """
@@ -18,8 +18,8 @@ GOCAM_SOURCES = {
 }
 
 class GOCAMTransform(Transform):
-    """This transform just ingests the GOCAMs transform from KG-COVID-19 and
-    copies it to the transform directory.
+    """This transform ingests the GOCAMs transform from KG-COVID-19 and
+    runs a kgx transform for validation.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
@@ -43,6 +43,8 @@ class GOCAMTransform(Transform):
                 self.parse(name, data_file, k)
     
     def parse(self, name: str, data_file: str, source: str) -> None:
-        print(f"Copying {data_file}")
-        output=os.path.join(self.output_dir, name)
-        copyfile(data_file, output)
+        print(f"Parsing {data_file}")
+        transform(inputs=[data_file],
+                  input_format='tsv',
+                  output=os.path.join(self.output_dir, name),
+                  output_format='tsv')

@@ -1,0 +1,10 @@
+subject	predicate	object	relation	provided_by	type	combined_score	neighborhood	neighborhood_transferred	fusion	cooccurence	homology	coexpression	coexpression_transferred	experiments	experiments_transferred	database	database_transferred	textmining	textmining_transferred
+ENSEMBL:ENSG00000004059	biolink:has_gene_product	ENSEMBL:ENSP00000000233	RO:0002205	NCBI															
+ENSEMBL:ENSG00000143933	biolink:has_gene_product	ENSEMBL:ENSP00000272298	RO:0002205	NCBI															
+ENSEMBL:ENSP00000000233	biolink:interacts_with	ENSEMBL:ENSP00000272298	RO:0002434	STRING	biolink:Association	490	0	0	0	332	0	0	62	0	181	0	0	0	125
+ENSEMBL:ENSG00000131089	biolink:has_gene_product	ENSEMBL:ENSP00000253401	RO:0002205	NCBI															
+ENSEMBL:ENSP00000000233	biolink:interacts_with	ENSEMBL:ENSP00000253401	RO:0002434	STRING	biolink:Association	198	0	0	0	0	0	0	0	0	186	0	0	0	56
+ENSEMBL:ENSG00000178607	biolink:has_gene_product	ENSEMBL:ENSP00000401445	RO:0002205	NCBI															
+ENSEMBL:ENSP00000000233	biolink:interacts_with	ENSEMBL:ENSP00000401445	RO:0002434	STRING	biolink:Association	159	0	0	0	0	0	0	0	0	160	0	0	0	0
+ENSEMBL:ENSG00000147889	biolink:has_gene_product	ENSEMBL:ENSP00000418915	RO:0002205	NCBI															
+ENSEMBL:ENSP00000000233	biolink:interacts_with	ENSEMBL:ENSP00000418915	RO:0002434	STRING	biolink:Association	606	0	0	0	0	0	0	61	0	158	0	0	542	0

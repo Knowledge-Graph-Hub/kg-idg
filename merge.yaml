@@ -23,20 +23,34 @@ configuration:
 merged_graph:
   name: IDG graph
   source:
-    drug-central:
-      name: "DrugCentral"
+    atc:
+      name: "Anatomical Therapeutic Chemical Classifications"
       input:
         format: tsv
         filename:
-          - data/transformed/drug_central/dc_nodes.tsv
-          - data/transformed/drug_central/dc_edges.tsv
+          - data/transformed/atc/atc-classes_nodes.tsv
+          - data/transformed/atc/atc-classes_edges.tsv
+    drug-central-dti:
+      name: "DrugCentral Drug-Target Interactions"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/drugcentral-dti_nodes.tsv
+          - data/transformed/drug_central/drugcentral-dti_edges.tsv
+    drug-central-atc:
+      name: "DrugCentral ATC Codes"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/drugcentral-atc_nodes.tsv
+          - data/transformed/drug_central/drugcentral-atc_edges.tsv
     gocams:
       name: "Gene Ontology Causal Activity Modeling"
       input:
         format: tsv
         filename:
-          - data/transformed/gocams/GOCAMs_nodes.tsv
-          - data/transformed/gocams/GOCAMs_edges.tsv
+          - data/transformed/gocams/GOCAMs_nodes.tsv_nodes.tsv
+          - data/transformed/gocams/GOCAMs_edges.tsv_edges.tsv
     hpa:
       name: "Human Proteome Atlas"
       input:
@@ -107,13 +121,27 @@ merged_graph:
         filename:
           - data/transformed/reactome/uniprot2reactome_nodes.tsv
           - data/transformed/reactome/uniprot2reactome_edges.tsv
-    tcrd:
-      name: "Target Central Resource Database"
+    tcrd-ids:
+      name: "Target Central Resource Database - IDs"
       input:
         format: tsv
         filename:
           - data/transformed/tcrd/tcrd-ids_nodes.tsv
           - data/transformed/tcrd/tcrd-ids_edges.tsv
+    tcrd-protein:
+      name: "Target Central Resource Database - Proteins"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/tcrd/tcrd-protein_nodes.tsv
+          - data/transformed/tcrd/tcrd-protein_edges.tsv
+    string:
+      name: "STRING"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/string/string_nodes.tsv_nodes.tsv
+          - data/transformed/string/string_edges.tsv_edges.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
@@ -127,7 +155,7 @@ merged_graph:
     merged-kg-tsv:
       format: tsv
       compression: tar.gz
-      filename: KG-IDG
+      filename: merged-kg
     merged-kg-nt:
       format: nt
       compression: gz

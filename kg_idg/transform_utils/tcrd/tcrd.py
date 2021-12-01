@@ -2,8 +2,11 @@
 # -*- coding: utf-8 -*-
 import os
 from typing import Optional
+import gzip
+import shutil
 
 from kg_idg.transform_utils.transform import Transform
+from kg_idg.utils.sql_utils import process_data_dump
 from koza.cli_runner import transform_source #type: ignore
 
 
@@ -11,20 +14,29 @@ from koza.cli_runner import transform_source #type: ignore
 TCRD is the Target Central Resource Database.
 We use this data for the ID mappings necessary to integrate
 with Pharos.
+We also download the full MySQL dump and convert it to TSV
+(rather than trying to re-load the whole DB).
 See details on source files here:
 http://juniper.health.unm.edu/tcrd/download/README
 """
 
 TCRD_SOURCES = {
-    'TCRD-IDs': 'TCRDv6.11.0.tsv',
+    'TCRD-IDs': 'TCRDv6.12.4.tsv',
+    'TCRD-DB': 'tcrd.sql.gz'
 }
 
 TCRD_CONFIGS = {
     'TCRD-IDs': 'tcrd-ids.yaml',
+    'TCRD-DB': 'tcrd-protein.yaml', # TODO: This will need to be calls to multiple configs
 }
 
+WANTED_TABLES = ["data_type","info_type","protein","target","tdl_info"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
+
+class SplitterArgs:
+    # Setup for the MySQL parser
+    def __init__(self): pass
 
 class TCRDTransform(Transform):
     """This transform ingests the tab-delimited TCRD ID mapping file.
@@ -58,12 +70,39 @@ class TCRDTransform(Transform):
         config = os.path.join("kg_idg/transform_utils/tcrd/", TCRD_CONFIGS[source])
         output = self.output_dir
 
+        outname = name[:-3]
+        
+        # Decompress
+        if name[-2:] == "gz":
+            outpath = os.path.join(self.input_base_dir, outname)
+            with gzip.open(data_file, 'rb') as data_file_gz:
+                with open(outpath, 'wb') as data_file_new:
+                    shutil.copyfileobj(data_file_gz, data_file_new)
+
         # If source is unknown then we aren't going to guess
         if source not in TCRD_CONFIGS:
             raise ValueError(f"Source file {source} not recognized - not transforming.")
-        else:
-            print(f"Transforming using source in {config}")
-            transform_source(source=config, output_dir=output,
+
+        if outname[-3:] == "sql": 
+                '''
+                This is the full SQL dump so we need to load it as a local database,
+                export it as individual TSVs,
+                then pass what we want to Koza transform_source.
+                '''
+                print("Transforming MySQL dump to TSV. This may take a while...")
+                if not process_data_dump("tcrd",
+                                        "mysql",
+                                        outpath, 
+                                        WANTED_TABLES, 
+                                        self.input_base_dir,
+                                        self.output_dir,
+                                        list_tables=False):
+                    print("Did not process TCRD MySQL dump!")
+                    return
+
+        print(f"Transforming using source in {config}")
+        transform_source(source=config, output_dir=output,
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)
+

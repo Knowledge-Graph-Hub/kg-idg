@@ -9,7 +9,7 @@ files:
 
 metadata: './kg_idg/transform_utils/hpa/metadata.yaml'
 
-has_header: 'True'
+header: 'infer'
 
 columns:
   - 'Gene'

@@ -1,0 +1,10 @@
+name: 'drugcentral'
+
+dataset_description:
+  ingest_title: 'drugcentral'
+  ingest_url: 'https://unmtid-shinyapps.net/download/DrugCentral/2021_09_01/drug.target.interaction.tsv.gz'
+  description: 'DrugCentral drug vs target interactions'
+  rights: 'https://drugcentral.org/privacy'
+
+source_files:
+  - 'drugcentral-dti.yaml'

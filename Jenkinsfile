@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:7'
+            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:7'  // TODO - update to with-dbs docker version of Harry's
         }
     }
     triggers{
@@ -17,7 +17,6 @@ pipeline {
         AWS_CLOUDFRONT_DISTRIBUTION_ID = 'EUVSWXZQBXCFP'
 
         MERGEDKGNAME_BASE = "KG-IDG"
-
         // Distribution ID for the AWS CloudFront for this bucket
         // used solely for invalidations
         GCLOUD_PROJECT = 'test-project-covid-19-277821'
@@ -50,6 +49,7 @@ pipeline {
                     sh "echo $BUILDSTARTDATE > dow.txt"
                     sh "echo $BUILDSTARTDATE"
                     sh "echo $MERGEDKGNAME_BASE"
+                    sh "echo $MERGEDKGNAME_GENERIC"
                     sh "python3.8 --version"
                     sh "id"
                     sh "cat /etc/hostname"
@@ -73,6 +73,14 @@ pipeline {
                     )
                     sh '/usr/bin/python3.8 -m venv venv'
                     sh '. venv/bin/activate'
+                    // Start up the database platforms
+                    sh 'sudo /etc/init.d/postgresql start'
+                    sh 'sudo /etc/init.d/mysql start'
+                    sh 'sudo /etc/init.d/postgresql status'
+                    sh 'sudo /etc/init.d/mysql status'
+                    echo 'PostgreSQL server status:'
+                    sh 'pg_isready -h localhost -p 5432'
+                    // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
                     sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git'
