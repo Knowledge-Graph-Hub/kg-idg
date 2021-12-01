@@ -37,7 +37,7 @@ TCRD_CONFIGS = {
 WANTED_TABLES = ["data_type","info_type","xref_type",
                 "protein","target","tdl_info","drug_activity",
                 "feature","mondo","mondo_parent",
-                "mondo_xref","protein2pubmed"]
+                "mondo_xref"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
