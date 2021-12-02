@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:7'  // TODO - update to with-dbs docker version of Harry's
+            image 'justaddcoffee/ubuntu20-python-3-8-5-dev:8'  // TODO - update to with-dbs docker version of Harry's
         }
     }
     triggers{
