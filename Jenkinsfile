@@ -49,7 +49,6 @@ pipeline {
                     sh "echo $BUILDSTARTDATE > dow.txt"
                     sh "echo $BUILDSTARTDATE"
                     sh "echo $MERGEDKGNAME_BASE"
-                    sh "echo $MERGEDKGNAME_GENERIC"
                     sh "python3.8 --version"
                     sh "id"
                     sh "cat /etc/hostname"
