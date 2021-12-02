@@ -302,10 +302,8 @@ pipeline {
                     script{
                         sh 'env'
                         // TODO run update yaml using NEAT, then upload YAML file to gcloud instance
-                        // do a wget of tar.gz with nodes/edge file
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p $BUILDSTARTDATE && cd $BUILDSTARTDATE && wget https://kg-hub.berkeleybop.io/kg-idg/$BUILDSTARTDATE/KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
-                        // decompress
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p $BUILDSTARTDATE && cd $BUILDSTARTDATE && tar -xzvf KG-IDG.tar.gz\'"', returnStatus:true
+                        // do a wget of tar.gz with nodes/edge file and decompress
+                        def EXIT_CODE_WGET=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p $BUILDSTARTDATE && cd $BUILDSTARTDATE && wget https://kg-hub.berkeleybop.io/kg-idg/$BUILDSTARTDATE/KG-IDG.tar.gz && tar -xzvf KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && source venv/bin/activate && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
