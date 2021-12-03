@@ -37,7 +37,7 @@ if type_str == "JOURNAL ARTICLE":
                     issue=row["issue"],
                     creation_date=row["dp_year"])
 elif type_str == "BOOK":
-    ice = Book(id='ISBN:' + row["isbn10"],
+    ice = Book(id='isbn:' + row["isbn10"],
                             type=type_str,
                             authors=row["authors"],
                             summary=row["title"],

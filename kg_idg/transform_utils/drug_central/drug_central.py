@@ -57,7 +57,7 @@ class DrugCentralTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
     
-    def write_reference_map() -> None:
+    def write_reference_map(self) -> None:
         '''
         Sets up references as a map so their database IDs can be used
         to look up their CURIEs.
@@ -76,7 +76,7 @@ class DrugCentralTransform(Transform):
                         else:
                             curie = 'PMID:' + splitline[1] 
                     elif ref_type == "BOOK":
-                        curie = 'ISBN:' + splitline[7]
+                        curie = 'isbn:' + splitline[7]
                     elif ref_type in ["CLINICAL TRIAL","DRUG LABEL", "ONLINE RESOURCE"]:
                         curie = 'ISBN:' + splitline[8]
                     elif ref_type == "PATENT":
