@@ -2,16 +2,16 @@ import uuid
 
 from biolink_model_pydantic.model import ( #type: ignore
     Publication,
-    Drug,
     Article,
     Book,
     InformationResource,
-    InformationContentEntity,
-    Predicate,
-    InformationContentEntityToNamedThingAssociation
+    InformationContentEntity
 )
 
 from koza.cli_runner import koza_app #type: ignore
+
+# This table is the references only, without Drug IDs.
+# see the 'property' table for drug to reference associations.
 
 source_name="drugcentral-reference"
 
@@ -61,16 +61,4 @@ else:
                             type=type_str,
                             creation_date=row["dp_year"])
 
-drug = Drug(id='DrugCentral:' + row["id"])
-
-# Association
-association = InformationContentEntityToNamedThingAssociation(
-    id="uuid:" + str(uuid.uuid1()),
-    subject=ice.id,
-    predicate=Predicate.mentions,
-    object=drug.id,
-    source="DrugCentral",
-    relation="IAO:0000142" # "mentions"
-)
-
-koza_app.write(ice, association, drug)
+koza_app.write(ice)

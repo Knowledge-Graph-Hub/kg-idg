@@ -26,9 +26,11 @@ DRUG_CENTRAL_CONFIGS = {
     'DrugCentralDB': 'drugcentral-{table}.yaml'
 }
 
-WANTED_TABLES = ["atc_ddd","approval","reference"]
+# Reference table must be loaded before property table due to dependency
+WANTED_TABLES = ["atc_ddd","approval","reference","property"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
+REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.txt"
 
 class DrugCentralTransform(Transform):
     """This transform ingests the tab-delimited DrugCentral
@@ -55,6 +57,34 @@ class DrugCentralTransform(Transform):
                 data_file = os.path.join(self.input_base_dir, name)
                 self.parse(name, data_file, k)
     
+    def write_reference_map() -> None:
+        '''
+        Sets up references as a map so their database IDs can be used
+        to look up their CURIEs.
+        '''
+        with open("kg-idg/data/transformed/drug_central/drugcentral-reference.tsv") as infile:
+            with open(REFERENCE_MAP_TABLE, "w") as outfile:
+                infile.readline() # Skip header
+                outfile.write(f"db_id\turi")
+                for line in infile:
+                    splitline = line.split("\t")
+                    db_id = splitline[0]
+                    ref_type = splitline[4]
+                    if ref_type == "JOURNAL ARTICLE":
+                        if splitline[1] == '':
+                            curie = 'DOI:' + splitline[2]
+                        else:
+                            curie = 'PMID:' + splitline[1] 
+                    elif ref_type == "BOOK":
+                        curie = 'ISBN:' + splitline[7]
+                    elif ref_type in ["CLINICAL TRIAL","DRUG LABEL", "ONLINE RESOURCE"]:
+                        curie = 'ISBN:' + splitline[8]
+                    elif ref_type == "PATENT":
+                        curie = "GOOGLE_PATENT:" + (splitline[3]).replace(" ", "")
+                    else:
+                        curie = splitline[3]
+                    outfile.write(f"{db_id}\t{curie}")
+
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform DrugCentral file with Koza.
@@ -95,10 +125,20 @@ class DrugCentralTransform(Transform):
             for table in WANTED_TABLES:
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
                 print(f"Transforming to {output} using source in {config}")
-                transform_source(source=config, output_dir=output,
+                if table == "property":
+                    transform_source(source=config, output_dir=output,
+                                output_format="tsv",
+                                global_table=TRANSLATION_TABLE,
+                                local_table=REFERENCE_MAP_TABLE)
+                else:
+                    transform_source(source=config, output_dir=output,
                                 output_format="tsv",
                                 global_table=TRANSLATION_TABLE,
                                 local_table=None)
+                if table == "reference": # Need to save this table for lookup later
+                    print("Writing reference ID map...")
+                    self.write_reference_map()
+
         else:
             config = os.path.join("kg_idg/transform_utils/drug_central/", DRUG_CENTRAL_CONFIGS[source])
             print(f"Transforming to {output} using source in {config}")

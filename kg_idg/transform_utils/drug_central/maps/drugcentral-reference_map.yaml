@@ -1,0 +1,20 @@
+name: 'drugcentral-reference_map'
+
+metadata:
+  description: 'Mapping file created in the process of DrugCentral DB parsing, for mapping reference IDs to URIs'
+
+delimiter: '\t'
+
+# Assumes that no identifiers are overlapping
+# otherwise these should go into separate configs
+files:
+  - './kg_idg/transform_utils/drug_central/drugcentral-reference_map.txt'
+
+columns:
+  - 'db_id'
+  - 'uri'
+
+key: 'db_id'
+
+values:
+  - 'uri'
