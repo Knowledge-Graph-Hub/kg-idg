@@ -86,7 +86,7 @@ class DrugCentralTransform(Transform):
                                     WANTED_TABLES, 
                                     self.input_base_dir,
                                     self.output_dir,
-                                    list_tables=True):
+                                    list_tables=False):
                 print("Did not process DrugCentral data dump!")
                 return
         

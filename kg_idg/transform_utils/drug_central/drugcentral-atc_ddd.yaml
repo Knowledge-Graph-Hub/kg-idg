@@ -13,17 +13,12 @@ header: 'infer'
 
 columns:
   - 'id'
-  - 'code'
-  - 'chemical_substance'
-  - 'l1_code'
-  - 'l1_name'
-  - 'l2_code'
-  - 'l2_name'
-  - 'l3_code'
-  - 'l3_name'
-  - 'l4_code'
-  - 'l4_name'
-  - 'chemical_substance_count'
+  - 'atc_code'
+  - 'ddd'
+  - 'unit_type'
+  - 'route'
+  - 'comment'
+  - 'struct_id'
 
 node_properties:
   - 'id'
