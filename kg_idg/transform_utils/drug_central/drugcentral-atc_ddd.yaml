@@ -1,11 +1,11 @@
-name: 'drugcentral-atc'
+name: 'drugcentral-atc_ddd'
 
 format: 'csv'
 
 delimiter: '\t'
 
 files:
-  - './data/transformed/drug_central/drugcentral-atc.tsv'
+  - './data/transformed/drug_central/drugcentral-atc_ddd.tsv'
 
 metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
 
