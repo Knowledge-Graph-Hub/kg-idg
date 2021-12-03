@@ -30,9 +30,13 @@ columns:
 node_properties:
   - 'id'
   - 'category'
-  - 'type'
   - 'authors'
   - 'summary'
+  - 'published_in'
+  - 'volume'
+  - 'issue'
+  - 'creation_date'
+  
 
 edge_properties:
   - 'id'
