@@ -26,7 +26,7 @@ DRUG_CENTRAL_CONFIGS = {
     'DrugCentralDB': 'drugcentral-{table}.yaml'
 }
 
-WANTED_TABLES = ["atc","reference"]
+WANTED_TABLES = ["atc","approval","reference"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
