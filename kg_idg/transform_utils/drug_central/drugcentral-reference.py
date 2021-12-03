@@ -23,7 +23,7 @@ else:
     type_str = str(row["type"])
 
 # Entities
-if type_str == "JOURNAL ARTICLE":  #TODO: fix for missing PMIDs - use DOIs?
+if type_str == "JOURNAL ARTICLE":
     if str(row["pmid"]) == '':
         id_str = 'DOI:' + row["doi"]
     else:
