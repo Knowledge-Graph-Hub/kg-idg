@@ -12,7 +12,7 @@ from koza.cli_runner import koza_app #type: ignore
 
 source_name="drugcentral-dti"
 
-activity_types = ["A2","AC50","app Ki","app Km","D2"
+activity_types = ["A2","AC50","app Ki","app Km","D2",
                     "EC50","EC90","ED50","GI50","IC50",
                     "IC90","ID50","Ka","Kact","Kb","Kd",
                     "Kd1","Ki","Km","Ks","MEC","MIC","MPC",
