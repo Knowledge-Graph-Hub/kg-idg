@@ -304,7 +304,7 @@ pipeline {
                         // do a wget of tar.gz with nodes/edge file and decompress
                         // TODO: change URL in wget below
                         def EXIT_CODE_WGET=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p 20211202 && cd 20211202 && wget https://kg-hub.berkeleybop.io/kg-idg/20211202/KG-IDG.tar.gz && tar -xzvf KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
+                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
