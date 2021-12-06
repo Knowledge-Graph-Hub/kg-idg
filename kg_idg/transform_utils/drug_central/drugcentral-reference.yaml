@@ -1,0 +1,50 @@
+name: 'drugcentral-reference'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/transformed/drug_central/drugcentral-reference.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'pmid'
+  - 'doi'
+  - 'document_id'
+  - 'type'    
+  - 'authors' 
+  - 'title'   
+  - 'isbn10'  
+  - 'url'     
+  - 'journal' 
+  - 'volume'  
+  - 'issue'   
+  - 'dp_year' 
+  - 'pages'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'authors'
+  - 'summary'
+  - 'published_in'
+  - 'volume'
+  - 'issue'
+  - 'creation_date'
+  
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+
+transform_mode: 'flat'

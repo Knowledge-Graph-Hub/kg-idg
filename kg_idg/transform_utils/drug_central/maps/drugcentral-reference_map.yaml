@@ -1,0 +1,21 @@
+name: 'drugcentral-reference_map'
+
+metadata:
+  description: 'Mapping file created in the process of DrugCentral DB parsing, for mapping reference IDs to URIs'
+
+format: 'csv'
+delimiter: '\t'
+
+files:
+  - './kg_idg/transform_utils/drug_central/drugcentral-reference_map.tsv'
+
+header: 'none'
+
+columns:
+  - 'db_id'
+  - 'uri'
+
+key: 'db_id'
+
+values:
+  - 'uri'

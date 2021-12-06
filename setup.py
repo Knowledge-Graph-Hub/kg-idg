@@ -68,7 +68,7 @@ setup(
         'pyyaml',
         'kgx==1.5.0',
         'koza==0.1.5',
-        'biolink_model_pydantic',
+        'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
         'psycopg2-binary'
     ],

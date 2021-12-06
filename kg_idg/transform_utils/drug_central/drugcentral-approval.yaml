@@ -1,0 +1,35 @@
+name: 'drugcentral-approval'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/transformed/drug_central/drugcentral-approval.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'struct_id'
+  - 'approval'
+  - 'type'
+  - 'applicant'
+  - 'orphan'
+
+node_properties:
+  - 'id'
+  - 'highest_FDA_approval_status'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+
+transform_mode: 'flat'
