@@ -41,6 +41,6 @@ edge_properties:
   - 'source'
 
 depends_on:
-  - 'kg-idg/kg_idg/transform_utils/drug_central/maps/drugcentral-reference_map.yaml'
+  - './kg_idg/transform_utils/drug_central/maps/drugcentral-reference_map.yaml'
 
 transform_mode: 'flat'

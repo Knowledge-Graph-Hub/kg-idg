@@ -30,7 +30,7 @@ DRUG_CENTRAL_CONFIGS = {
 WANTED_TABLES = ["atc_ddd","approval","reference","property"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
-REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.txt"
+REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.tsv"
 
 class DrugCentralTransform(Transform):
     """This transform ingests the tab-delimited DrugCentral
@@ -60,30 +60,34 @@ class DrugCentralTransform(Transform):
     def write_reference_map(self) -> None:
         '''
         Sets up references as a map so their database IDs can be used
-        to look up their CURIEs.
+        to look up their URIs (i.e., URLs or CURIEs).
         '''
-        with open("kg-idg/data/transformed/drug_central/drugcentral-reference.tsv") as infile:
+        with open("./data/transformed/drug_central/drugcentral-reference.tsv") as infile:
             with open(REFERENCE_MAP_TABLE, "w") as outfile:
                 infile.readline() # Skip header
-                outfile.write(f"db_id\turi")
                 for line in infile:
-                    splitline = line.split("\t")
+                    db_id = ""
+                    uri = ""
+                    ref_type = ""
+                    splitline = ((line).rstrip()).split("\t")
+                    if splitline[0] == "\"": # it's empty
+                        continue 
                     db_id = splitline[0]
                     ref_type = splitline[4]
                     if ref_type == "JOURNAL ARTICLE":
                         if splitline[1] == '':
-                            curie = 'DOI:' + splitline[2]
+                            uri = 'DOI:' + splitline[2]
                         else:
-                            curie = 'PMID:' + splitline[1] 
+                            uri = 'PMID:' + splitline[1] 
                     elif ref_type == "BOOK":
-                        curie = 'isbn:' + splitline[7]
+                        uri = 'isbn:' + splitline[7]
                     elif ref_type in ["CLINICAL TRIAL","DRUG LABEL", "ONLINE RESOURCE"]:
-                        curie = 'ISBN:' + splitline[8]
+                        uri = splitline[8]
                     elif ref_type == "PATENT":
-                        curie = "GOOGLE_PATENT:" + (splitline[3]).replace(" ", "")
+                        uri = "GOOGLE_PATENT:" + (splitline[3]).replace(" ", "")
                     else:
-                        curie = splitline[3]
-                    outfile.write(f"{db_id}\t{curie}")
+                        uri = splitline[3]
+                    outfile.write(f"{db_id}\t{uri}\n")
 
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
@@ -125,16 +129,10 @@ class DrugCentralTransform(Transform):
             for table in WANTED_TABLES:
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
                 print(f"Transforming to {output} using source in {config}")
-                if table == "property":
-                    transform_source(source=config, output_dir=output,
-                                output_format="tsv",
-                                global_table=TRANSLATION_TABLE,
-                                local_table=REFERENCE_MAP_TABLE)
-                else:
-                    transform_source(source=config, output_dir=output,
-                                output_format="tsv",
-                                global_table=TRANSLATION_TABLE,
-                                local_table=None)
+                transform_source(source=config, output_dir=output,
+                            output_format="tsv",
+                            global_table=TRANSLATION_TABLE,
+                            local_table=None)
                 if table == "reference": # Need to save this table for lookup later
                     print("Writing reference ID map...")
                     self.write_reference_map()

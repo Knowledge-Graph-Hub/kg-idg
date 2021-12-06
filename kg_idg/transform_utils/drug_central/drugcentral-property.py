@@ -27,12 +27,13 @@ row = koza_app.get_row(source_name)
 ref_db_id_to_uri = koza_app.get_map('drugcentral-reference_map')
 
 type_str = str(row["reference_type"])
-uri = ref_db_id_to_uri[row['db_id']]['uri']
+uri = ref_db_id_to_uri[row['reference_id']]['uri']
 
 # Entities
 if type_str == "JOURNAL ARTICLE":
     ice = Article(id=uri,
-                    type=type_str)
+                    type=type_str,
+                    published_in="") # filled later from reference table
 elif type_str == "BOOK":
     ice = Book(id=uri,
                 type=type_str)
