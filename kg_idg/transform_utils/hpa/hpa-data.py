@@ -14,6 +14,29 @@ source_name="hpa-data"
 row = koza_app.get_row(source_name)
 go_lookup = koza_app.get_map('go_term_lookup_map')
 
+CLEAN_SUBCELL_LOCS = {"actin filaments":"actin filament",
+                        "cell junctions":"cell junction",
+                        "cytokinetic bridge":"intercellular bridge",
+                        "cytoplasmic bodies":"cytoplasm",
+                        "endosomes":"endosome",
+                        "focal adhesion sites":"focal adhesion", #For replacing some names w/o GO terms
+                        "intermediate filaments":"intermediate filament",
+                        "lipid droplets":"lipid droplet",
+                        "lysosomes":"lysosome",
+                        "microtubule ends":"microtubule",
+                        "microtubules":"microtubule",
+                        "midbody ring":"flemming body",
+                        "mitochondria":"mitochondrion",
+                        "mitotic chromosome":"chromosome",
+                        "nuclear bodies":"nuclear body",
+                        "nuclear speckles":"nuclear speck",
+                        "nucleoli fibrillar center":"fibrillar center",
+                        "nucleoli":"nucleolus",
+                        "nucleoli rim":"nucleolus",
+                        "peroxisomes":"peroxisome",
+                        "rods & rings":"cytosol",
+                        "vesicles":"vesicle"} 
+
 # Entities
 protein_list = [] # Some entries have multiple protein IDs
 xref_list = []
@@ -33,6 +56,8 @@ if str(row["Subcellular location"]) != "":
     locations = str(row["Subcellular location"]).split(",")
     for location in locations:
         location = location.lower()
+        if location in CLEAN_SUBCELL_LOCS:
+            location = CLEAN_SUBCELL_LOCS[location]
         anatomy = AnatomicalEntity(id=go_lookup[location]['id'], # GO term lookup
                             description=location,
                             source="Human Protein Atlas")
