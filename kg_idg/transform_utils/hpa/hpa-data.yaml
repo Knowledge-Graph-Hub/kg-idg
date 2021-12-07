@@ -331,6 +331,7 @@ node_properties:
   - 'category'
   - 'source'
   - 'xref'
+  - 'description'
 
 edge_properties:
   - 'id'
@@ -341,5 +342,8 @@ edge_properties:
   - 'relation'
   - 'source'
   - 'provided_by'
+
+depends_on:
+  - './kg_idg/transform_utils/hpa/maps/go_term_lookup_map.yaml'
 
 transform_mode: 'flat'

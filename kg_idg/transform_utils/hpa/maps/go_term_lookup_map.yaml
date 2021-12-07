@@ -1,0 +1,21 @@
+name: 'go_term_lookup_map'
+
+metadata:
+  description: 'Mapping file for mapping Gene Ontology IDs to text descriptions'
+
+format: 'csv'
+delimiter: '\t'
+
+files:
+  - './kg_idg/transform_utils/hpa/maps/go_term_map.tsv'
+
+header: 'infer'
+
+columns:
+  - 'name'
+  - 'id'
+
+key: 'name'
+
+values:
+  - 'id'
