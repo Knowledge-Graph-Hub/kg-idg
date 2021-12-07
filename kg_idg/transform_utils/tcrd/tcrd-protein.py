@@ -2,17 +2,15 @@ import uuid
 
 from biolink_model_pydantic.model import ( #type: ignore
     Protein,
-    GeneFamily,
-    DrugToGeneAssociation,
-    Predicate,
-    Attribute
 )
 
 from koza.cli_runner import koza_app #type: ignore
 
 # Most TCRD protein info comes from the tcrd-ids transform.
-# This transform ensures all protein IDs are included,
-# and additionally provides protein families.
+# This transform ensures all protein IDs are included.
+# The input file contains protein families
+# (I think they're from UniProt, based on the language)
+# but we don't transform them here.
 
 source_name="tcrd-protein"
 
