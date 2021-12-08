@@ -65,8 +65,8 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_edges.tsv
   local_name: GOCAMs_edges.tsv
 -
-  # GO-base
-  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-09-01/go_kgx_tsv.tar.gz
+  # Gene Ontology - not the base version
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-11-16/go_kgx_tsv.tar.gz
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
