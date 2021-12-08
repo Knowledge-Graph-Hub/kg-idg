@@ -10,6 +10,7 @@ from biolink_model_pydantic.model import ( #type: ignore
 from koza.cli_runner import koza_app #type: ignore
 
 source_name="hpa-data"
+full_source_name = "Human Protein Atlas"
 
 row = koza_app.get_row(source_name)
 go_lookup = koza_app.get_map('go_term_lookup_map')
@@ -60,14 +61,14 @@ if str(row["Subcellular location"]) != "":
             location = CLEAN_SUBCELL_LOCS[location]
         anatomy = AnatomicalEntity(id=go_lookup[location]['id'], # GO term lookup
                             description=location,
-                            source="Human Protein Atlas")
+                            source=full_source_name)
         subcell_locations.append(anatomy)
     have_location = True
 
 for entry in row["Uniprot"].split(", "):
     if entry != "":
         protein = Protein(id='UniProtKB:' + entry,
-                    source="Human Protein Atlas",
+                    source=full_source_name,
                     xref=xref_list)
         protein_list.append(protein)
 
@@ -80,7 +81,7 @@ for entry in protein_list:
             predicate=Predicate.expressed_in,
             object=anatomy.id,
             relation="RO:0002206", #"expressed in",
-            source = "Human Protein Atlas"
+            source =full_source_name
         )
         for location in subcell_locations:
             koza_app.write(protein, association, anatomy)
