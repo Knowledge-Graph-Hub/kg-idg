@@ -82,7 +82,10 @@ pipeline {
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
-                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git'
+                    // install version of Ensmallen that works without AVX instructions:
+                    sh 'wget https://kg-hub.berkeleybop.io/attic/ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl'
+                    sh './venv/bin/pip install ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl -U'
+                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@pin_to_ensmallen_0_7'
                 }
             }
         }
@@ -305,9 +308,9 @@ pipeline {
 
 
                         // copy template NEAT yaml
-                        OUTPUT_DIR = '$BUILDSTARTDATE/graph_ml_artifacts'
-                        NEAT_YAML = 'kg-idg-neat.$BUILDSTARTDATE.yaml'
-                        NEAT_YAML_FULLPATH = '/tmp/$NEAT_YAML'
+                        OUTPUT_DIR = "$BUILDSTARTDATE/graph_ml_artifacts"
+                        NEAT_YAML = "kg-idg-neat.$BUILDSTARTDATE.yaml"
+                        NEAT_YAML_FULLPATH = "/tmp/$NEAT_YAML"
 
                         sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
                         // run neat updateyaml
