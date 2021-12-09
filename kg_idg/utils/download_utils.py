@@ -5,6 +5,7 @@
 import logging
 import os
 from urllib.request import Request, urlopen
+from urllib.error import HTTPError
 
 import yaml
 from os import path
@@ -50,9 +51,12 @@ def download_from_yaml(yaml_file: str, output_dir: str,
                     logging.info("Using cached version of {}".format(outfile))
                     continue
 
-            req = Request(item['url'], headers={'User-Agent': 'Mozilla/5.0'})
-            with urlopen(req) as response, open(outfile, 'wb') as out_file:  # type: ignore
+            try:
+                req = Request(item['url'], headers={'User-Agent': 'Mozilla/5.0'})
+                with urlopen(req) as response, open(outfile, 'wb') as out_file:  # type: ignore
                     data = response.read()  # a `bytes` object
                     out_file.write(data)
+            except HTTPError as e:
+                logging.warning("Couldn't download source in {} due to error {}".format(item, e))
 
     return None
