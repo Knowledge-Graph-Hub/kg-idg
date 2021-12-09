@@ -311,7 +311,7 @@ pipeline {
 
                         sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
                         // run neat updateyaml
-                        sh ". venv/bin/activate && neat updateyaml --input_path $NEAT_YAML_FULLPATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
+                        sh ". ../gitrepo/venv/bin/activate && neat updateyaml --input_path $NEAT_YAML_FULLPATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
                         // make remote output dir
                         def EXIT_CODE_MKDIR=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c mkdir -p /home/jtr4v/$OUTPUT_DIR\"", returnStatus:true
                         // scp NEAT yaml to gcloud instance
