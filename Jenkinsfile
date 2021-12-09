@@ -309,7 +309,7 @@ pipeline {
                         NEAT_YAML = 'kg-idg-neat.$BUILDSTARTDATE.yaml'
                         NEAT_YAML_FULLPATH = '/tmp/$NEAT_YAML'
 
-                        sh "cp -f templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
+                        sh "cp -f ./gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
                         // run neat updateyaml
                         sh "neat updateyaml --input_path $NEAT_YAML_FULLPATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
                         // make remote output dir
