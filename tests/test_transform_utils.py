@@ -18,10 +18,13 @@ from kg_idg import download # Need to download each source first
 data_raw_path = 'data/raw/'
 download(yaml_file='download.yaml', output_dir=data_raw_path)
 
+# This takes a while because it's essentially a set of 
+# integration tests, and it ingests full source data
+# rather than snippets to account for edge cases.
 class TestTransformUtils(TestCase):
 
     def setUp(self) -> None:
-        self.input_dir = 'tests/resources/snippets/'
+        self.input_dir = data_raw_path
         self.output_dir = 'tests/resources/'
 
     @parameterized.expand([
@@ -82,51 +85,53 @@ class TestTransformUtils(TestCase):
     
     # Koza transforms
 
+    # This transform requires a database load
+    # and that is challenging to test, so we mock much of it
+    @mock.patch('kg_idg.utils.sql_utils.process_data_dump')
     @mock.patch('koza.cli_runner.transform_source')
-    def test_drug_central_transform(self, mock_transform_source):
+    def test_drug_central_transform(self, mock_process_data_dump, mock_transform_source):
         t = DrugCentralTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"drug_central")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
+        self.assertTrue(mock_transform_source.called)
+        self.assertTrue(mock_process_data_dump.called)
         shutil.rmtree(this_output_dir)
 
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_reactome_transform(self, mock_transform_source):
+    def test_reactome_transform(self):
         t = ReactomeTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"reactome")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
+    # Another database load - mocks required
+    @mock.patch('kg_idg.utils.sql_utils.process_data_dump')
     @mock.patch('koza.cli_runner.transform_source')
-    def test_tcrd_transform(self, mock_transform_source):
+    def test_tcrd_transform(self, mock_process_data_dump, mock_transform_source):
         t = TCRDTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
+        self.assertTrue(mock_transform_source.called)
+        self.assertTrue(mock_process_data_dump.called)
         shutil.rmtree(this_output_dir)
 
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_hpa_transform(self, mock_transform_source):
+    def test_hpa_transform(self):
         t = ProteinAtlasTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
-    @skip
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_atc_transform(self, mock_transform_source):
+    def test_atc_transform(self):
         t = ATCTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"atc")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
+    @classmethod
     def tearDownClass(self):
         """
         This removes all files from the data/raw dir!
