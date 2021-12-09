@@ -84,8 +84,10 @@ pipeline {
                     sh './venv/bin/pip install awscli boto3 s3cmd'
                     // install version of Ensmallen that works without AVX instructions:
                     sh 'wget https://kg-hub.berkeleybop.io/attic/ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl'
-                    sh './venv/bin/pip install ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl -U'
-                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@pin_to_ensmallen_0_7'
+                    sh 'md5sum ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl'
+                    sh '. venv/bin/activate && ./venv/bin/pip install --upgrade pip'
+                    sh '. venv/bin/activate && ./venv/bin/pip install ensmallen-0.7.0.dev1-cp36-cp36m-linux_x86_64.whl -U'
+                    sh '. venv/bin/activate && ./venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@pin_to_ensmallen_0_7'
                 }
             }
         }
