@@ -1,4 +1,4 @@
-from unittest import TestCase, mock
+from unittest import TestCase, mock, skip
 import os
 import shutil
 from parameterized import parameterized
@@ -117,6 +117,7 @@ class TestTransformUtils(TestCase):
         self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
+    @skip
     @mock.patch('koza.cli_runner.transform_source')
     def test_atc_transform(self, mock_transform_source):
         t = ATCTransform(self.input_dir,self.output_dir)
@@ -126,15 +127,16 @@ class TestTransformUtils(TestCase):
         self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
-"""
-This removes all files from the data/raw dir!
-These tests download minimal versions of the raws,
-but must use the original location due to 
-hardcoded Koza config files.
-So this cleans them out lest they get used
-in real transforms.
-"""
-if os.path.exists(data_raw_path):
-    shutil.rmtree(data_raw_path)
-    os.makedirs(data_raw_path)
+    def tearDownClass(self):
+        """
+        This removes all files from the data/raw dir!
+        These tests download minimal versions of the raws,
+        but must use the original location due to 
+        hardcoded Koza config files.
+        So this cleans them out lest they get used
+        in real transforms.
+        """
+        if os.path.exists(data_raw_path):
+            shutil.rmtree(data_raw_path)
+            os.makedirs(data_raw_path)
 
