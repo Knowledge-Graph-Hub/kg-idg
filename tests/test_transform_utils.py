@@ -15,12 +15,14 @@ from kg_idg.transform_utils.atc.atc import ATCTransform
 
 from kg_idg import download # Need to download each source first
 
+#Need to download or copy over some snippets due to hardcoded Koza paths
 data_raw_path = 'data/raw/'
 download(yaml_file='download.yaml', output_dir=data_raw_path, snippet_only=True)
+for source_snippet in ['atc.csv.gz','proteinatlas.tsv.zip']:
+    shutil.copyfile(f'tests/resources/snippets/{source_snippet}',
+                     os.path.join(data_raw_path,source_snippet))
 
-# This takes a while because it's essentially a set of 
-# integration tests. For Koza ingests it uses data/raw paths
-# due to the paths hardcoded in config files.
+
 class TestTransformUtils(TestCase):
 
     def setUp(self) -> None:
@@ -123,7 +125,6 @@ class TestTransformUtils(TestCase):
         self.assertTrue(mock_process_data_dump.called)
         shutil.rmtree(this_output_dir)
 
-    @skip
     def test_hpa_transform(self):
         t = ProteinAtlasTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
@@ -131,7 +132,6 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    @skip
     def test_atc_transform(self):
         t = ATCTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"atc")
