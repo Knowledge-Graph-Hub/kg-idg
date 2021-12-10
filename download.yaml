@@ -34,7 +34,7 @@
   local_name: orphanet.nt
 -
   # mondo
-  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-09-01/mondo_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-12-01/mondo_kgx_tsv.tar.gz
   local_name: mondo_kgx_tsv.tar.gz
 -
   # OMIM
@@ -46,7 +46,7 @@
   local_name: hp_kgx_tsv.tar.gz
 -
   # CHEBI
-  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/203/chebi_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/206/chebi_kgx_tsv.tar.gz
   local_name: chebi_kgx_tsv.tar.gz
 -
   # Reactome - CHEBI to pathway
@@ -65,8 +65,8 @@
   url: https://kg-hub.berkeleybop.io/kg-covid-19/current/transformed/GOCAMs/GOCAMs_edges.tsv
   local_name: GOCAMs_edges.tsv
 -
-  # GO-base
-  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-09-01/go_kgx_tsv.tar.gz
+  # Gene Ontology - not the base version
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-11-16/go_kgx_tsv.tar.gz
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings

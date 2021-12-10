@@ -19,6 +19,8 @@ def cli():
 @click.option("yaml_file", "-y", required=True, default="download.yaml",
               type=click.Path(exists=True))
 @click.option("output_dir", "-o", required=True, default="data/raw")
+@click.option("snippet_only", "-x", is_flag=True, default=False,
+              help='Download only the first 5 kB of each (uncompressed) source, for testing and file checks [false]')
 @click.option("ignore_cache", "-i", is_flag=True, default=False,
               help='ignore cache and download files even if they exist [false]')
 def download(*args, **kwargs) -> None:
@@ -28,6 +30,7 @@ def download(*args, **kwargs) -> None:
     Args:
         yaml_file: Specify the YAML file containing a list of datasets to download.
         output_dir: A string pointing to the directory to download data to.
+        snippet_only: Downloads only the first 5 kB of each uncompressed source, for testing and file checks.
         ignore_cache: If specified, will ignore existing files and download again.
 
     Returns:

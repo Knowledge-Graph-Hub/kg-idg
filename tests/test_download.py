@@ -5,7 +5,7 @@ from kg_idg import download
 
 
 class TestDownload(TestCase):
-    """Tests kg_emerging_viruses.download
+    """Tests download
     """
     def setUp(self) -> None:
         pass

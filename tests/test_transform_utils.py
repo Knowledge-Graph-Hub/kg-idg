@@ -1,4 +1,4 @@
-from unittest import TestCase, mock
+from unittest import TestCase, mock, skip
 import os
 import shutil
 from parameterized import parameterized
@@ -13,10 +13,23 @@ from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 from kg_idg.transform_utils.atc.atc import ATCTransform
 
+from kg_idg import download # Need to download each source first
+
+#Need to download or copy over some snippets due to hardcoded Koza paths
+data_raw_path = 'data/raw/'
+download(yaml_file='download.yaml', output_dir=data_raw_path, snippet_only=True)
+for source_snippet in ['atc.csv.gz', 'drugcentral.dump.010_05_2021.sql.gz',
+                        'drug.target.interaction.tsv.gz',
+                        'proteinatlas.tsv.zip', 'tcrd.sql.gz']:
+    shutil.copyfile(f'tests/resources/snippets/{source_snippet}',
+                     os.path.join(data_raw_path,source_snippet))
+
+
 class TestTransformUtils(TestCase):
 
     def setUp(self) -> None:
         self.input_dir = 'tests/resources/snippets/'
+        self.raw_path = data_raw_path
         self.output_dir = 'tests/resources/'
 
     @parameterized.expand([
@@ -54,6 +67,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
     
+    
     def test_orphanet_transform(self):
         t = OrphanetTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"orphanet")
@@ -61,6 +75,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
+    
     def test_omim_transform(self):
         t = OMIMTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"omim")
@@ -68,6 +83,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
+    
     def test_gocams_transform(self):
         t = GOCAMTransform(self.input_dir,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"gocams")
@@ -75,56 +91,59 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
     
-    # Koza transforms have hard-coded sources so we skip the transform
-    # (in most cases)
-    # and instead ensure they don't proceed if source is incorrect.
-    # (Note that these tests will fail if a non-test transform has been run!)
+    # Koza transforms
 
+    # This transform requires a database load
+    # but we test that elsewhere (in test_sql_utils)
     @mock.patch('koza.cli_runner.transform_source')
     def test_drug_central_transform(self, mock_transform_source):
-        t = DrugCentralTransform(self.input_dir,self.output_dir)
+        t = DrugCentralTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"drug_central")
-        with self.assertRaises(ValueError):
-            t.run()
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_reactome_transform(self, mock_transform_source):
-        t = ReactomeTransform(self.input_dir,self.output_dir)
+    def test_reactome_transform(self):
+        t = ReactomeTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"reactome")
-        with self.assertRaises(ValueError):
-            t.run()
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
+    # Another database load
     @mock.patch('koza.cli_runner.transform_source')
     def test_tcrd_transform(self, mock_transform_source):
-        t = TCRDTransform(self.input_dir,self.output_dir)
+        t = TCRDTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
-        with self.assertRaises(ValueError):
-            t.run()
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_hpa_transform(self, mock_transform_source):
-        t = ProteinAtlasTransform(self.input_dir,self.output_dir)
+    def test_hpa_transform(self):
+        t = ProteinAtlasTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
-        with self.assertRaises(ValueError):
-            t.run()
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
-    @mock.patch('koza.cli_runner.transform_source')
-    def test_atc_transform(self, mock_transform_source):
-        t = ATCTransform(self.input_dir,self.output_dir)
+    def test_atc_transform(self):
+        t = ATCTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"atc")
-        with self.assertRaises(ValueError):
-            t.run()
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertFalse(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
+
+    @classmethod
+    def tearDownClass(self):
+        """
+        This removes all files from the data/raw dir!
+        These tests download minimal versions of the raws,
+        but must use the original location due to 
+        hardcoded Koza config files.
+        So this cleans them out lest they get used
+        in real transforms.
+        """
+        if os.path.exists(data_raw_path):
+            shutil.rmtree(data_raw_path)
+            os.makedirs(data_raw_path)
+
