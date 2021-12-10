@@ -82,7 +82,7 @@ pipeline {
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
-                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git'
+                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@remove_ensmallen_dep_from_cli'
                 }
             }
         }
