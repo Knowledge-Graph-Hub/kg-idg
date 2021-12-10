@@ -320,8 +320,7 @@ pipeline {
                         def EXIT_CODE_WGET=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p ${BUILDSTARTDATE} && cd $BUILDSTARTDATE && wget https://kg-hub.berkeleybop.io/kg-idg/${BUILDSTARTDATE}/KG-IDG.tar.gz && tar -xzvf KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'\"", returnStatus:true
                         def EXIT_CODE=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'export PATH=~/anaconda3/bin:$PATH conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config ${NEAT_YAML_FULL_REMOTE_PATH} 2>&1 | tee -a /home/jtr4v/neat_output.txt\'\"", returnStatus:true
 
-                        // TODO: add other exit codes below
-                        if(EXIT_CODE != 0){
+                        if(EXIT_CODE_MKDIR != 0 || EXIT_CODE_WGET != 0 || EXIT_CODE != 0){
                            currentBuild.result = 'FAILED'
                            return
                         }
