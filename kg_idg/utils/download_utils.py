@@ -38,7 +38,7 @@ def download_from_yaml(yaml_file: str, output_dir: str,
             if 'url' not in item:
                 logging.warning("Couldn't find url for source in {}".format(item))
                 continue
-            if (item['local_name'])[-3:] in ["zip",".gz"]: # Can't truncate compressed files
+            if snippet_only and (item['local_name'])[-3:] in ["zip",".gz"]: # Can't truncate compressed files
                 logging.warning("Asked to download snippets; can't snippet {}".format(item))
                 continue
             outfile = os.path.join(
