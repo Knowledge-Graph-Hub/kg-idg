@@ -16,7 +16,7 @@ from kg_idg.transform_utils.atc.atc import ATCTransform
 from kg_idg import download # Need to download each source first
 
 data_raw_path = 'data/raw/'
-download(yaml_file='download.yaml', output_dir=data_raw_path)
+# download(yaml_file='download.yaml', output_dir=data_raw_path)
 
 # This takes a while because it's essentially a set of 
 # integration tests, and for Koza ingests it uses full source data
@@ -132,6 +132,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
+    @skip
     def test_atc_transform(self):
         t = ATCTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"atc")
@@ -139,17 +140,17 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    @classmethod
-    def tearDownClass(self):
-        """
-        This removes all files from the data/raw dir!
-        These tests download minimal versions of the raws,
-        but must use the original location due to 
-        hardcoded Koza config files.
-        So this cleans them out lest they get used
-        in real transforms.
-        """
-        if os.path.exists(data_raw_path):
-            shutil.rmtree(data_raw_path)
-            os.makedirs(data_raw_path)
+    # @classmethod
+    # def tearDownClass(self):
+    #     """
+    #     This removes all files from the data/raw dir!
+    #     These tests download minimal versions of the raws,
+    #     but must use the original location due to 
+    #     hardcoded Koza config files.
+    #     So this cleans them out lest they get used
+    #     in real transforms.
+    #     """
+    #     if os.path.exists(data_raw_path):
+    #         shutil.rmtree(data_raw_path)
+    #         os.makedirs(data_raw_path)
 
