@@ -318,7 +318,7 @@ pipeline {
                         // scp NEAT yaml to gcloud instance
                         sh "gcloud compute scp --zone $GCLOUD_ZONE $NEAT_YAML_FULL_PATH jtr4v@$GCLOUD_VM:${NEAT_YAML_FULL_REMOTE_PATH}"
                         def EXIT_CODE_WGET=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p ${BUILDSTARTDATE} && cd $BUILDSTARTDATE && wget https://kg-hub.berkeleybop.io/kg-idg/${BUILDSTARTDATE}/KG-IDG.tar.gz && tar -xzvf KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'\"", returnStatus:true
-                        def EXIT_CODE=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'export PATH=~/anaconda3/bin:$PATH conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config ${NEAT_YAML_FULL_REMOTE_PATH} &> /home/jtr4v/neat_output.txt\'\"", returnStatus:true
+                        def EXIT_CODE=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'export PATH=~/anaconda3/bin:$PATH conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config ${NEAT_YAML_FULL_REMOTE_PATH} |& tee /home/jtr4v/neat_output.txt\'\"", returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
