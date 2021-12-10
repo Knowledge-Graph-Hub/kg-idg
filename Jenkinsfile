@@ -307,17 +307,18 @@ pipeline {
                         // copy template NEAT yaml
                         OUTPUT_DIR = "${BUILDSTARTDATE}/graph_ml_artifacts/" // leave trailing '/'
                         NEAT_YAML = "kg-idg-neat.${BUILDSTARTDATE}.yaml"
-                        NEAT_YAML_FULLPATH = "/tmp/${NEAT_YAML}"
+                        NEAT_YAML_FULL_PATH = "/tmp/${NEAT_YAML}"
+                        NEAT_YAML_FULL_REMOTE_PATH = "/home/jtr4v/NEAT/${OUTPUT_DIR}${NEAT_YAML}"
 
-                        sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
+                        sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULL_PATH"
                         // run neat updateyaml
-                        sh ". ../gitrepo/venv/bin/activate && neat updateyaml --input_path $NEAT_YAML_FULLPATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
+                        sh ". ../gitrepo/venv/bin/activate && neat updateyaml --input_path $NEAT_YAML_FULL_PATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
                         // make remote output dir
                         def EXIT_CODE_MKDIR=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'mkdir -p /home/jtr4v/NEAT/$OUTPUT_DIR\'\"", returnStatus:true
                         // scp NEAT yaml to gcloud instance
-                        sh "gcloud compute scp --zone $GCLOUD_ZONE $NEAT_YAML_FULLPATH jtr4v@$GCLOUD_VM:/home/jtr4v/NEAT/${OUTPUT_DIR}${NEAT_YAML}"
+                        sh "gcloud compute scp --zone $GCLOUD_ZONE $NEAT_YAML_FULL_PATH jtr4v@$GCLOUD_VM:${NEAT_YAML_FULL_REMOTE_PATH}"
                         def EXIT_CODE_WGET=sh script:"gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag=\"-tt\" --command=\"sudo runuser -l jtr4v -c \'cd NEAT && mkdir -p ${BUILDSTARTDATE} && cd $BUILDSTARTDATE && wget https://kg-hub.berkeleybop.io/kg-idg/${BUILDSTARTDATE}/KG-IDG.tar.gz && tar -xzvf KG-IDG.tar.gz &> /home/jtr4v/neat_output.txt\'\"", returnStatus:true
-                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'export PATH=~/anaconda3/bin:$PATH conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config kg-idg.yaml &> tee /home/jtr4v/neat_output.txt\'"', returnStatus:true
+                        def EXIT_CODE=sh script:'gcloud compute ssh $GCLOUD_VM --zone $GCLOUD_ZONE --ssh-flag="-tt" --command="sudo runuser -l jtr4v -c \'export PATH=~/anaconda3/bin:$PATH conda activate && cd NEAT && LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 neat run --config ${NEAT_YAML_FULL_REMOTE_PATH} &> tee /home/jtr4v/neat_output.txt\'"', returnStatus:true
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
