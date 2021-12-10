@@ -295,6 +295,7 @@ pipeline {
         }
 
         stage('Run pipeline to create embedding') {
+            // TODO: remove branch add_neat_to_jenkins_run_jenkins
             when { anyOf { branch 'main'; branch 'add_neat_to_jenkins_run_jenkins'  } }
             steps {
                 dir('./run_embedding') {
