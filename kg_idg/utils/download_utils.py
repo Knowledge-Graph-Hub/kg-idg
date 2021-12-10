@@ -61,10 +61,12 @@ def download_from_yaml(yaml_file: str, output_dir: str,
                 req = Request(item['url'], headers={'User-Agent': 'Mozilla/5.0'})
                 with urlopen(req) as response, open(outfile, 'wb') as out_file:  # type: ignore
                     if snippet_only:
-                        data = response.read(5120)  # first 5 kB of a `bytes` object 
+                        data = response.read(5120)  # first 5 kB of a `bytes` object
+                        for line in data[:-1]: #Skip the last line as it's probably incomplete
+                            out_file.write(line)
                     else:
                         data = response.read()  # a `bytes` object for the full contents
-                    out_file.write(data)
+                        out_file.write(data)
             except HTTPError as e:
                 logging.warning("Couldn't download source in {} due to error {}".format(item, e))
 
