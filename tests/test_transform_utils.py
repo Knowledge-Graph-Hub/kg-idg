@@ -103,6 +103,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
+    @skip
     def test_reactome_transform(self):
         t = ReactomeTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"reactome")
@@ -123,6 +124,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(mock_process_data_dump.called)
         shutil.rmtree(this_output_dir)
 
+    @skip
     def test_hpa_transform(self):
         t = ProteinAtlasTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"hpa")
