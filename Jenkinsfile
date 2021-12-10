@@ -305,9 +305,9 @@ pipeline {
 
 
                         // copy template NEAT yaml
-                        OUTPUT_DIR = "$BUILDSTARTDATE/graph_ml_artifacts"
-                        NEAT_YAML = "kg-idg-neat.$BUILDSTARTDATE.yaml"
-                        NEAT_YAML_FULLPATH = "/tmp/$NEAT_YAML"
+                        OUTPUT_DIR = "${BUILDSTARTDATE}/graph_ml_artifacts"
+                        NEAT_YAML = "kg-idg-neat.${BUILDSTARTDATE}.yaml"
+                        NEAT_YAML_FULLPATH = "/tmp/${NEAT_YAML}"
 
                         sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
                         // run neat updateyaml
