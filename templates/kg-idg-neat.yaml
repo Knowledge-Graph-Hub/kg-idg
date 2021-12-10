@@ -3,8 +3,8 @@ description: kg-idg-xxxxx
 output_directory: output_data
 graph_data:
   graph:
-    node_path: ./merged-kg_nodes.tsv
-    edge_path: ./merged-kg_edges.tsv
+    node_path: ./xxxxs.tsv
+    edge_path: ./xxxxx.tsv
     directed: false
     verbose: true
     nodes_column: id
@@ -114,3 +114,8 @@ classifier:
       parameters:
         random_state: 42
         max_iter: 1000
+upload:
+  s3_bucket: kg-hub-public-data
+  s3_bucket_dir: test
+  extra_args:
+    ACL: public-read
