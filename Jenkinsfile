@@ -82,7 +82,7 @@ pipeline {
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
-                    sh '. venv/bin/activate && ./venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@remove_ensmallen_dep_from_cli'
+                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git'
                 }
             }
         }
@@ -302,19 +302,14 @@ pipeline {
                         sh 'env'
                         // TODO: remove this:
                         BUILDSTARTDATE = 20211202
-                        sh 'echo 1'
+
 
                         // copy template NEAT yaml
-                        OUTPUT_DIR = "$BUILDSTARTDATE/graph_ml_artifacts"
-                        sh 'echo 2'
-                        NEAT_YAML = "kg-idg-neat.$BUILDSTARTDATE.yaml"
-                        sh 'echo 3'
-                        NEAT_YAML_FULLPATH = "/tmp/$NEAT_YAML"
-                        sh 'echo 4'
+                        OUTPUT_DIR = '$BUILDSTARTDATE/graph_ml_artifacts'
+                        NEAT_YAML = 'kg-idg-neat.$BUILDSTARTDATE.yaml'
+                        NEAT_YAML_FULLPATH = '/tmp/$NEAT_YAML'
 
                         sh "cp -f ../gitrepo/templates/kg-idg-neat.yaml $NEAT_YAML_FULLPATH"
-                        sh 'echo 5'
-
                         // run neat updateyaml
                         sh ". ../gitrepo/venv/bin/activate && neat updateyaml --input_path $NEAT_YAML_FULLPATH --keys name,description,output_directory,graph_data:graph:node_path,graph_data:graph:edge_path,upload:s3_bucket_dir --values kg-idg-$BUILDSTARTDATE,kg-idg-$BUILDSTARTDATE,$OUTPUT_DIR,$BUILDSTARTDATE/merged-kg_nodes.tsv,$BUILDSTARTDATE/merged-kg_edges.tsv,kg-idg/$BUILDSTARTDATE/graph_ml_artifacts"
                         // make remote output dir
