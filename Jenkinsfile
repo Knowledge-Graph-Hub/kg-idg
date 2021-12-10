@@ -322,6 +322,7 @@ pipeline {
                         sh 'gcloud compute scp --zone $GCLOUD_ZONE $GCLOUD_VM:/home/jtr4v/neat_output.txt .'
                         sh 'cat neat_output.txt'
 
+                        // TODO: add other exit codes below
                         if(EXIT_CODE != 0){
                            currentBuild.result = 'FAILED'
                            return
