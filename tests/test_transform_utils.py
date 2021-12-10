@@ -18,7 +18,9 @@ from kg_idg import download # Need to download each source first
 #Need to download or copy over some snippets due to hardcoded Koza paths
 data_raw_path = 'data/raw/'
 download(yaml_file='download.yaml', output_dir=data_raw_path, snippet_only=True)
-for source_snippet in ['atc.csv.gz','proteinatlas.tsv.zip']:
+for source_snippet in ['atc.csv.gz', 'drugcentral.dump.010_05_2021.sql.gz',
+                        'drug.target.interaction.tsv.gz',
+                        'proteinatlas.tsv.zip', 'tcrd.sql.gz']:
     shutil.copyfile(f'tests/resources/snippets/{source_snippet}',
                      os.path.join(data_raw_path,source_snippet))
 
@@ -93,16 +95,12 @@ class TestTransformUtils(TestCase):
 
     # This transform requires a database load
     # but we test that elsewhere (in test_sql_utils)
-    @skip
-    @mock.patch('kg_idg.utils.sql_utils.process_data_dump', return_value=False)
     @mock.patch('koza.cli_runner.transform_source')
-    def test_drug_central_transform(self, mock_process_data_dump, mock_transform_source):
+    def test_drug_central_transform(self, mock_transform_source):
         t = DrugCentralTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"drug_central")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertTrue(mock_process_data_dump.called)
-        self.assertTrue(mock_transform_source.called)
         shutil.rmtree(this_output_dir)
 
     def test_reactome_transform(self):
@@ -112,17 +110,13 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    # Another database load - mocks required
-    @skip
-    @mock.patch('kg_idg.utils.sql_utils.process_data_dump', return_value=False)
+    # Another database load
     @mock.patch('koza.cli_runner.transform_source')
-    def test_tcrd_transform(self, mock_process_data_dump, mock_transform_source):
+    def test_tcrd_transform(self, mock_transform_source):
         t = TCRDTransform(self.raw_path,self.output_dir)
         this_output_dir = os.path.join(self.output_dir,"tcrd")
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
-        self.assertTrue(mock_transform_source.called)
-        self.assertTrue(mock_process_data_dump.called)
         shutil.rmtree(this_output_dir)
 
     def test_hpa_transform(self):
