@@ -62,11 +62,20 @@ def download_from_yaml(yaml_file: str, output_dir: str,
                 with urlopen(req) as response, open(outfile, 'wb') as out_file:  # type: ignore
                     if snippet_only:
                         data = response.read(5120)  # first 5 kB of a `bytes` object
-                        for line in data[:-1]: #Skip the last line as it's probably incomplete
-                            out_file.write(line)
                     else:
                         data = response.read()  # a `bytes` object for the full contents
-                        out_file.write(data)
+                    out_file.write(data)
+                    if snippet_only: #Need to clean up the outfile
+                        in_file = open(outfile, 'r+')
+                        in_lines = in_file.read()
+                        in_file.close()
+                        splitlines=in_lines.split("\n")
+                        outstring="\n".join(splitlines[:-1])
+                        cleanfile = open(outfile,'w+')
+                        for i in range(len(outstring)):
+                            cleanfile.write(outstring[i])
+                        cleanfile.close()
+
             except HTTPError as e:
                 logging.warning("Couldn't download source in {} due to error {}".format(item, e))
 
