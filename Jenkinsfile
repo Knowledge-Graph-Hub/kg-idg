@@ -306,7 +306,7 @@ pipeline {
 
 
                         // copy template NEAT yaml
-                        OUTPUT_DIR = "${BUILDSTARTDATE}/graph_ml_artifacts/" // leave trailing '/'
+                        OUTPUT_DIR = "${BUILDSTARTDATE}/graph_ml/" // leave trailing '/'
                         NEAT_YAML = "kg-idg-neat.${BUILDSTARTDATE}.yaml"
                         NEAT_YAML_FULL_PATH = "/tmp/${NEAT_YAML}"
                         NEAT_YAML_FULL_REMOTE_PATH = "/home/jtr4v/NEAT/${OUTPUT_DIR}${NEAT_YAML}"
