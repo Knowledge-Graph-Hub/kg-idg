@@ -24,6 +24,13 @@ embeddings:
     return_weight: 1.0
     explore_weight: 1.0
     iterations: 1
+  tsne:
+    tsne_file_name: embedding_tsne.png
+    node_property_for_color: category
+    scatter_params:
+      marker: '.'
+      s: 5
+
 upload:
   s3_bucket: kg-hub-public-data
   s3_bucket_dir: xxxxx
