@@ -73,3 +73,5 @@ class ProteinAtlasTransform(Transform):
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)
+        
+        os.remove(data_file[:-4]) # Compressed source is a zip of a tsv

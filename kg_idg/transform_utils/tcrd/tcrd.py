@@ -74,13 +74,17 @@ class TCRDTransform(Transform):
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform TCRD ID mapping file with Koza.
+        Removes uncompressed raw file when finished.
         """
         print(f"Parsing {data_file}")
         
         outname = name[:-3]
         
+        need_to_remove_raw_source = False
+
         # Decompress
         if name[-2:] == "gz":
+            need_to_remove_raw_source = True
             outpath = os.path.join(self.input_base_dir, outname)
             with gzip.open(data_file, 'rb') as data_file_gz:
                 with open(outpath, 'wb') as data_file_new:
@@ -126,4 +130,7 @@ class TCRDTransform(Transform):
                                 output_format="tsv",
                                 global_table=TRANSLATION_TABLE,
                                 local_table=None)
+
+        if need_to_remove_raw_source:
+            os.remove(outpath)
 

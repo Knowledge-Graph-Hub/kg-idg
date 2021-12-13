@@ -144,5 +144,7 @@ class DrugCentralTransform(Transform):
                              output_format="tsv",
                              global_table=TRANSLATION_TABLE,
                              local_table=None)
+        
+        os.remove(outpath)
 
 
