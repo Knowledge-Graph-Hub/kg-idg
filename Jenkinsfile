@@ -178,7 +178,8 @@ pipeline {
                             }
                         }
 
-                        if (env.BRANCH_NAME != 'master') {
+                        // TODO: remove this add_neat_to_jenkins_run_jenkins stuff
+                        if (env.BRANCH_NAME != 'master' && env.BRANCH_NAME != 'add_neat_to_jenkins_run_jenkins') {
                             echo "Will not push if not on correct branch."
                         } else {
                             withCredentials([
@@ -267,7 +268,7 @@ pipeline {
             }
         }
 
-        stage('Run pipeline to create embedding') {
+        stage('Run graph ML tasks in NEAT YAML') {
             // TODO: remove branch add_neat_to_jenkins_run_jenkins
             when { anyOf { branch 'main'; branch 'add_neat_to_jenkins_run_jenkins'  } }
             steps {
