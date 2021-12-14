@@ -1,6 +1,7 @@
 from unittest import TestCase, mock, skip
 import os
 import shutil
+from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
 from parameterized import parameterized
 from kg_idg.utils.transform_utils import guess_bl_category, collapse_uniprot_curie
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform, ORPHANET_NT_FILENAME
@@ -91,6 +92,13 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
     
+    def test_upheno_transform(self):
+        t = UPhenoTransform(self.input_dir,self.output_dir)
+        this_output_dir = os.path.join(self.output_dir,"upheno2")
+        t.run()
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
+
     # Koza transforms
 
     # This transform requires a database load
