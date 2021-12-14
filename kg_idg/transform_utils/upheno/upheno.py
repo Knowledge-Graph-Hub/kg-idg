@@ -13,7 +13,7 @@ We obtain it as OWL so it requires specific transform with KGX.
 """
 
 UPHENO_SOURCES = {
-    'UPHENO_DATA': 'upheno_all_with_relations.owl',
+    'upheno2': 'upheno_all_with_relations.owl',
 }
 
 class UPhenoTransform(Transform):
