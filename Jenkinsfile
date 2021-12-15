@@ -135,7 +135,7 @@ pipeline {
                 dir('./gitrepo') {
                     sh '. venv/bin/activate && python3.8 run.py merge -y merge.yaml'
                     sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
-                    sh 'tar -rvfz data/merged/${MERGEDKGNAME_BASE}.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
+                    sh 'tar -rvfz data/merged/merged-kg.tar.gz merged_graph_stats_$BUILDSTARTDATE.yaml'
                 }
             }
         }
@@ -195,7 +195,7 @@ pipeline {
                                 //
                                 sh 'mkdir $BUILDSTARTDATE/'
                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.nt.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.nt.gz'
-                                sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
+                                sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
                                  sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.jnl.gz'
                                 // transformed data
                                 sh 'rm -fr data/transformed/.gitkeep'
