@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>kg_idg.transform_utils.tcrd.tcrd &mdash; KG-IDG 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="kg_idg.utils.biohub_converter" href="kg_idg.utils.biohub_converter.html" />
+    <link rel="prev" title="kg_idg.transform_utils.string.string" href="kg_idg.transform_utils.string.string.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> KG-IDG
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#download-the-knowledge-graph">Download the Knowledge Graph</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#knowledge-graph-hub-concept">Knowledge Graph Hub concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#kg-idg-project">KG-IDG project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#how-to-contribute">How to Contribute</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#contributors">Contributors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html#acknowledgements">Acknowledgements</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.download.html">kg_idg.download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.query.html">kg_idg.query</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform.html">kg_idg.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.transform.html">kg_idg.transform_utils.transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.atc.atc.html">kg_idg.transform_utils.atc.atc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.drug_central.drug_central.html">kg_idg.transform_utils.drug_central.drug_central</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.gocams.gocams.html">kg_idg.transform_utils.gocams.gocams</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.hpa.hpa.html">kg_idg.transform_utils.hpa.hpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.omim.omim.html">kg_idg.transform_utils.omim.omim</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.ontology.ontology_transform.html">kg_idg.transform_utils.ontology.ontology_transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.orphanet.orphanet.html">kg_idg.transform_utils.orphanet.orphanet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.reactome.reactome.html">kg_idg.transform_utils.reactome.reactome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.transform_utils.string.string.html">kg_idg.transform_utils.string.string</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kg_idg.transform_utils.tcrd.tcrd</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.biohub_converter.html">kg_idg.utils.biohub_converter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.download_utils.html">kg_idg.utils.download_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.nlp_utils.html">kg_idg.utils.nlp_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.robot_utils.html">kg_idg.utils.robot_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.sql_utils.html">kg_idg.utils.sql_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kg_idg.utils.transform_utils.html">kg_idg.utils.transform_utils</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">KG-IDG</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>kg_idg.transform_utils.tcrd.tcrd</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/modules/kg_idg.transform_utils.tcrd.tcrd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-kg_idg.transform_utils.tcrd.tcrd">
+<span id="kg-idg-transform-utils-tcrd-tcrd"></span><h1>kg_idg.transform_utils.tcrd.tcrd<a class="headerlink" href="#module-kg_idg.transform_utils.tcrd.tcrd" title="Permalink to this headline">¶</a></h1>
+<p class="rubric">Classes</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">SplitterArgs</span></code>()</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">TCRDTransform</span></code>([input_dir, output_dir])</p></td>
+<td><p>This transform ingests the tab-delimited TCRD ID mapping file.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="kg_idg.utils.biohub_converter.html" class="btn btn-neutral float-right" title="kg_idg.utils.biohub_converter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="kg_idg.transform_utils.string.string.html" class="btn btn-neutral float-left" title="kg_idg.transform_utils.string.string" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Harry Caufield
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
