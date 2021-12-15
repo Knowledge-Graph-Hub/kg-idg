@@ -78,7 +78,7 @@ The codebase
 
 Prerequisites
 ~~~~~~~~~~~~~
-- The transform step requires loading and processing data with MySQL and PostgreSQL
+The transform step requires loading and processing data with MySQL and PostgreSQL
 database platforms. Servers for both of these database types must be running
 on the same machine/environment as KG-IDG, though no other setup
 should be required.
@@ -135,12 +135,12 @@ How to Contribute
 -----------------
 
 Download and use the code
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 Download and use the code, and any issues and questions
 `here <https://github.com/Knowledge-Graph-Hub/kg-idg/issues/new/choose>`__.
 
 Write code to ingest data
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Most urgent need is for code to ingest data from new sources.
 
@@ -253,7 +253,7 @@ You may want to run ``pylint`` and ``mypy`` and fix any issues before
 submitting your PR.
 
 Develop jupyter notebooks to show how to use KG-IDG
-~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Please contact `Harry <jhc@lbl.gov>`__ or anyone on the development team if you’d like to help!
 
