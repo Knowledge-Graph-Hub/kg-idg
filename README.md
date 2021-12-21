@@ -20,6 +20,10 @@ KG-IDG Documentation
 
 [Please see the full documentation here.](https://knowledge-graph-hub.github.io/kg-idg/)
 
+**Prebuilt KGs**
+
+[Prebuilt versions of the KG-IDG graph may be found here](https://kg-hub.berkeleybop.io/kg-idg/), along with their raw and transformed data sources.
+
 **Components**
 
 - Download: The [download.yaml](download.yaml) contains all the URLs for the source data.
