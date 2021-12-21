@@ -82,7 +82,8 @@ pipeline {
                     // Now move on to the actual install + reqs
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
-                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git@remove_ensmallen_dep_from_cli'
+                    sh './venv/bin/pip install ensmallen==0.7.0.dev6' // magic version that doesn't require AVX and works on build.bbop.io
+                    sh './venv/bin/pip install git+https://github.com/Knowledge-Graph-Hub/NEAT.git'
                 }
             }
         }
