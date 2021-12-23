@@ -13,7 +13,7 @@ from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 from kg_idg.transform_utils.string.string import STRINGTransform
 from kg_idg.transform_utils.atc.atc import ATCTransform
-from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
+#from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
 
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
@@ -34,7 +34,7 @@ DATA_SOURCES = {
     'ProteinAtlasTransform': ProteinAtlasTransform,
     'STRINGTransform': STRINGTransform,
     'ATCTransform': ATCTransform,
-    'UPhenoTransform': UPhenoTransform
+    #'UPhenoTransform': UPhenoTransform
 }
 
 
