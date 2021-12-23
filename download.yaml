@@ -99,7 +99,7 @@
   # Primarily for establishing hierarchical relationships of DrugCentral entries
   url: https://data.bioontology.org/ontologies/ATC/download?apikey=8b5b7825-538d-40e0-9e9e-5ab9274a9aeb&download_format=csv
   local_name: atc.csv.gz
--
+#-
   # uPheno2 - (DISABLED DUE TO TRANSFORM ERRORS)
   # Phenotypes reconciled across species
   # Note that HPO is already ingested but is included in uPheno
