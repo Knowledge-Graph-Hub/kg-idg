@@ -163,13 +163,13 @@ merged_graph:
         filename:
           - data/transformed/string/string_nodes.tsv_nodes.tsv
           - data/transformed/string/string_edges.tsv_edges.tsv
-    upheno2:
-      name: "uPheno2"
-      input:
-        format: tsv
-        filename:
-          - data/transformed/upheno2/upheno2_edges.tsv
-          - data/transformed/upheno2/upheno2_nodes.tsv
+    # upheno2:
+    #   name: "uPheno2"
+    #   input:
+    #     format: tsv
+    #     filename:
+    #       - data/transformed/upheno2/upheno2_edges.tsv
+    #       - data/transformed/upheno2/upheno2_nodes.tsv
   operations:
     - name: kgx.graph_operations.summarize_graph.generate_graph_stats
       args:
