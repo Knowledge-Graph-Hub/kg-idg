@@ -27,7 +27,7 @@ DRUG_CENTRAL_CONFIGS = {
 }
 
 # Reference table must be loaded before property table due to dependency
-WANTED_TABLES = ["atc_ddd","approval","reference","property"]
+WANTED_TABLES = ["atc_ddd","approval","reference","property","identifier"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.tsv"
