@@ -13,10 +13,8 @@ source_name="drugcentral-identifier"
 
 row = koza_app.get_row(source_name)
 
-# xref = []
-
 # the following is a map from id_type to
- # preferred prefix
+# preferred prefix
 xref_types = {"CHEBI":"CHEBI",
                 "ChEMBL_ID":"CHEMBL_COMPOUND",
                 "DRUGBANK_ID":"DRUGBANK",
@@ -38,11 +36,6 @@ xref_types = {"CHEBI":"CHEBI",
                 "UNII":"UNII",
                 "VANDF":"VANDF",
                 "VUID":"VUID"}
-# xref.append(xref_types[str(row["id_type"])] + ":" + str(row["identifier"]))
-
-# drug = Drug(id='DrugCentral:' + row["struct_id"],
-#             source='DrugCentral',
-#             xref=xref)
 
 # Entities
 # CHEBI IDs already prefixed for some reason
