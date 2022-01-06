@@ -1,0 +1,36 @@
+name: 'drugcentral-identifier'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/transformed/drug_central/drugcentral-identifier.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'identifier'
+  - 'id_type'
+  - 'struct_id'
+  - 'parent_match'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'
