@@ -20,8 +20,8 @@ columns:
 
 node_properties:
   - 'id'
-  - 'xref'
-  - 'source'
+  - 'category'
+  - 'provided_by'
 
 edge_properties:
   - 'id'
@@ -31,5 +31,6 @@ edge_properties:
   - 'category'
   - 'relation'
   - 'source'
+  - 'provided_by'
 
 transform_mode: 'flat'
