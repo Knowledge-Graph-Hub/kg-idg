@@ -65,6 +65,13 @@ merged_graph:
         filename:
           - data/transformed/drug_central/drugcentral-approval_nodes.tsv
           - data/transformed/drug_central/drugcentral-approval_edges.tsv
+    drug-central-identifier:
+      name: "DrugCentral Drug Identifiers"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/drugcentral-identifier_nodes.tsv
+          - data/transformed/drug_central/drugcentral-identifier_edges.tsv
     gocams:
       name: "Gene Ontology Causal Activity Modeling"
       input:
@@ -179,6 +186,7 @@ merged_graph:
           - provided_by
         edge_facet_properties:
           - provided_by
+          - source
   destination:
     merged-kg-tsv:
       format: tsv
