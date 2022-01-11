@@ -50,7 +50,7 @@ association = Association(
     subject=xref_curie.id,
     predicate=Predicate.same_as,
     object=drug.id,
-    relation="owl:sameAs",
+    relation="skos:exactMatch",
     source="DrugCentral"
 )
 
