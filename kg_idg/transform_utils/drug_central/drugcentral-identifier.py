@@ -25,8 +25,7 @@ xref_types = {"CHEBI":"CHEBI",
                 "MESH_SUPPLEMENTAL_RECORD_UI":"MESH",
                 "MMSL":"MMSL",
                 "NDDF":"NDDF",
-                "NDFRT":"NDFRT",
-                "NUI":"NUI",
+                "NUI":"NDFRT",
                 "PDB_CHEM_ID":"PDB",
                 "PUBCHEM_CID":"PUBCHEM_COMPOUND",
                 "RXNORM":"RXNORM",
@@ -51,7 +50,7 @@ association = Association(
     subject=xref_curie.id,
     predicate=Predicate.same_as,
     object=drug.id,
-    relation="owl:sameAs",
+    relation="skos:exactMatch",
     source="DrugCentral"
 )
 
