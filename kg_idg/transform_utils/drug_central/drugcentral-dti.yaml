@@ -36,7 +36,9 @@ columns:
 node_properties:
   - 'id'
   - 'category'
+  - 'description'
   - 'provided_by'
+  - 'source'
 
 edge_properties:
   - 'id'

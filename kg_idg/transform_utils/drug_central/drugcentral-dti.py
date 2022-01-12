@@ -26,7 +26,9 @@ for entry in row["ACCESSION"].split("|"):
     protein = Protein(id='UniProtKB:' + entry)
     protein_list.append(protein)
 
-drug = Drug(id='DrugCentral:' + row["STRUCT_ID"])
+drug = Drug(id='DrugCentral:' + row["STRUCT_ID"],
+            description=row["DRUG_NAME"],
+            source="DrugCentral")
 
 if row["ACTION_TYPE"]:
     action = ' is ' + (str(row['ACTION_TYPE'])).lower() + ' of '
