@@ -27,7 +27,7 @@ DRUG_CENTRAL_CONFIGS = {
 }
 
 # Reference table must be loaded before property table due to dependency
-WANTED_TABLES = ["atc_ddd","approval","reference","property","identifier"]
+WANTED_TABLES = ["atc_ddd","approval","reference","property","identifier","structures"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.tsv"
@@ -128,6 +128,12 @@ class DrugCentralTransform(Transform):
         if source == "DrugCentralDB": # Configs vary by DB table
             for table in WANTED_TABLES:
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
+
+                # Structures table needs some pre-processing
+                # Skipped for the moment
+                if table == "structures":
+                    continue
+
                 print(f"Transforming to {output} using source in {config}")
                 transform_source(source=config, output_dir=output,
                             output_format="tsv",
