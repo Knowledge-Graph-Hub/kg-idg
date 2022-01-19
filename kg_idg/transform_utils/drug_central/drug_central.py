@@ -4,6 +4,8 @@ import os
 from typing import Optional
 import gzip
 import shutil
+import csv
+import sys
 
 from kg_idg.transform_utils.transform import Transform
 from kg_idg.utils.sql_utils import process_data_dump
@@ -27,7 +29,7 @@ DRUG_CENTRAL_CONFIGS = {
 }
 
 # Reference table must be loaded before property table due to dependency
-WANTED_TABLES = ["atc_ddd","approval","reference","property","identifier"]
+WANTED_TABLES = ["atc_ddd","approval","reference","property","identifier","structures"]
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 REFERENCE_MAP_TABLE = "./kg_idg/transform_utils/drug_central/drugcentral-reference_map.tsv"
@@ -89,6 +91,32 @@ class DrugCentralTransform(Transform):
                         uri = splitline[3]
                     outfile.write(f"{db_id}\t{uri}\n")
 
+    def preprocess_structures(self, source_path: str) -> None:
+        """
+        Structures table needs some pre-processing due to one column being image data
+        so it's generally too large to parse without specifying a size limit for csv
+        Load the tsv with csv, remove the offending column,
+        and write the new tsv
+        :param source_path: str, path to the structures tsv 
+        """
+        print(f"Pre-processing the DrugCentral structures table prior to transformation...")
+        temp_tsv_path = source_path + ".temp"
+        # 
+        csv.field_size_limit(sys.maxsize) # The issue is oversize values, so we accomodate this time
+        with open(source_path, 'r') as infile, open(temp_tsv_path, 'w') as outfile:
+            read_tsv = csv.reader(infile, delimiter = '\t')
+            write_tsv = csv.writer(outfile, delimiter = '\t')
+            header = next(read_tsv)
+            write_tsv.writerow(header)
+            i = 1
+            for line in read_tsv:
+                line[22] = "NA"
+                write_tsv.writerow(line)
+                i = i+1
+        
+        shutil.move(temp_tsv_path, source_path)
+        print("Complete.")
+
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform DrugCentral file with Koza.
@@ -128,6 +156,10 @@ class DrugCentralTransform(Transform):
         if source == "DrugCentralDB": # Configs vary by DB table
             for table in WANTED_TABLES:
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
+
+                if table == "structures":
+                    self.preprocess_structures(source_path="./data/transformed/drug_central/drugcentral-structures.tsv")
+
                 print(f"Transforming to {output} using source in {config}")
                 transform_source(source=config, output_dir=output,
                             output_format="tsv",

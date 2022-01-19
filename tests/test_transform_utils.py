@@ -110,6 +110,12 @@ class TestTransformUtils(TestCase):
         t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
+    
+    def test_drug_central_structures_preprocessing(self):
+        source = "./tests/resources/snippets/drugcentral-structures.tsv"
+        t = DrugCentralTransform(self.raw_path,self.output_dir)
+        t.preprocess_structures(source_path=source)
+        self.assertTrue(os.path.exists(source))
 
     def test_reactome_transform(self):
         t = ReactomeTransform(self.raw_path,self.output_dir)
