@@ -91,6 +91,32 @@ class DrugCentralTransform(Transform):
                         uri = splitline[3]
                     outfile.write(f"{db_id}\t{uri}\n")
 
+    def preprocess_structures(self) -> None:
+        """
+        Structures table needs some pre-processing due to one column being image data
+        so it's generally too large to parse without specifying a size limit for csv
+        Load the tsv with csv, remove the offending column,
+        and write the new tsv
+        """
+        print(f"Pre-processing the DrugCentral structures table prior to transformation...")
+        source_tsv_path = "./data/transformed/drug_central/drugcentral-structures.tsv"
+        temp_tsv_path = "./data/transformed/drug_central/drugcentral-structures_temp.tsv"
+        # 
+        csv.field_size_limit(sys.maxsize) # The issue is oversize values, so we accomodate this time
+        with open(source_tsv_path, 'r') as infile, open(temp_tsv_path, 'w') as outfile:
+            read_tsv = csv.reader(infile, delimiter = '\t')
+            write_tsv = csv.writer(outfile, delimiter = '\t')
+            header = next(read_tsv)
+            write_tsv.writerow(header)
+            i = 1
+            for line in read_tsv:
+                line[22] = "NA"
+                write_tsv.writerow(line)
+                i = i+1
+        
+        shutil.move(temp_tsv_path, source_tsv_path)
+        print("Complete.")
+
     def parse(self, name: str, data_file: str, source: str) -> None:
         """
         Transform DrugCentral file with Koza.
@@ -131,28 +157,8 @@ class DrugCentralTransform(Transform):
             for table in WANTED_TABLES:
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
 
-                # Structures table needs some pre-processing
                 if table == "structures":
-                    print(f"Pre-processing the DrugCentral {table} table prior to transformation...")
-                    source_tsv_path = "./data/transformed/drug_central/drugcentral-structures.tsv"
-                    temp_tsv_path = "./data/transformed/drug_central/drugcentral-structures_temp.tsv"
-                    # And then try to load the tsv with csv, remove the offending column,
-                    # and write the new tsv
-                    csv.field_size_limit(sys.maxsize) # The issue is oversize values, so we accomodate this time
-                    with open(source_tsv_path, 'r') as infile, open(temp_tsv_path, 'w') as outfile:
-                        read_tsv = csv.reader(infile, delimiter = '\t')
-                        write_tsv = csv.writer(outfile, delimiter = '\t')
-                        header = next(read_tsv)
-                        write_tsv.writerow(header)
-                        i = 1
-                        for line in read_tsv:
-                            print(line)
-                            line[22] = "NA"
-                            write_tsv.writerow(line)
-                            i = i+1
-                    
-                    shutil.move(temp_tsv_path, source_tsv_path)
-                    print("Complete.")
+                    self.preprocess_structures()
 
                 print(f"Transforming to {output} using source in {config}")
                 transform_source(source=config, output_dir=output,
