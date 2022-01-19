@@ -4,6 +4,8 @@ import os
 from typing import Optional
 import gzip
 import shutil
+import csv
+import sys
 
 from kg_idg.transform_utils.transform import Transform
 from kg_idg.utils.sql_utils import process_data_dump
@@ -130,9 +132,27 @@ class DrugCentralTransform(Transform):
                 config = os.path.join("kg_idg/transform_utils/drug_central/", f'drugcentral-{table}.yaml')
 
                 # Structures table needs some pre-processing
-                # Skipped for the moment
                 if table == "structures":
-                    continue
+                    print(f"Pre-processing the DrugCentral {table} table prior to transformation...")
+                    source_tsv_path = "./data/transformed/drug_central/drugcentral-structures.tsv"
+                    temp_tsv_path = "./data/transformed/drug_central/drugcentral-structures_temp.tsv"
+                    # And then try to load the tsv with csv, remove the offending column,
+                    # and write the new tsv
+                    csv.field_size_limit(sys.maxsize) # The issue is oversize values, so we accomodate this time
+                    with open(source_tsv_path, 'r') as infile, open(temp_tsv_path, 'w') as outfile:
+                        read_tsv = csv.reader(infile, delimiter = '\t')
+                        write_tsv = csv.writer(outfile, delimiter = '\t')
+                        header = next(read_tsv)
+                        write_tsv.writerow(header)
+                        i = 1
+                        for line in read_tsv:
+                            print(line)
+                            line[22] = "NA"
+                            write_tsv.writerow(line)
+                            i = i+1
+                    
+                    shutil.move(temp_tsv_path, source_tsv_path)
+                    print("Complete.")
 
                 print(f"Transforming to {output} using source in {config}")
                 transform_source(source=config, output_dir=output,
