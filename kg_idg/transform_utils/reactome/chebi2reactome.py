@@ -17,7 +17,6 @@ row = koza_app.get_row(source_name)
 # Entities
 chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'])
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    description= row['EVENT_NAME'],
                     source=full_source_name)
 
 # Association

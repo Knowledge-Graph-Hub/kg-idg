@@ -17,7 +17,6 @@ row = koza_app.get_row(source_name)
 # Entities
 protein = Protein(id='UniProtKB:' + row['UPID'])
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    description= row['EVENT_NAME'],
                     source=full_source_name)
 
 # Association
