@@ -57,6 +57,14 @@
   url: https://reactome.org/download/current/UniProt2Reactome_PE_Pathway.txt
   local_name: UniProt2Reactome_PE_Pathway.txt
 -
+  # Reactome - all pathways
+  url: https://reactome.org/download/current/ReactomePathways.txt
+  local_name: ReactomePathways.txt
+-
+  # Reactome - pathway parent/child relationships
+  url: https://reactome.org/download/current/ReactomePathwaysRelation.txt
+  local_name: ReactomePathwaysRelation.txt
+-
   # GOCAMs
   # TODO: Update SPARQL query for COVID-19 retrieval to be more general
   url: https://kg-hub.berkeleybop.io/frozen_incoming_data/GOCAMs_nodes.tsv
