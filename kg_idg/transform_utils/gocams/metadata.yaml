@@ -1,0 +1,11 @@
+name: 'gocams'
+
+dataset_description:
+  ingest_title: 'gocams'
+  ingest_url: 'https://kg-hub.berkeleybop.io/frozen_incoming_data/'
+  description: 'Gene Ontology Causal Activity Modeling'
+  rights: ''
+
+source_files:
+  - 'gocams-fix-nodes.yaml'
+  - 'gocams-fix-edges.yaml'

@@ -1,0 +1,36 @@
+name: 'gocams-fix-edges'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/GOCAMs_edges.tsv'
+
+metadata: './kg_idg/transform_utils/gocams/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'relation'
+  - 'knowledge_source'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'source'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'

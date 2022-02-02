@@ -66,7 +66,6 @@
   local_name: ReactomePathwaysRelation.txt
 -
   # GOCAMs
-  # TODO: Update SPARQL query for COVID-19 retrieval to be more general
   url: https://kg-hub.berkeleybop.io/frozen_incoming_data/GOCAMs_nodes.tsv
   local_name: GOCAMs_nodes.tsv
 -

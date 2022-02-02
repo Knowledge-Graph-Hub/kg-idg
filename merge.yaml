@@ -77,8 +77,8 @@ merged_graph:
       input:
         format: tsv
         filename:
-          - data/transformed/gocams/GOCAMs_nodes.tsv_nodes.tsv
-          - data/transformed/gocams/GOCAMs_edges.tsv_edges.tsv
+          - data/transformed/gocams/gocams-fix-nodes_nodes.tsv
+          - data/transformed/gocams/gocams-fix-edges_edges.tsv
     hpa:
       name: "Human Proteome Atlas"
       input:
