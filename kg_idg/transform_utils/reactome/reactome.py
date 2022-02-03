@@ -16,16 +16,22 @@ https://reactome.org/download-data?id=86&ml=1
 """
 
 REACTOME_SOURCES = {
+    'ReactomePathways':'ReactomePathways.txt',
+    'ReactomePathwayRelationships':'ReactomePathwaysRelation.txt',
     'ChEBI2Reactome': 'ChEBI2Reactome_PE_Pathway.txt',
     'UniProt2Reactome': 'UniProt2Reactome_PE_Pathway.txt'
 }
 
 REACTOME_CONFIGS = {
+    'ReactomePathways':'reactomepathways.yaml',
+    'ReactomePathwayRelationships':'reactomepathwaysrelation.yaml',
     'ChEBI2Reactome': 'chebi2reactome.yaml',
     'UniProt2Reactome': 'uniprot2reactome.yaml'
 }
 
 REACTOME_HEADERS = {
+    'ReactomePathways': 'REACT_PATH_ID\tREACT_NAME\tSPECIES\n',
+    'ReactomePathwayRelationships': 'REACT_PATH_ID\tREACT_PATH_CHILD\n',
     'ChEBI2Reactome': 'CHEBI_ID\tREACT_PE_ID\tREACT_NAME\tREACT_PATH_ID\tURL\tEVENT_NAME\tEVIDENCE\tSPECIES\n',
     'UniProt2Reactome': 'UPID\tREACT_PE_ID\tREACT_NAME\tREACT_PATH_ID\tURL\tEVENT_NAME\tEVIDENCE\tSPECIES\n'
 }
@@ -33,24 +39,25 @@ REACTOME_HEADERS = {
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
 class ReactomeTransform(Transform):
-    """This transform ingests the Reactome Protein (UniProt) to
+    """ This transform handles the Reactome pathway
+    list and pathway relationship (parent/child) lists.
+    Also ingests the Reactome Protein (UniProt) to
 	pathway and CHEBI to pathway files:
 	UniProt2Reactome_PE_Pathway.txt and
 	ChEBI2Reactome_PE_Pathway.txt respectively.
-	Both are transformed to KGX-format node and edge lists.
+	All are transformed to KGX-format node and edge lists.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "reactome"
         super().__init__(source_name, input_dir, output_dir) 
 
-    def run(self, chebi_to_react_file: Optional[str] = None, 
-            uniprot_to_react_file: Optional[str] = None) -> None:  # type: ignore
+    def run(self, react_file: Optional[str] = None) -> None:  # type: ignore
         """
         Set up Reactome files for Koza and call the parse function.
         """
-        if chebi_to_react_file and uniprot_to_react_file:
-            for source in [chebi_to_react_file, uniprot_to_react_file]:
+        if react_file:
+            for source in [react_file]:
                 k = source.split('.')[0]
                 data_file = os.path.join(self.input_base_dir, source)
                 self.parse(k, data_file, k)

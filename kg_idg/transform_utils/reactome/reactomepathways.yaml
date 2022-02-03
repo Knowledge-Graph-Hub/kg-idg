@@ -1,0 +1,35 @@
+name: 'reactomepathways'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/ReactomePathways.txt'
+
+metadata: './kg_idg/transform_utils/reactome/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'REACT_PATH_ID'
+  - 'REACT_NAME'
+  - 'SPECIES'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'source'
+  - 'description'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'

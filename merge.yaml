@@ -77,8 +77,8 @@ merged_graph:
       input:
         format: tsv
         filename:
-          - data/transformed/gocams/GOCAMs_nodes.tsv_nodes.tsv
-          - data/transformed/gocams/GOCAMs_edges.tsv_edges.tsv
+          - data/transformed/gocams/gocams-fix-nodes_nodes.tsv
+          - data/transformed/gocams/gocams-fix-edges_edges.tsv
     hpa:
       name: "Human Proteome Atlas"
       input:
@@ -135,6 +135,20 @@ merged_graph:
         filename:
           - data/transformed/orphanet/orphanet_nodes.tsv
           - data/transformed/orphanet/orphanet_edges.tsv
+    reactomepathways:
+      name: "Reactome - all pathways"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/reactome/reactomepathways_nodes.tsv
+          - data/transformed/reactome/reactomepathways_edges.tsv
+    reactomepathwaysrelation:
+      name: "Reactome - relationships between pathways"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/reactome/reactomepathwaysrelation_nodes.tsv
+          - data/transformed/reactome/reactomepathwaysrelation_edges.tsv
     chebi2reactome:
       name: "Reactome - CHEBI maps"
       input:

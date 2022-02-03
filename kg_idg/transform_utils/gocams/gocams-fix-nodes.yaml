@@ -1,0 +1,34 @@
+name: 'gocams-fix-nodes'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/raw/GOCAMs_nodes.tsv'
+
+metadata: './kg_idg/transform_utils/gocams/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'category'
+  - 'provided_by'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'source'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+  - 'provided_by'
+
+transform_mode: 'flat'
