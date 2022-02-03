@@ -15,10 +15,7 @@ row = koza_app.get_row(source_name)
 raw_id = (str(row["id"])).lstrip(":")
 prefix = (raw_id.split(":"))[0]
 
-if prefix == "GO":
-    thing = NamedThing(id=row["id"],
-                        source=row["provided_by"])
-elif prefix == "OBO":
+if prefix == "OBO":
     if raw_id[4:13] == "UniProtKB": # edge case
         id = "UniProtKB:" + (raw_id.split("_"))[1]
         thing = Protein(id=id,

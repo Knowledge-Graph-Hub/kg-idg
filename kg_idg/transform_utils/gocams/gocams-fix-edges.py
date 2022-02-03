@@ -13,32 +13,30 @@ from koza.cli_runner import koza_app #type: ignore
 source_name="gocams-fix-edges"
 
 def normalize_gocam_id(raw_id,prefix):
-    if prefix == "GO":
-        thing = NamedThing(id=raw_id)
-    elif prefix == "OBO":
+    if prefix == "OBO":
         if raw_id[4:13] == "UniProtKB": # edge case
-            id = "UniProtKB:" + (raw_id.split("_"))[1]
-            thing = Protein(id=id)
+            curie = "UniProtKB:" + (raw_id.split("_"))[1]
+            thing = Protein(id=curie)
         else:
-            id = "REACT:" + (raw_id.split("#REACTO_"))[1]
-            thing = Pathway(id=id)
+            curie = "REACT:" + (raw_id.split("#REACTO_"))[1]
+            thing = Pathway(id=curie)
     elif prefix == "MGI":
-        id = "MGI:" + (raw_id.split(":"))[2]
-        thing = Gene(id=id)
+        curie = "MGI:" + (raw_id.split(":"))[2]
+        thing = Gene(id=curie)
     elif prefix == "FB":
-        id = "FlyBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=id)
+        curie = "FlyBase:" + (raw_id.split(":"))[1]
+        thing = Gene(id=curie)
     elif prefix == "WB":
-        id = "WormBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=id)
+        curie = "WormBase:" + (raw_id.split(":"))[1]
+        thing = Gene(id=curie)
     elif prefix == "POMBASE":
-        id = "PomBase:" + (raw_id.split(":"))[2]
-        thing = Gene(id=id)                  
+        curie = "PomBase:" + (raw_id.split(":"))[2]
+        thing = Gene(id=curie)                  
     elif prefix == "UniProtKB": 
         thing = Protein(id=raw_id)
     elif prefix in ["DICTYBASE.GENE", "TAIR.LOCUS"]:
-        id = raw_id.replace(".","_")
-        thing = Gene(id=id)
+        curie = raw_id.replace(".","_")
+        thing = Gene(id=curie)
     elif prefix in ["SGD", "RGD", "XENBASE", "ZFIN"]:
         thing = Gene(id=raw_id)
     else:
