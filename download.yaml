@@ -30,23 +30,23 @@
   local_name: drugcentral.dump.010_05_2021.sql.gz
 -
   # orphanet
-  url: https://archive.monarchinitiative.org/latest/rdf/orphanet.nt
+  url: https://data-test.monarchinitiative.org/monarch/latest/orphanet.nt
   local_name: orphanet.nt
 -
   # mondo
-  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2021-12-01/mondo_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2022-02-04/mondo_kgx_tsv.tar.gz
   local_name: mondo_kgx_tsv.tar.gz
 -
   # OMIM
-  url: https://archive.monarchinitiative.org/202103/rdf/omim.nt
+  url: https://data-test.monarchinitiative.org/monarch/latest/omim.nt
   local_name: omim.nt
 -
   # HPO
-  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-08-02/hp_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-10-10/hp_kgx_tsv.tar.gz
   local_name: hp_kgx_tsv.tar.gz
 -
   # CHEBI
-  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/206/chebi_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/chebi/208/chebi_kgx_tsv.tar.gz
   local_name: chebi_kgx_tsv.tar.gz
 -
   # Reactome - CHEBI to pathway
@@ -73,7 +73,7 @@
   local_name: GOCAMs_edges.tsv
 -
   # Gene Ontology - not the base version
-  url: https://kg-hub.berkeleybop.io/kg-obo/go/2021-11-16/go_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/2022-01-13/go_kgx_tsv.tar.gz
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
