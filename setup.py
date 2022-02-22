@@ -66,12 +66,11 @@ setup(
         'compress_json',
         'click',
         'pyyaml',
-        'kgx==1.5.0',
+        'kgx==1.5.5',
         'koza==0.1.5',
         'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
         'psycopg2-binary',
-        'black==20.8b1'
     ],
     extras_require=extras,
 )
