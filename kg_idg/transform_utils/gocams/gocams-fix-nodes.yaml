@@ -1,7 +1,5 @@
 name: 'gocams-fix-nodes'
 
-format: 'csv'
-
 delimiter: '\t'
 
 files:

@@ -1,7 +1,5 @@
 name: 'hpa-data'
 
-format: 'csv'
-
 delimiter: '\t'
 
 files:

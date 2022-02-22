@@ -1,7 +1,5 @@
 name: 'tcrd-ids'
 
-format: 'csv'
-
 delimiter: '\t'
 
 files:
