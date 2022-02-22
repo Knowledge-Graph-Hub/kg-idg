@@ -78,7 +78,6 @@
 -
   # Pharos/TCRD - just the ID mappings
   # url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.12.4.tsv
-  
   # Using cached version here
   url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/TCRDv6.12.4.tsv
   local_name: TCRDv6.12.4.tsv
@@ -86,7 +85,6 @@
   # TCRD database dump - note this is > 40G
   # TODO: if possible, source TCRD ID maps directly from this source, avoiding redundancy
   # url: http://juniper.health.unm.edu/tcrd/download/old_versions/TCRDv6.12.4.sql.gz
-  
   # Using cached version here
   url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/tcrd.sql.gz
   local_name: tcrd.sql.gz
