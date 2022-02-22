@@ -66,12 +66,11 @@ setup(
         'compress_json',
         'click',
         'pyyaml',
-        'kgx==1.5.0',
-        'koza==0.1.5',
+        'kgx==1.5.5',
+        'koza@git+https://github.com/monarch-initiative/koza.git#61289d3cab8eec9a6609334d112492bce27d8eeb',
         'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
         'psycopg2-binary',
-        'black==20.8b1'
     ],
     extras_require=extras,
 )

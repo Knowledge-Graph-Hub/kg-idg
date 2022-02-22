@@ -1,7 +1,5 @@
 name: 'reactomepathwaysrelation'
 
-format: 'csv'
-
 delimiter: '\t'
 
 files:

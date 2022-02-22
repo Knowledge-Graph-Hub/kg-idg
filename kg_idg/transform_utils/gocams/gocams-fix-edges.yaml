@@ -1,7 +1,5 @@
 name: 'gocams-fix-edges'
 
-format: 'csv'
-
 delimiter: '\t'
 
 files:

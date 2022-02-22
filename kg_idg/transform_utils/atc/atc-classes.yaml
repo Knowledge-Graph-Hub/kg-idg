@@ -1,7 +1,5 @@
 name: 'atc-classes'
 
-format: 'csv'
-
 delimiter: ','
 
 files:
