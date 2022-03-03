@@ -25,12 +25,11 @@
   local_name: drug.target.interaction.tsv.gz
 -
   # DrugCentral database dump
-  # TODO: if possible, source DrugCentral DTI directly from this source, avoiding redundancy
   url: https://unmtid-shinyapps.net/download/drugcentral.dump.010_05_2021.sql.gz
   local_name: drugcentral.dump.010_05_2021.sql.gz
 -
   # orphanet
-  url: https://data-test.monarchinitiative.org/monarch/latest/orphanet.nt
+  url: https://data.monarchinitiative.org/latest/rdf/orphanet.nt
   local_name: orphanet.nt
 -
   # mondo
@@ -38,11 +37,11 @@
   local_name: mondo_kgx_tsv.tar.gz
 -
   # OMIM
-  url: https://data-test.monarchinitiative.org/monarch/latest/omim.nt
+  url: https://data.monarchinitiative.org/latest/rdf/omim.nt
   local_name: omim.nt
 -
   # HPO
-  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2021-10-10/hp_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/hp/2022-02-14/hp_kgx_tsv.tar.gz
   local_name: hp_kgx_tsv.tar.gz
 -
   # CHEBI
@@ -77,16 +76,15 @@
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
-  # url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.12.4.tsv
-  # Using cached version here
-  url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/TCRDv6.12.4.tsv
+  url: http://juniper.health.unm.edu/tcrd/download/TCRDv6.12.4.tsv
+  # Cached version is below
+  #url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/TCRDv6.12.4.tsv
   local_name: TCRDv6.12.4.tsv
 -
   # TCRD database dump - note this is > 40G
-  # TODO: if possible, source TCRD ID maps directly from this source, avoiding redundancy
-  # url: http://juniper.health.unm.edu/tcrd/download/old_versions/TCRDv6.12.4.sql.gz
-  # Using cached version here
-  url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/tcrd.sql.gz
+  url: http://juniper.health.unm.edu/tcrd/download/latest.sql.gz
+  # Cached version is below
+  #url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/tcrd.sql.gz
   local_name: tcrd.sql.gz
 -
   # OGMS
