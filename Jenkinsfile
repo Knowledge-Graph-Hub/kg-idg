@@ -192,7 +192,7 @@ pipeline {
                                 sh 'mkdir $BUILDSTARTDATE/'
                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.nt.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.nt.gz'
                                 sh 'cp -p data/merged/merged-kg.tar.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.tar.gz'
-                                 sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.jnl.gz'
+                                sh 'cp -p data/merged/${MERGEDKGNAME_BASE}.jnl.gz $BUILDSTARTDATE/${MERGEDKGNAME_BASE}.jnl.gz'
                                 // transformed data
                                 sh 'rm -fr data/transformed/.gitkeep'
                                 sh 'cp -pr data/transformed $BUILDSTARTDATE/'
@@ -203,6 +203,10 @@ pipeline {
                                 sh 'cp -p *_stats.yaml $BUILDSTARTDATE/stats/'
                                 sh 'cp templates/README.build $BUILDSTARTDATE/README'
 
+                                // build the index, then upload to remote
+                                sh 'git clone https://github.com/Knowledge-Graph-Hub/multi-indexer.git'
+                                sh 'mv multi-indexer/multi_indexer.py .'
+                                sh 'mv multi-indexer/directory-index-template.html .'
                                 sh '. venv/bin/activate && python3.8 ./multi_indexer.py -v --inject ./directory-index-template.html --directory $BUILDSTARTDATE --prefix https://kg-hub.berkeleybop.io/$S3PROJECTDIR/$BUILDSTARTDATE -x -u'
 
                                 sh '. venv/bin/activate && s3cmd -c $S3CMD_CFG put -pr --acl-public --cf-invalidate $BUILDSTARTDATE s3://kg-hub-public-data/$S3PROJECTDIR/'
