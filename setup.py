@@ -71,7 +71,8 @@ setup(
         'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
         'psycopg2-binary',
-        'pystache' #for multi_indexer.py
+        'pystache', #for multi_indexer.py
+        'kghub-downloader'
     ],
     extras_require=extras,
 )
