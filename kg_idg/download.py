@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-from .utils import download_from_yaml
-
+from kghub_downloader.download_utils import download_from_yaml
 
 def download(yaml_file: str, output_dir: str, snippet_only: bool, ignore_cache: bool = False) -> None:
     """Downloads data files from list of URLs (default: download.yaml) into data directory (default: data/).
@@ -20,7 +18,6 @@ def download(yaml_file: str, output_dir: str, snippet_only: bool, ignore_cache: 
 
     download_from_yaml(yaml_file=yaml_file, output_dir=output_dir,
                         snippet_only=snippet_only,
-                        ignore_cache=ignore_cache, 
-                        verbose=True)
+                        ignore_cache=ignore_cache)
 
     return None
