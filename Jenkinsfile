@@ -183,9 +183,7 @@ pipeline {
 					            file(credentialsId: 'aws_kg_hub_push_json', variable: 'AWS_JSON'),
 					            string(credentialsId: 'aws_kg_hub_access_key', variable: 'AWS_ACCESS_KEY_ID'),
 					            string(credentialsId: 'aws_kg_hub_secret_key', variable: 'AWS_SECRET_ACCESS_KEY')]) {
-                                
-                                // TODO: Make this whole chunk of indexing/uploading code its own script
-                                
+                                           
                                 //
                                 // make $BUILDSTARTDATE/ directory and sync to s3 bucket
                                 //
@@ -198,6 +196,13 @@ pipeline {
                                 sh 'cp -pr data/transformed $BUILDSTARTDATE/'
                                 sh 'cp -pr data/raw $BUILDSTARTDATE/'
                                 sh 'cp Jenkinsfile $BUILDSTARTDATE/'
+
+                                // copy that NEAT config, too
+                                // but update its buildname internally first
+                                sh """ sed -i '/s3_bucket_dir/ s/kg-idg/$S3PROJECTDIR\\/$BUILDSTARTDATE\\/graph_ml/' neat.yaml """
+                                sh """ sed -i '/graph_path/ s/THIS-BUILD-ID/$BUILDSTARTDATE/' neat.yaml """
+                                sh 'cp neat.yaml $BUILDSTARTDATE/'
+
                                 // stats dir
                                 sh 'mkdir $BUILDSTARTDATE/stats/'
                                 sh 'cp -p *_stats.yaml $BUILDSTARTDATE/stats/'
@@ -227,33 +232,6 @@ pipeline {
                 }
             }
         }
-
-        // stage('Deploy blazegraph') {
-        //     when { anyOf { branch 'master' } }
-        //     steps {
-        //         git([branch: 'master',
-        //              credentialsId: 'justaddcoffee_github_api_token_username_pw',
-        //              url: 'https://github.com/geneontology/operations.git'])
-
-        //         dir('./ansible') {
-
-        //             withCredentials([file(credentialsId: 'ansible-bbop-local-slave', variable: 'DEPLOY_LOCAL_IDENTITY')]) {
-        //                 echo 'Push master out to public Blazegraph'
-
-        //                 // these commands ensure that ansible's ssh command doesn't
-        //                 // fail (in a very difficult-to-debug way) when it needs
-        //                 // us to accept the public key of pan.lbl.gov
-        //                 sh 'mkdir -p ~/.ssh/'
-        //                 sh 'ssh-keyscan -H pan.lbl.gov >> ~/.ssh/known_hosts'
-
-        //                 retry(3){
-        //                     sh 'HOME=`pwd` && ansible-playbook update-kg-hub-endpoint.yaml --inventory=hosts.local-rdf-endpoint --private-key="$DEPLOY_LOCAL_IDENTITY" -e target_user=bbop --extra-vars="endpoint=internal"'
-        //                 }
-        //             }
-        //         }
-
-        //     }
-        // }
     }
 
     post {
