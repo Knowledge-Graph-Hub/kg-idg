@@ -10,7 +10,7 @@ def run_query(query: str, endpoint: str, return_format=JSON) -> dict:
     sparql.setReturnFormat(return_format)
     results = sparql.query().convert()
 
-    return results
+    return results # type: ignore
 
 
 def parse_query_yaml(yaml_file) -> dict:
