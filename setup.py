@@ -68,7 +68,7 @@ setup(
         'pyyaml',
         'kgx==1.5.7',
         'koza==0.1.13',
-        'linkml-validator',
+        'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
         'biolink_model_pydantic>=0.1.11',
         'mysql-connector-python',
         'psycopg2-binary',
