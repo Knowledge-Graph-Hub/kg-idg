@@ -73,7 +73,8 @@ setup(
         'mysql-connector-python',
         'psycopg2-binary',
         'kghub-downloader',
-        'multi-indexer'
+        'multi-indexer',
+        'ensmallen'
     ],
     extras_require=extras,
 )
