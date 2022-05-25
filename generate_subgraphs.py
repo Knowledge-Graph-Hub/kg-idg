@@ -36,14 +36,14 @@ def run(nodes, edges):
     print("Generating training and validation subgraphs...")
 
     pos_train_edge_graph, pos_valid_edge_graph = input_graph.random_holdout(train_size=0.8)
-    pos_valid_edge_graph.dump_edges("pos_valid_edges.tsv", edges_type_column='predicate')
+    pos_valid_edge_graph.dump_edges("pos_valid_edges.tsv", edge_type_column='predicate')
 
     negative_graph = input_graph.sample_negatives(input_graph.get_edges_number())
-    negative_graph = negative_graph.drop_disconnected_nodes()
+    negative_graph = negative_graph.remove_disconnected_nodes()
     
     neg_train_edge_graph, neg_valid_edge_graph = negative_graph.random_holdout(train_size=0.8)
-    neg_train_edge_graph.dump_edges("neg_train_edges.tsv", edges_type_column='predicate')
-    neg_valid_edge_graph.dump_edges("neg_valid_edges.tsv", edges_type_column='predicate')
+    neg_train_edge_graph.dump_edges("neg_train_edges.tsv", edge_type_column='predicate')
+    neg_valid_edge_graph.dump_edges("neg_valid_edges.tsv", edge_type_column='predicate')
 
     print("Complete.")
 
