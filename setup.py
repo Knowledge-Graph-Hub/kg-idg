@@ -74,7 +74,7 @@ setup(
         'psycopg2-binary',
         'kghub-downloader',
         'multi-indexer',
-        'ensmallen'
+        'ensmallen==0.7.0.dev19'
     ],
     extras_require=extras,
 )
