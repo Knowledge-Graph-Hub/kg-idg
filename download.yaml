@@ -72,7 +72,7 @@
   local_name: GOCAMs_edges.tsv
 -
   # Gene Ontology - not the base version
-  url: https://kg-hub.berkeleybop.io/kg-obo/go/2022-03-22/go_kgx_tsv.tar.gz
+  url: https://kg-hub.berkeleybop.io/kg-obo/go/2022-05-16/go_kgx_tsv.tar.gz
   local_name: go_kgx_tsv.tar.gz
 -
   # Pharos/TCRD - just the ID mappings
