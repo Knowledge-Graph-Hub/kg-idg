@@ -204,7 +204,6 @@ merged_graph:
   destination:
     merged-kg-tsv:
       format: tsv
-      compression: tar.gz
       filename: merged-kg
     merged-kg-nt:
       format: nt
