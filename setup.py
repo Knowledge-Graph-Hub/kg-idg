@@ -67,7 +67,7 @@ setup(
         'click',
         'pyyaml',
         'kgx==1.5.7',
-        'koza==0.1.13',
+        'koza',
         'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
         'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
