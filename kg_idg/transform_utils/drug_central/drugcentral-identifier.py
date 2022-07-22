@@ -2,7 +2,7 @@ import uuid
 
 from biolink_model_pydantic.model import Association, Drug, NamedThing, Predicate #type: ignore
 
-from koza.cli_runner import koza_app #type: ignore
+from koza.cli_runner import get_koza_app #type: ignore
 
 # This parses all DrugCentral cross-references
 # Each row could be a single xref to a single ID
@@ -11,7 +11,8 @@ from koza.cli_runner import koza_app #type: ignore
 
 source_name="drugcentral-identifier"
 
-row = koza_app.get_row(source_name)
+koza_app = get_koza_app(source_name)
+row = koza_app.get_row()
 
 # the following is a map from id_type to
 # preferred prefix

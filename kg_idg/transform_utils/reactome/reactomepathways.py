@@ -2,12 +2,13 @@ import uuid
 
 from biolink_model_pydantic.model import Pathway #type: ignore
 
-from koza.cli_runner import koza_app #type: ignore
+from koza.cli_runner import get_koza_app #type: ignore
 
 source_name="reactomepathways"
 full_source_name="Reactome"
 
-row = koza_app.get_row(source_name)
+koza_app = get_koza_app(source_name)
+row = koza_app.get_row()
 
 # Entities
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],

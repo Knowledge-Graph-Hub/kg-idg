@@ -7,12 +7,13 @@ from biolink_model_pydantic.model import ( #type: ignore
     Predicate
 )
 
-from koza.cli_runner import koza_app #type: ignore
+from koza.cli_runner import get_koza_app #type: ignore
 
 source_name="hpa-data"
 full_source_name = "Human Protein Atlas"
 
-row = koza_app.get_row(source_name)
+koza_app = get_koza_app(source_name)
+row = koza_app.get_row()
 go_lookup = koza_app.get_map('go_term_lookup_map')
 
 CLEAN_SUBCELL_LOCS = {"actin filaments":"actin filament",
