@@ -8,7 +8,7 @@ from biolink_model_pydantic.model import ( #type: ignore
     Association
 )
 
-from koza.cli_runner import koza_app #type: ignore
+from koza.cli_runner import get_koza_app #type: ignore
 
 source_name="gocams-fix-edges"
 
@@ -44,7 +44,8 @@ def normalize_gocam_id(raw_id,prefix):
     
     return thing
 
-row = koza_app.get_row(source_name)
+koza_app = get_koza_app(source_name)
+row = koza_app.get_row()
 
 subject_raw_id = (str(row["subject"])).lstrip(":")
 subject_prefix = (subject_raw_id.split(":"))[0]

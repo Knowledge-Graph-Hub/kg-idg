@@ -4,7 +4,7 @@ from biolink_model_pydantic.model import ( #type: ignore
     Protein,
 )
 
-from koza.cli_runner import koza_app #type: ignore
+from koza.cli_runner import get_koza_app #type: ignore
 
 # Most TCRD protein info comes from the tcrd-ids transform.
 # This transform ensures all protein IDs are included.
@@ -14,7 +14,8 @@ from koza.cli_runner import koza_app #type: ignore
 
 source_name="tcrd-protein"
 
-row = koza_app.get_row(source_name)
+koza_app = get_koza_app(source_name)
+row = koza_app.get_row()
 
 # Entities
 protein = Protein(id='UniProtKB:' + row['uniprot'],
