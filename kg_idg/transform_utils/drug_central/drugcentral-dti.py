@@ -53,6 +53,7 @@ association = Association(
 for act_type in activity_types:
     if act_type == str(row['ACT_TYPE']):
         act_attribute = Attribute(
+                        id="uuid:" + str(uuid.uuid1()),
                         name=row['ACT_TYPE'],
                         has_attribute_type="IAO:0000004", # has measurement value
                         has_quantitative_value=row['ACT_VALUE']
