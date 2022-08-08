@@ -1,5 +1,5 @@
 
-from biolink_model_pydantic.model import ( #type: ignore
+from biolink.model import ( #type: ignore
     NamedThing,
     Pathway,
     Gene,

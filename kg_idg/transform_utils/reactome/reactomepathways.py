@@ -1,6 +1,5 @@
-import uuid
 
-from biolink_model_pydantic.model import Pathway #type: ignore
+from biolink.model import Pathway #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 

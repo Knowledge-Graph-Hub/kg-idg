@@ -1,5 +1,5 @@
 
-from biolink_model_pydantic.model import Drug #type: ignore
+from biolink.model import Drug #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 

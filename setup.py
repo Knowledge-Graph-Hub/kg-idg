@@ -61,19 +61,20 @@ setup(
     tests_require=test_deps,
     # add package dependencies
     install_requires=[
-        'tqdm',
-        'wget',
-        'compress_json',
+        'biolink-model',
         'click',
-        'pyyaml',
+        'compress_json',
+        'grape',
+        'kghub-downloader',
         'kgx==1.5.9',
         'koza',
         'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
+        'multi-indexer',
         'mysql-connector-python',
         'psycopg2-binary',
-        'kghub-downloader',
-        'multi-indexer',
-        'grape'
+        'pyyaml',
+        'tqdm',
+        'wget',
     ],
     extras_require=extras,
 )

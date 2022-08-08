@@ -1,6 +1,6 @@
 import uuid
 
-from biolink_model_pydantic.model import Association, Drug, NamedThing, Predicate #type: ignore
+from biolink.model import Association, Drug, NamedThing, Predicate #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 

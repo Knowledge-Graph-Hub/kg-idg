@@ -1,7 +1,5 @@
-import uuid
 
-from biolink_model_pydantic.model import Protein #type: ignore
-from biolink_model_pydantic.model import Attribute #type: ignore
+from biolink.model import Protein #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 
