@@ -3,7 +3,7 @@ import uuid
 from biolink.model import ( #type: ignore
     Protein,
     Drug,
-    DrugToGeneAssociation,
+    Association,
     Attribute
 )
 
@@ -41,11 +41,11 @@ else:
                     ' (' + str(row['TARGET_NAME']) + ')'
 
 # Association
-association = DrugToGeneAssociation( #This works for Gene OR GeneProduct
+association = Association(
     id="uuid:" + str(uuid.uuid1()),
-    subject=protein.id,
+    subject=drug.id,
     predicate="biolink:molecularly_interacts_with",
-    object=drug.id,
+    object=protein.id,
     source = "DrugCentral",
     description=full_description
 )

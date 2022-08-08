@@ -3,7 +3,7 @@ import uuid
 from biolink.model import ( #type: ignore
     Protein,
     AnatomicalEntity,
-    GeneToExpressionSiteAssociation
+    Association
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -77,7 +77,7 @@ for entry in row["Uniprot"].split(", "):
 # Association
 for entry in protein_list:
     if have_location:
-        association = GeneToExpressionSiteAssociation( #This works for Gene OR GeneProduct
+        association = Association( #This works for Gene OR GeneProduct
             id="uuid:" + str(uuid.uuid1()),
             subject=protein.id,
             predicate="biolink:expressed_in",
