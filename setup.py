@@ -67,7 +67,7 @@ setup(
         'grape',
         'kghub-downloader',
         'kgx==1.5.9',
-        'koza',
+        'koza>=0.2.1',
         'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
         'multi-indexer',
         'mysql-connector-python',
