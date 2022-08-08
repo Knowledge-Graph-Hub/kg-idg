@@ -66,15 +66,14 @@ setup(
         'compress_json',
         'click',
         'pyyaml',
-        'kgx==1.5.7',
+        'kgx==1.5.9',
         'koza',
         'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
-        'biolink_model_pydantic==0.1.4',
         'mysql-connector-python',
         'psycopg2-binary',
         'kghub-downloader',
         'multi-indexer',
-        'ensmallen==0.7.0.dev19'
+        'grape'
     ],
     extras_require=extras,
 )
