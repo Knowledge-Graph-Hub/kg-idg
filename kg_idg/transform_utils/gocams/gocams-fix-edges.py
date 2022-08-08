@@ -16,31 +16,41 @@ def normalize_gocam_id(raw_id,prefix):
     if prefix == "OBO":
         if raw_id[4:13] == "UniProtKB": # edge case
             curie = "UniProtKB:" + (raw_id.split("_"))[1]
-            thing = Protein(id=curie)
+            thing = Protein(id=curie,
+            category="biolink:Protein")
         else:
             curie = "REACT:" + (raw_id.split("#REACTO_"))[1]
-            thing = Pathway(id=curie)
+            thing = Pathway(id=curie,
+            category="biolink:Pathway")
     elif prefix == "MGI":
         curie = "MGI:" + (raw_id.split(":"))[2]
-        thing = Gene(id=curie)
+        thing = Gene(id=curie,
+            category="biolink:Gene")
     elif prefix == "FB":
         curie = "FlyBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=curie)
+        thing = Gene(id=curie,
+            category="biolink:Gene")
     elif prefix == "WB":
         curie = "WormBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=curie)
+        thing = Gene(id=curie,
+            category="biolink:Gene")
     elif prefix == "POMBASE":
         curie = "PomBase:" + (raw_id.split(":"))[2]
-        thing = Gene(id=curie)                  
+        thing = Gene(id=curie,
+            category="biolink:Gene")                  
     elif prefix == "UniProtKB": 
-        thing = Protein(id=raw_id)
+        thing = Protein(id=raw_id,
+            category="biolink:Protein")
     elif prefix in ["DICTYBASE.GENE", "TAIR.LOCUS"]:
         curie = raw_id.replace(".","_")
-        thing = Gene(id=curie)
+        thing = Gene(id=curie,
+            category="biolink:Gene")
     elif prefix in ["SGD", "RGD", "XENBASE", "ZFIN"]:
-        thing = Gene(id=raw_id)
+        thing = Gene(id=raw_id,
+            category="biolink:Gene")
     else:
-        thing = NamedThing(id=raw_id)
+        thing = NamedThing(id=raw_id,
+            category="biolink:NamedThing")
     
     return thing
 

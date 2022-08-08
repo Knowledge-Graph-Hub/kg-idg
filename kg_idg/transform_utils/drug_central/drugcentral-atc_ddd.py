@@ -19,8 +19,10 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-atc_code = NamedThing(id='ATC:' + row["atc_code"])
-drug = Drug(id='DrugCentral:' + row["struct_id"])
+atc_code = NamedThing(id='ATC:' + row["atc_code"],
+                category="biolink:NamedThing")
+drug = Drug(id='DrugCentral:' + row["struct_id"],
+                category="biolink:Drug")
 
 # Association
 association = Association(

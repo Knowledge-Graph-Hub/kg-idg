@@ -16,8 +16,10 @@ row = koza_app.get_row()
 
 # Entities
 parent_pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    source=full_source_name)
-child_pathway = Pathway(id='REACT:' + row['REACT_PATH_CHILD'])
+                    source=full_source_name,
+                    category="biolink:Pathway")
+child_pathway = Pathway(id='REACT:' + row['REACT_PATH_CHILD'],
+                        category="biolink:Pathway")
 
 # Association
 association = Association(

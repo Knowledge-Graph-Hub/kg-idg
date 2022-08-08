@@ -62,7 +62,8 @@ if str(row["Subcellular location"]) != "":
             location = CLEAN_SUBCELL_LOCS[location]
         anatomy = AnatomicalEntity(id=go_lookup[location]['id'], # GO term lookup
                             description=location,
-                            source=full_source_name)
+                            source=full_source_name,
+                            category="biolink:AnatomicalEntity")
         subcell_locations.append(anatomy)
     have_location = True
 
@@ -70,7 +71,8 @@ for entry in row["Uniprot"].split(", "):
     if entry != "":
         protein = Protein(id='UniProtKB:' + entry,
                     source=full_source_name,
-                    xref=xref_list)
+                    xref=xref_list,
+                    category="biolink:Protein")
         protein_list.append(protein)
 
 # Association

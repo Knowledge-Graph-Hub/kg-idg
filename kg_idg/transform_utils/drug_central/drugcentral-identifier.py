@@ -40,10 +40,13 @@ xref_types = {"CHEBI":"CHEBI",
 # Entities
 # CHEBI IDs already prefixed for some reason
 if str(row["id_type"]) == "CHEBI":
-    xref_curie = NamedThing(id=str(row["identifier"]))
+    xref_curie = NamedThing(id=str(row["identifier"]),
+                            category="biolink:NamedThing")
 else:
-    xref_curie = NamedThing(id=xref_types[str(row["id_type"])] + ":" + str(row["identifier"]))
-drug = Drug(id='DrugCentral:' + row["struct_id"])
+    xref_curie = NamedThing(id=xref_types[str(row["id_type"])] + ":" + str(row["identifier"]),
+                            category="biolink:NamedThing")
+drug = Drug(id='DrugCentral:' + row["struct_id"],
+            category="biolink:Drug")
 
 # Association
 association = Association(

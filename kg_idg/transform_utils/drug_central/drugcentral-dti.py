@@ -24,12 +24,14 @@ row = koza_app.get_row()
 # Entities
 protein_list = [] # Some drugs have multiple targets provided
 for entry in row["ACCESSION"].split("|"):
-    protein = Protein(id='UniProtKB:' + entry)
+    protein = Protein(id='UniProtKB:' + entry,
+                    category="biolink:Protein")
     protein_list.append(protein)
 
 drug = Drug(id='DrugCentral:' + row["STRUCT_ID"],
             description=row["DRUG_NAME"],
-            source="DrugCentral")
+            source="DrugCentral",
+            category="biolink:Drug")
 
 if row["ACTION_TYPE"]:
     action = ' is ' + (str(row['ACTION_TYPE'])).lower() + ' of '

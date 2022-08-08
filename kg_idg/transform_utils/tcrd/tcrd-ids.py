@@ -25,6 +25,7 @@ protein = Protein(id='UniProtKB:' + row['UniProt'],
             description= row['Description'],
             source='TCRD',
             xref=xref_list,
-            type=row['TDL'])
+            type=row['TDL'],
+            category="biolink:Protein")
 
 koza_app.write(protein)

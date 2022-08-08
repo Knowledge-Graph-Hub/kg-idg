@@ -16,9 +16,11 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'])
+chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'],
+                        category="biolink:ChemicalEntity")
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    source=full_source_name)
+                    source=full_source_name,
+                    category="biolink:Pathway")
 
 # Association
 association = ChemicalToPathwayAssociation(

@@ -16,9 +16,11 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-protein = Protein(id='UniProtKB:' + row['UPID'])
+protein = Protein(id='UniProtKB:' + row['UPID'],
+                    category="biolink:Protein")
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    source=full_source_name)
+                    source=full_source_name,
+                    category="biolink:Pathway")
 
 # Association
 association = ChemicalToPathwayAssociation(

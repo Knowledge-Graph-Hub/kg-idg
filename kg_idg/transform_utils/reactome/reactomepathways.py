@@ -12,6 +12,7 @@ row = koza_app.get_row()
 # Entities
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
                     description= row['REACT_NAME'],
-                    source=full_source_name)
+                    source=full_source_name,
+                    category="biolink:Pathway")
 
 koza_app.write(pathway)

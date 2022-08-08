@@ -32,20 +32,24 @@ elif row["ATC LEVEL"] == "1":
     atc_code = NamedThing(id='ATC:' + id_only,
                             iri=row[iri_col_name],
                             name=row["Preferred Label"],
-                            provided_by=[provider_url])
+                            provided_by=[provider_url],
+                            category="biolink:NamedThing")
     parent_code = NamedThing(id=row["Parents"],
                             iri=row["Parents"],
-                            provided_by=[provider_url])
+                            provided_by=[provider_url],
+                            category="biolink:NamedThing")
     have_code = True
 
 else:
     atc_code = NamedThing(id='ATC:' + id_only,
                             iri=row[iri_col_name],
                             name=row["Preferred Label"],
-                            provided_by=[provider_url])
+                            provided_by=[provider_url],
+                            category="biolink:NamedThing")
     parent_code = NamedThing(id='ATC:' + (row["Parents"].split("/"))[-1],
                             iri=row["Parents"],
-                            provided_by=[provider_url])
+                            provided_by=[provider_url],
+                            category="biolink:NamedThing")
     have_code = True
 
 if have_code:
