@@ -70,8 +70,7 @@ association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=subject.id,
     predicate=row["predicate"],
-    object=object.id,
-    relation=row["relation"]
+    object=object.id
 )
 
 koza_app.write(subject, association, object)
