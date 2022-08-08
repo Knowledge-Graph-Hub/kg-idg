@@ -1,11 +1,11 @@
 import uuid
 
-from biolink_model_pydantic.model import ( #type: ignore
+from biolink.model import ( #type: ignore
     Protein,
     Drug,
-    DrugToGeneAssociation,
-    Predicate,
-    Attribute
+    Association,
+    Attribute,
+    QuantityValue
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -24,12 +24,14 @@ row = koza_app.get_row()
 # Entities
 protein_list = [] # Some drugs have multiple targets provided
 for entry in row["ACCESSION"].split("|"):
-    protein = Protein(id='UniProtKB:' + entry)
+    protein = Protein(id='UniProtKB:' + entry,
+                    category="biolink:Protein")
     protein_list.append(protein)
 
 drug = Drug(id='DrugCentral:' + row["STRUCT_ID"],
             description=row["DRUG_NAME"],
-            source="DrugCentral")
+            source="DrugCentral",
+            category="biolink:Drug")
 
 if row["ACTION_TYPE"]:
     action = ' is ' + (str(row['ACTION_TYPE'])).lower() + ' of '
@@ -40,22 +42,25 @@ else:
                     ' (' + str(row['TARGET_NAME']) + ')'
 
 # Association
-association = DrugToGeneAssociation( #This works for Gene OR GeneProduct
+association = Association(
     id="uuid:" + str(uuid.uuid1()),
-    subject=protein.id,
-    predicate=Predicate.molecularly_interacts_with,
-    object=drug.id,
-    relation="RO:0002436", #"molecularly interacts with",
+    subject=drug.id,
+    predicate="biolink:molecularly_interacts_with",
+    object=protein.id,
     source = "DrugCentral",
     description=full_description
 )
 
 for act_type in activity_types:
     if act_type == str(row['ACT_TYPE']):
+        quantity = QuantityValue(has_numeric_value=row['ACT_VALUE'],
+                        has_unit=row['ACT_TYPE'])
         act_attribute = Attribute(
+                        id="uuid:" + str(uuid.uuid1()),
                         name=row['ACT_TYPE'],
+                        category="biolink:Attribute",
                         has_attribute_type="IAO:0000004", # has measurement value
-                        has_quantitative_value=row['ACT_VALUE']
+                        has_quantitative_value=quantity
                         )
         association.has_attribute = act_attribute
         break

@@ -1,6 +1,6 @@
 import uuid
 
-from biolink_model_pydantic.model import Association, Drug, NamedThing, Predicate #type: ignore
+from biolink.model import Association, Drug, NamedThing #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 
@@ -40,18 +40,20 @@ xref_types = {"CHEBI":"CHEBI",
 # Entities
 # CHEBI IDs already prefixed for some reason
 if str(row["id_type"]) == "CHEBI":
-    xref_curie = NamedThing(id=str(row["identifier"]))
+    xref_curie = NamedThing(id=str(row["identifier"]),
+                            category="biolink:NamedThing")
 else:
-    xref_curie = NamedThing(id=xref_types[str(row["id_type"])] + ":" + str(row["identifier"]))
-drug = Drug(id='DrugCentral:' + row["struct_id"])
+    xref_curie = NamedThing(id=xref_types[str(row["id_type"])] + ":" + str(row["identifier"]),
+                            category="biolink:NamedThing")
+drug = Drug(id='DrugCentral:' + row["struct_id"],
+            category="biolink:Drug")
 
 # Association
 association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=xref_curie.id,
-    predicate=Predicate.same_as,
+    predicate="biolink:same_as",
     object=drug.id,
-    relation="skos:exactMatch",
     source="DrugCentral"
 )
 

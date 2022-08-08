@@ -1,6 +1,5 @@
-import uuid
 
-from biolink_model_pydantic.model import ( #type: ignore
+from biolink.model import ( #type: ignore
     Protein,
 )
 
@@ -19,6 +18,7 @@ row = koza_app.get_row()
 
 # Entities
 protein = Protein(id='UniProtKB:' + row['uniprot'],
-                    source='TCRD')
+                    source='TCRD',
+                    category="biolink:Protein")
 
 koza_app.write(protein)

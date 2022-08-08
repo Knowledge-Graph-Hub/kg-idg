@@ -1,10 +1,9 @@
 import uuid
 
-from biolink_model_pydantic.model import ( #type: ignore
+from biolink.model import ( #type: ignore
     ChemicalEntity,
     Pathway,
-    ChemicalToPathwayAssociation,
-    Predicate,
+    ChemicalToPathwayAssociation
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -16,17 +15,18 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'])
+chemical = ChemicalEntity(id='CHEBI:' + row['CHEBI_ID'],
+                        category="biolink:ChemicalEntity")
 pathway = Pathway(id='REACT:' + row['REACT_PATH_ID'],
-                    source=full_source_name)
+                    source=full_source_name,
+                    category="biolink:Pathway")
 
 # Association
 association = ChemicalToPathwayAssociation(
     id="uuid:" + str(uuid.uuid1()),
     subject=chemical.id,
-    predicate=Predicate.participates_in,
+    predicate="biolink:participates_in",
     object=pathway.id,
-    relation = koza_app.translation_table.resolve_term("pathway"),
     source=full_source_name
 )
 

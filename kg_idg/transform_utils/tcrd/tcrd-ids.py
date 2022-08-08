@@ -1,7 +1,5 @@
-import uuid
 
-from biolink_model_pydantic.model import Protein #type: ignore
-from biolink_model_pydantic.model import Attribute #type: ignore
+from biolink.model import Protein #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 
@@ -27,6 +25,7 @@ protein = Protein(id='UniProtKB:' + row['UniProt'],
             description= row['Description'],
             source='TCRD',
             xref=xref_list,
-            type=row['TDL'])
+            type=row['TDL'],
+            category="biolink:Protein")
 
 koza_app.write(protein)

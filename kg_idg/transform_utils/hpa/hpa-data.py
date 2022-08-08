@@ -1,10 +1,9 @@
 import uuid
 
-from biolink_model_pydantic.model import ( #type: ignore
+from biolink.model import ( #type: ignore
     Protein,
     AnatomicalEntity,
-    GeneToExpressionSiteAssociation,
-    Predicate
+    Association
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -62,7 +61,8 @@ if str(row["Subcellular location"]) != "":
             location = CLEAN_SUBCELL_LOCS[location]
         anatomy = AnatomicalEntity(id=go_lookup[location]['id'], # GO term lookup
                             description=location,
-                            source=full_source_name)
+                            source=full_source_name,
+                            category="biolink:AnatomicalEntity")
         subcell_locations.append(anatomy)
     have_location = True
 
@@ -70,18 +70,18 @@ for entry in row["Uniprot"].split(", "):
     if entry != "":
         protein = Protein(id='UniProtKB:' + entry,
                     source=full_source_name,
-                    xref=xref_list)
+                    xref=xref_list,
+                    category="biolink:Protein")
         protein_list.append(protein)
 
 # Association
 for entry in protein_list:
     if have_location:
-        association = GeneToExpressionSiteAssociation( #This works for Gene OR GeneProduct
+        association = Association( #This works for Gene OR GeneProduct
             id="uuid:" + str(uuid.uuid1()),
             subject=protein.id,
-            predicate=Predicate.expressed_in,
+            predicate="biolink:expressed_in",
             object=anatomy.id,
-            relation="RO:0002206", #"expressed in",
             source =full_source_name
         )
         for location in subcell_locations:

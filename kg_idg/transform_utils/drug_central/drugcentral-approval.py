@@ -1,7 +1,5 @@
-import uuid
 
-from biolink_model_pydantic.model import ( #type: ignore
-    ChemicalMixture,
+from biolink.model import ( #type: ignore
     Drug
 )
 
@@ -15,5 +13,6 @@ row = koza_app.get_row()
 # Entities
 if str(row['type'].strip()) == 'FDA':
     drug = Drug(id='DrugCentral:' + row["struct_id"],
-                highest_FDA_approval_status="Approved")
+                highest_FDA_approval_status="Approved",
+                category="biolink:Drug")
     koza_app.write(drug)
