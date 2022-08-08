@@ -4,7 +4,8 @@ from biolink.model import ( #type: ignore
     Protein,
     Drug,
     Association,
-    Attribute
+    Attribute,
+    QuantityValue
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -52,11 +53,14 @@ association = Association(
 
 for act_type in activity_types:
     if act_type == str(row['ACT_TYPE']):
+        quantity = QuantityValue(has_numeric_value=row['ACT_VALUE'],
+                        has_unit=row['ACT_TYPE'])
         act_attribute = Attribute(
                         id="uuid:" + str(uuid.uuid1()),
                         name=row['ACT_TYPE'],
+                        category="biolink:Attribute",
                         has_attribute_type="IAO:0000004", # has measurement value
-                        has_quantitative_value=row['ACT_VALUE']
+                        has_quantitative_value=quantity
                         )
         association.has_attribute = act_attribute
         break
