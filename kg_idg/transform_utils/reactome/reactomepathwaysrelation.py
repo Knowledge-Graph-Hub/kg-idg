@@ -2,8 +2,7 @@ import uuid
 
 from biolink.model import ( #type: ignore
     Pathway,
-    Association,
-    Predicate,
+    Association
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -25,9 +24,8 @@ child_pathway = Pathway(id='REACT:' + row['REACT_PATH_CHILD'],
 association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=parent_pathway.id,
-    predicate=Predicate.contains_process,
+    predicate="biolink:contains_process",
     object=child_pathway.id,
-    relation = "RO:0002351", #has_member,
     source=full_source_name
 )
 
