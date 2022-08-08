@@ -2,8 +2,7 @@ import uuid
 
 from biolink.model import ( #type: ignore
     NamedThing,
-    Association,
-    Predicate
+    Association
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -57,9 +56,8 @@ if have_code:
     association = Association(
         id="uuid:" + str(uuid.uuid1()),
         subject=atc_code.id,
-        predicate=Predicate.subclass_of,
+        predicate="biolink:subclass_of",
         object=parent_code.id,
-        relation="RO:0002350", #member of
         provided_by=[provider_url]
     )
 

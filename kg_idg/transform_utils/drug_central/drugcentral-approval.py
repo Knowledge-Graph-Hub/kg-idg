@@ -1,4 +1,3 @@
-import uuid
 
 from biolink.model import ( #type: ignore
     Drug

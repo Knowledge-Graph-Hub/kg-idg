@@ -3,8 +3,7 @@ import uuid
 from biolink.model import ( #type: ignore
     Protein,
     AnatomicalEntity,
-    GeneToExpressionSiteAssociation,
-    Predicate
+    GeneToExpressionSiteAssociation
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -81,9 +80,8 @@ for entry in protein_list:
         association = GeneToExpressionSiteAssociation( #This works for Gene OR GeneProduct
             id="uuid:" + str(uuid.uuid1()),
             subject=protein.id,
-            predicate=Predicate.expressed_in,
+            predicate="biolink:expressed_in",
             object=anatomy.id,
-            relation="RO:0002206", #"expressed in",
             source =full_source_name
         )
         for location in subcell_locations:

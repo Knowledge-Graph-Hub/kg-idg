@@ -4,7 +4,6 @@ from biolink.model import ( #type: ignore
     Protein,
     Drug,
     DrugToGeneAssociation,
-    Predicate,
     Attribute
 )
 
@@ -45,9 +44,8 @@ else:
 association = DrugToGeneAssociation( #This works for Gene OR GeneProduct
     id="uuid:" + str(uuid.uuid1()),
     subject=protein.id,
-    predicate=Predicate.molecularly_interacts_with,
+    predicate="biolink:molecularly_interacts_with",
     object=drug.id,
-    relation="RO:0002436", #"molecularly interacts with",
     source = "DrugCentral",
     description=full_description
 )

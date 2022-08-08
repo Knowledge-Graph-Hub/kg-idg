@@ -1,6 +1,6 @@
 import uuid
 
-from biolink.model import Association, Drug, NamedThing, Predicate #type: ignore
+from biolink.model import Association, Drug, NamedThing #type: ignore
 
 from koza.cli_runner import get_koza_app #type: ignore
 
@@ -52,9 +52,8 @@ drug = Drug(id='DrugCentral:' + row["struct_id"],
 association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=xref_curie.id,
-    predicate=Predicate.same_as,
+    predicate="biolink:same_as",
     object=drug.id,
-    relation="skos:exactMatch",
     source="DrugCentral"
 )
 

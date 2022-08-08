@@ -3,8 +3,7 @@ import uuid
 from biolink.model import ( #type: ignore
     Drug,
     NamedThing,
-    Association,
-    Predicate
+    Association
 )
 
 from koza.cli_runner import get_koza_app #type: ignore
@@ -28,7 +27,7 @@ drug = Drug(id='DrugCentral:' + row["struct_id"],
 association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=atc_code.id,
-    predicate=Predicate.has_part,
+    predicate="biolink:has_part",
     object=drug.id,
     relation="RO:0002351" # "has member"
 )

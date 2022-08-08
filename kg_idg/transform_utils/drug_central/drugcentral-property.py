@@ -1,7 +1,6 @@
 import uuid
 
 from biolink.model import ( #type: ignore
-    Predicate,
     Drug,
     Publication,
     Article,
@@ -58,10 +57,9 @@ drug = Drug(id='DrugCentral:' + row["struct_id"])
 association = InformationContentEntityToNamedThingAssociation(
     id="uuid:" + str(uuid.uuid1()),
     subject=ice.id,
-    predicate=Predicate.mentions,
+    predicate="biolink:mentions",
     object=drug.id,
     source="DrugCentral",
-    relation="IAO:0000142" # "mentions"
 )
 
 koza_app.write(ice, association, drug)
