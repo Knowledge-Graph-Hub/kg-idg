@@ -66,7 +66,7 @@ setup(
         'compress_json',
         'grape',
         'kghub-downloader',
-        'kgx==1.5.9',
+        'kgx',
         'koza>=0.2.1',
         'linkml-validator @ git+https://github.com/linkml/linkml-validator.git',
         'multi-indexer',
