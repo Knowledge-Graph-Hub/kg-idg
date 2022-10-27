@@ -1,12 +1,9 @@
-import os
-import tempfile
-from unittest import TestCase, mock
-from kg_idg import download
+from unittest import TestCase
 
 
 class TestDownload(TestCase):
-    """Tests download
-    """
+    """Tests download"""
+
     def setUp(self) -> None:
         pass
 
@@ -18,5 +15,3 @@ class TestDownload(TestCase):
     #     tmpdir = tempfile.mkdtemp()
     #     download(yaml_file='tests/resources/download.yaml', output_dir=tmpdir)
     #     self.assertTrue(mock_get.called)
-
-
