@@ -1,5 +1,3 @@
 from .tcrd import TCRDTransform
 
-__all__ = [
-	"TCRDTransform"
-]
+__all__ = ["TCRDTransform"]

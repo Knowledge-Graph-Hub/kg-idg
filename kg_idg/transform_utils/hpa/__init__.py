@@ -1,5 +1,3 @@
 from .hpa import ProteinAtlasTransform
 
-__all__ = [
-	"ProteinAtlasTransform"
-]
+__all__ = ["ProteinAtlasTransform"]

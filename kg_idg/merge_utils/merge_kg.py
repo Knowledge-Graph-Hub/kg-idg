@@ -1,9 +1,7 @@
-import importlib
-import logging
-import os
-from typing import Dict, List
-import yaml
+from typing import Dict
+
 import networkx as nx  # type: ignore
+import yaml
 from kgx.cli.cli_utils import merge  # type: ignore
 
 
@@ -17,8 +15,8 @@ def parse_load_config(yaml_file: str) -> Dict:
         Dict: The config as a dictionary.
 
     """
-    with open(yaml_file) as YML:
-        config = yaml.load(YML, Loader=yaml.FullLoader)
+    with open(yaml_file) as yamlf:
+        config = yaml.safe_load(yamlf, Loader=yaml.FullLoader)
     return config
 
 
