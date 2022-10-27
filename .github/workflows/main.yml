@@ -1,36 +1,101 @@
-name: run tests
-on: [push]
+name: Build and Test KG-IDG
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  run-make:
+  lint:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.9' ]
     steps:
       - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
         with:
-          ref: ${{ github.head_ref }}
-      - uses: actions/setup-python@v2
-        name: setup python
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          pip install tox
+      - name: Check code quality with flake8
+        run: tox -e flake8
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ '3.8', '3.9' ]
+
+    steps:
+
+      #----------------------------------------------
+      #       check-out repo and set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
         with:
-          python-version: 3.8
-      - name: Install Dependencies
+          python-version: ${{ matrix.python-version }}
+
+      #----------------------------------------------
+      #          install & configure poetry
+      #----------------------------------------------
+      - name: Install Poetry
+        uses: snok/install-poetry@v1.3
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      #----------------------------------------------
+      #       load cached venv if cache exists      
+      #----------------------------------------------
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+
+      #----------------------------------------------
+      # install dependencies if cache does not exist 
+      #----------------------------------------------
+      - name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
+
+      #----------------------------------------------
+      #    install your root project, if required 
+      #----------------------------------------------      
+      - name: Install library
+        run: poetry install --no-interaction
+
+      #----------------------------------------------
+      #              run test suite   
+      #----------------------------------------------
+      - name: Run tests
+        run: poetry run pytest
+
+      #----------------------------------------------
+      #              coverage report   
+      #----------------------------------------------
+      - name: Generate coverage results
         run: |
-          python -m pip install --upgrade pip
-          pip install .
-          pip install .[test]
-          pip install types-PyYAML
-          pip install types-requests
-      - name: run pytest
-        run: |
-          coverage erase
-          pytest --cov=kg_idg --cov-report xml:coverage.xml
-          coverage combine --append || true
-          coverage report
-          coverage xml
-      - name: run mypy
-        run: mypy --strict-optional kg_idg
-      - name: run yamllint
-        run: yamllint -d relaxed merge.yaml download.yaml
-      - name: SonarCloud Scan
-        uses: sonarsource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.KGCOVID19_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          poetry run coverage run -m pytest
+          poetry run coverage xml
+          poetry run coverage report -m
+      #----------------------------------------------
+      #           upload coverage results
+      #----------------------------------------------
+      - name: Upload coverage report
+        uses: codecov/codecov-action@v1.0.5
+        with:
+          name: codecov-results-${{ matrix.python-version }}
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+          fail_ci_if_error: true
