@@ -20,10 +20,6 @@ class TestQuery(TestCase):
     def test_parse_query_yaml(self) -> None:
         parse_query_yaml(self.test_yaml)
 
-    def test_parse_query_yaml_should_be_dict(self) -> None:
-        q = parse_query_yaml(self.test_yaml)
-        self.assertTrue(isinstance(q, dict))
-
     @parameterized.expand(
         [
             ("title", "some title"),

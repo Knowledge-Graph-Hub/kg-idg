@@ -76,7 +76,7 @@ for entry in row["Uniprot"].split(", "):
         protein_list.append(protein)
 
 # Association
-for entry in protein_list:
+for _ in protein_list:
     if have_location:
         association = Association(  # This works for Gene OR GeneProduct
             id="uuid:" + str(uuid.uuid1()),
@@ -85,7 +85,7 @@ for entry in protein_list:
             object=anatomy.id,
             source=full_source_name,
         )
-        for location in subcell_locations:
+        for _ in subcell_locations:
             koza_app.write(protein, association, anatomy)
     else:
         koza_app.write(protein)
