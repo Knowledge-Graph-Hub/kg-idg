@@ -7,7 +7,7 @@ from kg_idg.transform_utils.transform import Transform
 
 """
 Ingest KGX-format human protein-protein interactions from
-STRING. Filter by interaction confidence 
+STRING. Filter by interaction confidence
 (combined score >= CONFIDENCE_THRESHOLD) to reduce noise.
 Transform with KGX for validation.
 """
@@ -26,7 +26,9 @@ class STRINGTransform(Transform):
         source_name = "string"
         super().__init__(source_name, input_dir, output_dir)  # set some variables
 
-    def run(self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None) -> None:  # type: ignore
+    def run(
+        self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None
+    ) -> None:  # type: ignore
         """Obtain files and call the parse function."""
         if nodes_file and edges_file:
             for source in [nodes_file, edges_file]:

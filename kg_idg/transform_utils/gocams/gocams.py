@@ -28,7 +28,9 @@ class GOCAMTransform(Transform):
         source_name = "gocams"
         super().__init__(source_name, input_dir, output_dir)  # set some variables
 
-    def run(self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None) -> None:  # type: ignore
+    def run(
+        self, nodes_file: Optional[str] = None, edges_file: Optional[str] = None
+    ) -> None:  # type: ignore
         """
         Set up for Koza and call the parse function.
         """

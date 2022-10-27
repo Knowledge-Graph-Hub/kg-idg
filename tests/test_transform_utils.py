@@ -157,7 +157,7 @@ class TestTransformUtils(TestCase):
         shutil.rmtree(this_output_dir)
 
     @classmethod
-    def tearDownClass(self):
+    def tearDownClass(cls):
         """
         This removes all files from the data/raw dir!
         These tests download minimal versions of the raws,

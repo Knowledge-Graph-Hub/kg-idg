@@ -6,7 +6,7 @@ from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
 """
-uPheno2 is a community-curated ontology for the 
+uPheno2 is a community-curated ontology for the
 representation and integration of phenotypes across species.
 See here for more details re: the other ontologies involved:
 https://github.com/obophenotype/upheno/wiki/Phenotype-Ontologies-Reconciliation-Effort

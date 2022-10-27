@@ -99,7 +99,7 @@ class DrugCentralTransform(Transform):
         and write the new tsv
         :param source_path: str, path to the structures tsv
         """
-        print(f"Pre-processing the DrugCentral structures table prior to transformation...")
+        print("Pre-processing DrugCentral structures table before transform...")
         temp_tsv_path = source_path + ".temp"
         #
         csv.field_size_limit(

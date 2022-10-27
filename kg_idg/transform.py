@@ -33,7 +33,8 @@ DATA_SOURCES = {
 
 
 def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> None:
-    """Call scripts in kg_idg/transform/[source name]/ to transform each source into a graph format that
+    """Call scripts in kg_idg/transform/[source name]/ to
+    transform each source into a graph format that
     KGX can ingest directly, in either TSV or JSON format:
     https://github.com/biolink/kgx/blob/master/data-preparation.md
 

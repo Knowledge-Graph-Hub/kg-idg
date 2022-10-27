@@ -20,11 +20,11 @@ class TestSQLUtils(TestCase):
 
     def test_make_temp_mysql_db_fails(self):
         with self.assertRaises(mysql.connector.errors.DatabaseError):
-            connection = make_temp_mysql_db("fake", "test")
+            make_temp_mysql_db("fake", "test")
 
     def test_make_temp_postgres_db_fails(self):
         with self.assertRaises(psycopg2.OperationalError):
-            connection = make_temp_postgres_db("fake", "test")
+            make_temp_postgres_db("fake", "test")
 
     # This test result should be False as it won't actually parse anything
     # without a database instance running

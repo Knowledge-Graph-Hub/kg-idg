@@ -1,7 +1,7 @@
 from biolink.model import Drug  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
-"""The structures table contains details on each 
+"""The structures table contains details on each
    DrugCentral drug, including its chemical structure."""
 
 source_name = "drugcentral-structures"
