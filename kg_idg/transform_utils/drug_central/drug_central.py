@@ -1,13 +1,14 @@
-import os
-from typing import Optional
-import gzip
-import shutil
 import csv
+import gzip
+import os
+import shutil
 import sys
+from typing import Optional
+
+from koza.cli_runner import transform_source  # type: ignore
 
 from kg_idg.transform_utils.transform import Transform
 from kg_idg.utils.sql_utils import process_data_dump
-from koza.cli_runner import transform_source  # type: ignore
 
 """
 DrugCentral provides a set of drug vs. target interactions.

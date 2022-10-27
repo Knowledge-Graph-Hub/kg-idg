@@ -25,7 +25,8 @@ class ItemInDictNotFound(TransformError):
 
 
 def multi_page_table_to_list(multi_page_table: Any) -> List[Dict]:
-    """Method to turn table data returned from tabula.io.read_pdf(), possibly broken over several pages, into a list
+    """Method to turn table data returned from tabula.io.read_pdf(),
+    possibly broken over several pages, into a list
     of dicts, one dict for each row.
 
     Args:
@@ -114,8 +115,8 @@ def data_to_dict(these_keys, these_values) -> dict:
 def uniprot_make_name_to_id_mapping(dat_gz_file: str) -> dict:
     """Given a Uniprot dat.gz file, like this:
     ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz
-     makes dict with name to id mapping
-    
+    makes dict with name to id mapping
+
     :param dat_gz_file: 
     :return: dict with mapping
     """ ""

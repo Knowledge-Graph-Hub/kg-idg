@@ -1,8 +1,8 @@
-import os
 import configparser
-from oger.ctrl.run import run as og_run  # type: ignore
+import os
 
 import pandas as pd  # type: ignore
+from oger.ctrl.run import run as og_run  # type: ignore
 
 SETTINGS_FILENAME = "settings.ini"
 

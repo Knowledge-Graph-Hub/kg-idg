@@ -1,20 +1,18 @@
 import logging
-from typing import List
 import sys
+from typing import List
 
-from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
-from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
-from kg_idg.transform_utils.omim.omim import OMIMTransform
-from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
-from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
-from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
-from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
-from kg_idg.transform_utils.string.string import STRINGTransform
 from kg_idg.transform_utils.atc.atc import ATCTransform
-
+from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
+from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
-
+from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
+from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
+from kg_idg.transform_utils.string.string import STRINGTransform
+from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 
 DATA_SOURCES = {
     "MondoTransform": OntologyTransform,

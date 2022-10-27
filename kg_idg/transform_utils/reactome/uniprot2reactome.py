@@ -1,7 +1,6 @@
 import uuid
 
-from biolink.model import Protein, Pathway, ChemicalToPathwayAssociation  # type: ignore
-
+from biolink.model import ChemicalToPathwayAssociation, Pathway, Protein  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 source_name = "uniprot2reactome"

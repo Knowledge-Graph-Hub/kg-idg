@@ -1,10 +1,10 @@
 import logging
 import os
-from urllib.request import Request, urlopen
+from os import path
 from urllib.error import HTTPError
+from urllib.request import Request, urlopen
 
 import yaml
-from os import path
 from tqdm.auto import tqdm  # type: ignore
 
 
@@ -14,10 +14,12 @@ def download_from_yaml(
     """Given an download info from an download.yaml file, download all files
 
     Args:
-        yaml_file: A string pointing to the download.yaml file, to be parsed for things to download.
+        yaml_file: A string pointing to the download.yaml file,
+        to be parsed for things to download.
         output_dir: A string pointing to where to write out downloaded files.
         ignore_cache: Ignore cache and download files even if they exist [false]
-        snippet_only: Downloads only the first 5 kB of each uncompressed source, for testing and file checks
+        snippet_only: Downloads only the first 5 kB of each uncompressed source,
+        for testing and file checks
         verbose: verbose [False]
 
     Returns:
@@ -26,7 +28,7 @@ def download_from_yaml(
 
     os.makedirs(output_dir, exist_ok=True)
     with open(yaml_file) as f:
-        data = yaml.load(f, Loader=yaml.FullLoader)
+        data = yaml.safe_load(f, Loader=yaml.FullLoader)
         items = tqdm(data, desc="Downloading files")
         for item in items:
             if verbose:

@@ -1,15 +1,14 @@
 import uuid
 
 from biolink.model import (  # type: ignore
-    Drug,
-    Publication,
     Article,
     Book,
-    InformationResource,
+    Drug,
     InformationContentEntity,
     InformationContentEntityToNamedThingAssociation,
+    InformationResource,
+    Publication,
 )
-
 from koza.cli_runner import get_koza_app  # type: ignore
 
 # All literature mentions are treated equivalently at present

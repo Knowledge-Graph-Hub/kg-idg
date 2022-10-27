@@ -1,7 +1,6 @@
 import uuid
 
 from biolink.model import Association, Drug, NamedThing  # type: ignore
-
 from koza.cli_runner import get_koza_app  # type: ignore
 
 # This parses all DrugCentral cross-references

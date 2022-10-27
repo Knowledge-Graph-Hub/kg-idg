@@ -1,5 +1,3 @@
 from .reactome import ReactomeTransform
 
-__all__ = [
-	"ReactomeTransform"
-]
+__all__ = ["ReactomeTransform"]

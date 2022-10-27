@@ -1,7 +1,6 @@
 import uuid
 
-from biolink.model import Drug, NamedThing, Association  # type: ignore
-
+from biolink.model import Association, Drug, NamedThing  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 # This is the table for ATC codes and drug dosage definitions

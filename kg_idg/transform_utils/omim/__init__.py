@@ -1,5 +1,3 @@
 from .omim import OMIMTransform
 
-__all__ = [
-    "OMIMTransform"
-]
+__all__ = ["OMIMTransform"]

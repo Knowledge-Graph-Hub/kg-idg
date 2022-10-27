@@ -1,7 +1,10 @@
 import uuid
 
-from biolink.model import ChemicalEntity, Pathway, ChemicalToPathwayAssociation  # type: ignore
-
+from biolink.model import (  # type: ignore
+    ChemicalEntity,
+    ChemicalToPathwayAssociation,
+    Pathway,
+)
 from koza.cli_runner import get_koza_app  # type: ignore
 
 source_name = "chebi2reactome"

@@ -1,5 +1,3 @@
 from .orphanet import OrphanetTransform
 
-__all__ = [
-    "OrphanetTransform"
-]
+__all__ = ["OrphanetTransform"]

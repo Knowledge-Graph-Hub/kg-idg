@@ -1,5 +1,3 @@
 from .gocams import GOCAMTransform
 
-__all__ = [
-    "GOCAMTransform"
-]
+__all__ = ["GOCAMTransform"]

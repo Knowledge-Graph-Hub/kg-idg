@@ -1,7 +1,7 @@
 import logging
 
 import yaml
-from SPARQLWrapper import SPARQLWrapper, JSON  # type: ignore
+from SPARQLWrapper import JSON, SPARQLWrapper  # type: ignore
 
 
 def run_query(query: str, endpoint: str, return_format=JSON) -> dict:
@@ -14,7 +14,7 @@ def run_query(query: str, endpoint: str, return_format=JSON) -> dict:
 
 
 def parse_query_yaml(yaml_file) -> dict:
-    return yaml.load(open(yaml_file))  # type: ignore
+    return yaml.safe_load(open(yaml_file))  # type: ignore
 
 
 def result_dict_to_tsv(result_dict: dict, outfile: str) -> None:
@@ -33,5 +33,5 @@ def result_dict_to_tsv(result_dict: dict, outfile: str) -> None:
                     row_items.append("ERROR")
             try:
                 f.write("\t".join(row_items) + "\n")
-            except:
-                pass
+            except Exception as e:
+                print(e)

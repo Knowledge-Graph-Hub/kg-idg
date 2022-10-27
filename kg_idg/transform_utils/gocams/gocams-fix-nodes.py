@@ -1,5 +1,4 @@
-from biolink.model import NamedThing, Pathway, Gene, Protein  # type: ignore
-
+from biolink.model import Gene, NamedThing, Pathway, Protein  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 source_name = "gocams-fix-nodes"

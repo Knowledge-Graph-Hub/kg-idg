@@ -1,7 +1,12 @@
 import uuid
 
-from biolink.model import NamedThing, Pathway, Gene, Protein, Association  # type: ignore
-
+from biolink.model import (  # type: ignore
+    Association,
+    Gene,
+    NamedThing,
+    Pathway,
+    Protein,
+)
 from koza.cli_runner import get_koza_app  # type: ignore
 
 source_name = "gocams-fix-edges"

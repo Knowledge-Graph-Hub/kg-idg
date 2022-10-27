@@ -226,7 +226,7 @@ def process_postgresql_dump(
                     ("COPY {} TO STDOUT WITH DELIMITER E'\t'CSV HEADER").format(table_name), outfile
                 )
 
-        print(f"Complete.")
+        print("Complete.")
 
         success = True
 

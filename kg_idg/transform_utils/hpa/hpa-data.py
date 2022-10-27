@@ -1,7 +1,6 @@
 import uuid
 
-from biolink.model import Protein, AnatomicalEntity, Association  # type: ignore
-
+from biolink.model import AnatomicalEntity, Association, Protein  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 source_name = "hpa-data"

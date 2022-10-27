@@ -1,5 +1,4 @@
 from biolink.model import Drug  # type: ignore
-
 from koza.cli_runner import get_koza_app  # type: ignore
 
 """The structures table contains details on each 

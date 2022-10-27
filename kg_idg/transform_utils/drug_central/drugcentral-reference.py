@@ -1,11 +1,10 @@
 from biolink.model import (  # type: ignore
-    Publication,
     Article,
     Book,
-    InformationResource,
     InformationContentEntity,
+    InformationResource,
+    Publication,
 )
-
 from koza.cli_runner import get_koza_app  # type: ignore
 
 # This table is the references only, without Drug IDs.

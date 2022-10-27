@@ -1,10 +1,10 @@
 import os
-from typing import Optional
 import zipfile
+from typing import Optional
 
-from kg_idg.transform_utils.transform import Transform
 from koza.cli_runner import transform_source  # type: ignore
 
+from kg_idg.transform_utils.transform import Transform
 
 """
 HPA is the Human Protein Atlas.

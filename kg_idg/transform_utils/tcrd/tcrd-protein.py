@@ -1,7 +1,4 @@
-from biolink.model import (  # type: ignore
-    Protein,
-)
-
+from biolink.model import Protein  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 # Most TCRD protein info comes from the tcrd-ids transform.
