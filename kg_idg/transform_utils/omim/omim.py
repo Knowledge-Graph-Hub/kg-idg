@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os
 
 from typing import Optional
@@ -14,10 +12,9 @@ The source document is in n-triple format provided by Monarch.
 
 OMIM_NT_FILENAME = "omim.nt"
 
-class OMIMTransform(Transform):
-    """This transform ingests the OMIM nt file and parses it to KGX tsv format.
 
-    """
+class OMIMTransform(Transform):
+    """This transform ingests the OMIM nt file and parses it to KGX tsv format."""
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "omim"
@@ -32,7 +29,7 @@ class OMIMTransform(Transform):
             None.
         """
         if data_file:
-            k = data_file.split('.')[0]
+            k = data_file.split(".")[0]
             data_file = os.path.join(self.input_base_dir, data_file)
             self.parse(k, data_file, k)
         else:
@@ -50,7 +47,9 @@ class OMIMTransform(Transform):
         """
         print(f"Parsing {data_file}")
 
-        transform(inputs=[data_file],
-                  input_format='nt',
-                  output=os.path.join(self.output_dir, name),
-                  output_format='tsv')
+        transform(
+            inputs=[data_file],
+            input_format="nt",
+            output=os.path.join(self.output_dir, name),
+            output_format="tsv",
+        )

@@ -1,12 +1,10 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os
 from typing import Optional
 import gzip
 import shutil
 
 from kg_idg.transform_utils.transform import Transform
-from koza.cli_runner import transform_source #type: ignore
+from koza.cli_runner import transform_source  # type: ignore
 
 
 """
@@ -18,23 +16,24 @@ https://bioportal.bioontology.org/ontologies/ATC/?p=summary
 """
 
 ATC_SOURCES = {
-    'ATC_DATA': 'atc.csv.gz',
+    "ATC_DATA": "atc.csv.gz",
 }
 
 ATC_CONFIGS = {
-    'ATC_DATA': 'atc-classes.yaml',
+    "ATC_DATA": "atc-classes.yaml",
 }
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
+
 class ATCTransform(Transform):
     """This transform ingests the ATC CSV file.
-	It is transformed to KGX-format node and edge lists.
+    It is transformed to KGX-format node and edge lists.
     """
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "atc"
-        super().__init__(source_name, input_dir, output_dir) 
+        super().__init__(source_name, input_dir, output_dir)
 
     def run(self, atc_file: Optional[str] = None) -> None:  # type: ignore
         """
@@ -42,7 +41,7 @@ class ATCTransform(Transform):
         """
         if atc_file:
             for source in [atc_file]:
-                k = source.split('.')[0]
+                k = source.split(".")[0]
                 data_file = os.path.join(self.input_base_dir, source)
                 self.parse(k, data_file, k)
         else:
@@ -63,8 +62,8 @@ class ATCTransform(Transform):
         # Decompress
         outname = name[:-3]
         outpath = os.path.join(self.input_base_dir, outname)
-        with gzip.open(data_file, 'rb') as data_file_gz:
-            with open(outpath, 'wb') as data_file_new:
+        with gzip.open(data_file, "rb") as data_file_gz:
+            with open(outpath, "wb") as data_file_new:
                 shutil.copyfileobj(data_file_gz, data_file_new)
 
         # If source is unknown then we aren't going to guess
@@ -72,9 +71,12 @@ class ATCTransform(Transform):
             raise ValueError(f"Source file {source} not recognized - not transforming.")
         else:
             print(f"Transforming using source in {config}")
-            transform_source(source=config, output_dir=output,
-                             output_format="tsv",
-                             global_table=TRANSLATION_TABLE,
-                             local_table=None)
+            transform_source(
+                source=config,
+                output_dir=output,
+                output_format="tsv",
+                global_table=TRANSLATION_TABLE,
+                local_table=None,
+            )
 
         os.remove(outpath)

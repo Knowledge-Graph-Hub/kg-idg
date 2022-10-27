@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import logging
 from typing import List
 import sys
@@ -13,28 +11,26 @@ from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 from kg_idg.transform_utils.string.string import STRINGTransform
 from kg_idg.transform_utils.atc.atc import ATCTransform
-#from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
 
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
 
 
 DATA_SOURCES = {
-    'MondoTransform': OntologyTransform,
-    'ChebiTransform': OntologyTransform,
-    'HPOTransform': OntologyTransform,
-    'GOTransform': OntologyTransform,
-    'OGMSTransform': OntologyTransform,
-    'DrugCentralTransform': DrugCentralTransform,
-    'OrphanetTransform': OrphanetTransform,
-    'OMIMTransform': OMIMTransform,
-    'ReactomeTransform': ReactomeTransform,
-    'GOCAMTransform': GOCAMTransform,
-    'TCRDTransform': TCRDTransform,
-    'ProteinAtlasTransform': ProteinAtlasTransform,
-    'STRINGTransform': STRINGTransform,
-    'ATCTransform': ATCTransform,
-    #'UPhenoTransform': UPhenoTransform
+    "MondoTransform": OntologyTransform,
+    "ChebiTransform": OntologyTransform,
+    "HPOTransform": OntologyTransform,
+    "GOTransform": OntologyTransform,
+    "OGMSTransform": OntologyTransform,
+    "DrugCentralTransform": DrugCentralTransform,
+    "OrphanetTransform": OrphanetTransform,
+    "OMIMTransform": OMIMTransform,
+    "ReactomeTransform": ReactomeTransform,
+    "GOCAMTransform": GOCAMTransform,
+    "TCRDTransform": TCRDTransform,
+    "ProteinAtlasTransform": ProteinAtlasTransform,
+    "STRINGTransform": STRINGTransform,
+    "ATCTransform": ATCTransform,
 }
 
 

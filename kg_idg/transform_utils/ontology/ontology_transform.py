@@ -5,21 +5,22 @@ from kgx.cli.cli_utils import transform  # type: ignore
 from kg_idg.transform_utils.transform import Transform
 
 ONTOLOGIES = {
-    'ChebiTransform': 'chebi_kgx_tsv.tar.gz',
-    'HPOTransform': 'hp_kgx_tsv.tar.gz',
-    'GOTransform': 'go_kgx_tsv.tar.gz',
-    'MondoTransform': 'mondo_kgx_tsv.tar.gz',
-    'OGMSTransform': 'ogms_kgx_tsv.tar.gz'
+    "ChebiTransform": "chebi_kgx_tsv.tar.gz",
+    "HPOTransform": "hp_kgx_tsv.tar.gz",
+    "GOTransform": "go_kgx_tsv.tar.gz",
+    "MondoTransform": "mondo_kgx_tsv.tar.gz",
+    "OGMSTransform": "ogms_kgx_tsv.tar.gz",
 }
 
 
 class OntologyTransform(Transform):
     """
-    OntologyTransform acts as a passthrough for OBO ontologies - 
+    OntologyTransform acts as a passthrough for OBO ontologies -
     those retrieved as tsv node and edge lists in .tar.gz can be
-    parsed directly by KGX. 
+    parsed directly by KGX.
     We have KGX decompress the file.
     """
+
     def __init__(self, input_dir: str = None, output_dir: str = None):
         source_name = "ontologies"
         super().__init__(source_name, input_dir, output_dir)
@@ -33,7 +34,7 @@ class OntologyTransform(Transform):
             None.
         """
         if data_file:
-            k = data_file.split('.')[0]
+            k = data_file.split(".")[0]
             data_file = os.path.join(self.input_base_dir, data_file)
             self.parse(k, data_file, k)
         else:
@@ -53,8 +54,10 @@ class OntologyTransform(Transform):
         """
         print(f"Parsing {data_file}")
 
-        transform(inputs=[data_file],
-                  input_format='tsv',
-                  input_compression='tar.gz',
-                  output=os.path.join(self.output_dir, name),
-                  output_format='tsv')
+        transform(
+            inputs=[data_file],
+            input_format="tsv",
+            input_compression="tar.gz",
+            output=os.path.join(self.output_dir, name),
+            output_format="tsv",
+        )

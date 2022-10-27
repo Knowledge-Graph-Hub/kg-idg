@@ -1,58 +1,44 @@
 import uuid
 
-from biolink.model import ( #type: ignore
-    NamedThing,
-    Pathway,
-    Gene,
-    Protein,
-    Association
-)
+from biolink.model import NamedThing, Pathway, Gene, Protein, Association  # type: ignore
 
-from koza.cli_runner import get_koza_app #type: ignore
+from koza.cli_runner import get_koza_app  # type: ignore
 
-source_name="gocams-fix-edges"
+source_name = "gocams-fix-edges"
 
-def normalize_gocam_id(raw_id,prefix):
+
+def normalize_gocam_id(raw_id, prefix):
     if prefix == "OBO":
-        if raw_id[4:13] == "UniProtKB": # edge case
+        if raw_id[4:13] == "UniProtKB":  # edge case
             curie = "UniProtKB:" + (raw_id.split("_"))[1]
-            thing = Protein(id=curie,
-            category="biolink:Protein")
+            thing = Protein(id=curie, category="biolink:Protein")
         else:
             curie = "REACT:" + (raw_id.split("#REACTO_"))[1]
-            thing = Pathway(id=curie,
-            category="biolink:Pathway")
+            thing = Pathway(id=curie, category="biolink:Pathway")
     elif prefix == "MGI":
         curie = "MGI:" + (raw_id.split(":"))[2]
-        thing = Gene(id=curie,
-            category="biolink:Gene")
+        thing = Gene(id=curie, category="biolink:Gene")
     elif prefix == "FB":
         curie = "FlyBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=curie,
-            category="biolink:Gene")
+        thing = Gene(id=curie, category="biolink:Gene")
     elif prefix == "WB":
         curie = "WormBase:" + (raw_id.split(":"))[1]
-        thing = Gene(id=curie,
-            category="biolink:Gene")
+        thing = Gene(id=curie, category="biolink:Gene")
     elif prefix == "POMBASE":
         curie = "PomBase:" + (raw_id.split(":"))[2]
-        thing = Gene(id=curie,
-            category="biolink:Gene")                  
-    elif prefix == "UniProtKB": 
-        thing = Protein(id=raw_id,
-            category="biolink:Protein")
+        thing = Gene(id=curie, category="biolink:Gene")
+    elif prefix == "UniProtKB":
+        thing = Protein(id=raw_id, category="biolink:Protein")
     elif prefix in ["DICTYBASE.GENE", "TAIR.LOCUS"]:
-        curie = raw_id.replace(".","_")
-        thing = Gene(id=curie,
-            category="biolink:Gene")
+        curie = raw_id.replace(".", "_")
+        thing = Gene(id=curie, category="biolink:Gene")
     elif prefix in ["SGD", "RGD", "XENBASE", "ZFIN"]:
-        thing = Gene(id=raw_id,
-            category="biolink:Gene")
+        thing = Gene(id=raw_id, category="biolink:Gene")
     else:
-        thing = NamedThing(id=raw_id,
-            category="biolink:NamedThing")
-    
+        thing = NamedThing(id=raw_id, category="biolink:NamedThing")
+
     return thing
+
 
 koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
@@ -67,11 +53,7 @@ object = normalize_gocam_id(object_raw_id, object_prefix)
 
 # Association
 association = Association(
-    id="uuid:" + str(uuid.uuid1()),
-    subject=subject.id,
-    predicate=row["predicate"],
-    object=object.id
+    id="uuid:" + str(uuid.uuid1()), subject=subject.id, predicate=row["predicate"], object=object.id
 )
 
 koza_app.write(subject, association, object)
-

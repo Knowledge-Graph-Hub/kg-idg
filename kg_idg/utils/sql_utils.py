@@ -1,22 +1,20 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import os
 
-import mysql.connector #type: ignore
-from mysql.connector import MySQLConnection #type: ignore
-import psycopg2 #type: ignore
-from psycopg2 import sql #type: ignore
-from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT #type: ignore
-from psycopg2.extensions import connection #type: ignore
+import mysql.connector  # type: ignore
+import psycopg2  # type: ignore
+from mysql.connector import MySQLConnection  # type: ignore
+from psycopg2 import sql  # type: ignore
+from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT  # type: ignore
+from psycopg2.extensions import connection  # type: ignore
 
 # Not all environments make it obvious where to get the current system
 # username, so specify it here if needed
 BACKUP_POSTGRESQL_USERNAME = "jenkinsuser"
 
+
 def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
     """
-    Creates a temporary MySQL database 
+    Creates a temporary MySQL database
     with the provided name.
     Or, if the database already exists,
     removes and re-creates it.
@@ -24,24 +22,21 @@ def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
     """
 
     connection = mysql.connector.connect(
-                host="localhost",
-                user=username,
-                password="pass",
-                allow_local_infile=True
-                )
+        host="localhost", user=username, password="pass", allow_local_infile=True
+    )
 
     if connection.is_connected():
         db_info = connection.get_server_info()
         print("MySQL server version:", db_info)
         connection.autocommit = True
-        cursor = connection.cursor(buffered=True,dictionary=True)
-        
+        cursor = connection.cursor(buffered=True, dictionary=True)
+
         # Create temp database if it doesn't exist
         # But if it does, remove it!
         databases = []
         cursor.execute("SHOW DATABASES")
         for item in cursor:
-            databases.append(item['Database'])
+            databases.append(item["Database"])
         if db_name in databases:
             cursor.execute(f"DROP DATABASE {db_name}")
             print(f"Removing old {db_name}.")
@@ -50,9 +45,10 @@ def make_temp_mysql_db(username: str, db_name: str) -> MySQLConnection:
 
     return connection
 
+
 def make_temp_postgres_db(username: str, db_name: str) -> connection:
     """
-    Creates a temporary PostgreSQL database 
+    Creates a temporary PostgreSQL database
     with the provided name.
     Or, if the database already exists,
     removes and re-creates it.
@@ -60,7 +56,7 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
     """
 
     # This should usually be a str, but set it just in case
-    system_user = str(os.environ.get('LOGNAME'))
+    system_user = str(os.environ.get("LOGNAME"))
     if system_user == "None":
         system_user = BACKUP_POSTGRESQL_USERNAME
 
@@ -71,33 +67,38 @@ def make_temp_postgres_db(username: str, db_name: str) -> connection:
         db_info = connection.server_version
         print("PostgreSQL server version:", db_info)
         cursor = connection.cursor()
-        
+
         # Create temp database if it doesn't exist
         # But if it does, remove it!
         print(f"Creating database with name {db_name}")
-        cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(
-                        sql.Identifier(db_name)))
-        cursor.execute(sql.SQL("CREATE DATABASE {}").format(
-                        sql.Identifier(db_name)))
+        cursor.execute(sql.SQL("DROP DATABASE IF EXISTS {}").format(sql.Identifier(db_name)))
+        cursor.execute(sql.SQL("CREATE DATABASE {}").format(sql.Identifier(db_name)))
 
         # Create a role so we don't have to constantly authenticate
         print(f"Creating login for user {system_user}")
-        cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(
-                        sql.Identifier(system_user)))
-        cursor.execute(sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(
-                        sql.Identifier(system_user)))
+        cursor.execute(sql.SQL("DROP ROLE IF EXISTS {}").format(sql.Identifier(system_user)))
+        cursor.execute(
+            sql.SQL("CREATE ROLE {} WITH LOGIN SUPERUSER").format(sql.Identifier(system_user))
+        )
 
         print(f"Created {db_name}.")
 
     return connection
 
-def process_mysql_dump(short_name: str, db_name: str, data_file: str, 
-                        wanted_tables: list, input_dir: str, output_dir: str, 
-                        list_tables: bool) -> bool:
+
+def process_mysql_dump(
+    short_name: str,
+    db_name: str,
+    data_file: str,
+    wanted_tables: list,
+    input_dir: str,
+    output_dir: str,
+    list_tables: bool,
+) -> bool:
     """
     Given the path to a MySQL dump,
     filters the file by table,
-    loads each table, 
+    loads each table,
     and exports each table as its own TSV.
     This will fail if a server is not running for MySQL!
     """
@@ -137,7 +138,7 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
             os.system(command)
 
         # Finally, export tables to TSV
-        cursor.execute('USE ' + db_name)
+        cursor.execute("USE " + db_name)
         cursor.execute("SHOW TABLES")
         all_tables = []
         print("Database contains:")
@@ -148,20 +149,20 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
             print("Database is empty - please check input file.")
             success = False
             return success
-        
+
         for table_name in wanted_tables:
             outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
-            cursor.execute('SELECT * FROM ' + table_name)
+            cursor.execute("SELECT * FROM " + table_name)
             header = [row[0] for row in cursor.description]
             rows = cursor.fetchall()
             len_rows = str(len(rows))
-            with open(outfile_tsv_path, 'w') as outfile:
-                outfile.write('\t'.join(header) + '\n')
+            with open(outfile_tsv_path, "w") as outfile:
+                outfile.write("\t".join(header) + "\n")
                 for row in rows:
-                    outfile.write('\t'.join(str(r) for r in row) + '\n')
+                    outfile.write("\t".join(str(r) for r in row) + "\n")
             print(f"Complete - wrote {len_rows}.")
-            
+
         success = True
 
     except mysql.connector.errors.DatabaseError as e:
@@ -171,9 +172,15 @@ def process_mysql_dump(short_name: str, db_name: str, data_file: str,
     return success
 
 
-def process_postgresql_dump(short_name: str, db_name: str, data_file: str, 
-                        wanted_tables: list, input_dir: str, output_dir: str, 
-                        list_tables: bool) -> bool:
+def process_postgresql_dump(
+    short_name: str,
+    db_name: str,
+    data_file: str,
+    wanted_tables: list,
+    input_dir: str,
+    output_dir: str,
+    list_tables: bool,
+) -> bool:
     """
     Given the path to a PostgreSQL dump,
     loads it,
@@ -211,15 +218,16 @@ def process_postgresql_dump(short_name: str, db_name: str, data_file: str,
         # May need to change the value "public" if schema requires
         for table_name in wanted_tables:
             outfile_tsv_path = os.path.join(output_dir, f"{short_name}-{table_name}.tsv")
-            
+
             print(f"Exporting {table_name} from {db_name} to {outfile_tsv_path}...")
-            
-            with open(outfile_tsv_path, 'w') as outfile:
-                cursor.copy_expert(("COPY {} TO STDOUT WITH DELIMITER E\'\t\'CSV HEADER").format(table_name), 
-                                    outfile)
-        
+
+            with open(outfile_tsv_path, "w") as outfile:
+                cursor.copy_expert(
+                    ("COPY {} TO STDOUT WITH DELIMITER E'\t'CSV HEADER").format(table_name), outfile
+                )
+
         print(f"Complete.")
-            
+
         success = True
 
     except (Exception, psycopg2.Error) as e:
@@ -229,16 +237,22 @@ def process_postgresql_dump(short_name: str, db_name: str, data_file: str,
     return success
 
 
-def process_data_dump(short_name: str, db_type: str, data_file: str, 
-                        wanted_tables: list, input_dir: str, output_dir: str, 
-                        list_tables: bool) -> bool:
+def process_data_dump(
+    short_name: str,
+    db_type: str,
+    data_file: str,
+    wanted_tables: list,
+    input_dir: str,
+    output_dir: str,
+    list_tables: bool,
+) -> bool:
     """
     Given the path to a database dump,
     filters the file by table,
-    loads each table, 
+    loads each table,
     and exports each table as its own TSV.
     Calls a function specific to the database type to do so.
-    This will fail if a server is not running for the 
+    This will fail if a server is not running for the
     necessary database type!
     """
 
@@ -248,26 +262,18 @@ def process_data_dump(short_name: str, db_type: str, data_file: str,
 
     # Check what type of DB we're working with
     print(f"Database type: {db_type}")
-    
+
     if db_type == "mysql":
-        success = process_mysql_dump(short_name,
-                                    db_name,
-                                    data_file, 
-                                    wanted_tables, 
-                                    input_dir,
-                                    output_dir,
-                                    list_tables)
-    
+        success = process_mysql_dump(
+            short_name, db_name, data_file, wanted_tables, input_dir, output_dir, list_tables
+        )
+
     elif db_type == "postgres":
-        success = process_postgresql_dump(short_name,
-                                        db_name,
-                                        data_file, 
-                                        wanted_tables, 
-                                        input_dir,
-                                        output_dir,
-                                        list_tables)
-        
-    else: # Unrecognized database type
+        success = process_postgresql_dump(
+            short_name, db_name, data_file, wanted_tables, input_dir, output_dir, list_tables
+        )
+
+    else:  # Unrecognized database type
         print(f"Did not recognize database type: {db_type}")
         success = False
 

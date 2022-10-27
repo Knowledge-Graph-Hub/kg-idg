@@ -1,7 +1,6 @@
 import logging
-from typing import Dict, Any, cast
 
-EXCLUDE = ['biolink:Publication']
+EXCLUDE = ["biolink:Publication"]
 
 
 def parse(input_filename, output_filename) -> None:
@@ -26,41 +25,41 @@ def parse(input_filename, output_filename) -> None:
 
     """
     counter = 0
-    OUTSTREAM = open(output_filename, 'w')
+    OUTSTREAM = open(output_filename, "w")
     header_dict = None
 
     with open(input_filename) as FH:
         for line in FH:
             if counter == 0:
-                header = line.rstrip().split('\t')
+                header = line.rstrip().split("\t")
                 header_dict = parse_header(header)
                 counter += 1
                 continue
 
-            elements = [x.rstrip() for x in line.split('\t')]
-            if any(x in elements[header_dict['category']] for x in EXCLUDE):  # type: ignore
+            elements = [x.rstrip() for x in line.split("\t")]
+            if any(x in elements[header_dict["category"]] for x in EXCLUDE):  # type: ignore
                 # 'category' field is one of the ones in EXCLUDE list
                 logging.info(f"Skipping line as part of excludes: {line.rstrip()}")
                 continue
 
-            if not elements[header_dict['name']]:  # type: ignore
+            if not elements[header_dict["name"]]:  # type: ignore
                 # no 'name' field for record
                 print(f"Skipping line as it does not have a name field: {line.rstrip()}")
                 continue
 
             parsed_record = list()
-            parsed_record.append('CUI-less')
-            if 'provided_by' in header_dict:  # type: ignore
-                parsed_record.append(elements[header_dict['provided_by']])   # type: ignore
+            parsed_record.append("CUI-less")
+            if "provided_by" in header_dict:  # type: ignore
+                parsed_record.append(elements[header_dict["provided_by"]])  # type: ignore
             else:
-                parsed_record.append('N/A')
-            parsed_record.append(elements[header_dict['id']])  # type: ignore
-            parsed_record.append(elements[header_dict['name']])  # type: ignore
-            parsed_record.append(elements[header_dict['name']])  # type: ignore
-            parsed_record.append(elements[header_dict['category']])  # type: ignore
-            if elements[header_dict['synonym']]:  # type: ignore
-                synonyms = elements[header_dict['synonym']]  # type: ignore
-                for s in synonyms.split('|'):
+                parsed_record.append("N/A")
+            parsed_record.append(elements[header_dict["id"]])  # type: ignore
+            parsed_record.append(elements[header_dict["name"]])  # type: ignore
+            parsed_record.append(elements[header_dict["name"]])  # type: ignore
+            parsed_record.append(elements[header_dict["category"]])  # type: ignore
+            if elements[header_dict["synonym"]]:  # type: ignore
+                synonyms = elements[header_dict["synonym"]]  # type: ignore
+                for s in synonyms.split("|"):
                     syn_record = [x for x in parsed_record]
                     syn_record[3] = s
                     write_line(syn_record, OUTSTREAM)
@@ -100,4 +99,4 @@ def write_line(elements, OUTSTREAM) -> None:
         File handle to the output file
 
     """
-    OUTSTREAM.write('\t'.join(elements) + '\n')
+    OUTSTREAM.write("\t".join(elements) + "\n")
