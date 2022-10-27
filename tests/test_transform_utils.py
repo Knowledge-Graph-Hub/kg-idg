@@ -1,20 +1,24 @@
-from unittest import TestCase, mock
 import os
 import shutil
-from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
+from unittest import TestCase, mock
+
 from parameterized import parameterized
-from kg_idg.utils.transform_utils import guess_bl_category, collapse_uniprot_curie
-from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform, ORPHANET_NT_FILENAME
-from kg_idg.transform_utils.omim.omim import OMIMTransform, OMIM_NT_FILENAME
-from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
-from kg_idg.transform_utils.string.string import STRINGTransform, STRING_SOURCES
-from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
-from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
-from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
-from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
-from kg_idg.transform_utils.atc.atc import ATCTransform
 
 from kg_idg import download  # Need to download each source first
+from kg_idg.transform_utils.atc.atc import ATCTransform
+from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
+from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
+from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
+from kg_idg.transform_utils.omim.omim import OMIM_NT_FILENAME, OMIMTransform
+from kg_idg.transform_utils.orphanet.orphanet import (
+    ORPHANET_NT_FILENAME,
+    OrphanetTransform,
+)
+from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
+from kg_idg.transform_utils.string.string import STRING_SOURCES, STRINGTransform
+from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
+from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
+from kg_idg.utils.transform_utils import collapse_uniprot_curie, guess_bl_category
 
 # Need to download or copy over some snippets due to hardcoded Koza paths
 data_raw_path = "data/raw/"

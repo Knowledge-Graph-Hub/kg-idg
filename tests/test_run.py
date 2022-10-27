@@ -1,8 +1,9 @@
 from unittest import TestCase
+
 from click.testing import CliRunner
 
-from run import download, transform, merge
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
+from run import download, merge, transform
 
 
 class TestRun(TestCase):

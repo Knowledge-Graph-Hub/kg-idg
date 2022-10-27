@@ -1,5 +1,4 @@
-from unittest import TestCase, mock
-from kg_idg.utils import download_from_yaml
+from unittest import TestCase
 
 
 class TestDownloadFromYaml(TestCase):

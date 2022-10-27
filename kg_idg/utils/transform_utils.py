@@ -117,7 +117,7 @@ def uniprot_make_name_to_id_mapping(dat_gz_file: str) -> dict:
     ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/idmapping/by_organism/HUMAN_9606_idmapping.dat.gz
     makes dict with name to id mapping
 
-    :param dat_gz_file: 
+    :param dat_gz_file:
     :return: dict with mapping
     """ ""
     name_to_id_map = dict()

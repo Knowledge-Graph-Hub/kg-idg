@@ -6,14 +6,17 @@ def download(
 ) -> None:
     """Download data files from list of URLs.
 
-    DL based on config (default: download.yaml) 
+    DL based on config (default: download.yaml)
     into data directory (default: data/).
 
     Args:
-        yaml_file: A string pointing to the yaml file utilized to facilitate the downloading of data.
+        yaml_file: A string pointing to the yaml file
+        utilized to facilitate the downloading of data.
         output_dir: A string pointing to the location to download data to.
-        snippet_only: Downloads only the first 5 kB of the source, for testing and file checks.
-        ignore_cache: Ignore cache and download files even if they exist [false]
+        snippet_only: Downloads only the first 5 kB of the source,
+        for testing and file checks.
+        ignore_cache: Ignore cache and 
+        download files even if they exist [false]
 
     Returns:
         None.

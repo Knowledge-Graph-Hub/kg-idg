@@ -3,7 +3,11 @@ from unittest import TestCase, mock
 import mysql.connector.errors
 import psycopg2
 
-from kg_idg.utils.sql_utils import make_temp_mysql_db, make_temp_postgres_db, process_data_dump
+from kg_idg.utils.sql_utils import (
+    make_temp_mysql_db,
+    make_temp_postgres_db,
+    process_data_dump,
+)
 
 
 class TestSQLUtils(TestCase):

@@ -126,7 +126,8 @@ def process_mysql_dump(
             outfile_sql_path = os.path.join(input_dir, f"{short_name}-{table_name}.sql")
             output_sql_paths.append(outfile_sql_path)
             if not os.path.isfile(outfile_sql_path):
-                command = f"sed -n -e '/DROP TABLE.*`{table_name}`/,/UNLOCK TABLES/p' {data_file} > {outfile_sql_path}"
+                command = f"sed -n -e '/DROP TABLE.*`{table_name}`/,/UNLOCK TABLES/p'" \
+                          f" {data_file} > {outfile_sql_path}"
                 os.system(command)
 
         # Now load the new, single tables
