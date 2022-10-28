@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             reuseNode false
-            image 'caufieldjh/kg-idg:1'
+            image 'caufieldjh/kg-idg:2'
         }
     }
     triggers{
