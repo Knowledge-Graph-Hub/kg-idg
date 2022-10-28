@@ -1,4 +1,3 @@
-from multiprocessing.sharedctypes import Value
 import uuid
 
 from biolink.model import (  # type: ignore
@@ -99,6 +98,6 @@ if str(row["ACT_TYPE"]) in activity_types:
     except ValueError:
         print(f'No value found for {row["ACT_TYPE"]} of {row["DRUG_NAME"]} vs {row["TARGET_NAME"]}')
         pass
-    
+
 for entry in protein_list:
     koza_app.write(entry, association, drug)
