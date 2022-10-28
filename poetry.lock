@@ -90,7 +90,7 @@ linkml = "*"
 
 [[package]]
 name = "bioregistry"
-version = "0.5.142"
+version = "0.5.143"
 description = "Integrated registry of biological databases and nomenclatures"
 category = "main"
 optional = false
