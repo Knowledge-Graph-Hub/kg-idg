@@ -1033,14 +1033,6 @@ python-versions = ">=3.7.0"
 click = "*"
 pyyaml = "*"
 
-[[package]]
-name = "jsonasobj"
-version = "2.0.1"
-description = "JSON as python objects"
-category = "main"
-optional = false
-python-versions = ">=3.6"
-
 [package.dependencies]
 hbreader = "*"
 
@@ -1977,7 +1969,6 @@ python-versions = "*"
 
 [package.dependencies]
 antlr4-python3-runtime = ">=4.9.3,<4.10.0"
-jsonasobj = ">=1.2.1"
 
 [[package]]
 name = "pymdown-extensions"
@@ -2039,7 +2030,6 @@ python-versions = ">=3.7"
 [package.dependencies]
 antlr4-python3-runtime = ">=4.9.3,<4.10.0"
 chardet = "*"
-jsonasobj = ">=1.2.1"
 pyjsg = ">=0.11.10"
 rdflib-shim = "*"
 shexjsg = ">=0.8.1"
@@ -3113,10 +3103,6 @@ joblib = []
 json-flattener = [
     {file = "json_flattener-0.1.9-py3-none-any.whl", hash = "sha256:6b027746f08bf37a75270f30c6690c7149d5f704d8af1740c346a3a1236bc941"},
     {file = "json_flattener-0.1.9.tar.gz", hash = "sha256:84cf8523045ffb124301a602602201665fcb003a171ece87e6f46ed02f7f0c15"},
-]
-jsonasobj = [
-    {file = "jsonasobj-2.0.1-py3-none-any.whl", hash = "sha256:221af946bbe4171505e81ea1f0c31d652e69c68e02fff742e37543abe08ff7d9"},
-    {file = "jsonasobj-2.0.1.tar.gz", hash = "sha256:e87c47ec5ec3db65a212e15236fdefc38dd01bdcf563b0d53021095066cd5963"},
 ]
 jsonasobj2 = [
     {file = "jsonasobj2-1.0.4-py3-none-any.whl", hash = "sha256:12e86f86324d54fcf60632db94ea74488d5314e3da554c994fe1e2c6f29acb79"},
