@@ -1,3 +1,4 @@
+from multiprocessing.sharedctypes import Value
 import uuid
 
 from biolink.model import (  # type: ignore
@@ -84,8 +85,8 @@ association = Association(
     description=full_description,
 )
 
-for act_type in activity_types:
-    if act_type == str(row["ACT_TYPE"]):
+if str(row["ACT_TYPE"]) in activity_types:
+    try:
         quantity = QuantityValue(has_numeric_value=row["ACT_VALUE"], has_unit=row["ACT_TYPE"])
         act_attribute = Attribute(
             id="uuid:" + str(uuid.uuid1()),
@@ -95,7 +96,9 @@ for act_type in activity_types:
             has_quantitative_value=quantity,
         )
         association.has_attribute = act_attribute
-        break
-
+    except ValueError:
+        print(f'No value found for {row["ACT_TYPE"]} of {row["DRUG_NAME"]} vs {row["TARGET_NAME"]}')
+        pass
+    
 for entry in protein_list:
     koza_app.write(entry, association, drug)
