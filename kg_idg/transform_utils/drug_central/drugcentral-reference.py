@@ -23,6 +23,7 @@ else:
     type_str = str(row["type"])
 
 # Entities
+print(row)
 try:
     if type_str == "JOURNAL ARTICLE":
         if str(row["pmid"]) == "":

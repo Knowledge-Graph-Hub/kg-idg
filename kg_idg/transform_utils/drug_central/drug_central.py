@@ -66,7 +66,7 @@ class DrugCentralTransform(Transform):
         """
         with open("./data/transformed/drug_central/drugcentral-reference.tsv") as infile:
             with open(REFERENCE_MAP_TABLE, "w") as outfile:
-                infile.readline()  # Skip header
+                print(infile.readline())  # Skip header
                 for line in infile:
                     db_id = ""
                     uri = ""
