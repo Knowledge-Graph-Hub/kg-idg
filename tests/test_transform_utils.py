@@ -25,7 +25,7 @@ data_raw_path = "data/raw/"
 download(yaml_file="download.yaml", output_dir=data_raw_path, snippet_only=True)
 for source_snippet in [
     "atc.csv.gz",
-    "drugcentral.dump.010_05_2021.sql.gz",
+    "drugcentral.dump.sql.gz",
     "drug.target.interaction.tsv.gz",
     "proteinatlas.tsv.zip",
     "tcrd.sql.gz",

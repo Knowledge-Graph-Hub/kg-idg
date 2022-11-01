@@ -19,7 +19,7 @@ https://unmtid-shinyapps.net/download/DrugCentral/
 
 DRUG_CENTRAL_SOURCES = {
     "DrugCentralDTI": "drug.target.interaction.tsv.gz",
-    "DrugCentralDB": "drugcentral.dump.08222022.sql.gz",
+    "DrugCentralDB": "drugcentral.dump.sql.gz",
 }
 
 DRUG_CENTRAL_CONFIGS = {
