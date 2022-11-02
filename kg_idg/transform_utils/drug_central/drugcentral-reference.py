@@ -67,7 +67,7 @@ try:
         ice = InformationContentEntity(
             id=id_str, type=type_str, creation_date=row["dp_year"]
         )
-    
+
     koza_app.write(ice)
 
 except ValueError:
