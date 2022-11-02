@@ -35,7 +35,7 @@ try:
             type=type_str,
             authors=row["authors"],
             summary=row["title"],
-            published_in=row["journal"],
+            description=row["journal"],
             volume=row["volume"],
             issue=row["issue"],
             creation_date=row["dp_year"],
