@@ -22,9 +22,20 @@ if str(row["type"]) == "":
 else:
     type_str = str(row["type"])
 
+# Initial check for empty id values
+have_id = False
+for id_type in [""]:
+    if str(row[id_type]) != "":
+        have_id = True
+        break
+
 # Entities
 print(row)
 try:
+
+    if not have_id:
+        raise ValueError('No valid identifiers found!')
+
     if type_str == "JOURNAL ARTICLE":
         if str(row["pmid"]) == "":
             id_str = "DOI:" + row["doi"]
@@ -70,5 +81,5 @@ try:
 
     koza_app.write(ice)
 
-except ValueError:
-    print(f'Invalid reference: {row["id"]}')
+except ValueError as e:
+    print(f'Invalid reference: {row["id"]}: {e}')
