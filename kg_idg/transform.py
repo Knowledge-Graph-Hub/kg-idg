@@ -52,14 +52,10 @@ def transform(input_dir: str, output_dir: str, sources: List[str] = None) -> Non
         sources = list(DATA_SOURCES.keys())
 
     for source in sources:
-        try:
-            if source in DATA_SOURCES:
-                logging.info(f"Parsing {source}")
-                t = DATA_SOURCES[source](input_dir, output_dir)
-                if source in ONTOLOGIES.keys():
-                    t.run(ONTOLOGIES[source])
-                else:
-                    t.run()
-        except Exception as e:
-            logging.error(f"Encountered error: {e}")
-            sys.exit(1)
+        if source in DATA_SOURCES:
+            logging.info(f"Parsing {source}")
+            t = DATA_SOURCES[source](input_dir, output_dir)
+            if source in ONTOLOGIES.keys():
+                t.run(ONTOLOGIES[source])
+            else:
+                t.run()
