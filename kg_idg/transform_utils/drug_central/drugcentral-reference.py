@@ -24,7 +24,7 @@ else:
 
 # Initial check for empty id values
 have_id = False
-for id_type in [""]:
+for id_type in ["doi", "document_id", "pmid", "url"]:
     if str(row[id_type]) != "":
         have_id = True
         break
