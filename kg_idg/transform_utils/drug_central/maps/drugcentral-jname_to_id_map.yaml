@@ -1,0 +1,21 @@
+name: 'drugcentral-jname_to_id_map'
+
+metadata:
+  description: 'File for mapping journal names and abbreviations to NLM Catalog IDs'
+
+format: 'csv'
+delimiter: '\t'
+
+files:
+  - './kg_idg/transform_utils/drug_central/drugcentral-jname_to_id_map.tsv'
+
+header: 'none'
+
+columns:
+  - 'name'
+  - 'nlm_id'
+
+key: 'name'
+
+values:
+  - 'nlm_id'

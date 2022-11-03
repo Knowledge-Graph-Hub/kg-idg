@@ -16,6 +16,7 @@ source_name = "drugcentral-reference"
 
 koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
+ref_name_to_id = koza_app.get_map("drugcentral-jname_to_id_map")
 
 if str(row["type"]) == "":
     type_str = "JOURNAL ARTICLE"
@@ -44,17 +45,19 @@ try:
 
         # Look up row["journal"]
         # This should be the NLM Catalog abbreviation
-        # If there's punctuation,  remove before lookup
-        pubname = ""
-        if pubname == "":
-            pubname = "NCIT:C17998" # "Unknown"
+        # If there's punctuation, remove before lookup
+        pubname = ((row["journal"]).lower()).replace(".", "")
+        try:
+            pub_id = ref_name_to_id[pubname]["nlm_id"]
+        except KeyError:
+            pubpub_id = "NCIT:C17998" # "Unknown"
 
         ice = Article(
             id=id_str,
             type=type_str,
             authors=row["authors"],
             summary=row["title"],
-            published_in=pubname, # Mandatory field
+            published_in=pub_id, # Mandatory field
             volume=row["volume"],
             issue=row["issue"],
             creation_date=row["dp_year"],
