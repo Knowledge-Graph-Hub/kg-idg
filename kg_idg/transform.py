@@ -1,5 +1,4 @@
 import logging
-import sys
 from typing import List
 
 from kg_idg.transform_utils.atc.atc import ATCTransform

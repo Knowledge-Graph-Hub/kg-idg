@@ -41,12 +41,20 @@ try:
             id_str = "DOI:" + row["doi"]
         else:
             id_str = "PMID:" + row["pmid"]
+
+        # Look up row["journal"]
+        # This should be the NLM Catalog abbreviation
+        # If there's punctuation,  remove before lookup
+        pubname = ""
+        if pubname == "":
+            pubname = "NCIT:C17998" # "Unknown"
+
         ice = Article(
             id=id_str,
             type=type_str,
             authors=row["authors"],
             summary=row["title"],
-            description=row["journal"],
+            published_in=pubname, # Mandatory field
             volume=row["volume"],
             issue=row["issue"],
             creation_date=row["dp_year"],
