@@ -50,7 +50,7 @@ try:
         try:
             pub_id = ref_name_to_id[pubname]["nlm_id"]
         except KeyError:
-            pubpub_id = "NCIT:C17998"  # "Unknown"
+            pub_id = "NCIT:C17998"  # "Unknown"
 
         ice = Article(
             id=id_str,
