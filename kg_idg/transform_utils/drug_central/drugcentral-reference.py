@@ -50,14 +50,14 @@ try:
         try:
             pub_id = ref_name_to_id[pubname]["nlm_id"]
         except KeyError:
-            pubpub_id = "NCIT:C17998" # "Unknown"
+            pubpub_id = "NCIT:C17998"  # "Unknown"
 
         ice = Article(
             id=id_str,
             type=type_str,
             authors=row["authors"],
             summary=row["title"],
-            published_in=pub_id, # Mandatory field
+            published_in=pub_id,  # Mandatory field
             volume=row["volume"],
             issue=row["issue"],
             creation_date=row["dp_year"],
