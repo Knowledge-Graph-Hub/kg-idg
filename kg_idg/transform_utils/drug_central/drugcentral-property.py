@@ -29,9 +29,9 @@ type_str = str(row["reference_type"])
 uri = ref_db_id_to_uri[row["reference_id"]]["uri"]
 
 # Entities
-# filled later from reference table
+# placeholders, filled later from reference table
 if type_str == "JOURNAL ARTICLE":
-    ice = Article(id=uri, type=type_str, published_in="", category="biolink:Article")
+    ice = Article(id=uri, type=type_str, published_in="NCIT:C17998", category="biolink:Article")
 elif type_str == "BOOK":
     ice = Book(id=uri, type=type_str, category="biolink:Book")
 elif type_str in ["CLINICAL TRIAL", "DRUG LABEL"]:
