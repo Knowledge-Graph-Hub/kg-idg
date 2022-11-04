@@ -32,7 +32,6 @@ for id_type in ["doi", "document_id", "isbn10", "pmid", "url"]:
         break
 
 # Entities
-print(row)
 try:
 
     if not have_id:
