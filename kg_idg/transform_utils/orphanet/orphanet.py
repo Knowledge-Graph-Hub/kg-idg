@@ -53,4 +53,5 @@ class OrphanetTransform(Transform):
             input_format="nt",
             output=os.path.join(self.output_dir, name),
             output_format="tsv",
+            stream=True
         )

@@ -8,7 +8,7 @@ from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.ontology import OntologyTransform
 from kg_idg.transform_utils.ontology.ontology_transform import ONTOLOGIES
-from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
+# from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.string.string import STRINGTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
@@ -20,7 +20,7 @@ DATA_SOURCES = {
     "GOTransform": OntologyTransform,
     "OGMSTransform": OntologyTransform,
     "DrugCentralTransform": DrugCentralTransform,
-    "OrphanetTransform": OrphanetTransform,
+    # "OrphanetTransform": OrphanetTransform,
     "OMIMTransform": OMIMTransform,
     "ReactomeTransform": ReactomeTransform,
     "GOCAMTransform": GOCAMTransform,
