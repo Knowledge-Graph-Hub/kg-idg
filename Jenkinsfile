@@ -133,7 +133,9 @@ pipeline {
                     sh '. venv/bin/activate && python3.9 run.py merge -y merge.yaml'
                     sh 'cp merged_graph_stats.yaml merged_graph_stats_$BUILDSTARTDATE.yaml'
                     sh '. venv/bin/activate && python3.9 generate_subgraphs.py --nodes data/merged/merged-kg_nodes.tsv --edges data/merged/merged-kg_edges.tsv'
-                    sh 'tar -czvf data/merged/merged-kg.tar.gz data/merged/merged-kg_nodes.tsv data/merged/merged-kg_edges.tsv merged_graph_stats_$BUILDSTARTDATE.yaml pos_valid_edges.tsv neg_train_edges.tsv neg_valid_edges.tsv'
+                    sh 'mv merged_graph_stats_$BUILDSTARTDATE.yaml pos_valid_edges.tsv neg_train_edges.tsv neg_valid_edges.tsv data/merged/'
+                    sh 'cd data/merged/ && tar -czvf merged-kg.tar.gz merged-kg_nodes.tsv merged-kg_edges.tsv merged_graph_stats_$BUILDSTARTDATE.yaml pos_valid_edges.tsv neg_train_edges.tsv neg_valid_edges.tsv'
+                    sh 'cd ../..'
                 }
             }
         }
