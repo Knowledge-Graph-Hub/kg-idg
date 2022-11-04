@@ -86,7 +86,6 @@ try:
         ice = InformationResource(
             id=row["url"],
             type=type_str,
-            creation_date=pubdate,
             category="biolink:InformationResource",
         )
     elif type_str == "PATENT":
