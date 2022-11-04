@@ -27,7 +27,7 @@
   # DrugCentral database dump
   url: https://unmtid-shinyapps.net/download/drugcentral.dump.08222022.sql.gz
   local_name: drugcentral.dump.sql.gz
--
+# -
   # orphanet
   # url: https://data.monarchinitiative.org/202109/rdf/orphanet.nt
   # local_name: orphanet.nt
