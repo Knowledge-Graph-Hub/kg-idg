@@ -21,7 +21,7 @@ DATA_SOURCES = {
     "OGMSTransform": OntologyTransform,
     "DrugCentralTransform": DrugCentralTransform,
     # "OrphanetTransform": OrphanetTransform,
-    "OMIMTransform": OMIMTransform,
+    # "OMIMTransform": OMIMTransform,
     "ReactomeTransform": ReactomeTransform,
     "GOCAMTransform": GOCAMTransform,
     "TCRDTransform": TCRDTransform,
