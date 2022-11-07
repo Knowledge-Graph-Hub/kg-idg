@@ -128,13 +128,20 @@ merged_graph:
         filename:
           - data/transformed/ontologies/ogms_kgx_tsv_nodes.tsv
           - data/transformed/ontologies/ogms_kgx_tsv_edges.tsv
-    # orphanet:
-    #   name: "OrphaNet"
-    #   input:
-    #     format: tsv
-    #     filename:
-    #       - data/transformed/orphanet/orphanet_nodes.tsv
-    #       - data/transformed/orphanet/orphanet_edges.tsv
+    orphanet-gene:
+      name: "OrphaNet gene to disease"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/orphanet/orphanet_gene_nodes.tsv
+          - data/transformed/orphanet/orphanet_gene_edges.tsv
+    orphanet-phenotype:
+      name: "OrphaNet phenotype to disease"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/orphanet/orphanet_pheno_nodes.tsv
+          - data/transformed/orphanet/orphanet_pheno_edges.tsv
     reactomepathways:
       name: "Reactome - all pathways"
       input:

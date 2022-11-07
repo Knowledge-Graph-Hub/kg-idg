@@ -1,0 +1,20 @@
+name: 'orphanet_gene'
+
+files:
+  - './data/raw/orphanet_gene.json'
+
+format: 'json'
+
+node_properties:
+  - 'id'
+  - 'name'
+  - 'category'
+
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+
+transform_mode: 'flat'

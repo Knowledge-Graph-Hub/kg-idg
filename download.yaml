@@ -27,10 +27,14 @@
   # DrugCentral database dump
   url: https://unmtid-shinyapps.net/download/drugcentral.dump.08222022.sql.gz
   local_name: drugcentral.dump.sql.gz
-# -
-  # orphanet
-  # url: https://data.monarchinitiative.org/202109/rdf/orphanet.nt
-  # local_name: orphanet.nt
+-
+  # orphanet gene to disease
+  url: https://www.orphadata.com/data/xml/en_product6.xml
+  local_name: orphanet_gene.xml
+-
+  # orphanet phenotype to disease
+  url: https://www.orphadata.com/data/xml/en_product4.xml
+  local_name: orphanet_pheno.xml
 -
   # mondo
   url: https://kg-hub.berkeleybop.io/kg-obo/mondo/2022-10-11/mondo_kgx_tsv.tar.gz

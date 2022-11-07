@@ -1,41 +1,51 @@
 import os
 from typing import Optional
 
-from kgx.cli.cli_utils import transform  # type: ignore
+from koza.cli_runner import transform_source  # type: ignore
 
 from kg_idg.transform_utils.transform import Transform
 
 """
-Ingest gene to disease relationships from Orphanet.
-The source document is in n-triple format provided by Monarch.
+Ingest gene to disease
+and phenotype to disease
+relationships from Orphanet.
 
 """
 
-ORPHANET_NT_FILENAME = "orphanet.nt"
+ORPHANET_CONFIGS = {"orphanet_gene.xml": "orphanet_gene",
+                    "orphanet_pheno.xml": "orphanet_pheno"
+}
+
+TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
+
+PREPROCESS_PATH = "/kg_idg/transform_utils/orphanet/preprocess_orphanet.sh"
 
 
 class OrphanetTransform(Transform):
-    """This transform ingests the Orphanet nt file and parses it to KGX tsv format."""
+    """This transform ingests the Orphanet files and parses them to KGX tsv format."""
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "orphanet"
         super().__init__(source_name, input_dir, output_dir)
 
-    def run(self, data_file: Optional[str] = None) -> None:
+    def run(self, data_file: Optional[list] = None) -> None:
         """Method is called and performs needed transformations to process
-        Orphanet n-triples.
+        Orphanet files.
         Args:
-            data_file: data file to parse
+            data_file: list of data files to parse
         Returns:
             None.
         """
         if data_file:
-            k = data_file.split(".")[0]
-            data_file = os.path.join(self.input_base_dir, data_file)
-            self.parse(k, data_file, k)
+            for entry in data_file:
+                k = entry.split(".")[0]
+                entry = os.path.join(self.input_base_dir, entry)
+                self.parse(k, entry, k)
         else:
-            data_file = os.path.join(self.input_base_dir, ORPHANET_NT_FILENAME)
-            self.parse("orphanet", data_file, ORPHANET_NT_FILENAME)
+            for entry in ORPHANET_CONFIGS:
+                name = ORPHANET_CONFIGS[entry]
+                entry = os.path.join(self.input_base_dir, entry)
+                self.parse(name, entry, name)
 
     def parse(self, name: str, data_file: str, source: str) -> None:
         """Processes the data_file.
@@ -46,12 +56,18 @@ class OrphanetTransform(Transform):
         Returns:
              None.
         """
-        print(f"Parsing {data_file}")
+        print(f"Parsing {data_file} to JSON...")
+        config = os.path.join("kg_idg/transform_utils/orphanet/", ORPHANET_CONFIGS[source])
+        output = self.output_dir
 
-        transform(
-            inputs=[data_file],
-            input_format="nt",
-            output=os.path.join(self.output_dir, name),
+        # Preprocess XML to JSON for easier parsing.
+        os.system(f".{PREPROCESS_PATH}")
+
+        print(f"Transforming using source in {config}")
+        transform_source(
+            source=config,
+            output_dir=output,
             output_format="tsv",
-            stream=True
+            global_table=TRANSLATION_TABLE,
+            local_table=None,
         )
