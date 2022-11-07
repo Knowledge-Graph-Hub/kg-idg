@@ -10,10 +10,7 @@ from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransfor
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
 #from kg_idg.transform_utils.omim.omim import OMIM_NT_FILENAME, OMIMTransform
-from kg_idg.transform_utils.orphanet.orphanet import (
-   ORPHANET_PHENO_FILENAME,
-   OrphanetTransform,
-)
+from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.string.string import STRING_SOURCES, STRINGTransform
 from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
@@ -83,7 +80,7 @@ class TestTransformUtils(TestCase):
     def test_orphanet_transform(self):
         t = OrphanetTransform(self.input_dir, self.output_dir)
         this_output_dir = os.path.join(self.output_dir, "orphanet")
-        t.run(data_file=ORPHANET_NT_FILENAME)
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
