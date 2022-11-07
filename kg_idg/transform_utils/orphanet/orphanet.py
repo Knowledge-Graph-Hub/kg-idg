@@ -12,9 +12,10 @@ relationships from Orphanet.
 
 """
 
-ORPHANET_CONFIGS = {"orphanet_gene.xml": "orphanet_gene.yaml",
-                    "orphanet_pheno.xml": "orphanet_pheno.yaml"
-                   }
+ORPHANET_CONFIGS = {
+    "orphanet_gene.xml": "orphanet_gene.yaml",
+    "orphanet_pheno.xml": "orphanet_pheno.yaml",
+}
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
 
