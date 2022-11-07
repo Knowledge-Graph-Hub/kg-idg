@@ -1,4 +1,4 @@
-name: 'orphanet_gene'
+name: 'orphanet_pheno'
 
 files:
   - './data/raw/orphanet_pheno.json'

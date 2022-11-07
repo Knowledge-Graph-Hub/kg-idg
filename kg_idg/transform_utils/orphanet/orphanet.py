@@ -12,8 +12,8 @@ relationships from Orphanet.
 
 """
 
-ORPHANET_CONFIGS = {"orphanet_gene.xml": "orphanet_gene",
-                    "orphanet_pheno.xml": "orphanet_pheno"
+ORPHANET_CONFIGS = {"orphanet_gene.xml": "orphanet_gene.yaml",
+                    "orphanet_pheno.xml": "orphanet_pheno.yaml"
 }
 
 TRANSLATION_TABLE = "./kg_idg/transform_utils/translation_table.yaml"
@@ -57,7 +57,7 @@ class OrphanetTransform(Transform):
              None.
         """
         print(f"Parsing {data_file} to JSON...")
-        config = os.path.join("kg_idg/transform_utils/orphanet/", ORPHANET_CONFIGS[source])
+        config = os.path.join("kg_idg/transform_utils/orphanet/", source)
         output = self.output_dir
 
         # Preprocess XML to JSON for easier parsing.
