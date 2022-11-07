@@ -9,7 +9,8 @@ from kg_idg.transform_utils.atc.atc import ATCTransform
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
-#from kg_idg.transform_utils.omim.omim import OMIM_NT_FILENAME, OMIMTransform
+
+# from kg_idg.transform_utils.omim.omim import OMIM_NT_FILENAME, OMIMTransform
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.string.string import STRING_SOURCES, STRINGTransform

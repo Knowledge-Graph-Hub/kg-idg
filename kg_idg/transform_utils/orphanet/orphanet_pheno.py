@@ -1,6 +1,6 @@
 import uuid
 
-from biolink.model import Disease, PhenotypicFeature, Association
+from biolink.model import Association, Disease, PhenotypicFeature
 from koza.cli_runner import get_koza_app
 
 # Orphanet phenotype to disease associations
