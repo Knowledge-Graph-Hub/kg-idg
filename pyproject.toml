@@ -19,7 +19,6 @@ psycopg2-binary = "^2.9.5"
 PyYAML = ">=5.3.1,<6.0.0"
 tqdm = "^4.64.1"
 yq = "^3.1.0"
-sh = "^1.14.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.2.0"
