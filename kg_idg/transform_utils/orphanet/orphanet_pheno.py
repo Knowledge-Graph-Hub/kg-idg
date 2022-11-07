@@ -21,6 +21,10 @@ while (row := koza_app.get_row()) is not None:
         koza_app.write(disease)
 
         # Phenotype
+        # Some disorders don't have any HPO phenotype associations,
+        # so check the count first
+        if row["Disorder"]["HPODisorderAssociationList"]["@count"] == "0":
+            break
         all_assoc_phenos = row["Disorder"]["HPODisorderAssociationList"]["HPODisorderAssociation"]
         for pheno in all_assoc_phenos:
             hpo_id = pheno["HPO"]["HPOId"]
