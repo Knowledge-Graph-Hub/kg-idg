@@ -7,15 +7,15 @@ from kg_idg.transform_utils.transform import Transform
 
 """
 Ingest gene to disease relationships from OMIM.
-The source document is in n-triple format provided by Monarch.
-
+This is a passthrough transform using sources
+from Monarch converted to KGX TSV.
 """
 
-OMIM_NT_FILENAME = "omim.nt"
+OMIM_NT_FILENAMES = ["omim_gtd_nodes.tsv", "omim_gtd_edges.tsv"]
 
 
 class OMIMTransform(Transform):
-    """This transform ingests the OMIM nt file and parses it to KGX tsv format."""
+    """This transform ingests the OMIM files."""
 
     def __init__(self, input_dir: str = None, output_dir: str = None) -> None:
         source_name = "omim"
@@ -23,21 +23,21 @@ class OMIMTransform(Transform):
 
     def run(self, data_file: Optional[str] = None) -> None:
         """Method is called and performs needed transformations to process
-        OMIM n-triples.
+        OMIM files.
         Args:
-            data_file: data file to parse
+            data_file: data files to parse
         Returns:
             None.
         """
         if data_file:
             k = data_file.split(".")[0]
-            data_file = os.path.join(self.input_base_dir, data_file)
-            self.parse(k, data_file, k)
+            entries = [os.path.join(self.input_base_dir, entry) for entry in data_file]
+            self.parse(k, entries, k)
         else:
-            data_file = os.path.join(self.input_base_dir, OMIM_NT_FILENAME)
-            self.parse("omim", data_file, OMIM_NT_FILENAME)
+            entries = [os.path.join(self.input_base_dir, entry) for entry in OMIM_NT_FILENAMES]
+            self.parse("omim", entries, "omim")
 
-    def parse(self, name: str, data_file: str, source: str) -> None:
+    def parse(self, name: str, data_file: list, source: str) -> None:
         """Processes the data_file.
         Args:
             name: Name of the source
@@ -49,8 +49,8 @@ class OMIMTransform(Transform):
         print(f"Parsing {data_file}")
 
         transform(
-            inputs=[data_file],
-            input_format="nt",
+            inputs=data_file,
+            input_format="tsv",
             output=os.path.join(self.output_dir, name),
             output_format="tsv",
         )

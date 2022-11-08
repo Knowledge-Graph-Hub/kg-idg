@@ -86,13 +86,13 @@ merged_graph:
         filename:
           - data/transformed/hpa/hpa-data_nodes.tsv
           - data/transformed/hpa/hpa-data_edges.tsv
-    # omim:
-    #   name: "Online Mendelian Inheritance in Man"
-    #   input:
-    #     format: tsv
-    #     filename:
-    #       - data/transformed/omim/omim_nodes.tsv
-    #       - data/transformed/omim/omim_edges.tsv
+    omim:
+      name: "OMIM Gene to Disease relationships"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/omim/omim_nodes.tsv
+          - data/transformed/omim/omim_edges.tsv
     chebi:
       name: "Chemical Entities of Biological Interest"
       input:
