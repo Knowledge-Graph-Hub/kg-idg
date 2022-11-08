@@ -13,7 +13,7 @@ from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.string.string import STRING_SOURCES, STRINGTransform
-from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
+# from kg_idg.transform_utils.tcrd.tcrd import TCRDTransform
 from kg_idg.transform_utils.upheno.upheno import UPhenoTransform
 from kg_idg.utils.transform_utils import collapse_uniprot_curie, guess_bl_category
 
@@ -87,7 +87,7 @@ class TestTransformUtils(TestCase):
     def test_omim_transform(self):
         t = OMIMTransform(self.input_dir, self.output_dir)
         this_output_dir = os.path.join(self.output_dir, "omim")
-        t.run(data_file=OMIM_NT_FILENAME)
+        t.run()
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 

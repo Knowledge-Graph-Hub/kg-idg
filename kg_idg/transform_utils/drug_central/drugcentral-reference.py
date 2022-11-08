@@ -30,12 +30,11 @@ for id_type in ["doi", "document_id", "isbn10", "pmid", "url"]:
     if str(row[id_type]) != "":
         have_id = True
         break
+if not have_id:
+    print("No valid identifiers found!")
 
 # Entities
 try:
-
-    if not have_id:
-        raise ValueError("No valid identifiers found!")
 
     pubdate = datetime.strptime(row["dp_year"], "%Y").date()
 
