@@ -55,7 +55,7 @@ association = Association(
     subject=xref_curie.id,
     predicate="biolink:same_as",
     object=drug.id,
-    source="DrugCentral",
+    aggregator_knowledge_source="DrugCentral",
 )
 
 koza_app.write(xref_curie, association, drug)

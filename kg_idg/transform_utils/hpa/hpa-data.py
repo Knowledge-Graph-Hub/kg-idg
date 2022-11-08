@@ -59,7 +59,7 @@ if str(row["Subcellular location"]) != "":
         anatomy = AnatomicalEntity(
             id=go_lookup[location]["id"],  # GO term lookup
             description=location,
-            source=full_source_name,
+            provided_by=full_source_name,
             category="biolink:AnatomicalEntity",
         )
         subcell_locations.append(anatomy)
@@ -69,7 +69,7 @@ for entry in row["Uniprot"].split(", "):
     if entry != "":
         protein = Protein(
             id="UniProtKB:" + entry,
-            source=full_source_name,
+            provided_by=full_source_name,
             xref=xref_list,
             category="biolink:Protein",
         )
@@ -83,7 +83,7 @@ for _ in protein_list:
             subject=protein.id,
             predicate="biolink:expressed_in",
             object=anatomy.id,
-            source=full_source_name,
+            aggregator_knowledge_source=full_source_name,
         )
         for _ in subcell_locations:
             koza_app.write(protein, association, anatomy)

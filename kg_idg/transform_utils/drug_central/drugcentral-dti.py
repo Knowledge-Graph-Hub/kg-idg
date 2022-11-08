@@ -50,7 +50,6 @@ for entry in row["ACCESSION"].split("|"):
 drug = Drug(
     id="DrugCentral:" + row["STRUCT_ID"],
     description=row["DRUG_NAME"],
-    source="DrugCentral",
     category="biolink:Drug",
 )
 

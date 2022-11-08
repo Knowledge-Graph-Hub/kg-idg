@@ -56,7 +56,7 @@ association = InformationContentEntityToNamedThingAssociation(
     subject=ice.id,
     predicate="biolink:mentions",
     object=drug.id,
-    source="DrugCentral",
+    aggregator_knowledge_source="DrugCentral",
 )
 
 koza_app.write(ice, association, drug)
