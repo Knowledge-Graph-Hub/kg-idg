@@ -177,13 +177,13 @@ merged_graph:
         filename:
           - data/transformed/tcrd/tcrd-ids_nodes.tsv
           - data/transformed/tcrd/tcrd-ids_edges.tsv
-    tcrd-protein:
-      name: "Target Central Resource Database - Proteins"
-      input:
-        format: tsv
-        filename:
-          - data/transformed/tcrd/tcrd-protein_nodes.tsv
-          - data/transformed/tcrd/tcrd-protein_edges.tsv
+    # tcrd-protein:
+    #   name: "Target Central Resource Database - Proteins"
+    #   input:
+    #     format: tsv
+    #     filename:
+    #       - data/transformed/tcrd/tcrd-protein_nodes.tsv
+    #       - data/transformed/tcrd/tcrd-protein_edges.tsv
     string:
       name: "STRING"
       input:

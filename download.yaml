@@ -89,12 +89,12 @@
   # Cached version is below
   url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/TCRDv6.12.4.tsv
   local_name: TCRDv6.12.4.tsv
--
+#-
   # TCRD database dump - note this is > 40G
-  url: http://juniper.health.unm.edu/tcrd/download/latest.sql.gz
+  #url: http://juniper.health.unm.edu/tcrd/download/latest.sql.gz
   # Cached version is below
   #url: https://kg-hub.berkeleybop.io/kg-idg/20220216/raw/tcrd.sql.gz
-  local_name: tcrd.sql.gz
+  #local_name: tcrd.sql.gz
 -
   # OGMS
   url: https://kg-hub.berkeleybop.io/kg-obo/ogms/2021-08-19/ogms_kgx_tsv.tar.gz

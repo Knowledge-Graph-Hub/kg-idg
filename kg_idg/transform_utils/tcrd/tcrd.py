@@ -18,7 +18,8 @@ See details on source files here:
 http://juniper.health.unm.edu/tcrd/download/README
 """
 
-TCRD_SOURCES = {"TCRD-IDs": "TCRDv6.12.4.tsv", "TCRD-DB": "tcrd.sql.gz"}
+#TCRD_SOURCES = {"TCRD-IDs": "TCRDv6.12.4.tsv", "TCRD-DB": "tcrd.sql.gz"}
+TCRD_SOURCES = {"TCRD-IDs": "TCRDv6.12.4.tsv"}
 
 TCRD_CONFIGS = {
     "TCRD-IDs": "tcrd-ids.yaml",

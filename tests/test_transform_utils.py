@@ -9,8 +9,7 @@ from kg_idg.transform_utils.atc.atc import ATCTransform
 from kg_idg.transform_utils.drug_central.drug_central import DrugCentralTransform
 from kg_idg.transform_utils.gocams.gocams import GOCAMTransform
 from kg_idg.transform_utils.hpa.hpa import ProteinAtlasTransform
-
-# from kg_idg.transform_utils.omim.omim import OMIM_NT_FILENAME, OMIMTransform
+from kg_idg.transform_utils.omim.omim import OMIMTransform
 from kg_idg.transform_utils.orphanet.orphanet import OrphanetTransform
 from kg_idg.transform_utils.reactome.reactome import ReactomeTransform
 from kg_idg.transform_utils.string.string import STRING_SOURCES, STRINGTransform
@@ -85,12 +84,12 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    # def test_omim_transform(self):
-    #     t = OMIMTransform(self.input_dir, self.output_dir)
-    #     this_output_dir = os.path.join(self.output_dir, "omim")
-    #     t.run(data_file=OMIM_NT_FILENAME)
-    #     self.assertTrue(os.path.exists(this_output_dir))
-    #     shutil.rmtree(this_output_dir)
+    def test_omim_transform(self):
+        t = OMIMTransform(self.input_dir, self.output_dir)
+        this_output_dir = os.path.join(self.output_dir, "omim")
+        t.run(data_file=OMIM_NT_FILENAME)
+        self.assertTrue(os.path.exists(this_output_dir))
+        shutil.rmtree(this_output_dir)
 
     def test_gocams_transform(self):
         t = GOCAMTransform(self.input_dir, self.output_dir)
@@ -132,13 +131,13 @@ class TestTransformUtils(TestCase):
         shutil.rmtree(this_output_dir)
 
     # Another database load
-    @mock.patch("koza.cli_runner.transform_source")
-    def test_tcrd_transform(self, mock_transform_source):
-        t = TCRDTransform(self.raw_path, self.output_dir)
-        this_output_dir = os.path.join(self.output_dir, "tcrd")
-        t.run()
-        self.assertTrue(os.path.exists(this_output_dir))
-        shutil.rmtree(this_output_dir)
+    # @mock.patch("koza.cli_runner.transform_source")
+    # def test_tcrd_transform(self, mock_transform_source):
+    #     t = TCRDTransform(self.raw_path, self.output_dir)
+    #     this_output_dir = os.path.join(self.output_dir, "tcrd")
+    #     t.run()
+    #     self.assertTrue(os.path.exists(this_output_dir))
+    #     shutil.rmtree(this_output_dir)
 
     def test_hpa_transform(self):
         t = ProteinAtlasTransform(self.raw_path, self.output_dir)
