@@ -13,6 +13,6 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-protein = Protein(id="UniProtKB:" + row["uniprot"], source="TCRD", category="biolink:Protein")
+protein = Protein(id="UniProtKB:" + row["uniprot"], provided_by="TCRD", category="biolink:Protein")
 
 koza_app.write(protein)

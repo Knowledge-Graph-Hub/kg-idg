@@ -16,7 +16,7 @@ row = koza_app.get_row()
 # Entities
 chemical = ChemicalEntity(id="CHEBI:" + row["CHEBI_ID"], category="biolink:ChemicalEntity")
 pathway = Pathway(
-    id="REACT:" + row["REACT_PATH_ID"], source=full_source_name, category="biolink:Pathway"
+    id="REACT:" + row["REACT_PATH_ID"], provided_by=full_source_name, category="biolink:Pathway"
 )
 
 # Association
@@ -25,7 +25,7 @@ association = ChemicalToPathwayAssociation(
     subject=chemical.id,
     predicate="biolink:participates_in",
     object=pathway.id,
-    source=full_source_name,
+    aggregator_knowledge_source=full_source_name,
 )
 
 koza_app.write(chemical, association, pathway)

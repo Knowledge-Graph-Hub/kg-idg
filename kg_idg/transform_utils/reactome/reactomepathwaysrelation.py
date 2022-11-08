@@ -21,7 +21,7 @@ association = Association(
     subject=parent_pathway.id,
     predicate="biolink:contains_process",
     object=child_pathway.id,
-    source=full_source_name,
+    aggregator_knowledge_source=full_source_name,
 )
 
 koza_app.write(parent_pathway, association, child_pathway)

@@ -80,7 +80,7 @@ association = Association(
     subject=drug.id,
     predicate="biolink:molecularly_interacts_with",
     object=protein.id,
-    source="DrugCentral",
+    aggregator_knowledge_source="DrugCentral",
     description=full_description,
 )
 
