@@ -1,6 +1,6 @@
 import os
 import shutil
-from unittest import TestCase, mock
+from unittest import TestCase, mock, skip
 
 from parameterized import parameterized
 
@@ -78,7 +78,7 @@ class TestTransformUtils(TestCase):
         self.assertTrue(os.path.exists(this_output_dir))
         shutil.rmtree(this_output_dir)
 
-    @unittest.skip("Test won't clear unless jq installed")
+    @skip("Test won't clear unless jq installed")
     def test_orphanet_transform(self):
         t = OrphanetTransform(self.input_dir, self.output_dir)
         this_output_dir = os.path.join(self.output_dir, "orphanet")
