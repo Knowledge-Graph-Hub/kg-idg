@@ -50,7 +50,6 @@ for entry in row["ACCESSION"].split("|"):
 drug = Drug(
     id="DrugCentral:" + row["STRUCT_ID"],
     description=row["DRUG_NAME"],
-    source="DrugCentral",
     category="biolink:Drug",
 )
 
@@ -80,7 +79,7 @@ association = Association(
     subject=drug.id,
     predicate="biolink:molecularly_interacts_with",
     object=protein.id,
-    source="DrugCentral",
+    aggregator_knowledge_source="DrugCentral",
     description=full_description,
 )
 

@@ -20,9 +20,8 @@ drug = Drug(id="DrugCentral:" + row["struct_id"], category="biolink:Drug")
 association = Association(
     id="uuid:" + str(uuid.uuid1()),
     subject=atc_code.id,
-    predicate="biolink:has_part",
-    object=drug.id,
-    relation="RO:0002351",  # "has member"
+    predicate="biolink:related_to_at_concept_level",
+    object=drug.id
 )
 
 koza_app.write(atc_code, association, drug)

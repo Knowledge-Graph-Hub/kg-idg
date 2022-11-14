@@ -20,7 +20,7 @@ for xref_type in xref_types:
 protein = Protein(
     id="UniProtKB:" + row["UniProt"],
     description=row["Description"],
-    source="TCRD",
+    provided_by="TCRD",
     xref=xref_list,
     type=row["TDL"],
     category="biolink:Protein",

@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<JDBOR date="2022-06-14 16:21:21" version="1.3.16 / 4.1.7 [2022-01-26] (orientdb version)" copyright="Orphanet (c) 2022" dbserver="jdbc:sybase:Tds:canard.orpha.net:2020">
+  <Availability> 
+    <Licence>
+      <FullName lang="en">Creative Commons Attribution 4.0 International</FullName>
+      <ShortIdentifier>CC-BY-4.0</ShortIdentifier>
+      <LegalCode>https://creativecommons.org/licenses/by/4.0/legalcode</LegalCode>
+    </Licence>
+  </Availability>
+  <HPODisorderSetStatusList count="4245">
+    <HPODisorderSetStatus id="1">
+      <Disorder id="2">
+        <OrphaCode>58</OrphaCode>
+        <ExpertLink lang="en">http://www.orpha.net/consor/cgi-bin/OC_Exp.php?lng=en&amp;Expert=58</ExpertLink>
+        <Name lang="en">Alexander disease</Name>
+        <DisorderType id="21394">
+          <Name lang="en">Disease</Name>
+        </DisorderType>
+        <DisorderGroup id="36547">
+          <Name lang="en">Disorder</Name>
+        </DisorderGroup>
+        <HPODisorderAssociationList count="61">
+          <HPODisorderAssociation id="327485">
+            <HPO id="4">
+              <HPOId>HP:0000256</HPOId>
+              <HPOTerm>Macrocephaly</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327486">
+            <HPO id="18">
+              <HPOId>HP:0001249</HPOId>
+              <HPOTerm>Intellectual disability</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327487">
+            <HPO id="19">
+              <HPOId>HP:0001250</HPOId>
+              <HPOTerm>Seizures</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327488">
+            <HPO id="22">
+              <HPOId>HP:0001257</HPOId>
+              <HPOTerm>Spasticity</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327489">
+            <HPO id="24">
+              <HPOId>HP:0001274</HPOId>
+              <HPOTerm>Agenesis of corpus callosum</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327490">
+            <HPO id="28">
+              <HPOId>HP:0001347</HPOId>
+              <HPOTerm>Hyperreflexia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327491">
+            <HPO id="29">
+              <HPOId>HP:0001355</HPOId>
+              <HPOTerm>Megalencephaly</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327492">
+            <HPO id="30">
+              <HPOId>HP:0001508</HPOId>
+              <HPOTerm>Failure to thrive</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327493">
+            <HPO id="33">
+              <HPOId>HP:0002007</HPOId>
+              <HPOTerm>Frontal bossing</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327494">
+            <HPO id="35">
+              <HPOId>HP:0002017</HPOId>
+              <HPOTerm>Nausea and vomiting</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327495">
+            <HPO id="40">
+              <HPOId>HP:0002167</HPOId>
+              <HPOTerm>Neurological speech impairment</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327496">
+            <HPO id="41">
+              <HPOId>HP:0002169</HPOId>
+              <HPOTerm>Clonus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327497">
+            <HPO id="42">
+              <HPOId>HP:0002353</HPOId>
+              <HPOTerm>EEG abnormality</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327498">
+            <HPO id="44">
+              <HPOId>HP:0002360</HPOId>
+              <HPOTerm>Sleep disturbance</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327499">
+            <HPO id="53">
+              <HPOId>HP:0002650</HPOId>
+              <HPOTerm>Scoliosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327500">
+            <HPO id="56">
+              <HPOId>HP:0007256</HPOId>
+              <HPOTerm>Abnormal pyramidal sign</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327501">
+            <HPO id="62">
+              <HPOId>HP:0100729</HPOId>
+              <HPOTerm>Large face</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327503">
+            <HPO id="6">
+              <HPOId>HP:0000496</HPOId>
+              <HPOTerm>Abnormality of eye movement</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327504">
+            <HPO id="7">
+              <HPOId>HP:0000508</HPOId>
+              <HPOTerm>Ptosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327505">
+            <HPO id="8">
+              <HPOId>HP:0000639</HPOId>
+              <HPOTerm>Nystagmus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327506">
+            <HPO id="9">
+              <HPOId>HP:0000651</HPOId>
+              <HPOTerm>Diplopia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327507">
+            <HPO id="10">
+              <HPOId>HP:0000712</HPOId>
+              <HPOTerm>Emotional lability</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327508">
+            <HPO id="11">
+              <HPOId>HP:0000716</HPOId>
+              <HPOTerm>Depressivity</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327509">
+            <HPO id="17">
+              <HPOId>HP:0000975</HPOId>
+              <HPOTerm>Hyperhidrosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327510">
+            <HPO id="20">
+              <HPOId>HP:0001251</HPOId>
+              <HPOTerm>Ataxia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327511">
+            <HPO id="23">
+              <HPOId>HP:0001260</HPOId>
+              <HPOTerm>Dysarthria</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327512">
+            <HPO id="25">
+              <HPOId>HP:0001288</HPOId>
+              <HPOTerm>Gait disturbance</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327513">
+            <HPO id="27">
+              <HPOId>HP:0001337</HPOId>
+              <HPOTerm>Tremor</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327514">
+            <HPO id="31">
+              <HPOId>HP:0001618</HPOId>
+              <HPOTerm>Dysphonia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327515">
+            <HPO id="34">
+              <HPOId>HP:0002015</HPOId>
+              <HPOTerm>Dysphagia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327516">
+            <HPO id="36">
+              <HPOId>HP:0002019</HPOId>
+              <HPOTerm>Constipation</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327517">
+            <HPO id="37">
+              <HPOId>HP:0002045</HPOId>
+              <HPOTerm>Hypothermia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327518">
+            <HPO id="43">
+              <HPOId>HP:0002357</HPOId>
+              <HPOTerm>Dysphasia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327519">
+            <HPO id="48">
+              <HPOId>HP:0002445</HPOId>
+              <HPOTerm>Tetraplegia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327520">
+            <HPO id="50">
+              <HPOId>HP:0002514</HPOId>
+              <HPOTerm>Cerebral calcification</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327521">
+            <HPO id="52">
+              <HPOId>HP:0002615</HPOId>
+              <HPOTerm>Hypotension</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327522">
+            <HPO id="54">
+              <HPOId>HP:0002808</HPOId>
+              <HPOTerm>Kyphosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327523">
+            <HPO id="58">
+              <HPOId>HP:0010535</HPOId>
+              <HPOTerm>Sleep apnea</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327524">
+            <HPO id="59">
+              <HPOId>HP:0010628</HPOId>
+              <HPOTerm>Facial palsy</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327525">
+            <HPO id="60">
+              <HPOId>HP:0100247</HPOId>
+              <HPOTerm>Recurrent singultus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327526">
+            <HPO id="2">
+              <HPOId>HP:0000218</HPOId>
+              <HPOTerm>High palate</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327527">
+            <HPO id="3">
+              <HPOId>HP:0000238</HPOId>
+              <HPOTerm>Hydrocephalus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327528">
+            <HPO id="5">
+              <HPOId>HP:0000470</HPOId>
+              <HPOTerm>Short neck</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327529">
+            <HPO id="12">
+              <HPOId>HP:0000819</HPOId>
+              <HPOTerm>Diabetes mellitus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327530">
+            <HPO id="13">
+              <HPOId>HP:0000821</HPOId>
+              <HPOTerm>Hypothyroidism</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327531">
+            <HPO id="14">
+              <HPOId>HP:0000822</HPOId>
+              <HPOTerm>Hypertension</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327532">
+            <HPO id="15">
+              <HPOId>HP:0000826</HPOId>
+              <HPOTerm>Precocious puberty</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327533">
+            <HPO id="16">
+              <HPOId>HP:0000938</HPOId>
+              <HPOTerm>Osteopenia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327534">
+            <HPO id="21">
+              <HPOId>HP:0001252</HPOId>
+              <HPOTerm>Muscular hypotonia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327535">
+            <HPO id="26">
+              <HPOId>HP:0001324</HPOId>
+              <HPOTerm>Muscle weakness</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327536">
+            <HPO id="32">
+              <HPOId>HP:0001645</HPOId>
+              <HPOTerm>Sudden cardiac death</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327537">
+            <HPO id="38">
+              <HPOId>HP:0002072</HPOId>
+              <HPOTerm>Chorea</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327538">
+            <HPO id="39">
+              <HPOId>HP:0002093</HPOId>
+              <HPOTerm>Respiratory insufficiency</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327539">
+            <HPO id="45">
+              <HPOId>HP:0002376</HPOId>
+              <HPOTerm>Developmental regression</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327540">
+            <HPO id="46">
+              <HPOId>HP:0002383</HPOId>
+              <HPOTerm>Encephalitis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327541">
+            <HPO id="47">
+              <HPOId>HP:0002410</HPOId>
+              <HPOTerm>Aqueductal stenosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327542">
+            <HPO id="49">
+              <HPOId>HP:0002459</HPOId>
+              <HPOTerm>Dysautonomia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327543">
+            <HPO id="51">
+              <HPOId>HP:0002607</HPOId>
+              <HPOTerm>Bowel incontinence</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327544">
+            <HPO id="55">
+              <HPOId>HP:0003307</HPOId>
+              <HPOTerm>Hyperlordosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327545">
+            <HPO id="57">
+              <HPOId>HP:0007481</HPOId>
+              <HPOTerm>Hyperpigmented nevi</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="327546">
+            <HPO id="61">
+              <HPOId>HP:0100716</HPOId>
+              <HPOTerm>Self-injurious behavior</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+        </HPODisorderAssociationList>
+      </Disorder>
+      <Source/>
+      <ValidationStatus>y</ValidationStatus>
+      <Online>y</Online>
+      <ValidationDate>2016-06-01 00:00:00.0</ValidationDate>
+    </HPODisorderSetStatus>
+    <HPODisorderSetStatus id="2">
+      <Disorder id="3">
+        <OrphaCode>61</OrphaCode>
+        <ExpertLink lang="en">http://www.orpha.net/consor/cgi-bin/OC_Exp.php?lng=en&amp;Expert=61</ExpertLink>
+        <Name lang="en">Alpha-mannosidosis</Name>
+        <DisorderType id="21394">
+          <Name lang="en">Disease</Name>
+        </DisorderType>
+        <DisorderGroup id="36547">
+          <Name lang="en">Disorder</Name>
+        </DisorderGroup>
+        <HPODisorderAssociationList count="42">
+          <HPODisorderAssociation id="325613">
+            <HPO id="64">
+              <HPOId>HP:0000158</HPOId>
+              <HPOTerm>Macroglossia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325614">
+            <HPO id="67">
+              <HPOId>HP:0000280</HPOId>
+              <HPOTerm>Coarse facial features</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325615">
+            <HPO id="71">
+              <HPOId>HP:0000365</HPOId>
+              <HPOTerm>Hearing impairment</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325616">
+            <HPO id="74">
+              <HPOId>HP:0000518</HPOId>
+              <HPOTerm>Cataract</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325617">
+            <HPO id="18">
+              <HPOId>HP:0001249</HPOId>
+              <HPOTerm>Intellectual disability</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325618">
+            <HPO id="79">
+              <HPOId>HP:0001263</HPOId>
+              <HPOTerm>Global developmental delay</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325619">
+            <HPO id="82">
+              <HPOId>HP:0001744</HPOId>
+              <HPOTerm>Splenomegaly</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325620">
+            <HPO id="84">
+              <HPOId>HP:0002240</HPOId>
+              <HPOTerm>Hepatomegaly</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325621">
+            <HPO id="86">
+              <HPOId>HP:0002652</HPOId>
+              <HPOTerm>Skeletal dysplasia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325622">
+            <HPO id="87">
+              <HPOId>HP:0002750</HPOId>
+              <HPOTerm>Delayed skeletal maturation</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325623">
+            <HPO id="88">
+              <HPOId>HP:0004493</HPOId>
+              <HPOTerm>Craniofacial hyperostosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325624">
+            <HPO id="89">
+              <HPOId>HP:0005280</HPOId>
+              <HPOTerm>Depressed nasal bridge</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325625">
+            <HPO id="90">
+              <HPOId>HP:0005978</HPOId>
+              <HPOTerm>Type II diabetes mellitus</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325626">
+            <HPO id="92">
+              <HPOId>HP:0007957</HPOId>
+              <HPOTerm>Corneal opacity</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325627">
+            <HPO id="93">
+              <HPOId>HP:0008821</HPOId>
+              <HPOTerm>Hypoplastic inferior ilia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28412">
+              <Name lang="en">Very frequent (99-80%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325628">
+            <HPO id="63">
+              <HPOId>HP:0000023</HPOId>
+              <HPOTerm>Inguinal hernia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325629">
+            <HPO id="65">
+              <HPOId>HP:0000189</HPOId>
+              <HPOTerm>Narrow palate</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325630">
+            <HPO id="66">
+              <HPOId>HP:0000212</HPOId>
+              <HPOTerm>Gingival overgrowth</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325631">
+            <HPO id="69">
+              <HPOId>HP:0000316</HPOId>
+              <HPOTerm>Hypertelorism</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325632">
+            <HPO id="70">
+              <HPOId>HP:0000336</HPOId>
+              <HPOTerm>Prominent supraorbital ridges</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325633">
+            <HPO id="72">
+              <HPOId>HP:0000389</HPOId>
+              <HPOTerm>Chronic otitis media</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325634">
+            <HPO id="73">
+              <HPOId>HP:0000400</HPOId>
+              <HPOTerm>Macrotia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325635">
+            <HPO id="5">
+              <HPOId>HP:0000470</HPOId>
+              <HPOTerm>Short neck</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325636">
+            <HPO id="77">
+              <HPOId>HP:0000708</HPOId>
+              <HPOTerm>Behavioral abnormality</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325637">
+            <HPO id="21">
+              <HPOId>HP:0001252</HPOId>
+              <HPOTerm>Muscular hypotonia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325638">
+            <HPO id="81">
+              <HPOId>HP:0001385</HPOId>
+              <HPOTerm>Hip dysplasia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325639">
+            <HPO id="53">
+              <HPOId>HP:0002650</HPOId>
+              <HPOTerm>Scoliosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325640">
+            <HPO id="54">
+              <HPOId>HP:0002808</HPOId>
+              <HPOTerm>Kyphosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325641">
+            <HPO id="91">
+              <HPOId>HP:0006487</HPOId>
+              <HPOTerm>Bowing of the long bones</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325642">
+            <HPO id="94">
+              <HPOId>HP:0010807</HPOId>
+              <HPOTerm>Open bite</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325643">
+            <HPO id="96">
+              <HPOId>HP:0011039</HPOId>
+              <HPOTerm>Abnormality of the helix</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325644">
+            <HPO id="97">
+              <HPOId>HP:0011354</HPOId>
+              <HPOTerm>Generalized abnormality of skin</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28419">
+              <Name lang="en">Frequent (79-30%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325645">
+            <HPO id="4">
+              <HPOId>HP:0000256</HPOId>
+              <HPOTerm>Macrocephaly</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325646">
+            <HPO id="68">
+              <HPOId>HP:0000303</HPOId>
+              <HPOTerm>Mandibular prognathia</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325647">
+            <HPO id="75">
+              <HPOId>HP:0000687</HPOId>
+              <HPOTerm>Widely spaced teeth</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325648">
+            <HPO id="76">
+              <HPOId>HP:0000689</HPOId>
+              <HPOTerm>Dental malocclusion</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325649">
+            <HPO id="78">
+              <HPOId>HP:0000738</HPOId>
+              <HPOTerm>Hallucinations</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325650">
+            <HPO id="80">
+              <HPOId>HP:0001369</HPOId>
+              <HPOTerm>Arthritis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325651">
+            <HPO id="83">
+              <HPOId>HP:0002205</HPOId>
+              <HPOTerm>Recurrent respiratory infections</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325652">
+            <HPO id="85">
+              <HPOId>HP:0002516</HPOId>
+              <HPOTerm>Increased intracranial pressure</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325653">
+            <HPO id="95">
+              <HPOId>HP:0010885</HPOId>
+              <HPOTerm>Avascular necrosis</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+          <HPODisorderAssociation id="325654">
+            <HPO id="98">
+              <HPOId>HP:0100240</HPOId>
+              <HPOTerm>Synostosis of joints</HPOTerm>
+            </HPO>
+            <HPOFrequency id="28426">
+              <Name lang="en">Occasional (29-5%)</Name>
+            </HPOFrequency>
+            <DiagnosticCriteria/>
+          </HPODisorderAssociation>
+        </HPODisorderAssociationList>
+      </Disorder>
+      <Source/>
+      <ValidationStatus>y</ValidationStatus>
+      <Online>y</Online>
+      <ValidationDate>2016-06-01 00:00:00.0</ValidationDate>
+    </HPODisorderSetStatus>
+  </HPODisorderSetStatusList>
+</JDBOR>

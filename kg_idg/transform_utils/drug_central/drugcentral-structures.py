@@ -10,6 +10,8 @@ koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 
 # Entities
-drug = Drug(id="DrugCentral:" + row["id"], description=row["name"], source="DrugCentral")
+drug = Drug(id="DrugCentral:" + row["id"],
+            description=row["name"],
+            category="biolink:Drug")
 
 koza_app.write(drug)

@@ -38,7 +38,7 @@ def run(nodes, edges):
     pos_train_edge_graph, pos_valid_edge_graph = input_graph.random_holdout(train_size=0.8)
     pos_valid_edge_graph.dump_edges("pos_valid_edges.tsv", edge_type_column='predicate')
 
-    negative_graph = input_graph.sample_negatives(input_graph.get_edges_number())
+    negative_graph = input_graph.sample_negative_graph(input_graph.get_edges_number())
     negative_graph = negative_graph.remove_disconnected_nodes()
     
     neg_train_edge_graph, neg_valid_edge_graph = negative_graph.random_holdout(train_size=0.8)

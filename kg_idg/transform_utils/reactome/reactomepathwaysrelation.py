@@ -11,7 +11,7 @@ row = koza_app.get_row()
 
 # Entities
 parent_pathway = Pathway(
-    id="REACT:" + row["REACT_PATH_ID"], source=full_source_name, category="biolink:Pathway"
+    id="REACT:" + row["REACT_PATH_ID"], provided_by=full_source_name, category="biolink:Pathway"
 )
 child_pathway = Pathway(id="REACT:" + row["REACT_PATH_CHILD"], category="biolink:Pathway")
 
@@ -21,7 +21,7 @@ association = Association(
     subject=parent_pathway.id,
     predicate="biolink:contains_process",
     object=child_pathway.id,
-    source=full_source_name,
+    aggregator_knowledge_source=full_source_name,
 )
 
 koza_app.write(parent_pathway, association, child_pathway)

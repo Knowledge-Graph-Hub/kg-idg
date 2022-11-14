@@ -11,7 +11,7 @@ row = koza_app.get_row()
 pathway = Pathway(
     id="REACT:" + row["REACT_PATH_ID"],
     description=row["REACT_NAME"],
-    source=full_source_name,
+    provided_by=full_source_name,
     category="biolink:Pathway",
 )
 
