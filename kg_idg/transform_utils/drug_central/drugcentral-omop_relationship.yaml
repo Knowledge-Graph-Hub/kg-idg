@@ -13,23 +13,17 @@ header: 'infer'
 
 columns:
   - 'id'
-  - 'property_type_id'
-  - 'property_type_symbol'
   - 'struct_id'
-  - 'value'
-  - 'reference_id'
-  - 'reference_type'
-  - 'source'
+  - 'concept_id'
+  - 'relationship_name' # off-label use, diagnosis, reduce risk, indication, symptomatic treatment, contraindication
+  - 'concept_name' # disease names
+  - 'umls_cui'
+  - 'snomed_full_name'
+  - 'cui_semantic_type' # T002 to T204
+  - 'snomed_conceptid'
 
 node_properties:
   - 'id'
-  - 'category'
-  - 'authors'
-  - 'summary'
-  - 'published_in'
-  - 'volume'
-  - 'issue'
-  - 'creation_date'
   
 edge_properties:
   - 'id'
@@ -37,7 +31,5 @@ edge_properties:
   - 'predicate'
   - 'object'
   - 'category'
-  - 'relation'
-  - 'source'
 
 transform_mode: 'flat'
