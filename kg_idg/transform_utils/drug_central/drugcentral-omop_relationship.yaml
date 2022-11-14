@@ -1,0 +1,43 @@
+name: 'drugcentral-omop_relationship'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/transformed/drug_central/drugcentral-omop_relationship.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'property_type_id'
+  - 'property_type_symbol'
+  - 'struct_id'
+  - 'value'
+  - 'reference_id'
+  - 'reference_type'
+  - 'source'
+
+node_properties:
+  - 'id'
+  - 'category'
+  - 'authors'
+  - 'summary'
+  - 'published_in'
+  - 'volume'
+  - 'issue'
+  - 'creation_date'
+  
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+  - 'relation'
+  - 'source'
+
+transform_mode: 'flat'
