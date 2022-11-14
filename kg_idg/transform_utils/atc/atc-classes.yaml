@@ -27,7 +27,6 @@ node_properties:
   - 'iri'
   - 'name'
   - 'category'
-  - 'provided_by'
 
 edge_properties:
   - 'id'
@@ -36,7 +35,5 @@ edge_properties:
   - 'object'
   - 'category'
   - 'relation'
-  - 'source'
-  - 'provided_by'
 
 transform_mode: 'flat'
