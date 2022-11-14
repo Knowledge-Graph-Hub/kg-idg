@@ -20,7 +20,7 @@ provider_url = "https://bioportal.bioontology.org/ontologies/ATC"
 iri_col_name = "Class ID"
 id_only = (row[iri_col_name].split("/"))[-1]
 
-if (row[iri_col_name].split("/"))[-2] != "ATC":
+if (row[iri_col_name].split("/"))[-2] != "UATC":
     # May be STY (UMLS Semantic Types Ontology) or anything else in there
     pass
 elif row["ATC LEVEL"] == "1":
@@ -62,7 +62,6 @@ if have_code:
         subject=atc_code.id,
         predicate="biolink:subclass_of",
         object=parent_code.id,
-        provided_by=[provider_url],
     )
 
     koza_app.write(atc_code, association, parent_code)
