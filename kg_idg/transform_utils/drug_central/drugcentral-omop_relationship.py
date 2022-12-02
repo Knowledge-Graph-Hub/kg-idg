@@ -27,7 +27,8 @@ drug = Drug(
 )
 
 concept = NamedThing(
-    id="UMLS:" + row["umls_cui"]
+    id="UMLS:" + row["umls_cui"],
+    category="biolink:NamedThing",
 )
 
 # Association
