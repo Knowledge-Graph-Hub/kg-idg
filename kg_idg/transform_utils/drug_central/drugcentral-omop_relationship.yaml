@@ -32,4 +32,7 @@ edge_properties:
   - 'object'
   - 'category'
 
+depends_on:
+  - './kg_idg/transform_utils/drug_central/maps/umls-cui_to_mondo_map.yaml'
+
 transform_mode: 'flat'

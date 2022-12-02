@@ -2,6 +2,7 @@ import uuid
 
 from biolink.model import (  # type: ignore
     Association,
+    Disease,
     Drug,
     NamedThing
 )
@@ -19,6 +20,7 @@ source_name = "drugcentral-omop_relationship"
 
 koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
+umls_to_mondo = koza_app.get_map("umls-cui_to_mondo_map")
 
 # Entities
 drug = Drug(
@@ -26,10 +28,23 @@ drug = Drug(
     category="biolink:Drug",
 )
 
-concept = NamedThing(
-    id="UMLS:" + row["umls_cui"],
-    category="biolink:NamedThing",
-)
+# TODO: specify association type by relationship_name in table
+# TODO: ingest concepts besides diseases
+# TODO: add output to merge config
+
+umls_cui = "UMLS:" + row["umls_cui"]
+
+if umls_cui in umls_to_mondo:
+    mondo_id = umls_to_mondo[umls_cui]["mondo_id"]
+    concept = Disease(
+        id=mondo_id,
+        category="biolink:Disease",
+    )
+else:
+    concept = NamedThing(
+        id=umls_cui,
+        category="biolink:NamedThing",
+    )
 
 # Association
 association = Association(
@@ -40,4 +55,4 @@ association = Association(
     aggregator_knowledge_source="DrugCentral",
 )
 
-koza_app.write(drug, association, drug)
+koza_app.write(drug, association, concept)

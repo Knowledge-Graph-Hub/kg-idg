@@ -13,6 +13,7 @@ ONTOLOGIES = {
     "OGMSTransform": "ogms_kgx_tsv.tar.gz",
 }
 
+XREF_MAP = "./kg_idg/transform_utils/drug_central/umls-cui_to_mondo_map.tsv"
 
 class OntologyTransform(Transform):
     """
@@ -62,3 +63,31 @@ class OntologyTransform(Transform):
             output=os.path.join(self.output_dir, name),
             output_format="tsv",
         )
+
+        # Need to save this table for DrugCentral Tx
+        if name == "mondo_kgx_tsv":
+            print("Writing UMLS to MONDO ID map...")
+            self.write_xref_map()
+
+    def write_xref_map(self) -> None:
+        """
+        Set up a map of UMLS to MONDO IDs.
+        """
+        with open("./data/transformed/ontologies/mondo_kgx_tsv_nodes.tsv") as infile:
+            with open(XREF_MAP, "w") as outfile:
+                infile.readline()  # Skip header
+                for line in infile:
+                    have_ids = False
+                    umls_cui = ""
+                    mondo_id = ""
+                    splitline = ((line).rstrip()).split("\t")
+                    if splitline[0].startswith("MONDO"):
+                        mondo_id = splitline[0]
+                        xrefs = splitline[4].split("|")
+                        for xref in xrefs:
+                            if xref.startswith("UMLS"):
+                                umls_cui = xref
+                                have_ids = True
+                                break
+                        if have_ids:
+                            outfile.write(f"{umls_cui}\t{mondo_id}\n")
