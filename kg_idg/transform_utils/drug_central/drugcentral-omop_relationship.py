@@ -35,6 +35,10 @@ relation_to_predicate = {
     "symptomatic treatment": "biolink:treats",
 }
 
+# Check if there's a UMLS CUI to begin with
+while len(row["umls_cui"].strip()) == 0:
+    row = koza_app.get_row()
+
 # Entities
 drug = Drug(
     id="DrugCentral:" + row["struct_id"],
@@ -42,7 +46,6 @@ drug = Drug(
 )
 
 # TODO: add output to merge config
-# TODO: fix blank UMLS: nodes ("UMLS:	")
 # TODO: include proper category for UMLS CUI
 # if not categorized; use STY type
 
