@@ -1,6 +1,12 @@
 import uuid
 
-from biolink.model import Association, Disease, Drug, NamedThing, PhenotypicFeature  # type: ignore
+from biolink.model import (  # type: ignore
+    Association,
+    Disease,
+    Drug,
+    NamedThing,
+    PhenotypicFeature,
+)
 from koza.cli_runner import get_koza_app  # type: ignore
 
 """
@@ -36,6 +42,7 @@ drug = Drug(
 )
 
 # TODO: add output to merge config
+# TODO: fix blank UMLS: nodes ("UMLS:	")
 # TODO: include proper category for UMLS CUI
 # if not categorized; use STY type
 
