@@ -1,0 +1,21 @@
+name: 'umls-cui_to_hp_map'
+
+metadata:
+  description: 'File for mapping UMLS CUIs to HPO IDs'
+
+format: 'csv'
+delimiter: '\t'
+
+files:
+  - './kg_idg/transform_utils/drug_central/umls-cui_to_hp_map.tsv'
+
+header: 'none'
+
+columns:
+  - 'umls_cui'
+  - 'hp_id'
+
+key: 'umls_cui'
+
+values:
+  - 'hp_id'

@@ -1,6 +1,6 @@
 import uuid
 
-from biolink.model import Association, Disease, Drug, NamedThing  # type: ignore
+from biolink.model import Association, Disease, Drug, NamedThing, PhenotypicFeature  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
 """
@@ -18,6 +18,7 @@ source_name = "drugcentral-omop_relationship"
 koza_app = get_koza_app(source_name)
 row = koza_app.get_row()
 umls_to_mondo = koza_app.get_map("umls-cui_to_mondo_map")
+umls_to_hp = koza_app.get_map("umls-cui_to_hp_map")
 
 relation_to_predicate = {
     "contraindication": "biolink:contraindicated_for",
@@ -34,8 +35,9 @@ drug = Drug(
     category="biolink:Drug",
 )
 
-# TODO: ingest concepts besides diseases
 # TODO: add output to merge config
+# TODO: include proper category for UMLS CUI
+# if not categorized; use STY type
 
 umls_cui = "UMLS:" + row["umls_cui"]
 relationship_name = row["relationship_name"]
@@ -45,6 +47,12 @@ if umls_cui in umls_to_mondo:
     concept = Disease(
         id=mondo_id,
         category="biolink:Disease",
+    )
+elif umls_cui in umls_to_hp:
+    hp_id = umls_to_hp[umls_cui]["hp_id"]
+    concept = PhenotypicFeature(
+        id=hp_id,
+        category="biolink:PhenotypicFeature",
     )
 else:
     concept = NamedThing(
