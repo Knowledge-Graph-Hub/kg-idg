@@ -35,6 +35,14 @@ relation_to_predicate = {
     "symptomatic treatment": "biolink:treats",
 }
 
+sty_disease_terms = ["STY:T020",
+                     "STY:T033",
+                     "STY:T047",
+                     "STY:T048",
+                     "STY:T049",
+                     "STY:T191",
+                     ]
+
 # Check if there's a UMLS CUI to begin with
 while len(row["umls_cui"].strip()) == 0:
     row = koza_app.get_row()
@@ -65,10 +73,16 @@ elif umls_cui in umls_to_hp:
         category="biolink:PhenotypicFeature",
     )
 else:
-    concept = NamedThing(
-        id=umls_cui,
-        category="biolink:NamedThing",
-    )
+    if row["cui_semantic_type"] in sty_disease_terms:
+        concept = Disease(
+            id=umls_cui,
+            category="biolink:Disease",
+        )
+    else:
+        concept = NamedThing(
+            id=umls_cui,
+            category="biolink:NamedThing",
+        )
 
 predicate = relation_to_predicate[relationship_name]
 
