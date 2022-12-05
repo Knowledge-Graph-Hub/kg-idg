@@ -1,0 +1,40 @@
+name: 'drugcentral-omop_relationship'
+
+format: 'csv'
+
+delimiter: '\t'
+
+files:
+  - './data/transformed/drug_central/drugcentral-omop_relationship.tsv'
+
+metadata: './kg_idg/transform_utils/drug_central/metadata.yaml'
+
+header: 'infer'
+
+columns:
+  - 'id'
+  - 'struct_id'
+  - 'concept_id'
+  - 'relationship_name' # off-label use, diagnosis, reduce risk, indication, symptomatic treatment, contraindication
+  - 'concept_name' # disease names
+  - 'umls_cui'
+  - 'snomed_full_name'
+  - 'cui_semantic_type' # T002 to T204
+  - 'snomed_conceptid'
+
+node_properties:
+  - 'id'
+  - 'category'
+  
+edge_properties:
+  - 'id'
+  - 'subject'
+  - 'predicate'
+  - 'object'
+  - 'category'
+
+depends_on:
+  - './kg_idg/transform_utils/drug_central/maps/umls-cui_to_mondo_map.yaml'
+  - './kg_idg/transform_utils/drug_central/maps/umls-cui_to_hp_map.yaml'
+
+transform_mode: 'flat'

@@ -62,3 +62,35 @@ class OntologyTransform(Transform):
             output=os.path.join(self.output_dir, name),
             output_format="tsv",
         )
+
+        # Need to save this table for DrugCentral Tx
+        if name in ["hp_kgx_tsv", "mondo_kgx_tsv"]:
+            print("Writing UMLS to ontology ID map...")
+            self.write_xref_map(name)
+
+    def write_xref_map(self, name: str) -> None:
+        """
+        Set up a map of UMLS to ontology IDs.
+        """
+        shortname = (name.split("_"))[0]
+        curie_prefix = shortname.upper()
+        xref_map_path = \
+            f"./kg_idg/transform_utils/drug_central/umls-cui_to_{shortname}_map.tsv"
+        with open(f"./data/transformed/ontologies/{name}_nodes.tsv") as infile:
+            with open(xref_map_path, "w") as outfile:
+                infile.readline()  # Skip header
+                for line in infile:
+                    have_ids = False
+                    umls_cui = ""
+                    onto_id = ""
+                    splitline = ((line).rstrip()).split("\t")
+                    if splitline[0].startswith(curie_prefix):
+                        onto_id = splitline[0]
+                        xrefs = splitline[4].split("|")
+                        for xref in xrefs:
+                            if xref.startswith("UMLS"):
+                                umls_cui = xref
+                                have_ids = True
+                                break
+                        if have_ids:
+                            outfile.write(f"{umls_cui}\t{onto_id}\n")
