@@ -72,6 +72,13 @@ merged_graph:
         filename:
           - data/transformed/drug_central/drugcentral-identifier_nodes.tsv
           - data/transformed/drug_central/drugcentral-identifier_edges.tsv
+    drug-central-indications:
+      name: "DrugCentral Indications and Other Relationships"
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/drugcentral-omop_relationship_nodes.tsv
+          - data/transformed/drug_central/drugcentral-omop_relationship_edges.tsv
     gocams:
       name: "Gene Ontology Causal Activity Modeling"
       input:
