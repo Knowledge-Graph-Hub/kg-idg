@@ -1,20 +1,17 @@
 import uuid
 
-from biolink.model import (  # type: ignore
-    Association,
-    Disease,
-    Drug,
-    NamedThing
-)
+from biolink.model import Association, Disease, Drug, NamedThing  # type: ignore
 from koza.cli_runner import get_koza_app  # type: ignore
 
-# This input contains links to a variety of
-# different concepts, so they need to be 
-# mapped to more specific types based on their
-# presence in mappings (e.g., if a UMLS CUI
-# has a mapping to an HP term, the association
-# will involve the HP term) and their UMLS
-# semantic type
+'''
+This input contains links to a variety of
+different concepts, so they need to be
+mapped to more specific types based on their
+presence in mappings (e.g., if a UMLS CUI
+has a mapping to an HP term, the association
+will involve the HP term) and their UMLS
+semantic type
+'''
 
 source_name = "drugcentral-omop_relationship"
 
