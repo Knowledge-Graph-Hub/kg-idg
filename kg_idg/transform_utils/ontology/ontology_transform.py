@@ -15,6 +15,7 @@ ONTOLOGIES = {
 
 XREF_MAP = "./kg_idg/transform_utils/drug_central/umls-cui_to_mondo_map.tsv"
 
+
 class OntologyTransform(Transform):
     """
     OntologyTransform acts as a passthrough for OBO ontologies -
