@@ -81,8 +81,8 @@ pipeline {
                     sh './venv/bin/pip install .'
                     sh './venv/bin/pip install awscli boto3 s3cmd'
 
-                    // Temporary - install dependencies for ensmallen
-                    sh './venv/bin/pip install toml~=0.10.0 downloaders>=1.0.15 compress_json>=1.0.7 userinput>=1.0.19 cache_decorator>=2.1.11 bioregistry>=0.5.65 tqdm pandas py-cpuinfo environments_utils>=1.0.4'
+                    // Temporary - install ensmallen on its own
+                    sh './venv/bin/pip install ensmallen'
                 }
             }
         }
