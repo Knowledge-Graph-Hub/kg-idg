@@ -30,33 +30,37 @@ uri = ref_db_id_to_uri[row["reference_id"]]["uri"]
 
 # Entities
 # placeholders, filled later from reference table
-if type_str == "JOURNAL ARTICLE":
-    ice = Article(id=uri, type=type_str, published_in="NCIT:C17998", category="biolink:Article")
-elif type_str == "BOOK":
-    ice = Book(id=uri, type=type_str, category="biolink:Book")
-elif type_str in ["CLINICAL TRIAL", "DRUG LABEL"]:
-    ice = Publication(id=uri, type=type_str, category="biolink:Publication")
-elif type_str == "ONLINE RESOURCE":
-    ice = InformationResource(id=uri, type=type_str, category="biolink:InformationResource")
-elif type_str == "PATENT":
-    patent_id = "GOOGLE_PATENT:" + str(row["document_id"]).replace(" ", "")
-    ice = InformationContentEntity(
-        id=uri, type=type_str, category="biolink:InformationContentEntity"
+try:
+    if type_str == "JOURNAL ARTICLE":
+        ice = Article(id=uri, type=type_str, published_in="NCIT:C17998", category="biolink:Article")
+    elif type_str == "BOOK":
+        ice = Book(id=uri, type=type_str, category="biolink:Book")
+    elif type_str in ["CLINICAL TRIAL", "DRUG LABEL"]:
+        ice = Publication(id=uri, type=type_str, category="biolink:Publication")
+    elif type_str == "ONLINE RESOURCE":
+        ice = InformationResource(id=uri, type=type_str, category="biolink:InformationResource")
+    elif type_str == "PATENT":
+        patent_id = "GOOGLE_PATENT:" + str(row["document_id"]).replace(" ", "")
+        ice = InformationContentEntity(
+            id=uri, type=type_str, category="biolink:InformationContentEntity"
+        )
+    else:
+        ice = InformationContentEntity(
+            id=uri, type=type_str, category="biolink:InformationContentEntity"
+        )
+
+    drug = Drug(id="DrugCentral:" + row["struct_id"], category="biolink:Drug")
+
+    # Association
+    association = InformationContentEntityToNamedThingAssociation(
+        id="uuid:" + str(uuid.uuid1()),
+        subject=ice.id,
+        predicate="biolink:mentions",
+        object=drug.id,
+        aggregator_knowledge_source="DrugCentral",
     )
-else:
-    ice = InformationContentEntity(
-        id=uri, type=type_str, category="biolink:InformationContentEntity"
-    )
 
-drug = Drug(id="DrugCentral:" + row["struct_id"], category="biolink:Drug")
+    koza_app.write(ice, association, drug)
 
-# Association
-association = InformationContentEntityToNamedThingAssociation(
-    id="uuid:" + str(uuid.uuid1()),
-    subject=ice.id,
-    predicate="biolink:mentions",
-    object=drug.id,
-    aggregator_knowledge_source="DrugCentral",
-)
-
-koza_app.write(ice, association, drug)
+except ValueError as e:
+    print(f'Invalid reference in property: {row["id"]}: {e}')
