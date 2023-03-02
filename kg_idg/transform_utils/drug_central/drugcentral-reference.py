@@ -12,6 +12,7 @@ from koza.cli_runner import get_koza_app  # type: ignore
 
 # This table is the references only, without Drug IDs.
 # see the 'property' table for drug to reference associations.
+# Publication types are from MeSH: https://www.nlm.nih.gov/mesh/pubtypes.html
 
 source_name = "drugcentral-reference"
 
@@ -63,6 +64,7 @@ try:
             issue=row["issue"],
             creation_date=pubdate,
             category="biolink:Article",
+            publication_type="Journal Article"
         )
     elif type_str == "BOOK":
         ice = Book(
@@ -72,6 +74,7 @@ try:
             summary=row["title"],
             creation_date=pubdate,
             category="Book",
+            publication_type="Monograph"
         )
     elif type_str in ["CLINICAL TRIAL", "DRUG LABEL"]:
         ice = Publication(
@@ -80,12 +83,14 @@ try:
             summary=row["title"],
             creation_date=pubdate,
             category="biolink:Publication",
+            publication_type="Clinical Study"
         )
     elif type_str == "ONLINE RESOURCE":
         ice = InformationResource(
             id=row["url"],
             type=type_str,
             category="biolink:InformationResource",
+            publication_type="Database"
         )
     elif type_str == "PATENT":
         patent_id = "GOOGLE_PATENT:" + str(row["document_id"]).replace(" ", "")
@@ -94,6 +99,7 @@ try:
             type=type_str,
             creation_date=pubdate,
             category="biolink:InformationContentEntity",
+            publication_type="Patent"
         )
     else:
         if (row["document_id"].split(":")) > 1:  # If we have something CURIE-like, use it
@@ -107,6 +113,7 @@ try:
             type=type_str,
             creation_date=pubdate,
             category="biolink:InformationContentEntity",
+            publication_type="Monograph"
         )
 
     koza_app.write(ice)
