@@ -219,7 +219,7 @@ merged_graph:
     merged-kg-tsv:
       format: tsv
       filename: merged-kg
-    merged-kg-nt:
-      format: nt
-      compression: gz
-      filename: KG-IDG.nt.gz
+#    merged-kg-nt:
+#      format: nt
+#      compression: gz
+#      filename: KG-IDG.nt.gz
