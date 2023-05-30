@@ -5,7 +5,6 @@ from biolink.model import (  # type: ignore
     Article,
     Book,
     InformationContentEntity,
-    InformationResource,
     Publication,
 )
 from koza.cli_runner import get_koza_app  # type: ignore
@@ -86,10 +85,10 @@ try:
             publication_type="Clinical Study"
         )
     elif type_str == "ONLINE RESOURCE":
-        ice = InformationResource(
+        ice = InformationContentEntity(
             id=row["url"],
             type=type_str,
-            category="biolink:InformationResource",
+            category="biolink:InformationContentEntity",
             publication_type="Database"
         )
     elif type_str == "PATENT":
